@@ -8,7 +8,7 @@ Rio Grande do Sul. O projeto transformará dados públicos de diferentes fontes
 em indicadores comparáveis, os organizará em eixos temáticos e produzirá
 pontuações por eixo e uma pontuação sintética geral.
 
-O produto não será apenas um ranking. Ele deverá permitir:
+O produto deverá permitir:
 
 - comparar municípios, eixos e indicadores em um mesmo período de referência;
 - localizar forças, fragilidades e lacunas de dados de cada município;
