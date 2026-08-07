@@ -1,0 +1,6 @@
+edicao: "2026"
+data_corte: "2026-08-07"
+vigencia_inicio: "2026-01-01"
+ufs: [PR, SC, RS]
+fonte_municipios: "https://servicodados.ibge.gov.br/api/v1/localidades/estados/{uf}/municipios"
+fonte_contagens: "https://servicodados.ibge.gov.br/api/v1/localidades/estados/{uf}/municipios"
