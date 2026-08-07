@@ -1,0 +1,5 @@
+[
+  {"id": 4100103, "nome": "Abatiá", "microrregiao": {"nome": "Cornélio Procópio", "mesorregiao": {"nome": "Norte Pioneiro Paranaense", "UF": {"id": 41, "sigla": "PR", "regiao": {"nome": "Sul"}}}}, "regiao-imediata": {"nome": "Santo Antônio da Platina", "regiao-intermediaria": {"nome": "Londrina", "UF": {"id": 41, "sigla": "PR", "regiao": {"nome": "Sul"}}}}},
+  {"id": 4200051, "nome": "Abdon Batista", "microrregiao": {"nome": "Curitibanos", "mesorregiao": {"nome": "Serrana", "UF": {"id": 42, "sigla": "SC", "regiao": {"nome": "Sul"}}}}, "regiao-imediata": {"nome": "Curitibanos", "regiao-intermediaria": {"nome": "Lages", "UF": {"id": 42, "sigla": "SC", "regiao": {"nome": "Sul"}}}}},
+  {"id": 4300034, "nome": "Aceguá", "microrregiao": {"nome": "Campanha Meridional", "mesorregiao": {"nome": "Sudoeste Rio-grandense", "UF": {"id": 43, "sigla": "RS", "regiao": {"nome": "Sul"}}}}, "regiao-imediata": {"nome": "Bagé", "regiao-intermediaria": {"nome": "Uruguaiana", "UF": {"id": 43, "sigla": "RS", "regiao": {"nome": "Sul"}}}}}
+]
