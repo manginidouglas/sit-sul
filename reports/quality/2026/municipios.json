@@ -1,0 +1,54 @@
+{
+  "status": "aprovado",
+  "total": 1191,
+  "contagens_por_uf": {
+    "PR": 399,
+    "RS": 497,
+    "SC": 295
+  },
+  "contagens_esperadas_da_fonte": {
+    "PR": 399,
+    "SC": 295,
+    "RS": 497
+  },
+  "codigos_unicos": 1191,
+  "erros": [],
+  "edicao": "2026",
+  "data_corte": "2026-08-07",
+  "fonte": "geobr/Ipea v2.0.0, malhas territoriais 2025 baseadas no IBGE",
+  "gerado_em": "2026-08-07T21:41:40.726598+00:00",
+  "manifesto": [
+    {
+      "url": "https://github.com/ipea/geobr_prep_data/releases/download/v2.0.0/municipalities_2025_simplified.parquet",
+      "http_status": 200,
+      "bytes": 21095479,
+      "sha256": "ff04dfce55b7b90293a9bceccf1b9c79de27666f9f1277b3568818296ddb5e9d",
+      "arquivo": "municipalities_2025_simplified.parquet"
+    },
+    {
+      "url": "https://github.com/ipea/geobr_prep_data/releases/download/v2.0.0/immediateregions_2025_simplified.parquet",
+      "http_status": 200,
+      "bytes": 8230913,
+      "sha256": "ea7d4d80c07ba8345524ce510cf33cdcfccd1ffdf66c5e60de24a9a9a33757c8",
+      "arquivo": "immediateregions_2025_simplified.parquet"
+    }
+  ],
+  "observacao": "Fallback documentado porque a API de Localidades do IBGE retornou 403 no ambiente.",
+  "revisao_manual": {
+    "status": "aprovado",
+    "amostra_ids": [
+      "4100103",
+      "4106902",
+      "4200051",
+      "4205407",
+      "4300034",
+      "4314902"
+    ],
+    "criterios": [
+      "nome oficial",
+      "UF",
+      "região imediata",
+      "região intermediária"
+    ]
+  }
+}

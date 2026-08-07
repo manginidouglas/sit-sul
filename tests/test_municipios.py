@@ -61,3 +61,16 @@ def test_pipeline_publica_csv_relatorio_e_brutos(monkeypatch, tmp_path):
     assert report["status"] == "aprovado"
     assert len(report["manifesto"]) == 3
     assert (tmp_path / "data/raw/ibge_localidades/2026-08-07/municipios_PR.json").exists()
+
+
+def test_snapshot_versionado_atende_ao_contrato():
+    snapshot = Path("data/processed/2026/municipios.csv")
+    if not snapshot.exists():
+        pytest.fail("cadastro versionado da edição 2026 não foi encontrado")
+    import csv
+    with snapshot.open(encoding="utf-8", newline="") as stream:
+        data = list(csv.DictReader(stream))
+    published = json.loads(Path("reports/quality/2026/municipios.json").read_text())
+    report = validate(data, published["contagens_esperadas_da_fonte"])
+    assert report["total"] == published["total"]
+    assert data == sorted(data, key=lambda row: row["municipio_id"])

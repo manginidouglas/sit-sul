@@ -25,3 +25,7 @@ manifesto das extrações ficam em `reports/quality/<edicao>/municipios.json`.
 Arquivos brutos são deliberadamente ignorados pelo Git. A configuração da edição
 define a data de corte, a vigência e o endpoint, sem espalhar esses parâmetros
 pelo código.
+
+O cadastro versionado de 2026 foi produzido pelo fallback geobr/Ipea porque o
+proxy do ambiente bloqueou a API do IBGE. A justificativa, a reprodução e as
+limitações estão registradas na [ficha da fonte](docs/fontes/ibge-localidades.md).

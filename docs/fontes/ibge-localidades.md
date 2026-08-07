@@ -30,3 +30,27 @@ python -m ice_sul.municipios --config config/edicoes/2026.yml
 A execução produz `data/processed/2026/municipios.csv` e
 `reports/quality/2026/municipios.json`. O diretório `data/raw` fica fora do Git;
 o manifesto no relatório permite verificar cada cópia bruta.
+
+## Fallback usado na edição 2026
+
+O proxy do ambiente bloqueou o domínio da API do IBGE com HTTP 403. Para não
+publicar uma fixture parcial como se fosse o cadastro real, o cadastro versionado
+foi construído com as malhas de 2025 da release imutável `v2.0.0` do projeto
+**geobr**, mantido pelo Ipea e derivado das malhas territoriais do IBGE. Foram
+usados os arquivos `municipalities_2025_simplified.parquet` e
+`immediateregions_2025_simplified.parquet`; URLs e hashes estão no relatório.
+
+O script `scripts/build_municipios_geobr_snapshot.py` faz a associação espacial,
+exclui os dois polígonos operacionais das lagoas do Rio Grande do Sul (que não
+são municípios), verifica a UF da associação e gera os mesmos artefatos do
+coletor principal. Mesorregião e microrregião permanecem nulas porque são
+recortes legados e não integram essas malhas. Para reproduzir:
+
+```bash
+python -m pip install -e '.[snapshot]'
+python scripts/build_municipios_geobr_snapshot.py
+```
+
+O relatório resultante foi aprovado com 1.191 códigos únicos: 399 no Paraná,
+295 em Santa Catarina e 497 no Rio Grande do Sul. A próxima atualização deve
+voltar a preferir a API oficial; o fallback nunca é acionado silenciosamente.
