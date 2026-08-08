@@ -1,25 +1,29 @@
-# ICE Sul — guia de implementação
+# SIT — Sistema de Inteligência Territorial — guia de implementação
 
-## 1. Propósito e resultado esperado
+## 1. Propósito, escopo e resultado esperado
 
-O ICE Sul será um índice municipal multidimensional para comparar condições
-associadas ao desenvolvimento dos municípios do Paraná, de Santa Catarina e do
-Rio Grande do Sul. O projeto transformará dados públicos de diferentes fontes
-em indicadores comparáveis, os organizará em eixos temáticos e produzirá
-pontuações por eixo e uma pontuação sintética geral.
+O **SIT — Sistema de Inteligência Territorial** é um sistema municipal
+multidimensional voltado a medir e organizar informações sobre as condições do
+ambiente local que favorecem a criação, instalação, operação e desenvolvimento
+de atividades empresariais nos municípios da Região Sul do Brasil. Seu propósito
+é apoiar diagnóstico territorial e inteligência estratégica, permitindo
+identificar vantagens, gargalos e diferenças entre municípios e regiões.
 
-O produto deverá permitir:
+O SIT não é apenas um ranking. Pontuações sintéticas e rankings são produtos
+possíveis, mas seu maior valor é a decomposição por eixo e indicador: uma leitura
+como “infraestrutura e mercado fortes, mas capital humano fraco” é mais útil ao
+diagnóstico que uma posição ordinal isolada.
 
-- comparar municípios, eixos e indicadores em um mesmo período de referência;
-- localizar forças, fragilidades e lacunas de dados de cada município;
-- reproduzir cada resultado a partir das fontes originais;
-- distinguir dado observado, dado tratado e pontuação calculada;
-- atualizar a base sem refazer manualmente toda a análise;
-- testar escolhas metodológicas e medir quanto elas alteram os resultados.
+O SIT:
 
-Cada edição terá versão, data de corte e metodologia congeladas. Alterações de
-fonte, conceito, cobertura ou cálculo serão registradas, evitando que números
-de edições diferentes pareçam comparáveis quando não forem.
+- não mede desenvolvimento municipal em sentido amplo;
+- não mede qualidade de vida de forma geral;
+- não prevê o sucesso de uma empresa específica;
+- não deve ser interpretado isoladamente como recomendação locacional de investimento.
+
+O núcleo é geral, transversal, não setorial e não centrado em startups. Cada
+edição terá versão, data de corte e metodologia congeladas. Alterações de fonte,
+conceito, cobertura ou cálculo serão registradas.
 
 ## 2. Princípios do projeto
 
@@ -76,20 +80,19 @@ de/para, com justificativa e nunca como correção silenciosa.
 
 ### 4.1 Hierarquia
 
-O índice terá quatro níveis:
+O sistema terá quatro níveis possíveis:
 
 1. **variável de origem:** campo extraído da fonte;
 2. **indicador:** medida interpretável, já tratada (por exemplo, taxa por
    100 mil habitantes);
 3. **eixo:** agregado temático de indicadores relacionados;
-4. **índice geral:** agregado dos eixos.
+4. **síntese geral:** agregado opcional dos eixos, sem substituir sua decomposição.
 
-Os eixos e seus nomes serão definidos na etapa metodológica. Uma proposta
-inicial para discussão é: **capital humano; dinamismo econômico; infraestrutura
-e conectividade; instituições e ambiente de negócios; qualidade de vida e
-sustentabilidade**. Essa taxonomia é hipótese de trabalho, não uma decisão já
-tomada. A revisão deve evitar eixos sobrepostos e garantir que cada um represente
-uma dimensão defensável.
+A estrutura inicial aprovada compreende **Ambiente regulatório;
+Infraestrutura e conectividade; Mercado; Acesso a capital; Capital humano; e
+Inovação**. Cultura empreendedora, qualidade de vida e sustentabilidade podem ser
+avaliadas, mas não integram automaticamente o núcleo. A escolha entre estoque
+local e acesso territorial será feita indicador a indicador.
 
 ### 4.2 Ficha obrigatória de cada indicador
 
@@ -173,79 +176,27 @@ abaixo do limiar aprovado, ele será suspenso ou substituído. Quando a imputaç
 for indispensável, o método será simples, justificável, marcado linha a linha e
 testado contra a alternativa de excluir e renormalizar os pesos disponíveis.
 
-## 7. Padronização dos indicadores
+## 7. Padronização, extremos, pesos e agregação — decisões provisórias
 
-Indicadores têm unidades e amplitudes incompatíveis. A opção inicial equilibrada
-será **winsorizar e aplicar min–max robusto**, sempre no conjunto completo dos
-municípios dos três estados:
+O método definitivo de normalização e o tratamento definitivo de extremos serão
+decididos somente depois da Etapa 2, quando forem conhecidas as distribuições do
+conjunto provisório. Até lá, tratamento robusto e escala comparável são apenas
+referências para testes; não há percentis ou método congelados.
 
-1. definir limites inferior e superior pelos percentis 2,5 e 97,5 de cada
-   indicador (parâmetros configuráveis);
-2. limitar valores fora desses pontos aos respectivos limites, sem apagar o
-   valor bruto;
-3. aplicar `100 × (x − limite_inferior) / (limite_superior − limite_inferior)`;
-4. para indicadores negativos, inverter a escala: `100 − pontuação`;
-5. limitar o resultado a `[0, 100]` e registrar todos os valores afetados.
+Também permanecem referências provisórias, e não decisões finais, pesos iguais
+entre indicadores e entre eixos e média aritmética. Serão comparados cenários e
+avaliadas estabilidade por porte, mudanças de resultado e compensação entre
+dimensões. A seleção conceitual não será orientada pelo efeito no ranking.
 
-Essa solução mantém leitura intuitiva, reduz a influência desproporcional de
-extremos e não pressupõe distribuição normal. Se os limites forem iguais, o
-indicador não tem poder discriminante naquela edição e será retirado, em vez de
-receber uma pontuação arbitrária.
-
-Alternativas que serão testadas na análise de sensibilidade:
-
-- **min–max simples:** mais transparente, porém muito sensível a extremos;
-- **escore-z:** preserva distâncias em desvios-padrão, mas é menos intuitivo e
-  sensível a assimetria;
-- **escore-z robusto** por mediana e desvio absoluto mediano: resistente a
-  extremos, embora menos familiar ao público;
-- **postos ou percentis:** muito robustos e fáceis de comparar, mas apagam a
-  magnitude das diferenças e podem gerar muitos empates;
-- **transformação prévia** (log, raiz ou Box–Cox) seguida de z-score/min–max:
-  útil para distribuições muito assimétricas, ao custo de mais decisões.
-
-Compararemos correlações, mudanças de posição, estabilidade por porte municipal
-e casos com maiores divergências. O método inicial só será confirmado depois
-desses testes; indicadores com distribuição peculiar poderão ter regra própria,
-explicitamente documentada.
-
-## 8. Agregação, pesos e pontuações
-
-Inicialmente, cada indicador terá **peso igual dentro do seu eixo**, e cada eixo
-terá **peso igual no índice geral**. Assim, nenhum tema dominará apenas porque
-possui mais indicadores. Dentro de um eixo, a pontuação será a média ponderada
-dos indicadores válidos; o índice geral será a média ponderada dos eixos.
-
-Essa é uma adoção inicial razoável: é transparente, reproduzível e evita afirmar
-uma precisão normativa que ainda não possuímos. Ela não significa que todos os
-temas tenham necessariamente a mesma importância social.
-
-Serão discutidas e testadas estas alternativas:
-
-- pesos normativos definidos por especialistas e partes interessadas;
-- pesos derivados de consulta pública ou método multicritério (como AHP);
-- pesos empíricos por análise de componentes principais ou análise fatorial;
-- pesos por variabilidade/entropia, que privilegiam poder discriminante;
-- pesos ligados a resultados externos, com validação fora da amostra;
-- média geométrica, que reduz compensação total entre dimensões, em lugar da
-  média aritmética.
-
-Métodos empíricos não serão tratados como automaticamente objetivos: eles
-dependem da amostra e podem valorizar variação, não relevância. A análise de
-sensibilidade comparará pesos iguais com pelo menos um cenário normativo e um
-empírico, observando correlação de pontuações, mudanças de quintil e municípios
-mais afetados.
-
-Para dados ausentes, a regra preliminar será calcular o eixo somente se o
-município atingir uma cobertura mínima de peso (a definir). Os pesos dos itens
-disponíveis poderão ser renormalizados dentro do eixo, com a cobertura publicada
-ao lado da nota. Um eixo sem cobertura mínima torna o índice geral indisponível;
-não receberá zero.
+Não haverá imputação automática. Os limiares quantitativos de cobertura por
+indicador, município e eixo, eventual renormalização dos itens disponíveis,
+pesos e forma de agregação só serão definidos após observar cobertura e
+comportamento reais. Ausência não será convertida em zero.
 
 ## 9. Estrutura do repositório
 
 ```text
-ice-sul/
+sit-sul/                         # nome ilustrativo; o diretório técnico pode permanecer ice-sul
 ├── README.md
 ├── LICENSE
 ├── pyproject.toml
@@ -262,6 +213,8 @@ ice-sul/
 │   └── output/               # pontuações e tabelas publicáveis
 ├── docs/
 │   ├── guia-de-implementacao.md
+│   ├── decisoes-metodologicas-preliminares.md
+│   ├── etapa-2-inventario-indicadores.md
 │   ├── decisoes/             # registros de decisões metodológicas (ADRs)
 │   ├── indicadores/          # fichas detalhadas
 │   └── fontes/               # resultados das verificações externas
@@ -293,49 +246,38 @@ dados/artefatos ou regenerados pelo pipeline.
 O trabalho avançará por portões de aprovação. Não iniciaremos coleta em escala
 antes de concluir as decisões e validar uma fonte-piloto.
 
-### Etapa 0 — decisões metodológicas preliminares
+### Etapa 0 — decisões metodológicas preliminares — **concluída**
 
-Registrar e aprovar, antes do cálculo:
+A referência normativa é
+[`docs/decisoes-metodologicas-preliminares.md`](decisoes-metodologicas-preliminares.md).
+Ela encerra formalmente a Etapa 0 e prevalece sobre formulações exploratórias
+anteriores. Permanecem deliberadamente abertas, até depois do inventário da
+Etapa 2, apenas decisões dependentes da evidência empírica: limiares
+quantitativos de cobertura, normalização definitiva, tratamento definitivo de
+extremos, pesos e forma definitiva de agregação.
 
-1. objetivo, público e usos que o índice pode e não pode ter;
-2. unidade de análise e território (município e três UFs);
-3. ano da primeira edição, data de corte e defasagem máxima aceitável;
-4. tratamento de períodos diferentes e disponibilidade de séries;
-5. eixos, definições e fronteiras conceituais;
-6. critérios de entrada, reserva e exclusão de indicadores;
-7. unidade de cada indicador, direção desejável e denominadores;
-8. cobertura mínima por indicador, município e eixo;
-9. significado de zero, ausente, não aplicável e dado suprimido;
-10. política de imputação e renormalização na presença de ausentes;
-11. tratamento de municípios pequenos e medidas voláteis (médias móveis,
-    agregação de anos ou modelos de suavização);
-12. regra de extremos e parâmetros de winsorização;
-13. população usada para padronizar e se haverá comparação apenas regional;
-14. método de padronização e inversão de direção;
-15. pesos intraeixo e entre eixos e forma de agregação;
-16. precisão, arredondamento, empates, ordenação e faixas de desempenho;
-17. testes de robustez e critérios para aceitar o método;
-18. política de revisão retroativa, versionamento e comparabilidade entre edições;
-19. licença, privacidade, ética, comunicação de incerteza e governança;
-20. formatos de publicação e protocolo de auditoria/revisão externa.
+**Saída concluída:** propósito, não-usos, universo, regra temporal, seis eixos,
+princípios de seleção, política de ausentes e decisões provisórias versionadas.
 
-**Saída:** documento de escopo, glossário e registros de decisão aprovados.
+### Etapa 1 — cadastro dos municípios — **concluída e preservada**
 
-### Etapa 1 — cadastro dos municípios
-
-Implementar a extração oficial, construir o cadastro canônico e testar chaves,
-UFs, duplicidades e contagens. Criar tabela de aliases somente para fontes que
-não forneçam código IBGE.
+Foi implementada a extração oficial e construído o cadastro canônico dos 1.191
+municípios, com código IBGE como identificador e testes de chaves, UFs,
+duplicidades e contagens. O pipeline, seus testes, relatórios de qualidade e o
+fallback geobr/Ipea documentado são preservados. Tabelas de aliases só serão
+criadas para fontes que não forneçam código IBGE.
 
 **Saída:** `municipios` versionado, relatório de validação e teste automatizado.
 
-### Etapa 2 — inventário e revisão dos indicadores
+### Etapa 2 — inventário e revisão dos indicadores — **em andamento**
 
 Produzir uma lista ampla de candidatos, preencher fichas, localizar fontes
 primárias e avaliar mérito, redundância, cobertura e viabilidade. Montar uma
 matriz `eixo × conceito × indicador` para revelar lacunas e excesso de medidas.
 
-**Saída:** catálogo com parecer e conjunto provisório aprovado.
+**Saída desta primeira rodada:** infraestrutura do catálogo, inventário amplo,
+fontes primárias candidatas, matriz conceitual e relatório. A aprovação
+substantiva continuará um eixo e um indicador por vez.
 
 ### Etapa 3 — verificação externa das fontes
 
@@ -374,17 +316,19 @@ parecerem incomuns.
 
 ### Etapa 7 — padronização
 
-Executar o método robusto inicial, verificar direção e casos degenerados e gerar
-diagnósticos antes/depois. Rodar min–max, z-score robusto e percentis como
-cenários alternativos.
+Depois de decisão metodológica baseada nas distribuições observadas, executar o
+método aprovado, verificar direção e casos degenerados e gerar diagnósticos
+antes/depois. Comparar alternativas pertinentes na análise de sensibilidade,
+sem antecipar nesta fase quais métodos serão definitivos.
 
 **Saída:** pontuações de 0 a 100, marcadores de tratamento e análise de sensibilidade.
 
 ### Etapa 8 — pesos, eixos e índice geral
 
-Aplicar pesos iguais dentro dos eixos e pesos iguais entre eixos; calcular
-cobertura efetiva e impedir notas abaixo do limiar. Comparar cenários de peso e,
-se justificável, média geométrica.
+Aplicar os pesos, limiares e forma de agregação que vierem a ser aprovados após
+a Etapa 2; calcular e publicar cobertura efetiva. Comparar as referências
+provisórias de pesos iguais e média aritmética com cenários alternativos na
+análise de sensibilidade.
 
 **Saída:** notas por eixo e geral, composição dos pesos e relatório de robustez.
 
@@ -442,8 +386,7 @@ do projeto prioriza e aceita entregas; responsável metodológico aprova conceit
 engenharia mantém coletores e pipeline; revisão de dados confere qualidade; e
 revisão externa avalia clareza e vieses.
 
-O plano operacional é deliberadamente sequencial: começaremos pelas decisões da
-Etapa 0; depois construiremos a lista municipal; em seguida revisaremos um eixo
-e uma fonte por vez. As verificações externas orientarão o código de coleta, e
+O plano operacional é deliberadamente sequencial: as Etapas 0 e 1 estão
+concluídas; na Etapa 2 revisaremos um eixo e um indicador por vez. As verificações externas orientarão o código de coleta, e
 os resultados observados poderão devolver um indicador à revisão antes que ele
 entre no índice.
