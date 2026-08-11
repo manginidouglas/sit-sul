@@ -1,40 +1,41 @@
 # Matriz conceitual da Etapa 2
 
-Esta matriz acompanha a revisão progressiva da Etapa 2: distingue candidatos ainda exploratórios dos indicadores que já passaram pela revisão substantiva. O status `aprovado` autoriza avançar à verificação da fonte e à coleta posterior, sem definir peso, normalização ou permanência no índice final. `Abordagem` distingue estoque local de acesso territorial.
+Esta matriz acompanha a revisão progressiva da Etapa 2: distingue candidatos ainda exploratórios dos indicadores que já passaram pela revisão substantiva. O status `aprovado` autoriza avançar à verificação da fonte e à coleta posterior, sem definir peso, normalização ou permanência no índice final. `Abordagem` distingue estoque local de acesso territorial. `Camada` e `tipo_diagnostico` são preenchidos à medida que cada eixo passa por revisão substantiva; `—` indica eixo ainda não classificado nessa dimensão.
 
-| Eixo | Conceito | Indicador | Natureza | Abordagem | Status |
-|---|---|---|---|---|---|
-| Ambiente regulatório | Celeridade de entrada formal | Tempo para abertura de empresa | condicao | estoque_local | em_verificacao |
-| Ambiente regulatório | Custo regulatório e tributário | Carga tributária municipal sobre atividade econômica | condicao | estoque_local | reserva |
-| Ambiente regulatório | Acessibilidade dos serviços regulatórios | Disponibilidade de serviços empresariais digitais | condicao | acesso_ao_recurso | proposto |
-| Ambiente regulatório | Previsibilidade nas compras públicas | Prazo de pagamento a fornecedores municipais | condicao | estoque_local | em_verificacao |
-| Infraestrutura e conectividade | Conectividade digital fixa de alta velocidade | Densidade de acessos de banda larga fixa ≥ 100 Mbps | condicao | estoque_local | aprovado |
-| Infraestrutura e conectividade | Modernidade tecnológica da conectividade fixa | Participação da fibra óptica nos acessos de banda larga fixa | condicao | estoque_local | aprovado |
-| Infraestrutura e conectividade | Competitividade da conectividade fixa | Competitividade do mercado de banda larga fixa | condicao | estoque_local | aprovado |
-| Infraestrutura e conectividade | Cobertura móvel populacional | População coberta por rede móvel 4G ou superior | condicao | estoque_local_e_acesso | aprovado |
-| Infraestrutura e conectividade | Cobertura móvel rural | Área passível de uso agrícola coberta por rede móvel 4G/5G | condicao | estoque_local_e_acesso | aprovado |
-| Infraestrutura e conectividade | Confiabilidade energética — duração | Duração das interrupções de energia elétrica (DEC) | condicao | estoque_local | aprovado |
-| Infraestrutura e conectividade | Confiabilidade energética — frequência | Frequência das interrupções de energia elétrica (FEC) | condicao | estoque_local | aprovado |
-| Infraestrutura e conectividade | Acessibilidade logística rodoviária | Tempo de acesso à malha rodoviária pavimentada estruturante | condicao | acesso_ao_recurso | aprovado |
-| Infraestrutura e conectividade | Acessibilidade logística aérea | Tempo de acesso a aeroporto com serviço aéreo regular | condicao | acesso_ao_recurso | aprovado |
-| Infraestrutura e conectividade | Conectividade aérea | Conectividade aérea acessível | condicao | acesso_ao_recurso | aprovado |
-| Infraestrutura e conectividade | Acessibilidade logística portuária | Tempo de acesso a instalação portuária de carga elegível | condicao | acesso_ao_recurso | aprovado |
-| Mercado | Escala do mercado consumidor acessível | Massa de renda acessível | condicao | acesso_ao_recurso | em_verificacao |
-| Mercado | Diversidade da demanda e base produtiva | Diversificação do emprego formal local | condicao | estoque_local | em_verificacao |
-| Mercado | Profundidade do tecido empresarial | Densidade de estabelecimentos ativos | resultado_auxiliar | estoque_local | reserva |
-| Mercado | Resultado econômico associado | Crescimento real do PIB municipal | resultado_auxiliar | estoque_local | reserva |
-| Acesso a capital | Acesso a canais financeiros | Acesso presencial a serviços financeiros | condicao | acesso_ao_recurso | em_verificacao |
-| Acesso a capital | Oferta local de crédito empresarial | Crédito bancário a pessoas jurídicas | condicao | estoque_local | em_verificacao |
-| Acesso a capital | Acesso a financiamento de desenvolvimento | Desembolsos BNDES para empresas | condicao | estoque_local | reserva |
-| Acesso a capital | Diversidade de canais financeiros | Acesso a cooperativas de crédito | condicao | acesso_ao_recurso | em_verificacao |
-| Capital humano | Escolaridade da força de trabalho potencial | Adultos com ensino médio completo | condicao | estoque_local | em_verificacao |
-| Capital humano | Formação técnica | Concluintes de educação profissional técnica acessíveis | condicao | estoque_local_e_acesso | em_verificacao |
-| Capital humano | Acesso à formação superior | Acesso à educação superior presencial | condicao | acesso_ao_recurso | em_verificacao |
-| Capital humano | Disponibilidade observada de competências | Emprego formal em ocupações qualificadas | condicao_resultado_ambiguo | estoque_local | em_verificacao |
-| Inovação | Infraestrutura científica acessível | Acesso a programas de pós-graduação | condicao | acesso_ao_recurso | em_verificacao |
-| Inovação | Capacidade de pesquisa | Pesquisadores e grupos de pesquisa acessíveis | condicao | acesso_ao_recurso | em_verificacao |
-| Inovação | Produção tecnológica registrada | Depósitos de patentes por residência do depositante | resultado_auxiliar | estoque_local | reserva |
-| Inovação | Capacidade empresarial de inovação | Emprego formal em atividades e ocupações de P&D | condicao_resultado_ambiguo | estoque_local | em_verificacao |
+| Eixo | Conceito | Indicador | Natureza | Abordagem | Camada | Tipo diagnóstico | Status |
+|---|---|---|---|---|---|---|---|
+| Ambiente regulatório | Celeridade de entrada formal | Tempo para abertura de empresa | condicao | estoque_local | — | — | em_verificacao |
+| Ambiente regulatório | Custo regulatório e tributário | Carga tributária municipal sobre atividade econômica | condicao | estoque_local | — | — | reserva |
+| Ambiente regulatório | Acessibilidade dos serviços regulatórios | Disponibilidade de serviços empresariais digitais | condicao | acesso_ao_recurso | — | — | proposto |
+| Ambiente regulatório | Previsibilidade nas compras públicas | Prazo de pagamento a fornecedores municipais | condicao | estoque_local | — | — | em_verificacao |
+| Infraestrutura e conectividade | Conectividade digital fixa de alta velocidade | Densidade de acessos de banda larga fixa ≥ 100 Mbps | condicao | estoque_local | — | — | aprovado |
+| Infraestrutura e conectividade | Modernidade tecnológica da conectividade fixa | Participação da fibra óptica nos acessos de banda larga fixa | condicao | estoque_local | — | — | aprovado |
+| Infraestrutura e conectividade | Competitividade da conectividade fixa | Competitividade do mercado de banda larga fixa | condicao | estoque_local | — | — | aprovado |
+| Infraestrutura e conectividade | Cobertura móvel populacional | População coberta por rede móvel 4G ou superior | condicao | estoque_local_e_acesso | — | — | aprovado |
+| Infraestrutura e conectividade | Cobertura móvel rural | Área passível de uso agrícola coberta por rede móvel 4G/5G | condicao | estoque_local_e_acesso | — | — | aprovado |
+| Infraestrutura e conectividade | Confiabilidade energética — duração | Duração das interrupções de energia elétrica (DEC) | condicao | estoque_local | — | — | aprovado |
+| Infraestrutura e conectividade | Confiabilidade energética — frequência | Frequência das interrupções de energia elétrica (FEC) | condicao | estoque_local | — | — | aprovado |
+| Infraestrutura e conectividade | Acessibilidade logística rodoviária | Tempo de acesso à malha rodoviária pavimentada estruturante | condicao | acesso_ao_recurso | — | — | aprovado |
+| Infraestrutura e conectividade | Acessibilidade logística aérea | Tempo de acesso a aeroporto com serviço aéreo regular | condicao | acesso_ao_recurso | — | — | aprovado |
+| Infraestrutura e conectividade | Conectividade aérea | Conectividade aérea acessível | condicao | acesso_ao_recurso | — | — | aprovado |
+| Infraestrutura e conectividade | Acessibilidade logística portuária | Tempo de acesso a instalação portuária de carga elegível | condicao | acesso_ao_recurso | — | — | aprovado |
+| Mercado | Escala do mercado consumidor final economicamente acessível | Massa de renda domiciliar acessível | condicao | acesso_ao_recurso | nucleo | — | aprovado |
+| Mercado | Escala do mercado empresarial formal economicamente acessível | Emprego formal privado acessível | condicao | acesso_ao_recurso | nucleo | — | aprovado |
+| Mercado | Estrutura setorial do emprego formal | Diversificação setorial do emprego formal | contexto | estoque_local | diagnostico | contexto | aprovado |
+| Mercado | Profundidade observada do tecido empresarial | Densidade de estabelecimentos ativos | contexto | estoque_local | diagnostico | contexto | aprovado |
+| Mercado | Resultado econômico municipal associado | Crescimento real do PIB municipal | resultado | estoque_local | diagnostico | resultado | aprovado |
+| Acesso a capital | Acesso a canais financeiros | Acesso presencial a serviços financeiros | condicao | acesso_ao_recurso | — | — | em_verificacao |
+| Acesso a capital | Oferta local de crédito empresarial | Crédito bancário a pessoas jurídicas | condicao | estoque_local | — | — | em_verificacao |
+| Acesso a capital | Acesso a financiamento de desenvolvimento | Desembolsos BNDES para empresas | condicao | estoque_local | — | — | reserva |
+| Acesso a capital | Diversidade de canais financeiros | Acesso a cooperativas de crédito | condicao | acesso_ao_recurso | — | — | em_verificacao |
+| Capital humano | Escolaridade da força de trabalho potencial | Adultos com ensino médio completo | condicao | estoque_local | — | — | em_verificacao |
+| Capital humano | Formação técnica | Concluintes de educação profissional técnica acessíveis | condicao | estoque_local_e_acesso | — | — | em_verificacao |
+| Capital humano | Acesso à formação superior | Acesso à educação superior presencial | condicao | acesso_ao_recurso | — | — | em_verificacao |
+| Capital humano | Disponibilidade observada de competências | Emprego formal em ocupações qualificadas | condicao_resultado_ambiguo | estoque_local | — | — | em_verificacao |
+| Inovação | Infraestrutura científica acessível | Acesso a programas de pós-graduação | condicao | acesso_ao_recurso | — | — | em_verificacao |
+| Inovação | Capacidade de pesquisa | Pesquisadores e grupos de pesquisa acessíveis | condicao | acesso_ao_recurso | — | — | em_verificacao |
+| Inovação | Produção tecnológica registrada | Depósitos de patentes por residência do depositante | resultado_auxiliar | estoque_local | — | — | reserva |
+| Inovação | Capacidade empresarial de inovação | Emprego formal em atividades e ocupações de P&D | condicao_resultado_ambiguo | estoque_local | — | — | em_verificacao |
 
 ## Leitura diagnóstica
 

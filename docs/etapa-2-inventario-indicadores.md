@@ -107,3 +107,31 @@ Esta atualização não realizou coleta municipal, imputação, normalização,
 ponderação, agregação, nota de eixo ou cálculo do SIT. Os demais eixos permanecem
 no estágio anteriormente registrado e não foram submetidos a revisão substantiva
 nesta rodada.
+
+## Atualização posterior — revisão substantiva de Mercado
+
+A revisão substantiva do eixo **Mercado** foi concluída. Foram aprovados,
+condicionados aos estudos pré-coleta registrados, dois indicadores do núcleo:
+MER-01 (massa de renda domiciliar acessível) e MER-02 (emprego formal privado
+acessível). Também foram aprovados três indicadores exclusivamente diagnósticos:
+MER-DIAG-01 e MER-DIAG-02 como diagnósticos de contexto e MER-DIAG-03 como
+diagnóstico de resultado. A camada diagnóstica e sua governança passam a integrar
+as [decisões metodológicas gerais](decisoes-metodologicas-preliminares.md): seus
+indicadores não recebem peso, não integram a agregação e não alteram o ranking.
+
+Nas medidas de acessibilidade, a fronteira da Região Sul limita o universo
+avaliado, não o universo de recursos econômicos acessíveis. Portanto, `i` continua
+restrito aos 1.191 municípios de PR, SC e RS, enquanto `j` pode ser qualquer
+município brasileiro cuja contribuição seja positiva segundo a função de
+acessibilidade. A função não foi congelada e será objeto dos estudos definidos.
+Permanece também o estudo transversal de comparabilidade e viabilidade para
+mercados acessíveis da Argentina, do Paraguai e do Uruguai; eles não foram
+incorporados nesta atualização e, se inviáveis, a fronteira internacional será
+registrada como limitação.
+
+As decisões, alternativas consideradas e estudos obrigatórios estão em
+[`docs/indicadores/decisoes-mercado.md`](indicadores/decisoes-mercado.md). Esta
+atualização não realizou coleta, backtest, comparação de proxies, roteamento,
+normalização, ponderação, agregação, nota ou cálculo do SIT. Com este registro,
+a revisão substantiva de Mercado está encerrada; os estudos condicionantes não
+autorizam mudanças silenciosas de fórmula e os demais eixos não foram revistos.
