@@ -1,6 +1,6 @@
 # Matriz conceitual da Etapa 2
 
-Esta matriz é derivada do catálogo exploratório e serve para identificar lacunas e redundâncias. Não representa aprovação. `Abordagem` distingue estoque local de acesso territorial.
+Esta matriz acompanha a revisão progressiva da Etapa 2: distingue candidatos ainda exploratórios dos indicadores que já passaram pela revisão substantiva. O status `aprovado` autoriza avançar à verificação da fonte e à coleta posterior, sem definir peso, normalização ou permanência no índice final. `Abordagem` distingue estoque local de acesso territorial.
 
 | Eixo | Conceito | Indicador | Natureza | Abordagem | Status |
 |---|---|---|---|---|---|
@@ -8,12 +8,17 @@ Esta matriz é derivada do catálogo exploratório e serve para identificar lacu
 | Ambiente regulatório | Custo regulatório e tributário | Carga tributária municipal sobre atividade econômica | condicao | estoque_local | reserva |
 | Ambiente regulatório | Acessibilidade dos serviços regulatórios | Disponibilidade de serviços empresariais digitais | condicao | acesso_ao_recurso | proposto |
 | Ambiente regulatório | Previsibilidade nas compras públicas | Prazo de pagamento a fornecedores municipais | condicao | estoque_local | em_verificacao |
-| Infraestrutura e conectividade | Conectividade digital fixa | Acessos de banda larga fixa | condicao | estoque_local | em_verificacao |
-| Infraestrutura e conectividade | Conectividade digital móvel | Cobertura móvel 4G/5G | condicao | estoque_local_e_acesso | em_verificacao |
-| Infraestrutura e conectividade | Confiabilidade energética | Continuidade do fornecimento elétrico | condicao | estoque_local | em_verificacao |
-| Infraestrutura e conectividade | Acessibilidade logística rodoviária | Acesso à malha rodoviária principal pavimentada | condicao | acesso_ao_recurso | em_verificacao |
-| Infraestrutura e conectividade | Acessibilidade logística aérea | Acesso a aeroporto com voos regulares | condicao | acesso_ao_recurso | em_verificacao |
-| Infraestrutura e conectividade | Acessibilidade logística portuária | Acesso a terminal portuário de carga | condicao | acesso_ao_recurso | reserva |
+| Infraestrutura e conectividade | Conectividade digital fixa de alta velocidade | Densidade de acessos de banda larga fixa ≥ 100 Mbps | condicao | estoque_local | aprovado |
+| Infraestrutura e conectividade | Modernidade tecnológica da conectividade fixa | Participação da fibra óptica nos acessos de banda larga fixa | condicao | estoque_local | aprovado |
+| Infraestrutura e conectividade | Competitividade da conectividade fixa | Competitividade do mercado de banda larga fixa | condicao | estoque_local | aprovado |
+| Infraestrutura e conectividade | Cobertura móvel populacional | População coberta por rede móvel 4G ou superior | condicao | estoque_local_e_acesso | aprovado |
+| Infraestrutura e conectividade | Cobertura móvel rural | Área passível de uso agrícola coberta por rede móvel 4G/5G | condicao | estoque_local_e_acesso | aprovado |
+| Infraestrutura e conectividade | Confiabilidade energética — duração | Duração das interrupções de energia elétrica (DEC) | condicao | estoque_local | aprovado |
+| Infraestrutura e conectividade | Confiabilidade energética — frequência | Frequência das interrupções de energia elétrica (FEC) | condicao | estoque_local | aprovado |
+| Infraestrutura e conectividade | Acessibilidade logística rodoviária | Tempo de acesso à malha rodoviária pavimentada estruturante | condicao | acesso_ao_recurso | aprovado |
+| Infraestrutura e conectividade | Acessibilidade logística aérea | Tempo de acesso a aeroporto com serviço aéreo regular | condicao | acesso_ao_recurso | aprovado |
+| Infraestrutura e conectividade | Conectividade aérea | Conectividade aérea acessível | condicao | acesso_ao_recurso | aprovado |
+| Infraestrutura e conectividade | Acessibilidade logística portuária | Tempo de acesso a instalação portuária de carga elegível | condicao | acesso_ao_recurso | aprovado |
 | Mercado | Escala do mercado consumidor acessível | Massa de renda acessível | condicao | acesso_ao_recurso | em_verificacao |
 | Mercado | Diversidade da demanda e base produtiva | Diversificação do emprego formal local | condicao | estoque_local | em_verificacao |
 | Mercado | Profundidade do tecido empresarial | Densidade de estabelecimentos ativos | resultado_auxiliar | estoque_local | reserva |

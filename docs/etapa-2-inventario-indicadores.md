@@ -84,3 +84,26 @@ energia; acesso rodoviário; acesso aeroportuário; acesso portuário.
 
 Essa recomendação escolhe apenas o ponto de partida. Não aprova candidatos nem
 antecipa sua ponderação. A tarefa deve parar aqui para revisão humana progressiva.
+
+## Atualização posterior — revisão substantiva de Infraestrutura e Conectividade
+
+Após o inventário inicial descrito acima, foi concluída a revisão substantiva do
+eixo **Infraestrutura e Conectividade**. A decomposição resultante contém 11
+indicadores com status `aprovado`, no sentido estrito de estarem autorizados a
+avançar à verificação detalhada das fontes e, depois, à coleta. A aprovação não
+define peso, normalização ou permanência irrevogável no índice final.
+
+Permanecem condicionantes e estudos pré-coleta: territorialização ponderada do
+DEC e do FEC; adequação da hipótese de malha rodoviária estruturante; elegibilidade
+e conectividade de aeroportos, inclusive fórmula e limites do entorno; e universo
+de instalações portuárias de carga. Esses estudos serão realizados com a
+verificação das fontes, antes da coleta definitiva, e não foram executados nesta
+atualização.
+
+A trilha completa das escolhas, das alternativas consideradas e das razões para
+não selecioná-las está em
+[`docs/indicadores/decisoes-infraestrutura-conectividade.md`](indicadores/decisoes-infraestrutura-conectividade.md).
+Esta atualização não realizou coleta municipal, imputação, normalização,
+ponderação, agregação, nota de eixo ou cálculo do SIT. Os demais eixos permanecem
+no estágio anteriormente registrado e não foram submetidos a revisão substantiva
+nesta rodada.
