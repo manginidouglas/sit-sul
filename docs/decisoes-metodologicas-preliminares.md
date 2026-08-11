@@ -31,6 +31,41 @@ A distinção serve para evitar circularidade: uma cidade não deve ser consider
 
 \---
 
+## 2.1. Núcleo e camada diagnóstica
+
+O **núcleo** reúne condições territoriais elegíveis para futuramente compor a
+pontuação do SIT. A classificação no núcleo, nesta etapa, não define peso,
+normalização nem permanência definitiva na nota.
+
+A **camada diagnóstica** reúne indicadores que enriquecem a leitura dos
+municípios, mas ficam fora da pontuação. Ela possui inicialmente dois subtipos:
+
+* **diagnóstico de contexto:** descreve características estruturais ou observadas
+  sem pressupor uma direção normativa geral de “quanto maior, melhor”. Pode
+  contextualizar resultados, caracterizar perfis econômicos, apoiar tipologias,
+  módulos setoriais e investigações de situações não suficientemente explicadas
+  pelas condições medidas pelo SIT;
+* **diagnóstico de resultado:** registra resultados econômicos comparáveis às
+  condições territoriais, para validação externa, acompanhamento longitudinal,
+  testes de associação entre condições em `t` e resultados em `t+1`, `t+2` etc.
+  e identificação de lacunas. Essas associações não autorizam interpretação
+  causal automática.
+
+### Regra de governança
+
+Um indicador diagnóstico não recebe peso, não entra na agregação dos eixos e não
+altera a posição municipal no ranking. Pode aparecer em fichas, perfis, mapas,
+tipologias, análises e estudos de validação. Sua promoção ao núcleo depende de
+nova decisão metodológica explícita.
+
+No catálogo, `status` registra o andamento ou a aprovação do papel atribuído ao
+indicador, enquanto `camada` registra sua relação com a pontuação; são dimensões
+distintas. Assim, um diagnóstico pode ter status `aprovado` sem integrar a nota.
+Para diagnósticos de contexto quantitativamente ordenáveis, `direcao: neutra`
+indica ausência de interpretação normativa geral para a pontuação.
+
+\---
+
 ## 3\. Tipo de empreendimento representado
 
 O SIT será **geral, não setorial e não centrado em startups**.
@@ -214,4 +249,3 @@ A Etapa 2 deverá:
 8. produzir um conjunto provisório de indicadores para posterior verificação das fontes e construção do pipeline.
 
 A análise deverá avançar **eixo por eixo e indicador por indicador**, registrando explicitamente as decisões tomadas.
-
