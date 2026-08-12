@@ -1,0 +1,9 @@
+{
+  "executado_em": "2026-08-12T18:39:47Z",
+  "controle": "API de Localidades do IBGE — municípios do Paraná",
+  "curl": {"metodo": "GET", "status_inicial": 200, "status_final": 200, "url_final": "https://servicodados.ibge.gov.br/api/v1/localidades/estados/PR/municipios", "redirects": [], "content_type": "application/json; charset=utf-8", "bytes": 170538},
+  "python_requests": {"metodo": "GET", "status": 200, "url_final": "https://servicodados.ibge.gov.br/api/v1/localidades/estados/PR/municipios", "redirects": [], "content_type": "application/json; charset=utf-8", "bytes": 170538},
+  "proxy": {"HTTP_PROXY": "presente_valor_redigido", "HTTPS_PROXY": "presente_valor_redigido", "ALL_PROXY": "ausente", "NO_PROXY": "presente_valor_redigido"},
+  "diagnostico_401_anterior": "erro_ferramenta_intermediaria",
+  "evidencia": "A chamada web__run da camada de pesquisa retornou 401 antes de alcançar uma fonte; GET direto por curl e requests funciona. Coletores usam HTTP direto."
+}

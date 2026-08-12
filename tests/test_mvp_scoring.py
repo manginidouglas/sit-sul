@@ -34,5 +34,5 @@ def test_coverage_boundary_weight_renormalization_and_overall():
 
 def test_keys_duplicates_and_count():
     valid = [{"municipio_id": "1234567"}, {"municipio_id": "7654321"}]
-    validate_municipal_keys(valid, expected=2)
-    with pytest.raises(ValueError): validate_municipal_keys(valid + [valid[0]], expected=3)
+    validate_municipal_keys(valid, valid)
+    with pytest.raises(ValueError): validate_municipal_keys(valid + [valid[0]], valid)

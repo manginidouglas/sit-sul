@@ -2,7 +2,7 @@
 
 **Data de corte:** 12/08/2026. **Data desta revisão:** 12/08/2026.
 
-Uma fonte só muda para `apta` depois de confirmação de esquema, licença, cobertura, período, amostra manual (capital e município pequeno nas três UFs), hash e quebra de série. Nesta execução, o acesso automatizado à pesquisa externa respondeu HTTP 401; nenhuma disponibilidade na data de corte foi presumida e nenhum dado foi fabricado.
+Uma fonte só muda para `apta` depois de confirmação de esquema, licença, cobertura, período, amostra manual, hash e quebra de série. O 401 anterior veio da chamada `web__run` da ferramenta intermediária de pesquisa, antes de uma fonte oficial. Em 12/08/2026 ele não se reproduziu por HTTP direto: a API de Localidades do IBGE respondeu 200, sem redirects, tanto por `curl` quanto por Python `requests` (JSON, 170.538 bytes). Há proxy HTTP/HTTPS no ambiente, com valores redigidos, mas ele não bloqueia GET direto. Classificação: `erro_ferramenta_intermediaria`; solução: coletores acessam endpoints oficiais diretamente. Evidência completa em `reports/quality/mvp-demo-2026/network-preflight.json`.
 
 | Indicadores | Fonte pública primária | Período exigido | Estado |
 |---|---|---|---|
@@ -18,3 +18,7 @@ Uma fonte só muda para `apta` depois de confirmação de esquema, licença, cob
 | MER-DIAG-03 | IBGE/SIDRA, PIB e deflator nacional | três anos comparáveis mais recentes | pendente de extração |
 
 SCM deve documentar unidade da velocidade, códigos de fibra e prestador/grupo. Voos são regulares de passageiros realizados em ao menos seis meses. Portos precisam de carga efetiva; TUPs entram somente com carga geral/conteinerizada. RAIS deve excluir administração pública por regra reproduzível. Cada raw precisa de URL, parâmetros, horário UTC, status HTTP, tamanho, SHA-256, licença e versão.
+
+## Preflight das instituições em 12/08/2026
+
+GET direto retornou 200 para páginas oficiais de Anatel, ANEEL e ANAC e para a API SIDRA. O portal interativo da ANTAQ retornou 503 e `servicos.dnit.gov.br/dadosabertos` retornou 503; são respostas específicas dos endpoints, não evidência de bloqueio geral. O caminho testado da RFB retornou 404 e foi classificado `endpoint_em_revisao`, não restrição de acesso. A amostra real do cadastro IBGE/PR foi coletada em raw imutável e manifestada; ela é controle de infraestrutura, não indicador do MVP. A identificação e validação dos bulk downloads de cada indicador permanece necessária antes de afirmar cobertura.

@@ -30,3 +30,8 @@ def test_accessibility_half_life_and_truncation():
 def test_diagnostics():
     assert diversificacao([50, 50]) == .5
     assert densidade_estabelecimentos(10, 100) == 100
+
+
+def test_accessibility_parameters_are_configurable():
+    assert decaimento_acessibilidade(30, truncamento=40, meia_vida=30) == .5
+    assert decaimento_acessibilidade(41, truncamento=40, meia_vida=30) == 0

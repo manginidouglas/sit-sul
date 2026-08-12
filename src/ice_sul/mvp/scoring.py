@@ -44,11 +44,15 @@ def axis_score(scores: Mapping[str, float | None], weights: Mapping[str, float],
     total = sum(weights.values())
     available = sum(weight for key, weight in weights.items() if scores.get(key) is not None)
     coverage = available / total if total else 0
-    if coverage + 1e-12 < minimum_coverage:
+    if available == 0 or coverage + 1e-12 < minimum_coverage:
         return None, coverage
     value = sum(weights[key] * float(scores[key]) for key in weights if scores.get(key) is not None) / available
     return value, coverage
 
 
-def overall(infra: float | None, mercado: float | None) -> float | None:
-    return None if infra is None or mercado is None else .5 * infra + .5 * mercado
+def overall(infra: float | None, mercado: float | None, weights: Mapping[str, float] | None = None) -> float | None:
+    if infra is None or mercado is None:
+        return None
+    weights = weights or {"infra": .5, "mercado": .5}
+    total = weights["infra"] + weights["mercado"]
+    return (infra * weights["infra"] + mercado * weights["mercado"]) / total

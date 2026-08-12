@@ -22,21 +22,21 @@ def media_ponderada_conjuntos(valores: Mapping[str, float], pesos: Mapping[str, 
     return sum(valores[chave] * pesos[chave] for chave in comuns) / total
 
 
-def conectividade_aerea(aeroportos: Iterable[tuple[float, int, int]], limite_minutos: float = 120) -> float:
+def conectividade_aerea(aeroportos: Iterable[tuple[float, int, int]], limite_minutos: float = 120, decaimento_minutos: float = 60) -> float:
     """Recebe (tempo, decolagens, destinos), incluindo somente tempos elegíveis."""
-    return sum(math.sqrt(frequencia * destinos) * math.exp(-tempo / 60)
+    return sum(math.sqrt(frequencia * destinos) * math.exp(-tempo / decaimento_minutos)
                for tempo, frequencia, destinos in aeroportos
                if 0 <= tempo <= limite_minutos and frequencia >= 0 and destinos >= 0)
 
 
-def decaimento_acessibilidade(tempo_minutos: float, truncamento: float = 360) -> float:
+def decaimento_acessibilidade(tempo_minutos: float, truncamento: float = 360, meia_vida: float = 60) -> float:
     if tempo_minutos < 0:
         raise ValueError("tempo não pode ser negativo")
-    return 0.0 if tempo_minutos > truncamento else 2 ** (-tempo_minutos / 60)
+    return 0.0 if tempo_minutos > truncamento else 2 ** (-tempo_minutos / meia_vida)
 
 
-def mercado_acessivel(recursos_tempos: Iterable[tuple[float, float]], truncamento: float = 360) -> float:
-    return sum(recurso * decaimento_acessibilidade(tempo, truncamento)
+def mercado_acessivel(recursos_tempos: Iterable[tuple[float, float]], truncamento: float = 360, meia_vida: float = 60) -> float:
+    return sum(recurso * decaimento_acessibilidade(tempo, truncamento, meia_vida)
                for recurso, tempo in recursos_tempos if recurso >= 0)
 
 
