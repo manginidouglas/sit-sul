@@ -1,0 +1,10 @@
+{
+  "dataset": "Geofabrik OpenStreetMap Brazil extract",
+  "source_url": "https://download.geofabrik.de/south-america/brazil-260801.osm.pbf",
+  "snapshot_date": "2026-08-01",
+  "retrieved_metadata_at": "2026-08-12T20:56:19Z",
+  "size_bytes": 2066032748,
+  "md5": "265d58e0eb10236a28b64fe846c92925",
+  "license": "Open Database License (ODbL)",
+  "local_filename": "brazil-260801.osm.pbf"
+}
