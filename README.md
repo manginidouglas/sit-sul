@@ -62,3 +62,15 @@ manifesto ficam em `reports/quality/<edicao>/municipios.json`. A edição de 202
 foi produzida pelo fallback geobr/Ipea porque o proxy do ambiente bloqueou a API
 do IBGE; justificativa, reprodução e limitações constam na
 [ficha da fonte](docs/fontes/ibge-localidades.md).
+
+## Demonstração experimental 2026
+
+As regras isoladas da edição **SIT — Demonstração Experimental 2026 | Infraestrutura e Mercado** estão em `config/edicoes/mvp-demo-2026.yml`; a documentação começa em `docs/mvp-demo-2026/metodologia-experimental.md`.
+
+Após produzir e auditar o CSV longo real:
+
+```bash
+python -m ice_sul.mvp.pipeline --indicadores data/processed/mvp-demo-2026/indicadores.csv
+```
+
+O pipeline não cria substitutos: coleta não verificada permanece ausente e impede nota/ranking abaixo de 80% de cobertura.

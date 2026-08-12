@@ -1,0 +1,37 @@
+{
+  "edicao": "mvp-demo-2026",
+  "nome_publico": "SIT — Demonstração Experimental 2026 | Infraestrutura e Mercado",
+  "data_corte": "2026-08-12",
+  "hipotese_mvp": true,
+  "universo": {"ufs": ["PR", "SC", "RS"], "municipios_esperados": 1191, "mercado_contribuintes": "Brasil", "excluir_paises": ["Argentina", "Paraguai", "Uruguai"]},
+  "parametros": {
+    "cobertura_minima_eixo": 0.80,
+    "winsorizacao": [0.01, 0.99],
+    "log1p": ["MER-01", "MER-02"],
+    "meia_vida_mercado_minutos": 60,
+    "truncamento_mercado_minutos": 360,
+    "limite_aeroporto_minutos": 120,
+    "dec_fec_periodo": "2025",
+    "desempate": ["nota_geral_desc", "municipio_id_asc"],
+    "casas_decimais_publicacao": 2
+  },
+  "indicadores": {
+    "INF-DIG-01": {"eixo": "infra", "bloco": "digital", "peso": 0.04, "direcao": "positiva", "limite_natural": false},
+    "INF-DIG-02": {"eixo": "infra", "bloco": "digital", "peso": 0.04, "direcao": "positiva", "limite_natural": true},
+    "INF-DIG-03": {"eixo": "infra", "bloco": "digital", "peso": 0.04, "direcao": "positiva", "limite_natural": true},
+    "INF-DIG-04": {"eixo": "infra", "bloco": "digital", "peso": 0.04, "direcao": "positiva", "limite_natural": true},
+    "INF-DIG-05": {"eixo": "infra", "bloco": "digital", "peso": 0.04, "direcao": "positiva", "limite_natural": true},
+    "INF-ENE-01": {"eixo": "infra", "bloco": "energia", "peso": 0.10, "direcao": "negativa", "limite_natural": false},
+    "INF-ENE-02": {"eixo": "infra", "bloco": "energia", "peso": 0.10, "direcao": "negativa", "limite_natural": false},
+    "INF-LOG-01": {"eixo": "infra", "bloco": "rodovia", "peso": 0.20, "direcao": "negativa", "limite_natural": false},
+    "INF-LOG-02": {"eixo": "infra", "bloco": "aereo", "peso": 0.10, "direcao": "negativa", "limite_natural": false},
+    "INF-LOG-03": {"eixo": "infra", "bloco": "aereo", "peso": 0.10, "direcao": "positiva", "limite_natural": false},
+    "INF-LOG-04": {"eixo": "infra", "bloco": "portos", "peso": 0.20, "direcao": "negativa", "limite_natural": false},
+    "MER-01": {"eixo": "mercado", "bloco": "mercado", "peso": 0.50, "direcao": "positiva", "limite_natural": false},
+    "MER-02": {"eixo": "mercado", "bloco": "mercado", "peso": 0.50, "direcao": "positiva", "limite_natural": false},
+    "MER-DIAG-01": {"eixo": "diagnostico", "peso": 0, "direcao": "neutra"},
+    "MER-DIAG-02": {"eixo": "diagnostico", "peso": 0, "direcao": "neutra"},
+    "MER-DIAG-03": {"eixo": "diagnostico", "peso": 0, "direcao": "neutra"}
+  },
+  "publicacao": {"casos_municipais": ["4106902", "4205407", "4314902", "4119152", "4202099", "4300406"]}
+}
