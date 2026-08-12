@@ -12,6 +12,7 @@ dependencies = ["PyYAML>=6,<7"]
 [project.scripts]
 ice-sul-municipios = "ice_sul.municipios:main"
 sit-mvp-2026 = "ice_sul.mvp.pipeline:main"
+sit-mvp-robustez = "ice_sul.mvp.robustness:main"
 
 [project.optional-dependencies]
 dev = ["pytest>=8,<10"]

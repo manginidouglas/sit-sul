@@ -1,9 +1,26 @@
 {
-  "executado_em": "2026-08-12T18:39:47Z",
+  "executado_em": "2026-08-12T20:13:57.671998+00:00",
   "controle": "API de Localidades do IBGE — municípios do Paraná",
-  "curl": {"metodo": "GET", "status_inicial": 200, "status_final": 200, "url_final": "https://servicodados.ibge.gov.br/api/v1/localidades/estados/PR/municipios", "redirects": [], "content_type": "application/json; charset=utf-8", "bytes": 170538},
-  "python_requests": {"metodo": "GET", "status": 200, "url_final": "https://servicodados.ibge.gov.br/api/v1/localidades/estados/PR/municipios", "redirects": [], "content_type": "application/json; charset=utf-8", "bytes": 170538},
-  "proxy": {"HTTP_PROXY": "presente_valor_redigido", "HTTPS_PROXY": "presente_valor_redigido", "ALL_PROXY": "ausente", "NO_PROXY": "presente_valor_redigido"},
-  "diagnostico_401_anterior": "erro_ferramenta_intermediaria",
-  "evidencia": "A chamada web__run da camada de pesquisa retornou 401 antes de alcançar uma fonte; GET direto por curl e requests funciona. Coletores usam HTTP direto."
+  "http": {
+    "fonte": "IBGE API de Localidades",
+    "url": "https://servicodados.ibge.gov.br/api/v1/localidades/estados/PR/municipios",
+    "metodo": "GET",
+    "parametros": {},
+    "periodo": "vigente na execução",
+    "data_hora_utc": "2026-08-12T20:13:57.671998+00:00",
+    "status_http": 200,
+    "url_final": "https://servicodados.ibge.gov.br/api/v1/localidades/estados/PR/municipios",
+    "redirects": [],
+    "content_type": "application/json; charset=utf-8",
+    "content_encoding": "gzip",
+    "tamanho_transferido": 7917,
+    "tamanho": 170538,
+    "sha256": "aa5f984155444aece8f3647bd480b11fcb41a409c669b2c58bd4410db7ae7c23",
+    "arquivo": "data/raw/ibge_localidades/2026-08-12/preflight_municipios_PR.json",
+    "licenca": null,
+    "versao_snapshot": "2026-08-12T20:13:57.671998+00:00",
+    "validacao": "schema_e_contagem_validados"
+  },
+  "proxy_presente": true,
+  "diagnostico_tamanho": "7917 representa gzip transferido; 170538 representa o JSON descomprimido. O manifesto antigo mediu bytes de transferência e requests mediu conteúdo automaticamente descomprimido."
 }
