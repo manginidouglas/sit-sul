@@ -1,6 +1,8 @@
 ﻿Ano;Mês;Grupo Econômico;Empresa;CNPJ;Porte da Prestadora;UF;Município;Código IBGE Município;Faixa de Velocidade;Velocidade;Tecnologia;Meio de Acesso;Tipo de Pessoa;Tipo de Produto;Acessos
 2026;6;GRUPO A;A NET;11111111000100;Pequeno Porte;PR;Curitiba;4106902;> 34Mbps;100,000000;FTTH;Fibra;Pessoa Física;INTERNET;60
 2026;6;GRUPO A;A NET;11111111000100;Pequeno Porte;PR;Curitiba;4106902;> 34Mbps;99,999999;FTTH;Fibra;Pessoa Física;INTERNET;20
+2026;6;GRUPO A;A DOIS;55555555000100;Pequeno Porte;PR;Curitiba;4106902;> 34Mbps;200,000000;FTTH;Fibra;Pessoa Física;INTERNET;20
 2026;6;OUTROS;B NET;22222222000100;Pequeno Porte;PR;Curitiba;4106902;> 34Mbps;200,000000;CABLE MODEM;Cabo Coaxial;Pessoa Física;INTERNET;20
+2026;6;OUTROS;C NET;66666666000100;Pequeno Porte;PR;Curitiba;4106902;> 34Mbps;200,000000;CABLE MODEM;Cabo Coaxial;Pessoa Física;INTERNET;20
 2026;6;OUTROS;DEDICADA;33333333000100;Pequeno Porte;PR;Curitiba;4106902;> 34Mbps;1000,000000;ETHERNET;Fibra;Pessoa Jurídica;LINHA_DEDICADA;999
 2026;6;OUTROS;SOLO;44444444000100;Pequeno Porte;SC;Florianópolis;4205407;> 34Mbps;300,000000;FTTH;Fibra;Pessoa Física;INTERNET;10

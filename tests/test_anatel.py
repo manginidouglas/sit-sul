@@ -6,7 +6,7 @@ import pytest
 from ice_sul.extract.anatel import AnatelCollector
 from ice_sul.extract.contracts import CollectionResult
 from ice_sul.extract.registry import build_collectors
-from ice_sul.transform.anatel import fixed_indicators, mobile_population_indicator, parse_fixed_access
+from ice_sul.transform.anatel import fixed_indicators, fixed_snapshot, mobile_population_indicator, parse_fixed_access
 from ice_sul.transform.anatel_materialize import _canonical, _ranks, spearman
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -34,10 +34,31 @@ def test_parsing_and_filters_speed_fiber_product_and_known_municipality():
     assert parsed["municipio_id"] == "4106902"
     assert str(parsed["velocidade_mbps"]) == "100.000000"
     result = fixed_indicators(fixture, ["4106902"], "2026-06", {"4106902": 1000})
-    assert by_id(result, "INF-DIG-01", "4106902")["valor_bruto"] == "8"
-    assert by_id(result, "INF-DIG-02", "4106902")["valor_bruto"] == "80"
-    # CNPJ: shares 0.8 and 0.2; the dedicated product does not enter the market.
-    assert by_id(result, "INF-DIG-03", "4106902")["valor_bruto"] == "0.32"
+    assert by_id(result, "INF-DIG-01", "4106902")["valor_bruto"] == "12"
+    assert by_id(result, "INF-DIG-02", "4106902")["valor_bruto"] == "71.428571428571"
+    # Grupo A agrega dois CNPJs (100); dois OUTROS permanecem separados (20/20).
+    assert by_id(result, "INF-DIG-03", "4106902")["valor_bruto"] == "0.448979591837"
+
+
+def test_generic_groups_do_not_merge_independent_cnpjs():
+    result = fixed_indicators(rows("anatel_fixed.csv"), ["4106902"], "2026-06")
+    # Se OUTROS fosse agregado, seria 0,40816; a regra híbrida resulta 0,44898.
+    assert by_id(result, "INF-DIG-03", "4106902")["valor_bruto"] == "0.448979591837"
+
+
+def test_official_fixed_paths_use_the_same_hybrid_competition():
+    fixture = rows("anatel_fixed.csv")
+    snapshot_rows = []
+    for row in fixture:
+        converted = dict(row)
+        converted["2026-06"] = converted.pop("Acessos")
+        snapshot_rows.append(converted)
+    direct = fixed_indicators(fixture, ["4106902"], "2026-06")
+    snapshot, diagnostic = fixed_snapshot(snapshot_rows, ["4106902"], "2026-06")
+    assert by_id(direct, "INF-DIG-03", "4106902")["valor_bruto"] == by_id(
+        snapshot, "INF-DIG-03", "4106902"
+    )["valor_bruto"]
+    assert diagnostic[0]["competitividade_cnpj"] != diagnostic[0]["competitividade_hibrida"]
 
 
 def test_hhi_monopoly_zero_and_zero_denominator_missing():

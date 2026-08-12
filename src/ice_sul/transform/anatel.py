@@ -21,6 +21,12 @@ OUTPUT_COLUMNS = (
 GENERIC_GROUPS = {"", "outros", "outras", "nao informado", "n/a", "na"}
 
 
+def competition_unit(cnpj: object, economic_group: object) -> str:
+    """Resolve a unidade oficial sem inferência societária externa à Anatel."""
+    group = _key(economic_group)
+    return f"cnpj:{str(cnpj).strip()}" if group in GENERIC_GROUPS else f"grupo:{group}"
+
+
 def _key(value: object) -> str:
     text = unicodedata.normalize("NFKD", str(value or ""))
     return "".join(c for c in text if not unicodedata.combining(c)).strip().lower()
@@ -61,6 +67,7 @@ def parse_fixed_access(row: Mapping[str, object]) -> dict[str, object]:
         "municipio_id": municipio,
         "periodo": _period(row),
         "cnpj": str(_value(row, "CNPJ", "cnpj")).strip(),
+        "grupo_economico": str(_value(row, "Grupo Econômico", "grupo_economico")).strip(),
         "velocidade_mbps": _decimal(_value(row, "Velocidade", "velocidade_contratada_mbps")),
         "meio": str(_value(row, "Meio de Acesso", "Tecnologia", "tipo")).strip(),
         "produto": str(_value(row, "Tipo de Produto", "tipo")).strip(),
@@ -76,14 +83,13 @@ def fixed_indicators(
 ) -> list[dict[str, object]]:
     """Calcula INF-DIG-01/02/03 no universo, sem imputar ausências.
 
-    A unidade empresarial de INF-DIG-03 é o CNPJ informado pela Anatel, não o
-    campo ``Grupo Econômico``. Apenas ``Tipo de Produto = INTERNET`` integra o
-    mercado comparável. Fibra é identificada pelo ``Meio de Acesso = Fibra``.
+    INF-DIG-03 usa a unidade híbrida oficial: grupo econômico informativo e,
+    para grupo genérico, CNPJ individual. Apenas ``INTERNET`` integra o mercado.
     """
     totals: defaultdict[str, Decimal] = defaultdict(Decimal)
     fast: defaultdict[str, Decimal] = defaultdict(Decimal)
     fiber: defaultdict[str, Decimal] = defaultdict(Decimal)
-    providers: defaultdict[str, defaultdict[str, Decimal]] = defaultdict(
+    competition_units: defaultdict[str, defaultdict[str, Decimal]] = defaultdict(
         lambda: defaultdict(Decimal)
     )
     universe = set(municipality_ids)
@@ -102,7 +108,8 @@ def fixed_indicators(
             fast[municipality] += accesses
         if _key(item["meio"]) == "fibra":
             fiber[municipality] += accesses
-        providers[municipality][str(item["cnpj"])] += accesses
+        unit = competition_unit(item["cnpj"], item["grupo_economico"])
+        competition_units[municipality][unit] += accesses
 
     output: list[dict[str, object]] = []
     for municipality in universe:
@@ -112,10 +119,7 @@ def fixed_indicators(
         output.append(_output(municipality, "INF-DIG-01", density, period, population is not None))
         share = None if total == 0 else 100 * fiber[municipality] / total
         output.append(_output(municipality, "INF-DIG-02", share, period, total > 0, zero=(fiber[municipality] == 0 and total > 0)))
-        competition = None
-        if total > 0:
-            hhi = sum((value / total) ** 2 for value in providers[municipality].values())
-            competition = Decimal(1) - hhi
+        competition = _competition(competition_units[municipality], total)
         output.append(_output(municipality, "INF-DIG-03", competition, period, total > 0, zero=(competition == 0)))
     return output
 
@@ -146,7 +150,7 @@ def fixed_snapshot(
             raise ValueError("acessos negativos")
         cnpj = str(row["CNPJ"]).strip()
         group = str(row["Grupo Econômico"]).strip()
-        unit = f"grupo:{_key(group)}" if _key(group) not in GENERIC_GROUPS else f"cnpj:{cnpj}"
+        unit = competition_unit(cnpj, group)
         total[municipality] += accesses
         cnpjs[municipality][cnpj] += accesses
         hybrid[municipality][unit] += accesses

@@ -71,3 +71,6 @@ python -m ice_sul.transform.anatel_materialize \
   data/raw/anatel/2026-08-12/acessos_banda_larga_fixa.zip \
   data/raw/anatel/2026-08-12/cobertura_movel.zip
 ```
+
+Suíte final desta revisão: `pytest -q` com 56 testes aprovados, além de
+`git diff --check` e `python -m compileall -q src` sem erros.
