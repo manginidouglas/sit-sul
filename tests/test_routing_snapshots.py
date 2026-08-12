@@ -75,3 +75,18 @@ def test_seat_validation_rejects_missing_extra_mismatch_and_duplicate(tmp_path):
             pass
         else:
             raise AssertionError("invalid municipal identities were accepted")
+
+
+def test_local_smoke_evidence_contains_real_two_by_two_table():
+    import json
+
+    report = json.loads(
+        (ROOT / "reports/quality/mvp-demo-2026/routing/local-smoke-results.json").read_text()
+    )
+    table = report["table"]
+    assert table["sources"] == 2
+    assert table["destinations"] == 2
+    assert len(table["durations_minutes"]) == 2
+    assert all(len(row) == 2 for row in table["durations_minutes"])
+    assert len(table["distances_meters"]) == 2
+    assert all(len(row) == 2 for row in table["distances_meters"])

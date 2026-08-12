@@ -54,18 +54,13 @@ substitui o grafo Brasil para MER-01/MER-02. Comandos reproduzíveis estão em
 `scripts/routing/smoke_test_local.sh` e medições estruturadas em
 `local-smoke-results.json`.
 
-| etapa local | resultado | tempo | pico RSS |
-|---|---|---:|---:|
-| `osrm-extract -p /opt/car.lua` | sucesso | 29,25 s | 305.024 KiB |
-| `osrm-partition` | sucesso | 8,18 s | 96.580 KiB |
-| `osrm-customize` | sucesso | 6,53 s | 141.404 KiB |
-| `osrm-routed --algorithm mld` | `127.0.0.1:5001` | — | — |
-
-`OSRMClient.route()` local, sede IBGE Curitiba → sanity Afonso Pena, retornou
-`Ok`, 1.588,6 s (26,48 min), 19.324,5 m e snapping de 21,07 m / 373,02 m.
-`OSRMClient.table()` local com 2 origens × 2 destinos retornou `Ok`, minutos
-`[[26.4767, 0], [66.7667, 72.455]]` e metros
-`[[19283, 0], [74772.2, 73426.9]]`. Nenhum servidor remoto participou da prova.
+Os tempos, RSS, hashes, snapping e respostas exatas não são duplicados neste
+README: o próprio script mede as etapas e gera
+`local-smoke-results.json`, que é a fonte versionada desses números. A consulta
+`route` usa Curitiba → Afonso Pena. A consulta `table` usa as sedes IBGE de
+Curitiba e Lapa como duas origens e Afonso Pena e a sede de Curitiba como dois
+destinos, produzindo e validando uma matriz 2 × 2. Nenhum servidor remoto
+participa da prova.
 
 ## Interface, QA e escala da Onda 2
 

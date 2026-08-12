@@ -1,19 +1,101 @@
 {
-  "executed_at_utc": "2026-08-12T21:23:30Z",
-  "host": {"cpus": 3, "ram_gib": 17, "free_disk_before_gib": 25},
+  "executed_at_utc": "2026-08-12T23:03:45.073413Z",
   "method": "OSRM official OCI image unpacked with skopeo/umoci and executed locally with chroot",
   "osrm_version": "5.25.0",
   "profile": "car.lua",
   "algorithm": "MLD",
   "source_snapshot": "data/raw/osm/brazil-260801.osm.pbf",
   "source_sha256": "2b2ae9d8eb9a2d27501e4ab3a7097cab904439cbc7627319e5a4ce070dba27fd",
-  "smoke_extract": {"bbox": [-49.9, -26.0, -48.8, -25.1], "size_bytes": 22294295, "sha256": "b22d875d5caf8e7baffd4e1e1eb506b86530ec307fd2365b56c5f4cb132a3833"},
-  "stages": {
-    "extract": {"status": "success", "elapsed_seconds": 29.25, "max_rss_kib": 305024},
-    "partition": {"status": "success", "elapsed_seconds": 8.18, "max_rss_kib": 96580},
-    "customize": {"status": "success", "elapsed_seconds": 6.53, "max_rss_kib": 141404},
-    "serve": {"status": "success", "listen": "127.0.0.1:5001"}
+  "smoke_extract": {
+    "bbox": [
+      -49.9,
+      -26.0,
+      -48.8,
+      -25.1
+    ],
+    "size_bytes": 22294295,
+    "sha256": "b22d875d5caf8e7baffd4e1e1eb506b86530ec307fd2365b56c5f4cb132a3833"
   },
-  "route": {"code": "Ok", "from": "Curitiba IBGE seat", "to": "Afonso Pena sanity coordinate", "duration_seconds": 1588.6, "distance_meters": 19324.5, "origin_snap_distance_meters": 21.074171, "destination_snap_distance_meters": 373.024744},
-  "table": {"code": "Ok", "sources": 2, "destinations": 2, "durations_minutes": [[26.4766666667, 0.0], [66.7666666667, 72.455]], "distances_meters": [[19283, 0], [74772.2, 73426.9]]}
+  "stages": {
+    "extract": {
+      "status": "success",
+      "elapsed_seconds": 31.38,
+      "max_rss_kib": 306384
+    },
+    "partition": {
+      "status": "success",
+      "elapsed_seconds": 8.69,
+      "max_rss_kib": 96532
+    },
+    "customize": {
+      "status": "success",
+      "elapsed_seconds": 6.86,
+      "max_rss_kib": 141268
+    },
+    "serve": {
+      "status": "success",
+      "listen": "127.0.0.1:5001",
+      "startup_seconds": 1.092824959
+    }
+  },
+  "route": {
+    "ok": true,
+    "duration_minutes": 26.476666666666667,
+    "distance_meters": 19324.4,
+    "snapped_origin": {
+      "latitude": -25.413486,
+      "longitude": -49.267944
+    },
+    "snapped_destination": {
+      "latitude": -25.530711,
+      "longitude": -49.178599
+    },
+    "origin_snap_distance_meters": 21.074171,
+    "destination_snap_distance_meters": 373.024744,
+    "error": null,
+    "code": "Ok",
+    "from": "Curitiba IBGE seat",
+    "to": "Afonso Pena sanity coordinate"
+  },
+  "table": {
+    "durations_minutes": [
+      [
+        26.476666666666667,
+        0.0
+      ],
+      [
+        66.76666666666667,
+        72.455
+      ]
+    ],
+    "distances_meters": [
+      [
+        19282.9,
+        0
+      ],
+      [
+        74772.2,
+        73427
+      ]
+    ],
+    "sources": 2,
+    "destinations": 2,
+    "source_snap_distances_meters": [
+      21.074171,
+      7.534057
+    ],
+    "destination_snap_distances_meters": [
+      373.024744,
+      21.074171
+    ],
+    "code": "Ok",
+    "source_names": [
+      "Curitiba IBGE seat",
+      "Lapa IBGE seat"
+    ],
+    "destination_names": [
+      "Afonso Pena sanity coordinate",
+      "Curitiba IBGE seat"
+    ]
+  }
 }
