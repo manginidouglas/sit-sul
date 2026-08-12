@@ -1,19 +1,22 @@
 [
   {
     "fonte": "IBGE API de Localidades",
-    "indicadores": [],
     "url": "https://servicodados.ibge.gov.br/api/v1/localidades/estados/PR/municipios",
     "metodo": "GET",
     "parametros": {},
-    "periodo": "vigente em 2026-08-12",
-    "data_hora_utc": "2026-08-12T18:43:23.747337+00:00",
+    "periodo": "vigente na execução",
+    "data_hora_utc": "2026-08-12T20:13:57.671998+00:00",
     "status_http": 200,
     "url_final": "https://servicodados.ibge.gov.br/api/v1/localidades/estados/PR/municipios",
     "redirects": [],
-    "content_type": null,
-    "tamanho": 7917,
-    "sha256": "f039867968e8539ffc75cf60524974ed406fb501d97d57bf6adf492bc1902c7c",
+    "content_type": "application/json; charset=utf-8",
+    "content_encoding": "gzip",
+    "tamanho_transferido": 7917,
+    "tamanho": 170538,
+    "sha256": "aa5f984155444aece8f3647bd480b11fcb41a409c669b2c58bd4410db7ae7c23",
     "arquivo": "data/raw/ibge_localidades/2026-08-12/preflight_municipios_PR.json",
-    "validacao": "recebido_nao_vazio"
+    "licenca": null,
+    "versao_snapshot": "2026-08-12T20:13:57.671998+00:00",
+    "validacao": "schema_e_contagem_validados"
   }
 ]
