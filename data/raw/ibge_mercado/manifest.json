@@ -1,0 +1,79 @@
+[
+  {
+    "name": "rdpc_censo_municipio",
+    "table": 10295,
+    "period": "2022",
+    "variable": 13431,
+    "url": "https://servicodados.ibge.gov.br/api/v3/agregados/10295/periodos/2022/variaveis/13431?localidades=N6[all]&classificacao=2[6794]|86[95251]|58[95253]",
+    "http_status": 200,
+    "bytes": 700755,
+    "sha256": "1cf13cc3b4169aa04e3c2b4dc777c702c45c5d45ab553ad54140b647677cbe32",
+    "collected_at_utc": "2026-08-12T21:01:34.307056+00:00"
+  },
+  {
+    "name": "rdpc_censo_uf",
+    "table": 10295,
+    "period": "2022",
+    "variable": 13431,
+    "url": "https://servicodados.ibge.gov.br/api/v3/agregados/10295/periodos/2022/variaveis/13431?localidades=N3[all]&classificacao=2[6794]|86[95251]|58[95253]",
+    "http_status": 200,
+    "bytes": 3931,
+    "sha256": "b3318ab3ce67339246007843bd22285a1c3ad447a2fe7c678b4611bb03948ec8",
+    "collected_at_utc": "2026-08-12T21:01:34.629114+00:00"
+  },
+  {
+    "name": "rdpc_pnad_uf",
+    "table": 7395,
+    "period": "2025",
+    "variable": 4196,
+    "url": "https://servicodados.ibge.gov.br/api/v3/agregados/7395/periodos/2025/variaveis/4196?localidades=N3[all]",
+    "http_status": 200,
+    "bytes": 3462,
+    "sha256": "ac7bdd2163329e021aa7444ee73084d330943cba16437a2a80bd8b8ce51a16ea",
+    "collected_at_utc": "2026-08-12T21:01:35.274316+00:00"
+  },
+  {
+    "name": "populacao_municipio",
+    "table": 6579,
+    "period": "2025",
+    "variable": 9324,
+    "url": "https://servicodados.ibge.gov.br/api/v3/agregados/6579/periodos/2025/variaveis/9324?localidades=N6[all]",
+    "http_status": 200,
+    "bytes": 689492,
+    "sha256": "a5e5b3d1ecfb0de66b9c3cfa9da1077fa2505ba12b7b721cb9eb6fb7ae545e76",
+    "collected_at_utc": "2026-08-12T21:01:36.144098+00:00"
+  },
+  {
+    "name": "populacao_18_64_censo_sul",
+    "table": 9514,
+    "period": "2022",
+    "variable": 93,
+    "url": "https://servicodados.ibge.gov.br/api/v3/agregados/9514/periodos/2022/variaveis/93?localidades=N6[N3[41,42,43]]&classificacao=2[6794]|287[100362,6575,6576,93087,93088,93089,93090,93091,93092,93093,93094,93095]|286[113635]",
+    "http_status": 200,
+    "bytes": 1752713,
+    "sha256": "fa8717efd648db6a753cee793520e15ebfd5f005f03c2d1291a5aba0eff7716a",
+    "collected_at_utc": "2026-08-12T21:01:44.899009+00:00"
+  },
+  {
+    "name": "pib_municipal_sul",
+    "table": 5938,
+    "period": "2021,2022,2023",
+    "variable": 37,
+    "url": "https://servicodados.ibge.gov.br/api/v3/agregados/5938/periodos/2021,2022,2023/variaveis/37?localidades=N6[N3[41,42,43]]",
+    "http_status": 200,
+    "bytes": 187826,
+    "sha256": "5a93f78d65bc8454fdbafbad57986d5a48ba9d405b86772490fd25c93404bc32",
+    "collected_at_utc": "2026-08-12T21:01:47.196282+00:00"
+  },
+  {
+    "name": "deflator_pib_brasil",
+    "table": 6784,
+    "period": "2021,2022,2023",
+    "variable": 9811,
+    "url": "https://servicodados.ibge.gov.br/api/v3/agregados/6784/periodos/2021,2022,2023/variaveis/9811?localidades=N1[all]",
+    "http_status": 200,
+    "bytes": 252,
+    "sha256": "510b5efb542a0090f3076c0d3572bab34b5d1de5f307a57b96cc259dba9acd57",
+    "collected_at_utc": "2026-08-12T21:01:47.404940+00:00"
+  }
+]

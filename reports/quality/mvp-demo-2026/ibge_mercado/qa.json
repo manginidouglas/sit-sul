@@ -1,0 +1,121 @@
+{
+  "data_corte": "2026-08-12",
+  "cobertura": {
+    "renda_linhas": 5571,
+    "renda_completa": 5570,
+    "pop_18_64_sul_linhas": 1191,
+    "pib_sul_linhas": 1191,
+    "pib_completo": 1191
+  },
+  "missing_renda": [
+    "5101837"
+  ],
+  "faixas": {
+    "rdpc_est_min_max": [
+      456.8230320112744,
+      6026.15357747737
+    ],
+    "populacao_min_max": [
+      856.0,
+      11904961.0
+    ]
+  },
+  "amostra": {
+    "3304557": {
+      "municipio_id": "3304557",
+      "uf_codigo": "33",
+      "periodo_censo": "2022",
+      "periodo_corrente": "2025",
+      "rdpc_censo_municipio_reais_mes": 2515.32,
+      "rdpc_censo_uf_reais_mes": 1846.5,
+      "rdpc_pnad_uf_reais_mes": 2711.0,
+      "populacao_estimada_pessoas": 6730729.0,
+      "rdpc_est_reais_mes": 3692.9501868399675,
+      "massa_renda_reais_mes": 24856246918.119186
+    },
+    "3550308": {
+      "municipio_id": "3550308",
+      "uf_codigo": "35",
+      "periodo_censo": "2022",
+      "periodo_corrente": "2025",
+      "rdpc_censo_municipio_reais_mes": 2713.36,
+      "rdpc_censo_uf_reais_mes": 2093.44,
+      "rdpc_pnad_uf_reais_mes": 2917.0,
+      "populacao_estimada_pessoas": 11904961.0,
+      "rdpc_est_reais_mes": 3780.7967364720266,
+      "massa_renda_reais_mes": 45010237696.626755
+    },
+    "4100103": {
+      "municipio_id": "4100103",
+      "uf_codigo": "41",
+      "periodo_censo": "2022",
+      "periodo_corrente": "2025",
+      "rdpc_censo_municipio_reais_mes": 1096.83,
+      "rdpc_censo_uf_reais_mes": 1965.12,
+      "rdpc_pnad_uf_reais_mes": 2710.0,
+      "populacao_estimada_pessoas": 7233.0,
+      "rdpc_est_reais_mes": 1512.5841170004885,
+      "massa_renda_reais_mes": 10940520.918264532
+    },
+    "4106902": {
+      "municipio_id": "4106902",
+      "uf_codigo": "41",
+      "periodo_censo": "2022",
+      "periodo_corrente": "2025",
+      "rdpc_censo_municipio_reais_mes": 3137.92,
+      "rdpc_censo_uf_reais_mes": 1965.12,
+      "rdpc_pnad_uf_reais_mes": 2710.0,
+      "populacao_estimada_pessoas": 1830795.0,
+      "rdpc_est_reais_mes": 4327.350594365738,
+      "massa_renda_reais_mes": 7922491831.411821
+    },
+    "4200051": {
+      "municipio_id": "4200051",
+      "uf_codigo": "42",
+      "periodo_censo": "2022",
+      "periodo_corrente": "2025",
+      "rdpc_censo_municipio_reais_mes": 2127.38,
+      "rdpc_censo_uf_reais_mes": 2220.4,
+      "rdpc_pnad_uf_reais_mes": 2807.0,
+      "populacao_estimada_pessoas": 2629.0,
+      "rdpc_est_reais_mes": 2689.4053593947037,
+      "massa_renda_reais_mes": 7070446.689848676
+    },
+    "4205407": {
+      "municipio_id": "4205407",
+      "uf_codigo": "42",
+      "periodo_censo": "2022",
+      "periodo_corrente": "2025",
+      "rdpc_censo_municipio_reais_mes": 3636.13,
+      "rdpc_censo_uf_reais_mes": 2220.4,
+      "rdpc_pnad_uf_reais_mes": 2807.0,
+      "populacao_estimada_pessoas": 587486.0,
+      "rdpc_est_reais_mes": 4596.746941992434,
+      "massa_renda_reais_mes": 2700524473.963367
+    },
+    "4300034": {
+      "municipio_id": "4300034",
+      "uf_codigo": "43",
+      "periodo_censo": "2022",
+      "periodo_corrente": "2025",
+      "rdpc_censo_municipio_reais_mes": 1644.79,
+      "rdpc_censo_uf_reais_mes": 2042.12,
+      "rdpc_pnad_uf_reais_mes": 2782.0,
+      "populacao_estimada_pessoas": 4251.0,
+      "rdpc_est_reais_mes": 2240.7134644389166,
+      "massa_renda_reais_mes": 9525272.937329834
+    },
+    "4314902": {
+      "municipio_id": "4314902",
+      "uf_codigo": "43",
+      "periodo_censo": "2022",
+      "periodo_corrente": "2025",
+      "rdpc_censo_municipio_reais_mes": 3203.31,
+      "rdpc_censo_uf_reais_mes": 2042.12,
+      "rdpc_pnad_uf_reais_mes": 2782.0,
+      "populacao_estimada_pessoas": 1388794.0,
+      "rdpc_est_reais_mes": 4363.900466182203,
+      "massa_renda_reais_mes": 6060558784.031046
+    }
+  }
+}
