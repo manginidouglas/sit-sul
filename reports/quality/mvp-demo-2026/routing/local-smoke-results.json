@@ -1,0 +1,19 @@
+{
+  "executed_at_utc": "2026-08-12T21:23:30Z",
+  "host": {"cpus": 3, "ram_gib": 17, "free_disk_before_gib": 25},
+  "method": "OSRM official OCI image unpacked with skopeo/umoci and executed locally with chroot",
+  "osrm_version": "5.25.0",
+  "profile": "car.lua",
+  "algorithm": "MLD",
+  "source_snapshot": "data/raw/osm/brazil-260801.osm.pbf",
+  "source_sha256": "2b2ae9d8eb9a2d27501e4ab3a7097cab904439cbc7627319e5a4ce070dba27fd",
+  "smoke_extract": {"bbox": [-49.9, -26.0, -48.8, -25.1], "size_bytes": 22294295, "sha256": "b22d875d5caf8e7baffd4e1e1eb506b86530ec307fd2365b56c5f4cb132a3833"},
+  "stages": {
+    "extract": {"status": "success", "elapsed_seconds": 29.25, "max_rss_kib": 305024},
+    "partition": {"status": "success", "elapsed_seconds": 8.18, "max_rss_kib": 96580},
+    "customize": {"status": "success", "elapsed_seconds": 6.53, "max_rss_kib": 141404},
+    "serve": {"status": "success", "listen": "127.0.0.1:5001"}
+  },
+  "route": {"code": "Ok", "from": "Curitiba IBGE seat", "to": "Afonso Pena sanity coordinate", "duration_seconds": 1588.6, "distance_meters": 19324.5, "origin_snap_distance_meters": 21.074171, "destination_snap_distance_meters": 373.024744},
+  "table": {"code": "Ok", "sources": 2, "destinations": 2, "durations_minutes": [[26.4766666667, 0.0], [66.7666666667, 72.455]], "distances_meters": [[19283, 0], [74772.2, 73426.9]]}
+}

@@ -30,6 +30,8 @@ class RouteResult:
     distance_meters: float | None = None
     snapped_origin: Coordinate | None = None
     snapped_destination: Coordinate | None = None
+    origin_snap_distance_meters: float | None = None
+    destination_snap_distance_meters: float | None = None
     error: str | None = None
 
 
@@ -39,6 +41,8 @@ class MatrixResult:
     distances_meters: list[list[float | None]] | None
     sources: list[Coordinate | None]
     destinations: list[Coordinate | None]
+    source_snap_distances_meters: list[float | None]
+    destination_snap_distances_meters: list[float | None]
 
 
 class RoutingError(RuntimeError):
@@ -90,6 +94,8 @@ class OSRMClient:
                 distance_meters=route["distance"],
                 snapped_origin=_location(waypoints[0]) if len(waypoints) > 0 else None,
                 snapped_destination=_location(waypoints[1]) if len(waypoints) > 1 else None,
+                origin_snap_distance_meters=waypoints[0].get("distance") if len(waypoints) > 0 else None,
+                destination_snap_distance_meters=waypoints[1].get("distance") if len(waypoints) > 1 else None,
             )
         except RoutingError as exc:
             return RouteResult(ok=False, error=str(exc))
@@ -112,6 +118,8 @@ class OSRMClient:
             distances_meters=distance_rows,
             sources=[_location(item) for item in data.get("sources", [])],
             destinations=[_location(item) for item in data.get("destinations", [])],
+            source_snap_distances_meters=[item.get("distance") for item in data.get("sources", [])],
+            destination_snap_distances_meters=[item.get("distance") for item in data.get("destinations", [])],
         )
 
     def table_chunks(self, sources: Sequence[Coordinate], destinations: Sequence[Coordinate], *, max_cells: int = 10_000, distances: bool = False) -> Iterable[tuple[int, int, MatrixResult]]:

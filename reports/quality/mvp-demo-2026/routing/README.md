@@ -1,80 +1,88 @@
-# Rebuild reproduzível do roteamento OSM/OSRM
+# Rebuild reproduzível e prova local OSM/OSRM
 
-## Decisões congeladas
+## Entradas e decisões congeladas
 
-* **Rede:** extrato Brasil do OpenStreetMap publicado pela Geofabrik, snapshot
-  `2026-08-01`. URL datada, 2.066.032.748 bytes e MD5
-  `265d58e0eb10236a28b64fe846c92925` estão em
-  `data/raw/osm/snapshot.json`. O download é retomável, mas só é promovido após
-  validação de tamanho e hash.
-* **Motor:** OSRM Backend `v5.25.0`, imagem Linux oficial fixada pelo digest
-  `sha256:bdfa...d555`; algoritmo MLD; perfil `/opt/car.lua`. Não há API paga ou
-  serviço externo na arquitetura de produção.
-* **Sedes:** `municipal_seats_south_2022.csv` contém exatamente uma sede (não o
-  centroide) para cada um dos 1.191 municípios. Ela deriva de *Localidades do
-  Brasil 2022* do IBGE (GeoPackage de 6.477.540 bytes, SHA-256
-  `1d96d5...eb57`). Capitais duplicadas nas classes “sede” e “capital” são
-  desduplicadas por código IBGE. Rode `python scripts/routing/build_municipal_seats.py`.
+A rede metodológica é o extrato Brasil OSM/Geofabrik de 2026-08-01, perfil
+`car.lua`, OSRM 5.25.0 e MLD. O manifesto registra GET, resposta HTTP, URL final,
+redirects, tipo, bytes transferidos/persistidos, MD5 oficial e SHA-256 calculado
+sobre o PBF real. `download_osm.sh` reutiliza raw válido, rejeita raw final
+inválido sem alterá-lo e somente promove um `.part` validado.
 
-## Build e operação
+As 1.191 sedes (não centroides) derivam de *Localidades do Brasil 2022* do IBGE.
+O ZIP oficial de 6.477.540 bytes fica imutável em
+`data/raw/routing/ibge-seats/` (ignorado pelo Git) e tem manifesto versionado.
+O gerador valida tamanho/SHA-256, preserva o ZIP, rejeita duplicidades e exige
+igualdade exata de código, nome e UF com `data/processed/2026/municipios.csv`.
+Quatro grafias atualizadas são harmonizadas pelo cadastro canônico; coordenadas
+continuam sendo as sedes IBGE.
 
-Requisitos: Docker Engine 24+, `curl`, 64-bit Linux, cerca de **35 GB livres** e
-**16 GB RAM** (24 GB recomendados; sem swap o extrator pode ser encerrado). O
-host desta execução tinha 17 GiB RAM, 29 GB livres, 3 CPUs e não tinha Docker;
-portanto o build Brasil não foi iniciado para não produzir artefato parcial.
+## Produção Brasil
 
 ```bash
-scripts/routing/osrm.sh build       # download, extract, partition, customize
-scripts/routing/osrm.sh serve       # localhost:5000; MLD e table-size=10000
-python -m ice_sul.routing.cli -25.4296,-49.2719 -25.5285,-49.1758
+scripts/routing/osrm.sh build
+scripts/routing/osrm.sh serve
+python -m ice_sul.routing.cli -25.4133,-49.2679 -25.5285,-49.1758
 ```
 
-O diretório `data/interim/routing/osrm/` é derivado, grande e ignorado. Um
-rebuild limpo consiste em removê-lo e repetir `build`; não troque a URL, digest
-da imagem ou perfil sem uma nova versão metodológica. Registre tempos máximos de
-RSS e espaço com `/usr/bin/time -v scripts/routing/osrm.sh build`.
+Recomenda-se 35 GB livres, 16 GB RAM mínimos (24 GB recomendados), Docker Engine
+24+ e Linux 64-bit. O host tinha 17 GiB RAM e, após baixar o PBF, 25 GB livres:
+o Brasil completo não foi construído, pois grafo, temporários e imagem poderiam
+exceder o disco. Isso não muda o snapshot Brasil exigido para Mercado.
 
-## Uso na Onda 2 e escala
+## Caminhos locais tentados
 
-`OSRMClient.route` devolve sucesso, minutos, metros, pontos ajustados (*snapped*)
-e erro. `table` usa uma única chamada matricial muitos-para-muitos e preserva
-`null` para pares sem rota. `table_chunks` fatia destinos pelo limite de células.
-Assim, 1.191 origens × poucos aeroportos/portos devem ser enviadas em blocos, e
-não como chamadas `route` sequenciais. Para Mercado (truncagem 360 min), dividir
-a matriz nacional em blocos com no máximo 10.000 células, persistir cada bloco
-atomicamente (Parquet recomendado), retomar por índice e descartar durações
-acima de 360 após o roteamento. Mais throughput pode ser obtido com processos
-OSRM somente leitura atrás de um balanceador; não aumente concorrência até medir
-RAM e latência. A matriz nacional final fica explicitamente para a Onda 2.
+1. **Docker nativo:** Docker 29.1.3 foi instalado. O daemon padrão falhou ao criar
+   regras nftables (`Permission denied`). Com `--iptables=false --bridge=none
+   --storage-driver=vfs`, o daemon iniciou, mas `docker run hello-world` falhou em
+   `failed to register layer: unshare: operation not permitted`. O container do
+   runner não concede namespaces/mounts necessários.
+2. **Build nativo OSRM 5.25.0:** dependências foram instaladas e o fonte oficial
+   no commit da tag `051e931...` foi configurado por CMake. Falhou porque o
+   detector legado do 5.25.0 não reconhece oneTBB do Ubuntu 24.04 (`Intel TBB NOT
+   found`). Trocar a versão do OSRM não provaria o artefato fixado.
+3. **OCI sem runtime — funcionou:** `skopeo` baixou a mesma imagem fixada,
+   `umoci` extraiu seu rootfs e os binários foram executados localmente por
+   `chroot`. Isso contorna somente a limitação do runtime, sem trocar OSRM,
+   perfil, algoritmo ou rede.
 
-## Sanity checks e benchmark pequeno
+## Smoke end-to-end real
 
-Em 2026-08-12, como o runner não tinha Docker, verificou-se conectividade e
-plausibilidade no servidor público de demonstração do projeto OSRM **somente
-como diagnóstico manual**, nunca como dependência ou fonte de resultados. Uma
-chamada fria por par retornou:
+O smoke foi derivado **do PBF Brasil congelado e validado**, com `osmium extract
+-b -49.9,-26.0,-48.8,-25.1 --strategy complete_ways`. O extrato Curitiba/Lapa
+tem 22.294.295 bytes e SHA-256 `b22d875...a3833`. Ele prova o pipeline, mas não
+substitui o grafo Brasil para MER-01/MER-02. Comandos reproduzíveis estão em
+`scripts/routing/smoke_test_local.sh` e medições estruturadas em
+`local-smoke-results.json`.
 
-| par | minutos | km | latência cliente |
-|---|---:|---:|---:|
-| Curitiba → Afonso Pena | 24,99 | 18,34 | 1.363 ms |
-| Florianópolis → Hercílio Luz | 21,81 | 17,21 | 765 ms |
-| Porto Alegre → Salgado Filho | 18,64 | 10,98 | 759 ms |
-| Lapa → Curitiba | 69,48 | 68,95 | 605 ms |
+| etapa local | resultado | tempo | pico RSS |
+|---|---|---:|---:|
+| `osrm-extract -p /opt/car.lua` | sucesso | 29,25 s | 305.024 KiB |
+| `osrm-partition` | sucesso | 8,18 s | 96.580 KiB |
+| `osrm-customize` | sucesso | 6,53 s | 141.404 KiB |
+| `osrm-routed --algorithm mld` | `127.0.0.1:5001` | — | — |
 
-As origens são as sedes IBGE; as coordenadas dos aeroportos utilizadas no sanity
-check devem ser substituídas/conferidas pelo cadastro ANAC versionado na tarefa
-de destinos. Todos os resultados foram positivos e rodoviariamente plausíveis.
-A suíte automatizada confirma distância/duração, snapping, `NoRoute`, nulos e
-chunking sem depender da rede. Após o build local, repita os quatro pares e
-registre `waypoints[].distance`; trate snapping excessivo como falha de qualidade.
-Não se afirma benchmark do grafo Brasil neste host: isso seria confundir o demo
-remoto e seu snapshot desconhecido com a infraestrutura congelada.
+`OSRMClient.route()` local, sede IBGE Curitiba → sanity Afonso Pena, retornou
+`Ok`, 1.588,6 s (26,48 min), 19.324,5 m e snapping de 21,07 m / 373,02 m.
+`OSRMClient.table()` local com 2 origens × 2 destinos retornou `Ok`, minutos
+`[[26.4767, 0], [66.7667, 72.455]]` e metros
+`[[19283, 0], [74772.2, 73426.9]]`. Nenhum servidor remoto participou da prova.
 
-## Limitações
+## Interface, QA e escala da Onda 2
 
-A imagem oficial disponível e fixada é OSRM 5.25.0 (não a tag mutável `latest`).
-Dados OSM incluem as limitações de cobertura/velocidade da comunidade; travessias
-por balsa e fronteiras precisam revisão. O limite de tabela é número de
-coordenadas no OSRM 5.25.0 e o wrapper adota conservadoramente células; ajuste só
-com benchmark. As coordenadas de sedes são referência 2022, embora o snapshot da
-rede seja 2026. Nenhum dos seis indicadores finais é calculado aqui.
+`route` retorna minutos, metros, coordenadas ajustadas, distâncias de snapping e
+falha explícita. `table` preserva matrizes, nulos, coordenadas e distâncias de
+snapping de `sources`/`destinations`. QA detalhado deve usar `route` em amostras
+e casos críticos; nenhum limiar de snapping foi congelado nesta tarefa.
+
+Para 1.191 origens e destinos logísticos, use `table`/`table_chunks`, não milhões
+de chamadas sequenciais. Mercado deve persistir blocos atomicamente, retomá-los
+por índice e aplicar a truncagem de 360 minutos após roteamento. A matriz nacional
+final e os seis indicadores continuam fora deste PR.
+
+## Limitações reais restantes
+
+O build Brasil ainda requer host com disco suficiente e runtime Docker permitido
+(ou o método OCI/chroot documentado). Coordenadas aeroportuárias de sanity devem
+ser substituídas pelo cadastro ANAC versionado da tarefa própria. OSM mantém
+limitações comunitárias de velocidades, balsas e conectividade; isso demanda QA
+amostral na Onda 2.

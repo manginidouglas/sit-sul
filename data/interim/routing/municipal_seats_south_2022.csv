@@ -96,7 +96,7 @@ municipio_id,municipio_nome,uf_sigla,latitude,longitude,seat_type
 4107009,Curiúva,PR,-24.03339958190918,-50.45859909057617,sede_municipal
 4107108,Diamante do Norte,PR,-22.66080093383789,-52.86330032348633,sede_municipal
 4107124,Diamante do Sul,PR,-25.042299270629883,-52.680301666259766,sede_municipal
-4107157,Diamante D'Oeste,PR,-24.943599700927734,-54.104698181152344,sede_municipal
+4107157,Diamante d'Oeste,PR,-24.943599700927734,-54.104698181152344,sede_municipal
 4107207,Dois Vizinhos,PR,-25.74970054626465,-53.0536003112793,sede_municipal
 4107256,Douradina,PR,-23.38249969482422,-53.292301177978516,sede_municipal
 4107306,Doutor Camargo,PR,-23.55579948425293,-52.21889877319336,sede_municipal
@@ -295,7 +295,7 @@ municipio_id,municipio_nome,uf_sigla,latitude,longitude,seat_type
 4121208,Quitandinha,PR,-25.87179946899414,-49.49800109863281,sede_municipal
 4121257,Ramilândia,PR,-25.11910057067871,-54.03219985961914,sede_municipal
 4121307,Rancho Alegre,PR,-23.068300247192383,-50.91310119628906,sede_municipal
-4121356,Rancho Alegre D'Oeste,PR,-24.305999755859375,-52.95600128173828,sede_municipal
+4121356,Rancho Alegre d'Oeste,PR,-24.305999755859375,-52.95600128173828,sede_municipal
 4121406,Realeza,PR,-25.774900436401367,-53.53260040283203,sede_municipal
 4121505,Rebouças,PR,-25.62030029296875,-50.69490051269531,sede_municipal
 4121604,Renascença,PR,-26.1560001373291,-52.972198486328125,sede_municipal
@@ -1061,7 +1061,7 @@ municipio_id,municipio_nome,uf_sigla,latitude,longitude,seat_type
 4316956,Santa Maria do Herval,RS,-29.499500274658203,-50.99380111694336,sede_municipal
 4316972,Santa Margarida do Sul,RS,-30.33489990234375,-54.081199645996094,sede_municipal
 4317004,Santana da Boa Vista,RS,-30.871000289916992,-53.11360168457031,sede_municipal
-4317103,Sant'Ana do Livramento,RS,-30.889400482177734,-55.53239822387695,sede_municipal
+4317103,Sant'ana do Livramento,RS,-30.889400482177734,-55.53239822387695,sede_municipal
 4317202,Santa Rosa,RS,-27.860700607299805,-54.44620132446289,sede_municipal
 4317251,Santa Tereza,RS,-29.171300888061523,-51.73590087890625,sede_municipal
 4317301,Santa Vitória do Palmar,RS,-33.521400451660156,-53.36949920654297,sede_municipal
@@ -1189,4 +1189,4 @@ municipio_id,municipio_nome,uf_sigla,latitude,longitude,seat_type
 4323705,Vista Gaúcha,RS,-27.290300369262695,-53.70240020751953,sede_municipal
 4323754,Vitória das Missões,RS,-28.346200942993164,-54.502201080322266,sede_municipal
 4323770,Westfália,RS,-29.432100296020508,-51.77050018310547,sede_municipal
-4323804,Xangri-lá,RS,-29.801300048828125,-50.04460144042969,sede_municipal
+4323804,Xangri-Lá,RS,-29.801300048828125,-50.04460144042969,sede_municipal

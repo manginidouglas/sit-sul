@@ -1,6 +1,6 @@
 # Frozen OSM input
 
-Only the small manifest is committed. Run `scripts/routing/download_osm.sh`; the
-2.07 GB PBF is ignored and is accepted only when its size and MD5 match the
-manifest. Geofabrik's dated URL makes the input immutable and redistributable
-under ODbL; retain OpenStreetMap contributor attribution in derived products.
+The committed manifest describes the real 2.07 GB Brazil PBF downloaded on
+2026-08-12. The PBF is ignored by Git. `scripts/routing/download_osm.sh` validates
+its official MD5, locally calculated SHA-256, and size. A valid existing raw is
+reused; an invalid existing raw causes a hard failure and is never replaced.
