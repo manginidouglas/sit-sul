@@ -1,48 +1,72 @@
-# Anatel — evidência de qualidade (corte 12/08/2026)
+# Anatel — QA substantivo (corte 12/08/2026)
 
-## Fontes e snapshots verificados
+## Execução real e períodos
 
-* **SCM/Banda Larga Fixa:** bulk download oficial
-  `acessos_banda_larga_fixa.zip` (HTTP 200, 1.029.180.610 bytes), atualizado
-  em 31/07/2026. O arquivo anual mais recente termina em **junho/2026** e traz
-  CNPJ, grupo econômico, velocidade numérica, meio de acesso, tipo de produto
-  e acessos. A tabela em colunas foi usada para a inspeção eficiente.
-* **Cobertura Móvel:** bulk download oficial `cobertura_movel.zip` (HTTP 200,
-  307.467.778 bytes), atualizado em 04/07/2026. A medida municipal mais recente
-  dentro do ZIP é **março/2026**; junho/2026 existe em nível de setor censitário.
-* **Áreas Cobertas:** `areas_cobertas.zip` respondeu HTTP 200 e declarou
-  3.641.649.642 bytes (08/07/2026). A camada foi localizada, mas não versionada
-  no Git nem baixada integralmente nesta execução.
-* Caminhos alternativos verificados: portal `gov.br/anatel` (documentação),
-  painel `informacoes.anatel.gov.br` (links oficiais) e catálogo `dados.gov.br`.
-  A pesquisa intermediária retornou 401, mas os endpoints diretos funcionaram.
+Os três bulk downloads oficiais responderam HTTP 200 e foram validados por CRC e
+SHA-256. O SCM contém janeiro–junho/2026; adotou-se junho/2026. O ZIP de cobertura
+contém séries municipais até março/2026 e dados setoriais até junho/2026; adotou-se
+março/2026, o último mês municipal comum até o corte. O manifesto registra a hora
+UTC real da validação, tamanho, hash e caminho esperado dos raws, que não são
+versionados por terem 1,03 GB, 307 MB e 3,64 GB.
 
-## Regras implementadas e resultado
+`data/interim/anatel/indicadores_digitais_municipais.csv` materializa 3.573 linhas:
+1.191 municípios em cada INF-DIG-02/03/04, conjunto exato do cadastro canônico,
+sem duplicidade e sem ausentes. `qa.json` contém distribuição, cobertura, outliers
+e componentes dos casos manuais. Nenhum valor ficou fora das faixas lógicas.
 
-`INF-DIG-01` filtra `Tipo de Produto = INTERNET` e velocidade numérica maior
-ou igual a 100 Mbps. A transformação está concluída, mas o produto substantivo
-fica **parcial** porque a população municipal da edição não está integrada.
-Linha dedicada e demais produtos não comparáveis ficam fora.
+## Fórmulas e unidade empresarial
 
-`INF-DIG-02` usa `Meio de Acesso = Fibra` sobre todo acesso `INTERNET`; total
-zero vira `ausente`. `INF-DIG-03` usa o **CNPJ declarado** como prestador, pois
-essa é a unidade empresarial granular disponível. O campo grupo econômico é
-preservado na fonte, mas não substitui CNPJ nem recebe agregação inferida.
+INF-DIG-02 = 100 × acessos `INTERNET` em `Meio de Acesso = Fibra` / acessos
+`INTERNET`. INF-DIG-03 oficial permanece exploratoriamente por CNPJ: 1 − Σp².
+O artefato `inf-dig-03_unidades_exploratorias.csv` também calcula a unidade híbrida:
+grupo econômico oficial informativo; para `OUTROS`, vazio ou genérico, CNPJ.
 
-`INF-DIG-04` seleciona `Tecnologia = 4G5G` e `Operadora = Todas`, evitando soma
-com dupla contagem entre operadoras. Embora rotulado como percentual, o snapshot
-municipal publica proporções 0–1; o parser converte para 0–100. Linhas idênticas
-repetidas são aceitas somente quando seus valores coincidem.
+Nas 1.191 observações, a correlação de ranking CNPJ × híbrida é 0,9999975; diferença
+absoluta média 0,0000811, mediana zero, P95 0,0005773, P99 0,0014007 e máximo
+0,0040062 (Londrina). Foram encontrados 17 grupos informativos abrangendo 26 CNPJs.
+Apesar do impacto pequeno neste snapshot, recomenda-se a **unidade híbrida**, por
+representar melhor a unidade econômica sem fundir prestadores independentes em
+`OUTROS`. A versão oficial não foi trocada silenciosamente: ambas foram preservadas
+para decisão metodológica explícita.
 
-`INF-DIG-05` permanece **parcial**: a Anatel fornece cobertura setorial/polígonos,
-mas não a área passível de uso agrícola. A camada elegível não existe no projeto;
-portanto, não se fabrica zero e municípios sem área deverão receber
-`nao_aplicavel` quando essa dependência entrar na Onda 2.
+INF-DIG-04 usa apenas `Tecnologia = 4G5G`, `Operadora = Todas`; seleciona primeiro
+o maior período municipal até o corte e só então rejeita duplicidades divergentes.
+A escala publicada 0–1 é convertida em percentual 0–100.
 
-## Validações
+## INF-DIG-01 e INF-DIG-05
 
-Foram conferidos schema, meses, códigos IBGE de sete dígitos, unidade, faixas,
-ausentes, repetições e limites 0–100. Curitiba (4106902), Florianópolis (4205407)
-e os filtros de velocidade, fibra, produto e monopólio constam das fixtures
-offline. A validação de produção deve ainda registrar totais e exemplos de Porto
-Alegre e de municípios pequenos antes da publicação.
+`inf-dig-01_numerador.csv` preserva, para cada município, acessos `INTERNET` com
+velocidade ≥100 Mbps, total de acessos, período e flag. Falta somente a população
+IBGE; nenhuma população foi inventada e o raw não precisará ser relido.
+
+O bulk espacial de 3.641.649.642 bytes foi efetivamente baixado e validado. Ele
+contém 1.044 KML (12,47 GB descompactados). Para o Sul, os membros oficiais
+`4G5G_todas_{pr,sc,rs}_municipio_simple.kml` somam 130,57 MB descompactados. São
+KML 2.2, EPSG:4326, polígonos por município e classes R/U, período junho/2026.
+`inf-dig-05_insumo_espacial.json` registra schema, CRCs e procedimento. O indicador
+continua parcial exclusivamente porque falta a camada externa de área agrícola:
+dissolver por código, intersectar em CRS equal-area e aplicar `nao_aplicavel` se
+a área elegível for zero.
+
+## Inspeção manual e plausibilidade
+
+* Curitiba: fibra 639.050/798.971 = 79,98%; competitividade 0,8008 (194 CNPJs);
+  cobertura 100%. Plausível para mercado metropolitano denso.
+* Florianópolis: 223.623/303.546 = 73,67%; 0,7690 (93); cobertura 99,96%.
+* Porto Alegre: 423.865/615.902 = 68,82%; 0,7409 (184); cobertura 99,98%.
+* Abatiá/PR: 801/868 = 92,28%; 0,4699 (17); cobertura 90,28%.
+* Abdon Batista/SC: 172/220 = 78,18%; 0,6621 (11); cobertura 64,81%.
+* Aceguá/RS: 322/1.065 = 30,23%; 0,5220 (13); cobertura 60,90%.
+
+As capitais têm cobertura populacional quase universal e mercados mais numerosos;
+os pequenos exibem variação rural esperada. Extremos foram inspecionados via top
+10 da diferença HHI e distribuições completas em `qa.json`; não houve valor
+aritmeticamente implausível ou fora de faixa.
+
+## Reprodução
+
+```bash
+python -m ice_sul.transform.anatel_materialize \
+  data/raw/anatel/2026-08-12/acessos_banda_larga_fixa.zip \
+  data/raw/anatel/2026-08-12/cobertura_movel.zip
+```

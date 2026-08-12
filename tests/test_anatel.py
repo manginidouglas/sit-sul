@@ -7,6 +7,7 @@ from ice_sul.extract.anatel import AnatelCollector
 from ice_sul.extract.contracts import CollectionResult
 from ice_sul.extract.registry import build_collectors
 from ice_sul.transform.anatel import fixed_indicators, mobile_population_indicator, parse_fixed_access
+from ice_sul.transform.anatel_materialize import _canonical
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -52,6 +53,7 @@ def test_mobile_parsing_known_municipality_zero_and_missing():
     assert by_id(result, "INF-DIG-04", "4106902")["valor_bruto"] == "99.75"
     assert by_id(result, "INF-DIG-04", "4205407")["flag_qualidade"] == "zero_observado"
     assert by_id(result, "INF-DIG-04", "4314902")["flag_qualidade"] == "ausente"
+    assert {row["periodo_referencia"] for row in result} == {"2026-03"}
 
 
 def test_invalid_schema_and_duplicate_are_rejected():
@@ -62,3 +64,23 @@ def test_invalid_schema_and_duplicate_are_rejected():
     duplicate[1]["% moradores cobertos"] = "10"
     with pytest.raises(ValueError, match="divergente"):
         mobile_population_indicator(duplicate, ["4106902"])
+
+
+def test_mobile_ignores_divergence_in_older_period():
+    fixture = rows("anatel_mobile.csv")
+    older = dict(fixture[-1])
+    older["% moradores cobertos"] = "12"
+    assert mobile_population_indicator(fixture + [older], ["4106902"])[0]["valor_bruto"] == "99.75"
+
+
+def test_real_output_matches_canonical_universe_without_duplicates():
+    canonical = Path("data/processed/2026/municipios.csv")
+    output = Path("data/interim/anatel/indicadores_digitais_municipais.csv")
+    ids, _ = _canonical(canonical)
+    with output.open(encoding="utf-8", newline="") as stream:
+        materialized = list(csv.DictReader(stream))
+    keys = [(row["municipio_id"], row["indicador_id"]) for row in materialized]
+    assert len(materialized) == 1191 * 3
+    assert len(keys) == len(set(keys))
+    assert {row["municipio_id"] for row in materialized} == set(ids)
+    assert {row["indicador_id"] for row in materialized} == {"INF-DIG-02", "INF-DIG-03", "INF-DIG-04"}

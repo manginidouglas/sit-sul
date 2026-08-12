@@ -1,8 +1,61 @@
 {
   "snapshot": "2026-08-12",
   "status": "partial",
+  "validado_em_utc": "2026-08-12T21:36:23.824371+00:00",
   "artefatos": [
-    {"fonte":"Anatel","url":"https://www.anatel.gov.br/dadosabertos/paineis_de_dados/acessos/acessos_banda_larga_fixa.zip","metodo":"GET","parametros":{},"periodo":"2026-06","data_hora_utc":"2026-08-12T00:00:00+00:00","status_http":200,"url_final":"https://www.anatel.gov.br/dadosabertos/paineis_de_dados/acessos/acessos_banda_larga_fixa.zip","redirects":[],"content_type":"application/x-zip-compressed","tamanho":1029180610,"sha256":"8957b653aa444b65625d4d1e3272fb101d946c5bb5cc1ef8f2996bd3671e9f0b","licenca":"não declarada no ZIP; publicado no portal oficial Dados Abertos","versao_snapshot":"2026-07-31","validacao":"ZIP CRC, schema, período e categorias"},
-    {"fonte":"Anatel","url":"https://www.anatel.gov.br/dadosabertos/paineis_de_dados/infraestrutura/cobertura_movel.zip","metodo":"GET","parametros":{},"periodo":"2026-03 municipal; 2026-06 setorial","data_hora_utc":"2026-08-12T00:00:00+00:00","status_http":200,"url_final":"https://www.anatel.gov.br/dadosabertos/paineis_de_dados/infraestrutura/cobertura_movel.zip","redirects":[],"content_type":"application/x-zip-compressed","tamanho":307467778,"sha256":"9fe1bc1f3575e03576627c86c09fbb99bae5d72125a2ea865dcb2930fd278583","licenca":"não declarada no ZIP; publicado no portal oficial Dados Abertos","versao_snapshot":"2026-07-04","validacao":"ZIP CRC, schema, período, unidade e categorias"}
+    {
+      "fonte": "Anatel",
+      "url": "https://www.anatel.gov.br/dadosabertos/paineis_de_dados/acessos/acessos_banda_larga_fixa.zip",
+      "metodo": "GET",
+      "parametros": {},
+      "periodo": "2026-06",
+      "data_hora_utc": "2026-08-12T21:36:23.824371+00:00",
+      "status_http": 200,
+      "url_final": "https://www.anatel.gov.br/dadosabertos/paineis_de_dados/acessos/acessos_banda_larga_fixa.zip",
+      "redirects": [],
+      "content_type": "application/x-zip-compressed",
+      "tamanho": 1029180610,
+      "sha256": "8957b653aa444b65625d4d1e3272fb101d946c5bb5cc1ef8f2996bd3671e9f0b",
+      "arquivo": "data/raw/anatel/2026-08-12/acessos_banda_larga_fixa.zip",
+      "licenca": "não declarada dentro do ZIP; publicado no portal oficial Dados Abertos",
+      "versao_snapshot": "2026-07-31",
+      "validacao": "ZIP CRC; schema, períodos, categorias, universo e transformação validados"
+    },
+    {
+      "fonte": "Anatel",
+      "url": "https://www.anatel.gov.br/dadosabertos/paineis_de_dados/infraestrutura/cobertura_movel.zip",
+      "metodo": "GET",
+      "parametros": {},
+      "periodo": "2026-03 municipal; 2026-06 setorial",
+      "data_hora_utc": "2026-08-12T21:36:23.824371+00:00",
+      "status_http": 200,
+      "url_final": "https://www.anatel.gov.br/dadosabertos/paineis_de_dados/infraestrutura/cobertura_movel.zip",
+      "redirects": [],
+      "content_type": "application/x-zip-compressed",
+      "tamanho": 307467778,
+      "sha256": "9fe1bc1f3575e03576627c86c09fbb99bae5d72125a2ea865dcb2930fd278583",
+      "arquivo": "data/raw/anatel/2026-08-12/cobertura_movel.zip",
+      "licenca": "não declarada dentro do ZIP; publicado no portal oficial Dados Abertos",
+      "versao_snapshot": "2026-07-04",
+      "validacao": "ZIP CRC; schema, períodos, categorias, universo e transformação validados"
+    },
+    {
+      "fonte": "Anatel",
+      "url": "https://www.anatel.gov.br/dadosabertos/paineis_de_dados/infraestrutura/areas_cobertas.zip",
+      "metodo": "GET",
+      "parametros": {},
+      "periodo": "2026-06",
+      "data_hora_utc": "2026-08-12T21:36:23.824371+00:00",
+      "status_http": 200,
+      "url_final": "https://www.anatel.gov.br/dadosabertos/paineis_de_dados/infraestrutura/areas_cobertas.zip",
+      "redirects": [],
+      "content_type": "application/x-zip-compressed",
+      "tamanho": 3641649642,
+      "sha256": "1a88d8e5d0989fd32f9d8c924debed3cdd9848614b5a05c729a97f0e186759a6",
+      "arquivo": "data/raw/anatel/2026-08-12/areas_cobertas.zip",
+      "licenca": "não declarada dentro do ZIP; publicado no portal oficial Dados Abertos",
+      "versao_snapshot": "2026-07-01",
+      "validacao": "ZIP CRC; schema, períodos, categorias, universo e transformação validados"
+    }
   ]
 }

@@ -19,6 +19,8 @@ class AnatelCollector:
     raw_dir: Path = Path("data/raw/anatel/2026-08-12")
     source: str = "anatel"
 
+    include_spatial: bool = False
+
     def collect(self) -> CollectionResult:
         entries = []
         artifacts = []
@@ -32,6 +34,11 @@ class AnatelCollector:
             entry.update({"licenca": "dados abertos governamentais; licença específica não declarada no arquivo", "versao_snapshot": "corte-2026-08-12", "validacao": "ZIP não vazio; schema e período validados na transformação"})
             entries.append(entry)
             artifacts.append(str(target))
+        if self.include_spatial:
+            target = self.raw_dir / "areas_cobertas.zip"
+            entry = download(AREA_URL, target, source=self.source, indicators=["INF-DIG-05"], period="2026-06")
+            entry.update({"licenca": "dados abertos governamentais; licença específica não declarada no arquivo", "versao_snapshot": "2026-07-01", "validacao": "ZIP e KML 4G5G_todas_{pr,sc,rs}_municipio_simple.kml validados"})
+            entries.append(entry); artifacts.append(str(target))
         return CollectionResult(source=self.source, status=CollectionStatus.PARTIAL, artifacts=artifacts, indicators=["INF-DIG-01", "INF-DIG-02", "INF-DIG-03", "INF-DIG-04", "INF-DIG-05"], manifest_entries=entries, warnings=["INF-DIG-01 depende da população municipal IBGE da edição.", "INF-DIG-05 depende da camada de área passível de uso agrícola; areas_cobertas.zip foi verificado, mas tem 3,64 GB e não é baixado por padrão."])
 
 

@@ -18,6 +18,7 @@ OUTPUT_COLUMNS = (
     "periodo_referencia",
     "flag_qualidade",
 )
+GENERIC_GROUPS = {"", "outros", "outras", "nao informado", "n/a", "na"}
 
 
 def _key(value: object) -> str:
@@ -35,7 +36,10 @@ def _value(row: Mapping[str, object], *names: str) -> object:
 
 def _decimal(value: object) -> Decimal:
     try:
-        return Decimal(str(value).strip().replace(".", "").replace(",", "."))
+        if isinstance(value, (int, float, Decimal)):
+            return Decimal(str(value))
+        text = str(value).strip()
+        return Decimal(text.replace(".", "").replace(",", ".") if "," in text else text)
     except (InvalidOperation, AttributeError) as exc:
         raise ValueError(f"número Anatel inválido: {value!r}") from exc
 
@@ -116,11 +120,72 @@ def fixed_indicators(
     return output
 
 
+def fixed_snapshot(
+    rows: Iterable[Mapping[str, object]], municipality_ids: Iterable[str], period: str
+) -> tuple[list[dict[str, object]], list[dict[str, object]]]:
+    """Agrega a tabela anual em colunas e devolve produto e QA por unidade.
+
+    A primeira saída contém os três indicadores (INF-DIG-01 ainda como contagem
+    intermediária). A segunda preserva as versões de competitividade por CNPJ e
+    por unidade híbrida: grupo informativo; caso contrário, CNPJ.
+    """
+    universe = set(municipality_ids)
+    total: defaultdict[str, Decimal] = defaultdict(Decimal)
+    fast: defaultdict[str, Decimal] = defaultdict(Decimal)
+    fiber: defaultdict[str, Decimal] = defaultdict(Decimal)
+    cnpjs: defaultdict[str, defaultdict[str, Decimal]] = defaultdict(lambda: defaultdict(Decimal))
+    hybrid: defaultdict[str, defaultdict[str, Decimal]] = defaultdict(lambda: defaultdict(Decimal))
+    groups: defaultdict[str, set[str]] = defaultdict(set)
+    for row in rows:
+        municipality = str(row["Código IBGE Município"]).strip()
+        if municipality not in universe or _key(row["Tipo de Produto"]) != "internet":
+            continue
+        raw_accesses = row[period]
+        accesses = Decimal(0) if str(raw_accesses).strip() == "" else _decimal(raw_accesses)
+        if accesses < 0:
+            raise ValueError("acessos negativos")
+        cnpj = str(row["CNPJ"]).strip()
+        group = str(row["Grupo Econômico"]).strip()
+        unit = f"grupo:{_key(group)}" if _key(group) not in GENERIC_GROUPS else f"cnpj:{cnpj}"
+        total[municipality] += accesses
+        cnpjs[municipality][cnpj] += accesses
+        hybrid[municipality][unit] += accesses
+        if unit.startswith("grupo:"):
+            groups[group].add(cnpj)
+        if _decimal(row["Velocidade"]) >= 100:
+            fast[municipality] += accesses
+        if _key(row["Meio de Acesso"]) == "fibra":
+            fiber[municipality] += accesses
+
+    indicators, comparison = [], []
+    for municipality in municipality_ids:
+        accesses = total[municipality]
+        indicators.append(_output(municipality, "INF-DIG-01-NUM", fast[municipality] if accesses else None, period, accesses > 0, zero=accesses > 0 and fast[municipality] == 0))
+        indicators[-1].update({"acessos_ge_100_mbps": str(fast[municipality]), "total_acessos_internet": str(accesses)})
+        share = None if accesses == 0 else 100 * fiber[municipality] / accesses
+        indicators.append(_output(municipality, "INF-DIG-02", share, period, accesses > 0, zero=accesses > 0 and fiber[municipality] == 0))
+        indicators[-1].update({"acessos_fibra": str(fiber[municipality]), "total_acessos_internet": str(accesses)})
+        cnpj_value = _competition(cnpjs[municipality], accesses)
+        hybrid_value = _competition(hybrid[municipality], accesses)
+        indicators.append(_output(municipality, "INF-DIG-03", cnpj_value, period, accesses > 0, zero=cnpj_value == 0))
+        indicators[-1].update({"total_acessos_internet": str(accesses), "prestadores_cnpj": len(cnpjs[municipality])})
+        comparison.append({"municipio_id": municipality, "periodo_referencia": period, "competitividade_cnpj": _format(cnpj_value), "competitividade_hibrida": _format(hybrid_value), "diferenca_absoluta": _format(None if cnpj_value is None else abs(cnpj_value - hybrid_value)), "cnpjs": len(cnpjs[municipality]), "unidades_hibridas": len(hybrid[municipality])})
+    comparison.append({"municipio_id": "__METADATA__", "periodo_referencia": period, "competitividade_cnpj": "", "competitividade_hibrida": "", "diferenca_absoluta": "", "cnpjs": sum(len(v) for v in groups.values()), "unidades_hibridas": len(groups)})
+    return indicators, comparison
+
+
+def _competition(units: Mapping[str, Decimal], total: Decimal) -> Decimal | None:
+    if total == 0:
+        return None
+    return Decimal(1) - sum((value / total) ** 2 for value in units.values())
+
+
 def mobile_population_indicator(
-    rows: Iterable[Mapping[str, object]], municipality_ids: Iterable[str]
+    rows: Iterable[Mapping[str, object]], municipality_ids: Iterable[str],
+    cutoff: str = "2026-08"
 ) -> list[dict[str, object]]:
-    """Extrai a medida municipal oficial para operadora Todas e tecnologia 4G5G."""
-    values: dict[str, tuple[Decimal, str]] = {}
+    """Seleciona um único e mais recente mês municipal 4G5G até o corte."""
+    candidates: defaultdict[str, defaultdict[str, set[Decimal]]] = defaultdict(lambda: defaultdict(set))
     for row in rows:
         municipality = str(_value(row, "Código Município")).strip()
         technology = _key(_value(row, "Tecnologia"))
@@ -130,22 +195,30 @@ def mobile_population_indicator(
         period_raw = str(_value(row, "Período")).strip()
         month, year = period_raw.split("-")
         period = f"{year}-{int(month):02d}"
-        value = _decimal(_value(row, "% moradores cobertos"))
+        raw_value = _value(row, "% moradores cobertos")
+        if str(raw_value).strip() == "":
+            continue
+        value = _decimal(raw_value)
         # O CSV municipal corrente rotula o campo como percentual, mas o
         # publica em proporção (0..1).
         if value <= 1:
             value *= 100
         if not Decimal(0) <= value <= Decimal(100):
             raise ValueError("cobertura populacional fora de 0..100")
-        if municipality in values:
-            if values[municipality] != (value, period):
-                raise ValueError("cobertura municipal duplicada e divergente")
+        if period > cutoff:
             continue
-        values[municipality] = (value, period)
+        candidates[period][municipality].add(value)
+    if not candidates:
+        raise ValueError("nenhum período municipal 4G5G disponível até o corte")
+    selected = max(candidates)
+    divergent = [mid for mid, found in candidates[selected].items() if len(found) > 1]
+    if divergent:
+        raise ValueError("cobertura municipal duplicada e divergente")
+    values = {mid: next(iter(found)) for mid, found in candidates[selected].items()}
     return [
-        _output(mid, "INF-DIG-04", values[mid][0], values[mid][1], True, zero=values[mid][0] == 0)
+        _output(mid, "INF-DIG-04", values[mid], selected, True, zero=values[mid] == 0)
         if mid in values
-        else _output(mid, "INF-DIG-04", None, "", False)
+        else _output(mid, "INF-DIG-04", None, selected, False)
         for mid in municipality_ids
     ]
 
@@ -155,7 +228,11 @@ def _output(municipality: str, indicator: str, value: Decimal | None, period: st
     return {
         "municipio_id": municipality,
         "indicador_id": indicator,
-        "valor_bruto": "" if value is None else format(value, ".12f").rstrip("0").rstrip("."),
+        "valor_bruto": _format(value),
         "periodo_referencia": period,
         "flag_qualidade": flag,
     }
+
+
+def _format(value: Decimal | None) -> str:
+    return "" if value is None else format(value, ".12f").rstrip("0").rstrip(".")
