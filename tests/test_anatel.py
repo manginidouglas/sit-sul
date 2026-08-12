@@ -7,7 +7,7 @@ from ice_sul.extract.anatel import AnatelCollector
 from ice_sul.extract.contracts import CollectionResult
 from ice_sul.extract.registry import build_collectors
 from ice_sul.transform.anatel import fixed_indicators, mobile_population_indicator, parse_fixed_access
-from ice_sul.transform.anatel_materialize import _canonical
+from ice_sul.transform.anatel_materialize import _canonical, _ranks, spearman
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -84,3 +84,17 @@ def test_real_output_matches_canonical_universe_without_duplicates():
     assert len(keys) == len(set(keys))
     assert {row["municipio_id"] for row in materialized} == set(ids)
     assert {row["indicador_id"] for row in materialized} == {"INF-DIG-02", "INF-DIG-03", "INF-DIG-04"}
+
+
+def test_ranks_without_and_with_ties():
+    assert _ranks({"a": 10, "b": 20, "c": 30}) == {"a": 1, "b": 2, "c": 3}
+    assert _ranks({"a": 10, "b": 20, "c": 20, "d": 30}) == {
+        "a": 1, "b": 2.5, "c": 2.5, "d": 4
+    }
+
+
+def test_spearman_identity_inverse_and_ties():
+    values = {"a": 10, "b": 20, "c": 20, "d": 30}
+    assert spearman(values, values) == pytest.approx(1)
+    assert spearman({"a": 1, "b": 2, "c": 3}, {"a": 3, "b": 2, "c": 1}) == pytest.approx(-1)
+    assert spearman(values, {"a": 1, "b": 2, "c": 3, "d": 4}) == pytest.approx(0.9486832981)

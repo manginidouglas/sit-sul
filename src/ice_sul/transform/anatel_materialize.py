@@ -8,6 +8,7 @@ import io
 import json
 from pathlib import Path
 import re
+from math import sqrt
 from statistics import mean, median
 import zipfile
 
@@ -52,8 +53,37 @@ def _stats(rows: list[dict[str, object]]) -> dict[str, object]:
 
 
 def _ranks(values: dict[str, float]) -> dict[str, float]:
-    ordered = sorted(values, key=values.get)
-    return {municipality: float(rank) for rank, municipality in enumerate(ordered, 1)}
+    """Ranks crescentes com média das posições para valores empatados."""
+    ordered = sorted(values.items(), key=lambda item: item[1])
+    ranks: dict[str, float] = {}
+    start = 0
+    while start < len(ordered):
+        end = start + 1
+        while end < len(ordered) and ordered[end][1] == ordered[start][1]:
+            end += 1
+        average_rank = ((start + 1) + end) / 2
+        for key, _ in ordered[start:end]:
+            ranks[key] = average_rank
+        start = end
+    return ranks
+
+
+def spearman(values_a: dict[str, float], values_b: dict[str, float]) -> float:
+    """Correlação de Pearson entre ranks médios, válida também com empates."""
+    if set(values_a) != set(values_b) or len(values_a) < 2:
+        raise ValueError("Spearman exige as mesmas duas ou mais observações")
+    ranks_a, ranks_b = _ranks(values_a), _ranks(values_b)
+    keys = list(values_a)
+    average_a = mean(ranks_a[key] for key in keys)
+    average_b = mean(ranks_b[key] for key in keys)
+    numerator = sum((ranks_a[key] - average_a) * (ranks_b[key] - average_b) for key in keys)
+    denominator = sqrt(
+        sum((ranks_a[key] - average_a) ** 2 for key in keys)
+        * sum((ranks_b[key] - average_b) ** 2 for key in keys)
+    )
+    if denominator == 0:
+        raise ValueError("Spearman indefinido para vetor constante")
+    return numerator / denominator
 
 
 def materialize(fixed_zip: Path, mobile_zip: Path, canonical_csv: Path, output_dir: Path) -> dict[str, object]:
@@ -71,7 +101,7 @@ def materialize(fixed_zip: Path, mobile_zip: Path, canonical_csv: Path, output_d
     if len(published) != 3 * 1191 or len(set(keys)) != len(keys) or {key[0] for key in keys} != set(ids):
         raise ValueError("output não coincide exatamente com o universo canônico")
     output_dir.mkdir(parents=True, exist_ok=True)
-    columns = list(OUTPUT_COLUMNS) + ["acessos_fibra", "total_acessos_internet", "prestadores_cnpj"]
+    columns = list(OUTPUT_COLUMNS) + ["acessos_fibra", "total_acessos_internet", "unidades_economicas_hibridas"]
     with (output_dir / "indicadores_digitais_municipais.csv").open("w", encoding="utf-8", newline="") as stream:
         writer = csv.DictWriter(stream, fieldnames=columns, extrasaction="ignore", lineterminator="\n")
         writer.writeheader(); writer.writerows(published)
@@ -86,8 +116,7 @@ def materialize(fixed_zip: Path, mobile_zip: Path, canonical_csv: Path, output_d
     usable = [row for row in comparison_rows if row["diferenca_absoluta"] != ""]
     cnpj = {str(row["municipio_id"]): float(row["competitividade_cnpj"]) for row in usable}
     hybrid = {str(row["municipio_id"]): float(row["competitividade_hibrida"]) for row in usable}
-    rc, rh = _ranks(cnpj), _ranks(hybrid)
-    correlation = 1 - 6 * sum((rc[mid] - rh[mid]) ** 2 for mid in rc) / (len(rc) * (len(rc) ** 2 - 1))
+    correlation = spearman(cnpj, hybrid)
     differences = sorted(float(row["diferenca_absoluta"]) for row in usable)
     largest = sorted(usable, key=lambda row: float(row["diferenca_absoluta"]), reverse=True)[:10]
     qa = {

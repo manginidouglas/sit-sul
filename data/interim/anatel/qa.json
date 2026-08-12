@@ -1,5 +1,5 @@
 {
-  "gerado_em_utc": "2026-08-12T21:35:40.262906+00:00",
+  "gerado_em_utc": "2026-08-12T23:26:33.190942+00:00",
   "universo": 1191,
   "periodos_municipais_cobertura_disponiveis": [
     "2021-11",
@@ -43,9 +43,9 @@
       "p1": 0.0611704468274,
       "p5": 0.1587477386775,
       "mediana": 0.593121354327,
-      "p95": 0.809251429495,
-      "p99": 0.8666951285944999,
-      "maximo": 0.920725511415,
+      "p95": 0.809202897349,
+      "p99": 0.8663884028758998,
+      "maximo": 0.92009745102,
       "fora_faixa": 0,
       "periodo": "2026-06"
     },
@@ -67,7 +67,7 @@
   },
   "comparacao_inf_dig_03": {
     "municipios": 1191,
-    "correlacao_spearman_ranking": 0.9999975423368002,
+    "correlacao_spearman_ranking": 0.9999975423367914,
     "media_diferenca_absoluta": 8.111923984047019e-05,
     "mediana_diferenca_absoluta": 0.0,
     "p95_diferenca_absoluta": 0.0005772632189999999,
@@ -185,11 +185,11 @@
         {
           "municipio_id": "4106902",
           "indicador_id": "INF-DIG-03",
-          "valor_bruto": "0.80082646818",
+          "valor_bruto": "0.799400396129",
           "periodo_referencia": "2026-06",
           "flag_qualidade": "observado",
           "total_acessos_internet": "798971",
-          "prestadores_cnpj": 194
+          "unidades_economicas_hibridas": 188
         },
         {
           "municipio_id": "4106902",
@@ -217,11 +217,11 @@
         {
           "municipio_id": "4205407",
           "indicador_id": "INF-DIG-03",
-          "valor_bruto": "0.768986623563",
+          "valor_bruto": "0.767055069888",
           "periodo_referencia": "2026-06",
           "flag_qualidade": "observado",
           "total_acessos_internet": "303546",
-          "prestadores_cnpj": 93
+          "unidades_economicas_hibridas": 90
         },
         {
           "municipio_id": "4205407",
@@ -249,11 +249,11 @@
         {
           "municipio_id": "4314902",
           "indicador_id": "INF-DIG-03",
-          "valor_bruto": "0.740894787115",
+          "valor_bruto": "0.738495197925",
           "periodo_referencia": "2026-06",
           "flag_qualidade": "observado",
           "total_acessos_internet": "615902",
-          "prestadores_cnpj": 184
+          "unidades_economicas_hibridas": 180
         },
         {
           "municipio_id": "4314902",
@@ -285,7 +285,7 @@
           "periodo_referencia": "2026-06",
           "flag_qualidade": "observado",
           "total_acessos_internet": "868",
-          "prestadores_cnpj": 17
+          "unidades_economicas_hibridas": 16
         },
         {
           "municipio_id": "4100103",
@@ -317,7 +317,7 @@
           "periodo_referencia": "2026-06",
           "flag_qualidade": "observado",
           "total_acessos_internet": "220",
-          "prestadores_cnpj": 11
+          "unidades_economicas_hibridas": 11
         },
         {
           "municipio_id": "4200051",
@@ -349,7 +349,7 @@
           "periodo_referencia": "2026-06",
           "flag_qualidade": "observado",
           "total_acessos_internet": "1065",
-          "prestadores_cnpj": 13
+          "unidades_economicas_hibridas": 13
         },
         {
           "municipio_id": "4300034",

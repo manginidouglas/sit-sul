@@ -167,8 +167,10 @@ def fixed_snapshot(
         indicators[-1].update({"acessos_fibra": str(fiber[municipality]), "total_acessos_internet": str(accesses)})
         cnpj_value = _competition(cnpjs[municipality], accesses)
         hybrid_value = _competition(hybrid[municipality], accesses)
-        indicators.append(_output(municipality, "INF-DIG-03", cnpj_value, period, accesses > 0, zero=cnpj_value == 0))
-        indicators[-1].update({"total_acessos_internet": str(accesses), "prestadores_cnpj": len(cnpjs[municipality])})
+        # A unidade oficial é híbrida: grupo Anatel informativo; caso o grupo
+        # seja genérico, o CNPJ permanece individual. A versão CNPJ é QA.
+        indicators.append(_output(municipality, "INF-DIG-03", hybrid_value, period, accesses > 0, zero=hybrid_value == 0))
+        indicators[-1].update({"total_acessos_internet": str(accesses), "unidades_economicas_hibridas": len(hybrid[municipality])})
         comparison.append({"municipio_id": municipality, "periodo_referencia": period, "competitividade_cnpj": _format(cnpj_value), "competitividade_hibrida": _format(hybrid_value), "diferenca_absoluta": _format(None if cnpj_value is None else abs(cnpj_value - hybrid_value)), "cnpjs": len(cnpjs[municipality]), "unidades_hibridas": len(hybrid[municipality])})
     comparison.append({"municipio_id": "__METADATA__", "periodo_referencia": period, "competitividade_cnpj": "", "competitividade_hibrida": "", "diferenca_absoluta": "", "cnpjs": sum(len(v) for v in groups.values()), "unidades_hibridas": len(groups)})
     return indicators, comparison
