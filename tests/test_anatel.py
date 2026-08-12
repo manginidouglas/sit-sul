@@ -1,0 +1,64 @@
+import csv
+from pathlib import Path
+
+import pytest
+
+from ice_sul.extract.anatel import AnatelCollector
+from ice_sul.extract.contracts import CollectionResult
+from ice_sul.extract.registry import build_collectors
+from ice_sul.transform.anatel import fixed_indicators, mobile_population_indicator, parse_fixed_access
+
+FIXTURES = Path(__file__).parent / "fixtures"
+
+
+def rows(name):
+    with (FIXTURES / name).open(encoding="utf-8-sig", newline="") as stream:
+        return list(csv.DictReader(stream, delimiter=";"))
+
+
+def by_id(result, indicator, municipality):
+    return next(row for row in result if row["indicador_id"] == indicator and row["municipio_id"] == municipality)
+
+
+def test_collector_is_registered_and_obeys_contract():
+    collector = build_collectors(["anatel"])[0]
+    assert isinstance(collector, AnatelCollector)
+    assert collector.source == "anatel"
+    assert CollectionResult.__annotations__["manifest_entries"]
+
+
+def test_parsing_and_filters_speed_fiber_product_and_known_municipality():
+    fixture = rows("anatel_fixed.csv")
+    parsed = parse_fixed_access(fixture[0])
+    assert parsed["municipio_id"] == "4106902"
+    assert str(parsed["velocidade_mbps"]) == "100.000000"
+    result = fixed_indicators(fixture, ["4106902"], "2026-06", {"4106902": 1000})
+    assert by_id(result, "INF-DIG-01", "4106902")["valor_bruto"] == "8"
+    assert by_id(result, "INF-DIG-02", "4106902")["valor_bruto"] == "80"
+    # CNPJ: shares 0.8 and 0.2; the dedicated product does not enter the market.
+    assert by_id(result, "INF-DIG-03", "4106902")["valor_bruto"] == "0.32"
+
+
+def test_hhi_monopoly_zero_and_zero_denominator_missing():
+    result = fixed_indicators(rows("anatel_fixed.csv"), ["4205407", "4300000"], "2026-06")
+    assert by_id(result, "INF-DIG-03", "4205407")["flag_qualidade"] == "zero_observado"
+    assert by_id(result, "INF-DIG-02", "4300000")["flag_qualidade"] == "ausente"
+    assert by_id(result, "INF-DIG-02", "4300000")["valor_bruto"] == ""
+    assert by_id(result, "INF-DIG-01", "4205407")["flag_qualidade"] == "ausente"
+
+
+def test_mobile_parsing_known_municipality_zero_and_missing():
+    result = mobile_population_indicator(rows("anatel_mobile.csv"), ["4106902", "4205407", "4314902"])
+    assert by_id(result, "INF-DIG-04", "4106902")["valor_bruto"] == "99.75"
+    assert by_id(result, "INF-DIG-04", "4205407")["flag_qualidade"] == "zero_observado"
+    assert by_id(result, "INF-DIG-04", "4314902")["flag_qualidade"] == "ausente"
+
+
+def test_invalid_schema_and_duplicate_are_rejected():
+    with pytest.raises(ValueError, match="schema Anatel inválido"):
+        parse_fixed_access({"Ano": "2026"})
+    duplicate = [dict(rows("anatel_mobile.csv")[0]) for _ in range(2)]
+    assert len(mobile_population_indicator(duplicate, ["4106902"])) == 1
+    duplicate[1]["% moradores cobertos"] = "10"
+    with pytest.raises(ValueError, match="divergente"):
+        mobile_population_indicator(duplicate, ["4106902"])
