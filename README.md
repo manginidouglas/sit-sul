@@ -1,14 +1,26 @@
 # SIT — Sistema de Inteligência Territorial
 
-Sistema municipal multidimensional para medir e organizar informações sobre as
-condições do ambiente local que favorecem a criação, instalação, operação e
+Sistema municipal multidimensional para medir as condições do ambiente local que determinam a criação, instalação, operação e
 desenvolvimento de atividades empresariais nos 1.191 municípios do Paraná, de
 Santa Catarina e do Rio Grande do Sul.
 
-O SIT apoia diagnóstico territorial e inteligência estratégica. Rankings são
-apenas um produto possível: o valor principal está em decompor os resultados e
-mostrar, por exemplo, que um município combina infraestrutura e mercado fortes
-com fragilidades em capital humano.
+As dimensões são seis: 
+- Infraestrutura;
+- Mercado;
+- Ambiente Regulatório;
+- Acesso a Capital
+- Capital Humano;
+- Inovação.
+
+Cada eixo é composto de indicadores de condição local. Exemplos: Quão fácil é acessar um aeroporto, quanto tempo o município fica sem luz, qual o tamanho do mercado explorável pela empresa. 
+
+Esses indicadores são combinados para formar um ranking dos municípios. Há o ranking geral, os estaduais, por porte, e, no futuro, os setoriais. 
+
+O SIT apoia diagnóstico territorial e inteligência estratégica ao decompor os resultados dos indicadores e
+mostrar, por exemplo, que um município combina infraestrutura e mercado fortes, mas
+com fragilidades em capital humano. 
+
+Há também indicadores de resultado, que ao invés de medir as condições de negócios, medem o desempenho dos municípios. Por exemplo, o crescimento do PIB ou número de decolagens de um aeroporto refletem os resultados da exploração do ambiente, que pode ser ótimo, mas estar sub-utilizado por algum motivo. Indicadores de resultado são úteis para validar os rankings e medir evolução dos municípios. 
 
 O sistema **não** mede desenvolvimento municipal ou qualidade de vida em sentido
 amplo, não prevê o sucesso de empresas específicas e não constitui, isoladamente,
