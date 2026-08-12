@@ -52,7 +52,10 @@ def run_collectors(
 
     if all(result.status == CollectionStatus.SUCCESS for result in results):
         overall = CollectionStatus.SUCCESS
-    elif any(result.status == CollectionStatus.SUCCESS for result in results):
+    elif any(
+        result.status in {CollectionStatus.SUCCESS, CollectionStatus.PARTIAL}
+        for result in results
+    ):
         overall = CollectionStatus.PARTIAL
     else:
         overall = CollectionStatus.UNAVAILABLE

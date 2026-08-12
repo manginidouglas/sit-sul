@@ -1,4 +1,5 @@
 import csv
+import importlib.util
 import io
 import json
 from pathlib import Path
@@ -9,8 +10,15 @@ import yaml
 
 from ice_sul.extract.contracts import CollectionResult, CollectionStatus
 from ice_sul.extract.orchestrator import CollectorValidationError, run_collectors
-from ice_sul.mvp.robustness import generate_robustness
+from ice_sul.mvp.robustness import compare_rankings, generate_robustness
 from ice_sul.mvp.validate import validate_municipal_keys
+
+PREFLIGHT_SPEC = importlib.util.spec_from_file_location(
+    "network_preflight", Path("scripts/network_preflight.py")
+)
+assert PREFLIGHT_SPEC and PREFLIGHT_SPEC.loader
+PREFLIGHT = importlib.util.module_from_spec(PREFLIGHT_SPEC)
+PREFLIGHT_SPEC.loader.exec_module(PREFLIGHT)
 
 CANONICAL = Path("data/processed/2026/municipios.csv")
 
@@ -82,25 +90,100 @@ def test_orchestrator_isolates_http_and_validation_failures(tmp_path):
     assert json.loads((tmp_path / "manifest.json").read_text())["status"] == "partial"
 
 
+@pytest.mark.parametrize(
+    ("statuses", "expected"),
+    [
+        (
+            [CollectionStatus.SUCCESS, CollectionStatus.SUCCESS],
+            CollectionStatus.SUCCESS,
+        ),
+        (
+            [CollectionStatus.SUCCESS, CollectionStatus.UNAVAILABLE],
+            CollectionStatus.PARTIAL,
+        ),
+        (
+            [CollectionStatus.PARTIAL, CollectionStatus.FAILED_VALIDATION],
+            CollectionStatus.PARTIAL,
+        ),
+        (
+            [CollectionStatus.PARTIAL, CollectionStatus.PARTIAL],
+            CollectionStatus.PARTIAL,
+        ),
+        (
+            [CollectionStatus.BLOCKED_SOURCE, CollectionStatus.UNAVAILABLE],
+            CollectionStatus.UNAVAILABLE,
+        ),
+    ],
+)
+def test_orchestrator_global_status_preserves_individual_statuses(statuses, expected):
+    calls = []
+    result = run_collectors(
+        [
+            FakeCollector(f"source-{index}", status, calls)
+            for index, status in enumerate(statuses)
+        ]
+    )
+    assert result.status == expected
+    assert [item.status for item in result.results] == statuses
+
+
+def test_ranking_comparison_separates_availability_from_ordinal_changes():
+    result = compare_rankings(
+        {"stable": 1, "left": 2, "moved": 25},
+        {"stable": 2, "entered": 1, "moved": 21},
+    )
+    assert result["n_rankeados_baseline"] == 3
+    assert result["n_rankeados_alternativo"] == 3
+    assert result["entraram_no_ranking"] == ["entered"]
+    assert result["sairam_do_ranking"] == ["left"]
+    assert result["alteracoes_top20"] == {
+        "entram": ["entered"],
+        "saem": ["left"],
+    }
+
+
+def test_preflight_rejects_overwriting_immutable_raw(tmp_path):
+    raw = tmp_path / "already-exists.json"
+    raw.write_text("immutable", encoding="utf-8")
+    with pytest.raises(FileExistsError, match="raw imutável já existe"):
+        PREFLIGHT.execute(raw, tmp_path / "report.json", tmp_path / "manifest.json")
+    assert raw.read_text(encoding="utf-8") == "immutable"
+
+
 def test_all_robustness_scenarios_are_calculated(tmp_path):
-    municipalities = canonical_rows()[:4]
+    municipalities = canonical_rows()[:6]
     municipal_path = tmp_path / "municipios.csv"
     with municipal_path.open("w", newline="", encoding="utf-8") as stream:
         writer = csv.DictWriter(stream, fieldnames=municipalities[0])
         writer.writeheader()
         writer.writerows(municipalities)
     config = yaml.safe_load(Path("config/edicoes/mvp-demo-2026.yml").read_text())
-    config["universo"]["municipios_esperados"] = 4
+    config["universo"]["municipios_esperados"] = len(municipalities)
     config_path = tmp_path / "config.yml"
     config_path.write_text(yaml.safe_dump(config))
     observations = []
-    for index, municipality in enumerate(municipalities, 1):
+    infra_ids = [
+        indicator
+        for indicator, rule in config["indicadores"].items()
+        if rule.get("eixo") == "infra"
+    ]
+    for index, municipality in enumerate(municipalities):
         for indicator in config["indicadores"]:
+            # Distribuições deliberadamente não paralelas: outlier para R1,
+            # assimetria de mercado para R2 e conflito de pesos para R3.
+            if indicator == "INF-LOG-01":
+                value = [0, 1, 2, 3, 4, 10000][index]
+            elif indicator in infra_ids:
+                value = [100, 80, 60, 40, 20, 0][index]
+            elif indicator in {"MER-01", "MER-02"}:
+                value = [0, 1, 3, 10, 100, 10000][index]
+            else:
+                value = index + 1
             observations.append(
                 {
                     "municipio_id": municipality["municipio_id"],
                     "indicador_id": indicator,
-                    "valor_bruto": index**3 + len(indicator),
+                    "valor_bruto": value,
                     "periodo_referencia": "fixture",
                     "flag_qualidade": "observado",
                 }
@@ -125,3 +208,29 @@ def test_all_robustness_scenarios_are_calculated(tmp_path):
     }
     assert len(payload["comparacoes_com_baseline"]) == 3
     assert (tmp_path / "output" / "robustez.json").is_file()
+
+    scenarios = payload["cenarios"]
+    municipality_id = municipalities[1]["municipio_id"]
+    assert (
+        scenarios["baseline"][municipality_id]["nota_infra"]
+        != scenarios["R1_sem_winsorizacao"][municipality_id]["nota_infra"]
+    )
+    assert (
+        scenarios["baseline"][municipality_id]["nota_mercado"]
+        != scenarios["R2_sem_log"][municipality_id]["nota_mercado"]
+    )
+    assert (
+        scenarios["baseline"][municipality_id]["nota_infra"]
+        != scenarios["R3_pesos_iguais_infra"][municipality_id]["nota_infra"]
+    )
+
+    baseline_parameters = json.loads(
+        (tmp_path / "output/cenarios/baseline/parametros-score.json").read_text()
+    )
+    r1_parameters = json.loads(
+        (
+            tmp_path / "output/cenarios/R1_sem_winsorizacao/parametros-score.json"
+        ).read_text()
+    )
+    assert baseline_parameters["INF-LOG-01"]["p99"] is not None
+    assert r1_parameters["INF-LOG-01"]["p99"] is None

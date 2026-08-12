@@ -19,7 +19,11 @@ def ranks(values):
 
 
 def compare_rankings(baseline, alternative):
-    common = sorted(set(baseline) & set(alternative))
+    baseline_ids = set(baseline)
+    alternative_ids = set(alternative)
+    common = sorted(baseline_ids & alternative_ids)
+    entered_ranking = sorted(alternative_ids - baseline_ids)
+    left_ranking = sorted(baseline_ids - alternative_ids)
     a = [baseline[key] for key in common]
     b = [alternative[key] for key in common]
     if len(common) < 2:
@@ -37,12 +41,24 @@ def compare_rankings(baseline, alternative):
         enters = sorted(
             key for key in common if baseline[key] > limit >= alternative[key]
         )
+        enters.extend(
+            sorted(key for key in entered_ranking if alternative[key] <= limit)
+        )
         leaves = sorted(
             key for key in common if baseline[key] <= limit < alternative[key]
         )
+        leaves.extend(sorted(key for key in left_ranking if baseline[key] <= limit))
         return {"entram": enters, "saem": leaves}
 
     return {
+        "nota_metodologica": (
+            "Spearman e mudanças ordinais consideram somente municípios rankeados "
+            "nos dois cenários; entradas e saídas registram mudanças de disponibilidade."
+        ),
+        "n_rankeados_baseline": len(baseline_ids),
+        "n_rankeados_alternativo": len(alternative_ids),
+        "entraram_no_ranking": entered_ranking,
+        "sairam_do_ranking": left_ranking,
         "spearman": rho,
         "mudanca_mediana": statistics.median(changes.values()) if changes else None,
         "maior_mudanca": max(changes.values(), default=None),

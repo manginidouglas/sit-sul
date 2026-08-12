@@ -38,6 +38,10 @@ def validate_pr_payload(body: bytes) -> list[dict]:
 
 
 def execute(raw_path: Path, report_path: Path, manifest_path: Path) -> dict:
+    if raw_path.exists():
+        raise FileExistsError(
+            f"raw imutável já existe: {raw_path}; use outro caminho de snapshot"
+        )
     request = Request(
         URL, headers={"User-Agent": "SIT-mvp-demo-2026/1.0", "Accept-Encoding": "gzip"}
     )
