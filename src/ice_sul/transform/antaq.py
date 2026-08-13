@@ -155,74 +155,181 @@ def write_csv(rows: list[dict[str, object]], path: Path) -> None:
         writer.writeheader(); writer.writerows(rows)
 
 
-def read_antaq_installations(path: Path) -> list[dict[str, object]]:
-    """Lê o XLSX oficial ``Portos.xlsx`` diretamente do ZIP geográfico ANTAQ.
+def _read_dbf(payload: bytes) -> list[dict[str, str]]:
+    """Lê dBASE do snapshot com a codificação Windows-1252 preservada pela ANTAQ."""
+    count = int.from_bytes(payload[4:8], "little")
+    header_length = int.from_bytes(payload[8:10], "little")
+    record_length = int.from_bytes(payload[10:12], "little")
+    fields = []
+    for offset in range(32, header_length - 1, 32):
+        descriptor = payload[offset:offset + 32]
+        name = descriptor[:11].split(b"\0", 1)[0].decode("ascii")
+        fields.append((name, descriptor[16]))
+    rows = []
+    for index in range(count):
+        record = payload[header_length + index * record_length:header_length + (index + 1) * record_length]
+        if len(record) != record_length:
+            raise ValueError("DBF Portos.dbf truncado")
+        if record[:1] == b"*":
+            continue
+        cursor, row = 1, {}
+        for name, width in fields:
+            raw = record[cursor:cursor + width]
+            cursor += width
+            # Portos.dbf não declara code page no header, mas seus bytes (á=E1,
+            # í=ED, ó=F3) são Windows-1252/Latin-1. Ao contrário do XLSX,
+            # preservam os caracteres que este snapshot gravou como U+FFFD.
+            row[name] = raw.decode("cp1252").strip()
+        rows.append(row)
+    return rows
 
-    O leitor é intencionalmente stdlib-only e valida os nomes reais do snapshot
-    de 06/05/2025, em vez de impor ao raw o schema interno.
+
+def read_antaq_installations(path: Path) -> list[dict[str, object]]:
+    """Lê o cadastro oficial do ZIP e preserva corretamente seus caracteres.
+
+    ``Portos.xlsx`` é validado como parte obrigatória do recurso oficial. Neste
+    vintage, porém, o próprio XML do XLSX contém U+FFFD em textos acentuados.
+    O ``Portos.dbf`` companheiro contém as mesmas 1.179 linhas e preserva os
+    bytes Windows-1252; ele é usado para os valores, sem tentar adivinhar letras
+    perdidas nem aplicar substituições pontuais.
     """
     import io
     import xml.etree.ElementTree as ET
     import zipfile
 
-    ns = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main", "r": "http://schemas.openxmlformats.org/officeDocument/2006/relationships"}
+    ns = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
     with zipfile.ZipFile(path) as outer:
-        xlsx_name = next((n for n in outer.namelist() if n.lower().endswith("portos.xlsx")), None)
+        xlsx_name = next((name for name in outer.namelist() if name.lower().endswith("portos.xlsx")), None)
+        dbf_name = next((name for name in outer.namelist() if name.lower().endswith("portos.dbf")), None)
         if not xlsx_name:
             raise ValueError("ZIP ANTAQ sem Portos.xlsx")
-        payload = io.BytesIO(outer.read(xlsx_name))
-    with zipfile.ZipFile(payload) as book:
-        shared = []
-        if "xl/sharedStrings.xml" in book.namelist():
-            root = ET.fromstring(book.read("xl/sharedStrings.xml"))
-            shared = ["".join(si.itertext()).strip() for si in root.findall("m:si", ns)]
+        if not dbf_name:
+            raise ValueError("ZIP ANTAQ sem Portos.dbf necessário para preservar encoding")
+        xlsx_payload = io.BytesIO(outer.read(xlsx_name))
+        dbf_rows = _read_dbf(outer.read(dbf_name))
+    with zipfile.ZipFile(xlsx_payload) as book:
+        shared_root = ET.fromstring(book.read("xl/sharedStrings.xml"))
+        shared = ["".join(item.itertext()).strip() for item in shared_root.findall("m:si", ns)]
         sheet = ET.fromstring(book.read("xl/worksheets/sheet1.xml"))
-        rows = []
-        for xml_row in sheet.findall(".//m:sheetData/m:row", ns):
-            values = []
-            for cell in xml_row.findall("m:c", ns):
-                letters = re.match(r"[A-Z]+", cell.get("r", "A")).group()
-                column = 0
-                for letter in letters: column = column * 26 + ord(letter) - 64
-                while len(values) < column - 1: values.append("")
-                value = cell.find("m:v", ns)
-                text = "" if value is None else value.text or ""
-                if cell.get("t") == "s": text = shared[int(text)]
-                elif cell.get("t") == "inlineStr": text = "".join(cell.itertext()).strip()
-                values.append(text)
-            rows.append(values)
+        first_row = sheet.find(".//m:sheetData/m:row", ns)
+        headers = []
+        for cell in first_row.findall("m:c", ns):
+            value = cell.find("m:v", ns)
+            headers.append(shared[int(value.text)])
     required = {"cdi_tuaria", "nome", "tipo", "estado", "cidade", "latitude", "longitude", "fonte"}
-    headers = rows[0]
-    if not required <= set(headers):
-        raise ValueError(f"schema Portos.xlsx inesperado: ausentes {sorted(required - set(headers))}")
+    if not required <= set(headers) or not required <= set(dbf_rows[0]):
+        raise ValueError(f"schema oficial inesperado: ausentes {sorted(required - set(headers))}")
+    if len(dbf_rows) != len(sheet.findall(".//m:sheetData/m:row", ns)) - 1:
+        raise ValueError("XLSX e DBF divergem em número de linhas")
     result = []
-    for values in rows[1:]:
-        raw = dict(zip(headers, values))
-        if not raw.get("cdi_tuaria") or not raw.get("nome"): continue
-        clean_coord = lambda value: str(value).replace("°", "").replace("�", "").strip()
+    for raw in dbf_rows:
+        if not raw.get("cdi_tuaria") or not raw.get("nome"):
+            continue
+        clean_coord = lambda value: str(value).removesuffix("°").strip()
+        clean_text = lambda value: str(value).rstrip("\xa0° ").strip()
         result.append({
-            "instalacao_id": raw["cdi_tuaria"].strip(), "nome": raw["nome"].strip(" �"),
-            "tipo": raw["tipo"], "uf": raw.get("estado", ""), "municipio": raw.get("cidade", ""),
+            "instalacao_id": raw["cdi_tuaria"].strip(), "nome": clean_text(raw["nome"]),
+            "tipo": clean_text(raw["tipo"]), "uf": clean_text(raw.get("estado", "")),
+            "municipio": clean_text(raw.get("cidade", "")),
             "latitude": clean_coord(raw["latitude"]), "longitude": clean_coord(raw["longitude"]),
             "referencia_coordenada": "ponto da camada geográfica ANTAQ; natureza não especificada",
-            "fonte_cadastro": raw.get("fonte", "ANTAQ"),
+            "fonte_cadastro": clean_text(raw.get("fonte", "ANTAQ")),
         })
     return result
 
-
 def read_antaq_movements(path: Path) -> list[dict[str, object]]:
-    """Lê evidências tabulares transcritas do Anuário ANTAQ 2025.
-
-    O TSV preserva o texto/valor publicado e a página. Valores ``mi t`` são
-    convertidos programaticamente em toneladas. Não se infere carga ausente.
-    """
+    """Lê evidência anual oficial sem fingir que o consolidado é dezembro."""
     with path.open(encoding="utf-8", newline="") as stream:
         rows = list(csv.DictReader(stream, delimiter="\t"))
-    required = {"instalacao_id", "nome_publicado", "valor_publicado", "unidade", "natureza_carga", "pagina"}
+    required = {
+        "instalacao_id", "nome_publicado", "valor_publicado", "unidade",
+        "escopo_movimentacao_evidenciada", "natureza_carga_evidenciada",
+        "tipo_evidencia", "fonte_movimentacao", "url", "pagina_ou_referencia",
+        "periodo_inicio", "periodo_fim", "coletado_em",
+    }
     if not rows or not required <= set(rows[0]):
-        raise ValueError("schema da evidência do Anuário 2025 inesperado")
+        raise ValueError("schema da evidência anual ANTAQ inesperado")
     result = []
     for row in rows:
         multiplier = Decimal("1000000") if row["unidade"] == "mi t" else Decimal("1")
-        result.append({"instalacao_id": row["instalacao_id"], "nome_publicado": row["nome_publicado"], "periodo": "2025-12", "movimentacao_t": str(_decimal(row["valor_publicado"]) * multiplier), "natureza_carga": row["natureza_carga"], "pagina_fonte": row["pagina"]})
+        amount = str(_decimal(row["valor_publicado"]) * multiplier) if row["valor_publicado"].strip() else ""
+        result.append({**row, "movimentacao_evidenciada_t": amount})
     return result
+
+
+def _category(official_type: object) -> str:
+    normalized = _key(official_type)
+    if normalized == "porto organizado":
+        return "porto_organizado"
+    if normalized == "terminal de uso privado":
+        return "tup"
+    return "fora_escopo_mvp"
+
+
+def _valid_coordinate(latitude: object, longitude: object) -> bool:
+    try:
+        lat, lon = float(str(latitude)), float(str(longitude))
+    except ValueError:
+        return False
+    return -90 <= lat <= 90 and -180 <= lon <= 180
+
+
+def evaluate_annual_installations(
+    installations: list[dict[str, object]], evidence: list[dict[str, object]],
+    *, vintage: str = "2025-05-06",
+) -> list[dict[str, object]]:
+    """Classifica o universo cadastral sem converter ausência em inelegibilidade."""
+    evidence_by_id = {str(item["instalacao_id"]): item for item in evidence}
+    id_counts = defaultdict(int)
+    for item in installations:
+        id_counts[str(item["instalacao_id"])] += 1
+    known_ids = set(id_counts)
+    orphan = sorted(set(evidence_by_id) - known_ids)
+    if orphan:
+        raise ValueError(f"evidência sem cadastro: {', '.join(orphan)}")
+    evaluated = []
+    for item in installations:
+        identifier = str(item["instalacao_id"])
+        conflict = id_counts[identifier] > 1
+        suffix = _key(item["tipo"]).replace(" ", "-")
+        uid = f"{identifier}--{suffix}" if conflict else identifier
+        category = _category(item["tipo"])
+        proof = evidence_by_id.get(identifier) if not conflict else None
+        amount = _decimal(proof["movimentacao_evidenciada_t"]) if proof and proof["movimentacao_evidenciada_t"] else None
+        nature = _nature(proof["natureza_carga_evidenciada"]) if proof else None
+        evidence_type = _key(proof["tipo_evidencia"]) if proof else ""
+        if conflict:
+            status, reason = "indeterminado", "ID ANTAQ conflitante; registros preservados e bloqueados para elegibilidade/routing"
+        elif category == "fora_escopo_mvp":
+            status, reason = "fora_escopo_mvp", "categoria oficial fora do escopo do MVP genérico"
+        elif not proof:
+            status, reason = "indeterminado", "sem evidência oficial recuperável suficiente; ausência não implica inelegibilidade"
+        elif category == "porto_organizado" and proof and (amount is None or amount > 0) and "positiva" in evidence_type:
+            status, reason = "elegivel", "porto organizado com evidência oficial positiva de movimentação em 2025"
+        elif category == "porto_organizado" and "ausencia" in evidence_type:
+            status, reason = "nao_elegivel", "evidência oficial explícita de ausência de movimentação em 2025"
+        elif category == "tup" and amount > 0 and nature in {GENERAL, CONTAINER}:
+            status, reason = "elegivel", "TUP com evidência oficial de carga geral e/ou conteinerizada"
+        elif category == "tup" and amount > 0 and nature == "granel" and "exclusiv" in evidence_type:
+            status, reason = "nao_elegivel", "TUP com evidência suficiente de movimentação exclusivamente graneleira/bulk"
+        else:
+            status, reason = "indeterminado", "evidência oficial insuficiente para aplicar com segurança a regra do MVP"
+        valid = _valid_coordinate(item.get("latitude"), item.get("longitude"))
+        evaluated.append({
+            "instalacao_uid": uid, "instalacao_id_antaq": identifier, "nome": item["nome"], "tipo_oficial": item["tipo"],
+            "categoria_mvp": category, "uf": item.get("uf", ""), "municipio": item.get("municipio", ""),
+            "latitude": item.get("latitude", ""), "longitude": item.get("longitude", ""),
+            "fonte_coordenada": item.get("fonte_cadastro", "ANTAQ"), "coordenada_valida": valid,
+            "conflito_cadastral": conflict, "status_mvp": status,
+            "justificativa_status": reason,
+            "movimentacao_evidenciada_t": proof["movimentacao_evidenciada_t"] if proof else "",
+            "escopo_movimentacao_evidenciada": proof["escopo_movimentacao_evidenciada"] if proof else "",
+            "natureza_carga_evidenciada": proof["natureza_carga_evidenciada"] if proof else "",
+            "fonte_movimentacao": proof["fonte_movimentacao"] if proof else "",
+            "pagina_ou_referencia": proof["pagina_ou_referencia"] if proof else "",
+            "periodo_inicio": proof["periodo_inicio"] if proof else "2025-01-01",
+            "periodo_fim": proof["periodo_fim"] if proof else "2025-12-31",
+            "vintage_cadastro": vintage,
+            "ajuste_acesso_terrestre_onda2": True,
+        })
+    return evaluated

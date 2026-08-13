@@ -18,6 +18,14 @@ def register_collector(name: str, factory: CollectorFactory) -> None:
 
 
 def build_collectors(names: list[str]) -> list[Collector]:
+    # Descoberta localizada mantém o registry extensível e funciona em processo limpo.
+    for name in names:
+        if name not in COLLECTORS:
+            try:
+                __import__(f"ice_sul.extract.{name}")
+            except ModuleNotFoundError as exc:
+                if exc.name != f"ice_sul.extract.{name}":
+                    raise
     missing = [name for name in names if name not in COLLECTORS]
     if missing:
         raise KeyError(f"coletores não registrados: {', '.join(missing)}")

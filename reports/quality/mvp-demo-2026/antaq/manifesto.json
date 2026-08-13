@@ -12,8 +12,8 @@
       "sha256": "79e28332bdd031388a6f2305e4f1e2e741c057a64a63724ea4278f78a040fb63",
       "arquivo": "data/raw/antaq/instalacoes-portuarias-2025-05-06.zip",
       "validacao": "ZIP íntegro contendo Portos.xlsx, SHP, DBF, KML, PRJ, SHX e QMD",
-      "versionado_git": false,
-      "politica_raw": "binário externo; baixar da URL oficial e validar SHA-256"
+      "vintage": "2025-05-06",
+      "caminho_local_esperado": "data/raw/antaq/instalacoes-portuarias-2025-05-06.zip"
     },
     {
       "recurso": "Desempenho Aquaviário 2025",
@@ -26,8 +26,8 @@
       "arquivo": "data/raw/antaq/Anuario2025.pdf",
       "periodo": "2025-01-01/2025-12-31",
       "validacao": "PDF íntegro; evidência nominal utilizada na página 19",
-      "versionado_git": false,
-      "politica_raw": "binário externo; baixar da URL oficial e validar SHA-256"
+      "vintage": "2025",
+      "caminho_local_esperado": "data/raw/antaq/Anuario2025.pdf"
     }
   ]
 }
