@@ -1,1 +1,1 @@
-"""Transformações específicas das fontes do SIT."""
+"""Transformações reproduzíveis por fonte."""
