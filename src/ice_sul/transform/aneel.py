@@ -1,101 +1,99 @@
-"""Territorialização municipal dos indicadores coletivos DEC e FEC."""
-
+"""Parsing, validação e territorialização municipal de DEC/FEC da ANEEL."""
 from __future__ import annotations
-
-import csv
-from collections import defaultdict
+import csv, math
+from collections import Counter, defaultdict
 from pathlib import Path
+from statistics import mean
 from typing import Iterable
 
-PERIODO = "2025"
-INDICADORES = {"DEC": "INF-ENE-01", "FEC": "INF-ENE-02"}
+PERIODO="2025"; INDICADORES={"DEC":"INF-ENE-01","FEC":"INF-ENE-02"}
 
+def parse_decimal(value:str)->float|None:
+    value=value.strip().replace(".","").replace(",",".")
+    return None if not value else float(value)
 
-def parse_decimal(value: str) -> float | None:
-    value = value.strip().replace(".", "").replace(",", ".")
-    return None if value == "" else float(value)
-
-
-def ipf(support: set[tuple[str, str]], row_margins: dict[str, float], column_margins: dict[str, float], *, tolerance: float = 1e-8, max_iterations: int = 10_000) -> tuple[dict[tuple[str, str], float], list[str]]:
-    """Ajusta células positivas à margem municipal e de conjunto conhecida."""
-    issues = []
-    if abs(sum(row_margins.values()) - sum(column_margins.values())) > tolerance:
-        issues.append(f"margens incompatíveis: municipios={sum(row_margins.values()):.6f}; conjuntos={sum(column_margins.values()):.6f}")
-        return {}, issues
-    cells = {edge: 1.0 for edge in support}
-    if any(not any(m == row for m, _ in support) for row in row_margins) or any(not any(c == col for _, c in support) for col in column_margins):
-        return {}, ["margem positiva sem célula na matriz de suporte"]
+def ipf(support:set[tuple[str,str]],row_margins:dict[str,float],column_margins:dict[str,float],*,tolerance=1e-8,max_iterations=10_000):
+    issues=[]
+    if abs(sum(row_margins.values())-sum(column_margins.values()))>tolerance:
+        return {},[f"margens incompatíveis: municipios={sum(row_margins.values()):.6f}; conjuntos={sum(column_margins.values()):.6f}"]
+    cells={edge:1. for edge in support}
+    if any(not any(m==r for m,_ in support) for r in row_margins) or any(not any(c==col for _,c in support) for col in column_margins): return {},["margem positiva sem célula na matriz de suporte"]
     for _ in range(max_iterations):
-        for row, target in row_margins.items():
-            keys = [key for key in cells if key[0] == row]
-            total = sum(cells[key] for key in keys)
-            for key in keys: cells[key] *= target / total
-        for col, target in column_margins.items():
-            keys = [key for key in cells if key[1] == col]
-            total = sum(cells[key] for key in keys)
-            for key in keys: cells[key] *= target / total
-        error = max([abs(sum(v for (r, _), v in cells.items() if r == row) - target) for row, target in row_margins.items()] + [abs(sum(v for (_, c), v in cells.items() if c == col) - target) for col, target in column_margins.items()])
-        if error <= tolerance: return cells, issues
-    return {}, [f"IPF não convergiu em {max_iterations} iterações"]
+        for r,target in row_margins.items():
+            keys=[k for k in cells if k[0]==r]; total=sum(cells[k] for k in keys)
+            for k in keys: cells[k]*=target/total
+        for c,target in column_margins.items():
+            keys=[k for k in cells if k[1]==c]; total=sum(cells[k] for k in keys)
+            for k in keys: cells[k]*=target/total
+        errors=[abs(sum(v for (r,_),v in cells.items() if r==key)-target) for key,target in row_margins.items()]+[abs(sum(v for (_,c),v in cells.items() if c==key)-target) for key,target in column_margins.items()]
+        if max(errors)<=tolerance:return cells,issues
+    return {},[f"IPF não convergiu em {max_iterations} iterações"]
 
-
-def territorialize(municipalities: Iterable[str], relations: Iterable[dict[str, str]], set_values: dict[str, dict[str, float]], weights: dict[tuple[str, str], float] | None = None, *, allow_fallback: bool = True, method_level: int = 2) -> list[dict[str, object]]:
-    links: dict[str, set[str]] = defaultdict(set)
-    for row in relations: links[row["municipio_id"]].add(row["conjunto_id"])
-    output = []
+def territorialize(municipalities:Iterable[str],relations:Iterable[dict[str,str]],set_values:dict[str,dict[str,float]],weights:dict[tuple[str,str],float]|None=None,*,allow_fallback=True)->list[dict[str,object]]:
+    links=defaultdict(set)
+    for row in relations:links[row["municipio_id"]].add(row["conjunto_id"])
+    output=[]
     for municipality in municipalities:
-        sets = sorted(links.get(municipality, set()))
-        for source_indicator, indicator_id in INDICADORES.items():
-            available = [(s, set_values.get(s, {}).get(source_indicator)) for s in sets]
-            available = [(s, v) for s, v in available if v is not None]
-            value = None; level = None; approximate = False
-            if len(sets) == 1 and len(available) == 1:
-                value, level = available[0][1], 1
-            elif available and len(available) == len(sets) and weights and all(weights.get((municipality, s), 0) > 0 for s, _ in available):
-                denominator = sum(weights[(municipality, s)] for s, _ in available)
-                value = sum(v * weights[(municipality, s)] for s, v in available) / denominator
-                level = method_level
-            elif allow_fallback and available and len(available) == len(sets):
-                value = sum(v for _, v in available) / len(available)
-                level, approximate = 4, True
-            if value is not None: value = round(value, 6)
-            output.append({"municipio_id": municipality, "indicador_id": indicator_id, "valor_bruto": value, "periodo_referencia": PERIODO, "flag_qualidade": "ausente" if value is None else ("territorializacao_aproximada" if approximate else "observado"), "metodo_territorializacao": None if level is None else f"nivel_{level}", "territorializacao_aproximada": approximate})
+      sets=sorted(links.get(municipality,set()))
+      for source,indicator in INDICADORES.items():
+        available=[(s,set_values.get(s,{}).get(source)) for s in sets]; available=[x for x in available if x[1] is not None]
+        value=None;level=None;approx=False;used={}
+        if len(sets)==1 and len(available)==1:value,level=available[0][1],1
+        elif available and len(available)==len(sets) and weights and all(math.isfinite(weights.get((municipality,s),0)) and weights.get((municipality,s),0)>0 for s,_ in available):
+            used={s:weights[(municipality,s)] for s,_ in available}; denominator=sum(used.values());value=sum(v*used[s] for s,v in available)/denominator;level=2
+        elif allow_fallback and available and len(available)==len(sets):value=sum(v for _,v in available)/len(available);level=4;approx=True
+        if value is not None:value=round(value,6)
+        output.append({"municipio_id":municipality,"indicador_id":indicator,"valor_bruto":value,"periodo_referencia":PERIODO,"flag_qualidade":"ausente" if value is None else ("territorializacao_aproximada" if approx else "observado"),"metodo_territorializacao":None if level is None else f"nivel_{level}","territorializacao_aproximada":approx,"pesos_uc":"|".join(f"{s}:{used[s]:g}" for s in sorted(used))})
     return output
 
-
-def read_annual_set_values(path: Path, year: str = PERIODO) -> dict[str, dict[str, float]]:
-    totals: dict[tuple[str, str], float] = defaultdict(float); seen = set(); periods: dict[tuple[str, str], set[str]] = defaultdict(set)
+def read_annual_set_values(path:Path,year=PERIODO):
+    totals=defaultdict(float);seen=set();periods=defaultdict(set)
     with path.open(encoding="utf-8-sig") as stream:
-        for row in csv.DictReader(stream, delimiter=";"):
-            indicator = row["SigIndicador"].strip(); period = row["NumPeriodoIndice"].strip()
-            if row["AnoIndice"] != year or indicator not in INDICADORES: continue
-            key = (row["IdeConjUndConsumidoras"], indicator, period)
-            if key in seen: raise ValueError(f"duplicidade ANEEL: {key}")
-            seen.add(key); value = parse_decimal(row["VlrIndiceEnviado"])
-            if value is not None: totals[key[:2]] += value; periods[key[:2]].add(period)
-    complete = {key: value for key, value in totals.items() if periods[key] == {str(month) for month in range(1, 13)}}
-    return {set_id: {indicator: value for (candidate, indicator), value in complete.items() if candidate == set_id} for set_id in {key[0] for key in complete}}
+      for row in csv.DictReader(stream,delimiter=";"):
+        indicator=row["SigIndicador"].strip();period=row["NumPeriodoIndice"].strip()
+        if row["AnoIndice"]!=year or indicator not in INDICADORES:continue
+        key=(row["IdeConjUndConsumidoras"],indicator,period)
+        if key in seen:raise ValueError(f"duplicidade ANEEL: {key}")
+        seen.add(key);value=parse_decimal(row["VlrIndiceEnviado"])
+        if value is not None:totals[key[:2]]+=value;periods[key[:2]].add(period)
+    complete={k:v for k,v in totals.items() if periods[k]=={str(i) for i in range(1,13)}}
+    result=defaultdict(dict)
+    for (set_id,indicator),value in complete.items():result[set_id][indicator]=value
+    return dict(result)
 
-
-def audit(rows: list[dict[str, object]]) -> dict[str, int]:
-    methods = {f"nivel_{n}": set() for n in range(1, 5)}; missing = set()
-    for row in rows:
-        (missing if row["valor_bruto"] is None else methods[row["metodo_territorializacao"]]).add(row["municipio_id"])
-    return {**{key: len(value) for key, value in methods.items()}, "sem_resultado": len(missing)}
-
-
-def read_relations(path: Path) -> list[dict[str, str]]:
-    for encoding in ("utf-8-sig", "latin1"):
-        try:
-            with path.open(encoding=encoding) as stream:
-                return [{"municipio_id": row["CodMunicipio"], "conjunto_id": row["IdeConjUnidConsumidoras"]} for row in csv.DictReader(stream, delimiter=";")]
-        except UnicodeDecodeError:
-            continue
+def read_relations(path:Path):
+    for encoding in ("utf-8-sig","latin1"):
+      try:
+        with path.open(encoding=encoding) as stream:return [{"municipio_id":r["CodMunicipio"],"conjunto_id":r["IdeConjUnidConsumidoras"]} for r in csv.DictReader(stream,delimiter=";")]
+      except UnicodeDecodeError:pass
     raise ValueError("codificação do IndQual Município não reconhecida")
 
+def read_bdgd_weights(paths:Iterable[Path]):
+    """Conta UCs ativas nas tabelas disjuntas por tensão UCBT/UCMT/UCAT."""
+    try:from pyogrio.raw import read
+    except ImportError as exc:raise RuntimeError("pyogrio é necessário para ler File Geodatabase BDGD") from exc
+    import zipfile
+    weights=Counter();sources=[]
+    for path in paths:
+      if not path.exists():continue
+      root=zipfile.ZipFile(path).namelist()[0].rstrip("/");dataset=f"/vsizip/{path.resolve()}/{root}"
+      for layer in ("UCBT_tab","UCMT_tab","UCAT_tab"):
+        meta,_,_,arrays=read(dataset,layer=layer,read_geometry=False,columns=["MUN","CONJ","SIT_ATIV"]);columns=dict(zip(meta["fields"],arrays));count=0
+        for municipality,set_id,status in zip(columns["MUN"],columns["CONJ"],columns["SIT_ATIV"]):
+          if municipality and set_id is not None and str(status).strip()=="AT":weights[(str(municipality),str(int(set_id)))]+=1;count+=1
+        sources.append({"arquivo":path.name,"tabela":layer,"registros_ativos":count,"campos":["MUN","CONJ","SIT_ATIV"]})
+    return dict(weights),sources
 
-def write_csv(rows: list[dict[str, object]], path: Path) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8", newline="") as stream:
-        writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
-        writer.writeheader(); writer.writerows(rows)
+def audit(rows:list[dict[str,object]]):
+    by_indicator={indicator:{"metodos":Counter(),"ausentes":[]} for indicator in INDICADORES.values()}
+    municipality=defaultdict(set)
+    for row in rows:
+      indicator=row["indicador_id"]
+      if row["valor_bruto"] is None:by_indicator[indicator]["ausentes"].append(row["municipio_id"]);municipality[row["municipio_id"]].add("missing_"+indicator)
+      else:by_indicator[indicator]["metodos"][row["metodo_territorializacao"]]+=1;municipality[row["municipio_id"]].add(row["metodo_territorializacao"])
+    both=sum(1 for x in municipality.values() if {"missing_INF-ENE-01","missing_INF-ENE-02"}<=x)
+    return {"por_indicador":{k:{"metodos":dict(v["metodos"]),"n_ausente":len(v["ausentes"]),"municipios_ausentes":v["ausentes"]} for k,v in by_indicator.items()},"missing_ambos":both}
+
+def write_csv(rows,path):
+    path.parent.mkdir(parents=True,exist_ok=True)
+    with path.open("w",encoding="utf-8",newline="") as stream:w=csv.DictWriter(stream,fieldnames=list(rows[0]),lineterminator="\n");w.writeheader();w.writerows(rows)

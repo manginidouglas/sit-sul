@@ -1,4 +1,6 @@
 import csv
+import json
+import zipfile
 from pathlib import Path
 
 import pytest
@@ -6,6 +8,7 @@ import pytest
 from ice_sul.extract.aneel import AneelCollector
 from ice_sul.extract.contracts import CollectionStatus
 from ice_sul.transform.aneel import PERIODO, audit, ipf, read_annual_set_values, territorialize
+from ice_sul.transform.aneel_materialize import canonical, materialize, validate_output
 
 
 VALUES = {"a": {"DEC": 10.0, "FEC": 2.0}, "b": {"DEC": 20.0, "FEC": 4.0}}
@@ -56,7 +59,9 @@ def test_absent_weights_require_explicit_fallback():
     rows = territorialize(["1"], relations, VALUES)
     assert rows[0]["valor_bruto"] == 15
     assert rows[0]["territorializacao_aproximada"] is True
-    assert audit(rows) == {"nivel_1": 0, "nivel_2": 0, "nivel_3": 0, "nivel_4": 1, "sem_resultado": 0}
+    result = audit(rows)
+    assert result["por_indicador"]["INF-ENE-01"]["metodos"] == {"nivel_4": 1}
+    assert result["por_indicador"]["INF-ENE-02"]["n_ausente"] == 0
 
 
 def test_partial_set_values_do_not_silently_average():
@@ -86,3 +91,53 @@ def test_parser_does_not_publish_incomplete_year(tmp_path):
     path = tmp_path / "source.csv"
     _continuity(path, [{"IdeConjUndConsumidoras": "a", "SigIndicador": "DEC", "AnoIndice": PERIODO, "NumPeriodoIndice": "12", "VlrIndiceEnviado": "1"}])
     assert read_annual_set_values(path) == {}
+
+
+def test_zero_or_invalid_weight_falls_back_explicitly():
+    relations = [{"municipio_id": "1", "conjunto_id": x} for x in ("a", "b")]
+    rows = territorialize(["1"], relations, VALUES, {("1", "a"): 0, ("1", "b"): -1})
+    assert {r["metodo_territorializacao"] for r in rows} == {"nivel_4"}
+
+
+def test_combination_levels_and_indicator_specific_missing():
+    relations = [{"municipio_id": "1", "conjunto_id": "a"}, {"municipio_id": "2", "conjunto_id": "a"}, {"municipio_id": "2", "conjunto_id": "b"}, {"municipio_id": "3", "conjunto_id": "a"}, {"municipio_id": "3", "conjunto_id": "b"}]
+    values = {**VALUES, "b": {"DEC": 20.0}}
+    rows = territorialize(["1", "2", "3", "4"], relations, values, {("2", "a"): 1, ("2", "b"): 2})
+    assert next(r for r in rows if r["municipio_id"] == "1")["metodo_territorializacao"] == "nivel_1"
+    assert next(r for r in rows if r["municipio_id"] == "2")["metodo_territorializacao"] == "nivel_2"
+    result = audit(rows)
+    assert result["por_indicador"]["INF-ENE-02"]["n_ausente"] == 3
+    assert result["missing_ambos"] == 1
+
+
+def test_zip_to_complete_canonical_output(tmp_path):
+    raw = tmp_path / "raw"; raw.mkdir(); interim = tmp_path / "interim"; report = tmp_path / "report"
+    source = tmp_path / "continuity.csv"
+    records = []
+    for indicator in ("DEC", "FEC"):
+        records += [{"IdeConjUndConsumidoras": "a", "SigIndicador": indicator, "AnoIndice": PERIODO, "NumPeriodoIndice": str(month), "VlrIndiceEnviado": "1,0"} for month in range(1, 13)]
+    _continuity(source, records)
+    with zipfile.ZipFile(raw / "indicadores-continuidade-2020-2029.zip", "w") as z:
+        z.write(source, "indicadores-continuidade-coletivos-2020-2029.csv")
+    with open("data/processed/2026/municipios.csv", encoding="utf-8") as f: municipalities = list(csv.DictReader(f))
+    with (raw / "indqual-municipio.csv").open("w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=["CodMunicipio", "IdeConjUnidConsumidoras"], delimiter=";"); writer.writeheader()
+        for municipality in municipalities: writer.writerow({"CodMunicipio": municipality["municipio_id"], "IdeConjUnidConsumidoras": "a"})
+    result = materialize(raw, Path("data/processed/2026/municipios.csv"), interim, report)
+    with (interim / "indicadores_municipais_2025.csv").open() as f: output = list(csv.DictReader(f))
+    assert len(output) == 2382 and {r["municipio_id"] for r in output} == {r["municipio_id"] for r in municipalities}
+    assert result["validacoes"]["linhas"] == 2382
+
+
+def test_canonical_and_output_reject_extra_or_missing(tmp_path):
+    path = tmp_path / "municipios.csv"; path.write_text("municipio_id,municipio_nome,uf_sigla\n4100000,X,PR\n", encoding="utf-8")
+    with pytest.raises(ValueError, match="1.191"): canonical(path)
+    with pytest.raises(ValueError, match="exatamente DEC e FEC"): validate_output([], ["4100000"])
+
+
+def test_existing_raw_divergent_from_manifest_is_not_overwritten(tmp_path, monkeypatch):
+    raw = tmp_path / "raw"; raw.mkdir(); target = raw / "indicadores-continuidade-2020-2029.zip"; target.write_bytes(b"changed")
+    (raw / "manifest.json").write_text(json.dumps([{"arquivo": str(target), "sha256": "wrong", "tamanho": 7}]))
+    monkeypatch.setattr("ice_sul.extract.aneel.download", lambda *a, **k: pytest.fail("não deve baixar"))
+    with pytest.raises(ValueError, match="diverge"): AneelCollector(raw).collect()
+    assert target.read_bytes() == b"changed"

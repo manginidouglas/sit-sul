@@ -1,69 +1,88 @@
 # ANEEL — DEC/FEC municipal, ano completo de 2025
 
-## Fontes oficiais e recorte
+## Reprodução
 
-- **Indicadores Coletivos de Continuidade (DEC e FEC)**, recurso bulk oficial
-  `indicadores-continuidade-coletivos-2020-2029.zip`, consultado diretamente no
-  Portal de Dados Abertos da ANEEL. Snapshot obtido em 12/08/2026: 71.132.869
-  bytes, SHA-256 `597bf06384edd12bcf4044c1c4555ff1a8b975a39be25041ca019d6b95d4c8f4`.
-- **IndQual Município**, chave oficial entre conjunto elétrico e município.
-  Snapshot gerado pela fonte em 05/08/2026 e obtido em 12/08/2026: 2.182.847
-  bytes, SHA-256 `ca21e65595eff64077967a4e53aebe4c980ba319e4a314eec837b8807d8596ba`.
-- Licença declarada no catálogo ANEEL: Open Data Commons ODbL. URLs e metadados
-  são constantes do coletor; o manifesto auditável é criado junto ao raw.
+```bash
+python -m pip install -e '.[dev]'
+python -m pip install pyogrio
+python -m ice_sul.transform.aneel_materialize \
+  --bdgd data/raw/aneel/ceee.zip data/raw/aneel/celesc.zip \
+  data/raw/aneel/copel.zip data/raw/aneel/rge.zip
+```
 
-Foram selecionados exclusivamente `DEC` e `FEC`, `AnoIndice=2025`. O valor anual
-é a soma dos doze períodos mensais; pares conjunto–indicador sem os doze meses
-não são publicados. O universo canônico contém 1.191 municípios e a saída longa
-contém 2.382 linhas. Ausência permanece ausência, sem imputação.
+O comando valida o ZIP, extrai em diretório temporário exatamente
+`indicadores-continuidade-coletivos-2020-2029.csv`, exige 12 competências,
+lê IndQual e as BDGDs, carrega diretamente o cadastro canônico, valida 1.191 IDs
+e duas linhas por ID e grava `data/interim/aneel/{indicadores_municipais_2025.csv,auditoria.json}` e este diretório de QA. Raw nunca é alterado.
 
-## Territorialização e tentativas de pesos
+## Fontes oficiais, fórmula anual e proveniência
 
-1. Um único conjunto ativo relacionado: valor anual direto (**nível 1**).
-2. O IndQual Município não informa UCs na célula município × conjunto; portanto
-   não houve célula com peso real utilizável (**nível 2**).
-3. Foram avaliados os caminhos oficiais previstos. `NumCon` da própria base de
-   continuidade dá margem por conjunto, mas não a margem municipal. INDGER não
-   publica matriz município × conjunto; SAMP 2025 publica mercado por agente,
-   classe e modalidade, sem código municipal; e o recurso nacional BDGD disponível
-   no catálogo não oferece snapshot temporal de 2025 consolidado adequado a esta
-   execução. Sem as duas margens contemporâneas, executar IPF inventaria uma
-   margem municipal e foi corretamente recusado. A implementação de IPF registra
-   margens incompatíveis e não converge silenciosamente (**nível 3: zero**).
-4. Para relações múltiplas remanescentes aplicou-se a média simples explícita
-   aprovada apenas para o MVP, sempre marcada
-   `territorializacao_aproximada=true` (**nível 4**).
+Foram efetivamente usados: **Indicadores Coletivos de Continuidade (DEC/FEC)** e
+**IndQual Município**, do catálogo ANEEL, e as BDGD 2024 de Copel-DIS, Celesc-DIS,
+RGE e CEEE Equatorial, do ArcGIS oficial ANEEL. URLs exatas, vintage, horário,
+tamanho, hash, tipo HTTP, licença e validações estão em `manifest.json`.
 
-A relação IndQual não traz vigência da aresta. Para evitar misturar conjuntos
-históricos, uma aresta só foi considerada ativa quando o conjunto possuía DEC/FEC
-completo em 2025. Esta limitação e todo nível 4 permanecem visíveis na saída.
+O dicionário oficial de Continuidade v1.0 (06/06/2022) define DEC em horas e FEC
+em número de interrupções; `AnoIndice` como ano de competência;
+`NumPeriodoIndice` como “período do índice expressado em meses”; e
+`VlrIndiceEnviado` como o valor enviado. Também declara atualização mensal e que
+DEC/FEC representam tempo/número de interrupções no período considerado (mês,
+trimestre ou ano). O recurso 2025 contém competências 1–12 e não contém uma linha
+anual separada. Conforme a acumulação temporal do Módulo 8 do PRODIST referenciado
+pelo próprio dicionário, o anual é a soma das doze parcelas mensais. O pipeline
+recusa qualquer conjunto × indicador que não tenha exatamente os meses 1–12 e
+recusa competências duplicadas; não mistura denominadores nem calcula média dos
+meses. Fonte documental: dicionário oficial disponível no recurso
+`dm-indicadores-continuidade.pdf` do catálogo de Continuidade.
 
-## Auditoria de cobertura
+## Investigação operacional da BDGD
 
-| classificação | municípios |
-|---|---:|
-| nível 1 | 241 |
-| nível 2 | 0 |
-| nível 3 | 0 |
-| nível 4 | 945 |
-| sem resultado | 5 |
+O catálogo ArcGIS oficial foi consultado por `orgId=J5unWNi0P2dwjI3y`, tag BDGD
+e vintage `2024-12-31`; não havia item com tag/vintage 2025. Foram identificados
+os grandes agentes Sul Copel-DIS, Celesc-DIS, RGE e CEEE Equatorial e os agentes
+locais Mux Energia, Cocel, Forcel, Hidropan, DEMEI, EFLUL, Certel, Ceriluz,
+Cerfox, Cooperluz, Certaja, Cersul, Ceris, Ceripa, Cernhe, Ceral-DIS, Coopermila,
+Coopercocal, Coopera, Cerpro, Cergapa, Coopersul, Cermc, Coopernorte, Cerpalo,
+Cerrp, Ceraca, Certrel, Cooperzem, Certhil, Cergal, Cercos, Cerej, Cervam,
+Cermissões, Cermoful, Cersad, Cergral e Cerbranorte.
 
-`sem resultado` significa que pelo menos um dos indicadores não pôde ser obtido;
-nenhum zero ou média estadual foi usado para preencher a lacuna. A contagem
-reexecutável também está em `auditoria.json`.
+A tentativa operacional baixou e abriu os quatro File Geodatabases dos grandes
+agentes (4,52 GB transferidos). Todos expõem 43 layers. Os layers relevantes e
+seus schemas reais são `UCBT_tab`, `UCMT_tab` e `UCAT_tab`, cada registro sendo
+uma UC no universo de baixa, média e alta tensão, respectivamente; são universos
+de tensão mutuamente exclusivos. Foram usados somente `MUN` (IBGE), `CONJ`
+(identificador do conjunto) e `SIT_ATIV`; somente `SIT_ATIV='AT'` foi contado.
+`CONJ` (polígono) foi inspecionado e rejeitado como peso, pois área não é UC.
+As tabelas de ativos/rede foram rejeitadas por não representarem UCs. As BDGDs
+locais foram inventariadas, mas não baixadas em massa porque os quatro grandes
+arquivos já forneceram todos os pesos completos que puderam ser aplicados aos
+municípios multiconjunto atendidos por esses agentes; não se atribuiu peso parcial.
 
-## Inspeção manual nos três estados
+Foram obtidas **3.084 células município × conjunto** com UCs ativas. Só há nível
+2 quando todos os conjuntos com DEC/FEC completo relacionados ao município têm
+peso positivo; isso tornou 382 municípios ponderáveis. Ausência de uma célula
+leva ao nível 4, nunca a peso zero. Não havia duas margens oficiais contemporâneas
+para os restantes, portanto IPF (nível 3) não foi acionado.
 
-Foram conferidas as relações, os doze registros mensais dos conjuntos e o valor
-anual produzido para um caso de cada UF: **Abatiá/PR** (nível 4, DEC 6,835),
-**Abdon Batista/SC** (nível 1, DEC 9,18) e **Aceguá/RS** (nível 1, DEC 28,28).
-Os casos confirmam que conjunto não foi tratado como sinônimo de município e que
-o fallback do Paraná está marcado na própria linha.
+## Resultado e QA
 
-## Endpoints oficiais
+| situação | municípios | % do universo |
+|---|---:|---:|
+| nível 1 | 241 | 20,24% |
+| nível 2 (BDGD) | 382 | 32,07% |
+| nível 3 | 0 | 0,00% |
+| nível 4 | 563 | 47,27% |
+| sem DEC e FEC | 5 | 0,42% |
 
-- Continuidade: <https://dadosabertos.aneel.gov.br/dataset/indicadores-coletivos-de-continuidade-dec-e-fec>
-- IndQual Município: <https://dadosabertos.aneel.gov.br/dataset/indqual-municipio>
-- BDGD: <https://dadosabertos.aneel.gov.br/dataset/base-de-dados-geografica-da-distribuidora-bdgd>
-- INDGER: <https://dadosabertos.aneel.gov.br/dataset/indger-indicadores-gerenciais-da-distribuicao>
-- SAMP: <https://dadosabertos.aneel.gov.br/dataset/samp>
+A BDGD retirou **382 municípios** do nível 4. DEC e FEC têm, cada um, 1.186
+observações (99,58%) e 5 ausências. Os ausentes são Anitápolis/SC, Bombinhas/SC,
+Balneário Rincão/SC, Colorado/RS e Pinto Bandeira/RS; detalhes por indicador,
+motivo e conjuntos constam em `qa.json`.
+
+Nos 382 ponderados, ponderação BDGD versus média simples apresentou: DEC Spearman
+0,8296, diferença absoluta mediana 1,4718, P95 5,4675 e máxima 12,1006;
+FEC Spearman 0,8191, mediana 0,8112, P95 2,7445 e máxima 5,6902. Maiores mudanças
+e cortes por UF estão em `qa.json`, que também contém estatísticas Sul/UF/método,
+percentis, extremos, zeros, negativos, não finitos e inspeções de Curitiba,
+Florianópolis, Porto Alegre, Abatiá, Abdon Batista e Aceguá. Nenhum extremo foi
+removido, imputado ou winsorizado.

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -22,11 +23,22 @@ class AneelCollector:
     def collect(self) -> CollectionResult:
         entries = []
         artifacts = []
+        manifest = self.raw_dir / "manifest.json"
+        previous = {Path(item["arquivo"]).name: item for item in json.loads(manifest.read_text(encoding="utf-8"))} if manifest.exists() else {}
         for url, name in ((CONTINUIDADE_URL, "indicadores-continuidade-2020-2029.zip"), (MUNICIPIO_URL, "indqual-municipio.csv")):
             path = self.raw_dir / name
-            entries.append(download(url, path, source=self.source, indicators=["INF-ENE-01", "INF-ENE-02"], period="2025"))
+            if path.exists():
+                if not path.is_file() or path.stat().st_size == 0:
+                    raise ValueError(f"raw existente inválido, não sobrescrito: {path}")
+                digest = hashlib.sha256(path.read_bytes()).hexdigest()
+                if name in previous and (previous[name].get("sha256") != digest or previous[name].get("tamanho") != path.stat().st_size):
+                    raise ValueError(f"raw existente diverge do manifesto e não será sobrescrito: {path}")
+                entry = {"fonte": self.source, "url": url, "metodo": "GET", "periodo": "2025", "status_http": None, "content_type": None, "tamanho": path.stat().st_size, "sha256": digest, "arquivo": str(path), "licenca": "Open Data Commons ODbL", "validacao": "raw existente validado e reutilizado sem sobrescrita"}
+            else:
+                entry = download(url, path, source=self.source, indicators=["INF-ENE-01", "INF-ENE-02"], period="2025")
+                entry.update({"licenca": "Open Data Commons ODbL", "validacao": "download não vazio; estrutura validada na materialização"})
+            entries.append(entry)
             artifacts.append(str(path))
-        manifest = self.raw_dir / "manifest.json"
         manifest.write_text(json.dumps(entries, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         artifacts.append(str(manifest))
         return CollectionResult(self.source, CollectionStatus.SUCCESS, artifacts, ["INF-ENE-01", "INF-ENE-02"], entries)

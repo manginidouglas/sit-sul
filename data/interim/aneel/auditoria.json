@@ -1,0 +1,35 @@
+{
+  "por_indicador": {
+    "INF-ENE-01": {
+      "metodos": {
+        "nivel_2": 382,
+        "nivel_1": 241,
+        "nivel_4": 563
+      },
+      "n_ausente": 5,
+      "municipios_ausentes": [
+        "4201109",
+        "4202453",
+        "4220000",
+        "4305603",
+        "4314548"
+      ]
+    },
+    "INF-ENE-02": {
+      "metodos": {
+        "nivel_2": 382,
+        "nivel_1": 241,
+        "nivel_4": 563
+      },
+      "n_ausente": 5,
+      "municipios_ausentes": [
+        "4201109",
+        "4202453",
+        "4220000",
+        "4305603",
+        "4314548"
+      ]
+    }
+  },
+  "missing_ambos": 5
+}

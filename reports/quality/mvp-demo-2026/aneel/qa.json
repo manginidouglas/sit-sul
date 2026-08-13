@@ -1,0 +1,1413 @@
+{
+  "auditoria": {
+    "por_indicador": {
+      "INF-ENE-01": {
+        "metodos": {
+          "nivel_2": 382,
+          "nivel_1": 241,
+          "nivel_4": 563
+        },
+        "n_ausente": 5,
+        "municipios_ausentes": [
+          "4201109",
+          "4202453",
+          "4220000",
+          "4305603",
+          "4314548"
+        ]
+      },
+      "INF-ENE-02": {
+        "metodos": {
+          "nivel_2": 382,
+          "nivel_1": 241,
+          "nivel_4": 563
+        },
+        "n_ausente": 5,
+        "municipios_ausentes": [
+          "4201109",
+          "4202453",
+          "4220000",
+          "4305603",
+          "4314548"
+        ]
+      }
+    },
+    "missing_ambos": 5
+  },
+  "estatisticas": {
+    "sul": {
+      "INF-ENE-01": {
+        "n_observado": 1186,
+        "n_ausente": 5,
+        "minimo": 2.38,
+        "p1": 3.7069807999999997,
+        "p5": 5.54375,
+        "mediana": 11.401,
+        "p95": 21.345,
+        "p99": 27.085,
+        "maximo": 54.41,
+        "media": 12.175627493254638
+      },
+      "INF-ENE-02": {
+        "n_observado": 1186,
+        "n_ausente": 5,
+        "minimo": 1.77,
+        "p1": 2.3124992,
+        "p5": 3.30335025,
+        "mediana": 6.605,
+        "p95": 10.823333,
+        "p99": 13.819955400000012,
+        "maximo": 20.03,
+        "media": 6.813269643338955
+      }
+    },
+    "por_uf": {
+      "INF-ENE-01": {
+        "PR": {
+          "n_observado": 399,
+          "n_ausente": 0,
+          "minimo": 3.005884,
+          "p1": 3.55050568,
+          "p5": 4.66,
+          "mediana": 9.29,
+          "p95": 17.148955899999994,
+          "p99": 23.882145379999727,
+          "maximo": 54.41,
+          "media": 9.981317501253132
+        },
+        "SC": {
+          "n_observado": 292,
+          "n_ausente": 3,
+          "minimo": 2.87,
+          "p1": 3.371,
+          "p5": 5.45891685,
+          "mediana": 10.694901999999999,
+          "p95": 18.972708849999997,
+          "p99": 26.434339869999988,
+          "maximo": 26.958236,
+          "media": 11.26082654109589
+        },
+        "RS": {
+          "n_observado": 495,
+          "n_ausente": 2,
+          "minimo": 2.38,
+          "p1": 5.65898252,
+          "p5": 7.3489899,
+          "mediana": 13.466667,
+          "p95": 22.4809999,
+          "p99": 28.2337975,
+          "maximo": 29.99,
+          "media": 14.484014492929292
+        }
+      },
+      "INF-ENE-02": {
+        "PR": {
+          "n_observado": 399,
+          "n_ausente": 0,
+          "minimo": 1.77,
+          "p1": 2.01,
+          "p5": 2.5111396,
+          "mediana": 5.821577,
+          "p95": 11.1,
+          "p99": 18.233085819999985,
+          "maximo": 20.03,
+          "media": 6.134416523809524
+        },
+        "SC": {
+          "n_observado": 292,
+          "n_ausente": 3,
+          "minimo": 2.44,
+          "p1": 3.1419613600000003,
+          "p5": 4.01555105,
+          "mediana": 6.79,
+          "p95": 10.590689099999999,
+          "p99": 12.305719649999999,
+          "maximo": 14.825772,
+          "media": 6.9459495924657535
+        },
+        "RS": {
+          "n_observado": 495,
+          "n_ausente": 2,
+          "minimo": 1.87,
+          "p1": 3.2175758599999997,
+          "p5": 3.8839287000000002,
+          "mediana": 7.076667,
+          "p95": 10.823333,
+          "p99": 13.6684,
+          "maximo": 16.2,
+          "media": 7.282198632323232
+        }
+      }
+    },
+    "por_metodo": {
+      "INF-ENE-01": {
+        "nivel_1": {
+          "n_observado": 241,
+          "n_ausente": 0,
+          "minimo": 2.38,
+          "p1": 3.71,
+          "p5": 4.69,
+          "mediana": 10.79,
+          "p95": 20.26,
+          "p99": 29.34199999999999,
+          "maximo": 54.41,
+          "media": 12.10219917012448
+        },
+        "nivel_2": {
+          "n_observado": 382,
+          "n_ausente": 0,
+          "minimo": 3.005884,
+          "p1": 4.12699295,
+          "p5": 5.1419442,
+          "mediana": 10.143882,
+          "p95": 21.00149995,
+          "p99": 26.95758962,
+          "maximo": 41.676036,
+          "media": 11.37697712303665
+        },
+        "nivel_3": {
+          "n_observado": 0,
+          "n_ausente": 0
+        },
+        "nivel_4": {
+          "n_observado": 563,
+          "n_ausente": 0,
+          "minimo": 2.87,
+          "p1": 3.74246654,
+          "p5": 5.784333,
+          "mediana": 12.295,
+          "p95": 21.651666999999996,
+          "p99": 25.9268,
+          "maximo": 27.855,
+          "media": 12.748950170515098
+        }
+      },
+      "INF-ENE-02": {
+        "nivel_1": {
+          "n_observado": 241,
+          "n_ausente": 0,
+          "minimo": 1.87,
+          "p1": 2.01,
+          "p5": 2.85,
+          "mediana": 6.79,
+          "p95": 11.1,
+          "p99": 14.79599999999998,
+          "maximo": 20.03,
+          "media": 7.0181742738589215
+        },
+        "nivel_2": {
+          "n_observado": 382,
+          "n_ausente": 0,
+          "minimo": 2.090146,
+          "p1": 2.30588139,
+          "p5": 3.189042,
+          "mediana": 6.175317,
+          "p95": 10.807801549999999,
+          "p99": 15.462992669999993,
+          "maximo": 20.002056,
+          "media": 6.523834201570681
+        },
+        "nivel_3": {
+          "n_observado": 0,
+          "n_ausente": 0
+        },
+        "nivel_4": {
+          "n_observado": 563,
+          "n_ausente": 0,
+          "minimo": 1.77,
+          "p1": 2.65024364,
+          "p5": 3.7332503,
+          "mediana": 6.795,
+          "p95": 10.6509997,
+          "p99": 13.306599999999998,
+          "maximo": 15.83,
+          "media": 6.9219416198934285
+        }
+      }
+    }
+  },
+  "bdgd": {
+    "fontes": [
+      {
+        "arquivo": "ceee.zip",
+        "tabela": "UCBT_tab",
+        "registros_ativos": 1935168,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ]
+      },
+      {
+        "arquivo": "ceee.zip",
+        "tabela": "UCMT_tab",
+        "registros_ativos": 13520,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ]
+      },
+      {
+        "arquivo": "ceee.zip",
+        "tabela": "UCAT_tab",
+        "registros_ativos": 21,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ]
+      },
+      {
+        "arquivo": "celesc.zip",
+        "tabela": "UCBT_tab",
+        "registros_ativos": 3442573,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ]
+      },
+      {
+        "arquivo": "celesc.zip",
+        "tabela": "UCMT_tab",
+        "registros_ativos": 17085,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ]
+      },
+      {
+        "arquivo": "celesc.zip",
+        "tabela": "UCAT_tab",
+        "registros_ativos": 118,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ]
+      },
+      {
+        "arquivo": "copel.zip",
+        "tabela": "UCBT_tab",
+        "registros_ativos": 4975276,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ]
+      },
+      {
+        "arquivo": "copel.zip",
+        "tabela": "UCMT_tab",
+        "registros_ativos": 16925,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ]
+      },
+      {
+        "arquivo": "copel.zip",
+        "tabela": "UCAT_tab",
+        "registros_ativos": 71,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ]
+      },
+      {
+        "arquivo": "rge.zip",
+        "tabela": "UCBT_tab",
+        "registros_ativos": 3113915,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ]
+      },
+      {
+        "arquivo": "rge.zip",
+        "tabela": "UCMT_tab",
+        "registros_ativos": 21121,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ]
+      },
+      {
+        "arquivo": "rge.zip",
+        "tabela": "UCAT_tab",
+        "registros_ativos": 110,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ]
+      }
+    ],
+    "n_pesos_municipio_conjunto": 3084
+  },
+  "ausentes": [
+    {
+      "municipio_id": "4201109",
+      "municipio_nome": "Anitápolis",
+      "uf_sigla": "SC",
+      "indicador_id": "INF-ENE-01",
+      "motivo": "sem relação ativa com valor anual completo para o indicador",
+      "conjuntos_relacionados": []
+    },
+    {
+      "municipio_id": "4201109",
+      "municipio_nome": "Anitápolis",
+      "uf_sigla": "SC",
+      "indicador_id": "INF-ENE-02",
+      "motivo": "sem relação ativa com valor anual completo para o indicador",
+      "conjuntos_relacionados": []
+    },
+    {
+      "municipio_id": "4202453",
+      "municipio_nome": "Bombinhas",
+      "uf_sigla": "SC",
+      "indicador_id": "INF-ENE-01",
+      "motivo": "sem relação ativa com valor anual completo para o indicador",
+      "conjuntos_relacionados": []
+    },
+    {
+      "municipio_id": "4202453",
+      "municipio_nome": "Bombinhas",
+      "uf_sigla": "SC",
+      "indicador_id": "INF-ENE-02",
+      "motivo": "sem relação ativa com valor anual completo para o indicador",
+      "conjuntos_relacionados": []
+    },
+    {
+      "municipio_id": "4220000",
+      "municipio_nome": "Balneário Rincão",
+      "uf_sigla": "SC",
+      "indicador_id": "INF-ENE-01",
+      "motivo": "sem relação ativa com valor anual completo para o indicador",
+      "conjuntos_relacionados": []
+    },
+    {
+      "municipio_id": "4220000",
+      "municipio_nome": "Balneário Rincão",
+      "uf_sigla": "SC",
+      "indicador_id": "INF-ENE-02",
+      "motivo": "sem relação ativa com valor anual completo para o indicador",
+      "conjuntos_relacionados": []
+    },
+    {
+      "municipio_id": "4305603",
+      "municipio_nome": "Colorado",
+      "uf_sigla": "RS",
+      "indicador_id": "INF-ENE-01",
+      "motivo": "sem relação ativa com valor anual completo para o indicador",
+      "conjuntos_relacionados": []
+    },
+    {
+      "municipio_id": "4305603",
+      "municipio_nome": "Colorado",
+      "uf_sigla": "RS",
+      "indicador_id": "INF-ENE-02",
+      "motivo": "sem relação ativa com valor anual completo para o indicador",
+      "conjuntos_relacionados": []
+    },
+    {
+      "municipio_id": "4314548",
+      "municipio_nome": "Pinto Bandeira",
+      "uf_sigla": "RS",
+      "indicador_id": "INF-ENE-01",
+      "motivo": "sem relação ativa com valor anual completo para o indicador",
+      "conjuntos_relacionados": []
+    },
+    {
+      "municipio_id": "4314548",
+      "municipio_nome": "Pinto Bandeira",
+      "uf_sigla": "RS",
+      "indicador_id": "INF-ENE-02",
+      "motivo": "sem relação ativa com valor anual completo para o indicador",
+      "conjuntos_relacionados": []
+    }
+  ],
+  "sanity_checks": [
+    {
+      "municipio_id": "4106902",
+      "municipio_nome": "Curitiba",
+      "uf_sigla": "PR",
+      "conjuntos": [
+        "14592",
+        "15563",
+        "15564",
+        "15567",
+        "15578",
+        "15579",
+        "15581",
+        "15921",
+        "15922",
+        "15923",
+        "15924",
+        "15925",
+        "15938",
+        "15948",
+        "15951",
+        "15954",
+        "15955",
+        "15956",
+        "15957",
+        "15969",
+        "15971",
+        "15972",
+        "15974",
+        "16754",
+        "16758",
+        "16759",
+        "16762",
+        "16765",
+        "16766",
+        "16767",
+        "16771",
+        "16773",
+        "16774",
+        "16775"
+      ],
+      "pesos": {
+        "14592": 16548,
+        "15563": 28997,
+        "15564": 20930,
+        "15567": 26365,
+        "15578": 35266,
+        "15579": 55344,
+        "15581": 20641,
+        "15922": 23011,
+        "15923": 26131,
+        "15925": 28694,
+        "15948": 27643,
+        "15951": 6,
+        "15954": 15401,
+        "15955": 15282,
+        "15956": 1,
+        "15957": 15181,
+        "15969": 43948,
+        "15971": 39897,
+        "15972": 1,
+        "15974": 29932,
+        "16754": 37390,
+        "16758": 40508,
+        "16759": 26965,
+        "16762": 17578,
+        "16765": 25852,
+        "16766": 21054,
+        "16767": 61529,
+        "16771": 43177,
+        "16773": 19774,
+        "16774": 39636,
+        "16775": 45122
+      },
+      "resultados": [
+        {
+          "municipio_id": "4106902",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 3.428235,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "territorializacao_aproximada",
+          "metodo_territorializacao": "nivel_4",
+          "territorializacao_aproximada": true,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4106902",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 2.512353,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "territorializacao_aproximada",
+          "metodo_territorializacao": "nivel_4",
+          "territorializacao_aproximada": true,
+          "pesos_uc": ""
+        }
+      ]
+    },
+    {
+      "municipio_id": "4205407",
+      "municipio_nome": "Florianópolis",
+      "uf_sigla": "SC",
+      "conjuntos": [
+        "13342",
+        "15586",
+        "15587",
+        "15588",
+        "16796",
+        "16797",
+        "16798",
+        "16799"
+      ],
+      "pesos": {
+        "13342": 46426,
+        "15586": 33364,
+        "15587": 22861,
+        "15588": 43842,
+        "16796": 59705,
+        "16797": 28256,
+        "16798": 9333,
+        "16799": 36921
+      },
+      "resultados": [
+        {
+          "municipio_id": "4205407",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 5.289211,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "13342:46426|15586:33364|15587:22861|15588:43842|16796:59705|16797:28256|16798:9333|16799:36921"
+        },
+        {
+          "municipio_id": "4205407",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 3.156496,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "13342:46426|15586:33364|15587:22861|15588:43842|16796:59705|16797:28256|16798:9333|16799:36921"
+        }
+      ]
+    },
+    {
+      "municipio_id": "4314902",
+      "municipio_nome": "Porto Alegre",
+      "uf_sigla": "RS",
+      "conjuntos": [
+        "12540",
+        "12542",
+        "12559",
+        "15362",
+        "16863",
+        "16864",
+        "16870",
+        "16871",
+        "16874",
+        "16875",
+        "16876",
+        "16877",
+        "16878",
+        "16880",
+        "16881",
+        "16884",
+        "16885",
+        "16887",
+        "16889",
+        "16890",
+        "16891",
+        "16892",
+        "16895"
+      ],
+      "pesos": {
+        "12540": 1701,
+        "12559": 66166,
+        "15362": 19756,
+        "16863": 23001,
+        "16864": 37238,
+        "16870": 13126,
+        "16871": 43018,
+        "16874": 28037,
+        "16875": 42980,
+        "16876": 46283,
+        "16877": 62795,
+        "16878": 108,
+        "16880": 45825,
+        "16881": 54407,
+        "16884": 16129,
+        "16885": 37624,
+        "16887": 29586,
+        "16889": 26189,
+        "16890": 172,
+        "16891": 40618,
+        "16892": 57595,
+        "16895": 14816
+      },
+      "resultados": [
+        {
+          "municipio_id": "4314902",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 5.616957,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "territorializacao_aproximada",
+          "metodo_territorializacao": "nivel_4",
+          "territorializacao_aproximada": true,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4314902",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 2.656522,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "territorializacao_aproximada",
+          "metodo_territorializacao": "nivel_4",
+          "territorializacao_aproximada": true,
+          "pesos_uc": ""
+        }
+      ]
+    },
+    {
+      "municipio_id": "4100103",
+      "municipio_nome": "Abatiá",
+      "uf_sigla": "PR",
+      "conjuntos": [
+        "14623",
+        "14697"
+      ],
+      "pesos": {
+        "14623": 44,
+        "14697": 3155
+      },
+      "resultados": [
+        {
+          "municipio_id": "4100103",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 6.363342,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "14623:44|14697:3155"
+        },
+        {
+          "municipio_id": "4100103",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 2.500219,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "14623:44|14697:3155"
+        }
+      ]
+    },
+    {
+      "municipio_id": "4200051",
+      "municipio_nome": "Abdon Batista",
+      "uf_sigla": "SC",
+      "conjuntos": [
+        "13293"
+      ],
+      "pesos": {
+        "13293": 1442
+      },
+      "resultados": [
+        {
+          "municipio_id": "4200051",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 9.18,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4200051",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 5.46,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        }
+      ]
+    },
+    {
+      "municipio_id": "4300034",
+      "municipio_nome": "Aceguá",
+      "uf_sigla": "RS",
+      "conjuntos": [
+        "16724"
+      ],
+      "pesos": {},
+      "resultados": [
+        {
+          "municipio_id": "4300034",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 28.28,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4300034",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 16.2,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        }
+      ]
+    }
+  ],
+  "extremos": {
+    "INF-ENE-01": {
+      "bottom_10": [
+        {
+          "municipio_id": "4320909",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 2.38,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4211207",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 2.87,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "territorializacao_aproximada",
+          "metodo_territorializacao": "nivel_4",
+          "territorializacao_aproximada": true,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4204251",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 2.995,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "territorializacao_aproximada",
+          "metodo_territorializacao": "nivel_4",
+          "territorializacao_aproximada": true,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4101507",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 3.005884,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "14626:8|15584:15952|15585:36595|16755:929|16761:5"
+        },
+        {
+          "municipio_id": "4212304",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 3.28,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4103701",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 3.375637,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "14626:8|14696:496|15930:106|15936:8680|15961:253|16761:18042|16763:20461"
+        },
+        {
+          "municipio_id": "4205456",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 3.38,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "territorializacao_aproximada",
+          "metodo_territorializacao": "nivel_4",
+          "territorializacao_aproximada": true,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4119152",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 3.42,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "territorializacao_aproximada",
+          "metodo_territorializacao": "nivel_4",
+          "territorializacao_aproximada": true,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4106902",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 3.428235,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "territorializacao_aproximada",
+          "metodo_territorializacao": "nivel_4",
+          "territorializacao_aproximada": true,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4212650",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 3.49,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        }
+      ],
+      "top_10": [
+        {
+          "municipio_id": "4109500",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 54.41,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4100202",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 41.75,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4127882",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 41.676036,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "14578:8|15950:2497"
+        },
+        {
+          "municipio_id": "4105201",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 38.500579,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "14678:311|15950:6614|15970:835"
+        },
+        {
+          "municipio_id": "4301875",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 29.99,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4305439",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 28.37,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4317301",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 28.37,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4300034",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 28.28,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4321352",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 28.26,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4312500",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 28.232125,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "12546:8801|12547:24"
+        }
+      ]
+    },
+    "INF-ENE-02": {
+      "bottom_10": [
+        {
+          "municipio_id": "4120333",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 1.77,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "territorializacao_aproximada",
+          "metodo_territorializacao": "nivel_4",
+          "territorializacao_aproximada": true,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4320909",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 1.87,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4102703",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 1.98,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "territorializacao_aproximada",
+          "metodo_territorializacao": "nivel_4",
+          "territorializacao_aproximada": true,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4105102",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 2.01,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4108007",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 2.01,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4120002",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 2.01,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4103404",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 2.090146,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "14659:1191|14666:43"
+        },
+        {
+          "municipio_id": "4113809",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 2.097885,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "14659:2215|14666:88"
+        },
+        {
+          "municipio_id": "4116000",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 2.123564,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "14659:948|14698:62"
+        },
+        {
+          "municipio_id": "4103701",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 2.193033,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "14626:8|14696:496|15930:106|15936:8680|15961:253|16761:18042|16763:20461"
+        }
+      ],
+      "top_10": [
+        {
+          "municipio_id": "4100202",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 20.03,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4127882",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 20.002056,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "14578:8|15950:2497"
+        },
+        {
+          "municipio_id": "4105201",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 19.408651,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "14678:311|15950:6614|15970:835"
+        },
+        {
+          "municipio_id": "4109500",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 18.94,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4111258",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 18.218659,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "15952:143|15970:9772"
+        },
+        {
+          "municipio_id": "4122206",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 18.179565,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "14678:46|15950:152|15970:13305|15973:644"
+        },
+        {
+          "municipio_id": "4300034",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 16.2,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_1",
+          "territorializacao_aproximada": false,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4308300",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 15.83,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "territorializacao_aproximada",
+          "metodo_territorializacao": "nivel_4",
+          "territorializacao_aproximada": true,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4315156",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 15.83,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "territorializacao_aproximada",
+          "metodo_territorializacao": "nivel_4",
+          "territorializacao_aproximada": true,
+          "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4318465",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 15.83,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "territorializacao_aproximada",
+          "metodo_territorializacao": "nivel_4",
+          "territorializacao_aproximada": true,
+          "pesos_uc": ""
+        }
+      ]
+    }
+  },
+  "validacoes": {
+    "linhas": 2382,
+    "municipios": 1191,
+    "negativos": 0,
+    "nao_finitos": 0,
+    "zeros": 0
+  },
+  "comparacao_bdgd_media_simples": {
+    "INF-ENE-01": {
+      "municipios_afetados": 382,
+      "spearman": 0.8296183355892645,
+      "diferenca_absoluta_mediana": 1.4717944999999997,
+      "diferenca_absoluta_p95": 5.4675425,
+      "diferenca_maxima": 12.100579000000003,
+      "maiores_mudancas": [
+        {
+          "municipio_id": "4105201",
+          "municipio_nome": "Cerro Azul",
+          "uf_sigla": "PR",
+          "ponderado": 38.500579,
+          "media_simples": 26.4,
+          "diferenca_absoluta": 12.100579000000003
+        },
+        {
+          "municipio_id": "4127882",
+          "municipio_nome": "Tunas do Paraná",
+          "uf_sigla": "PR",
+          "ponderado": 41.676036,
+          "media_simples": 30.17,
+          "diferenca_absoluta": 11.506036000000002
+        },
+        {
+          "municipio_id": "4118204",
+          "municipio_nome": "Paranaguá",
+          "uf_sigla": "PR",
+          "ponderado": 5.722654,
+          "media_simples": 14.704,
+          "diferenca_absoluta": 8.981346
+        },
+        {
+          "municipio_id": "4215059",
+          "municipio_nome": "Rio Rufino",
+          "uf_sigla": "SC",
+          "ponderado": 26.859895,
+          "media_simples": 18.43,
+          "diferenca_absoluta": 8.429895000000002
+        },
+        {
+          "municipio_id": "4203808",
+          "municipio_nome": "Canoinhas",
+          "uf_sigla": "SC",
+          "ponderado": 7.36462,
+          "media_simples": 15.32,
+          "diferenca_absoluta": 7.95538
+        },
+        {
+          "municipio_id": "4104006",
+          "municipio_nome": "Campina Grande do Sul",
+          "uf_sigla": "PR",
+          "ponderado": 18.587341,
+          "media_simples": 25.94,
+          "diferenca_absoluta": 7.352659000000003
+        },
+        {
+          "municipio_id": "4310603",
+          "municipio_nome": "Itaqui",
+          "uf_sigla": "RS",
+          "ponderado": 8.97454,
+          "media_simples": 16.155,
+          "diferenca_absoluta": 7.180460000000002
+        },
+        {
+          "municipio_id": "4207908",
+          "municipio_nome": "Irineópolis",
+          "uf_sigla": "SC",
+          "ponderado": 22.17173,
+          "media_simples": 15.32,
+          "diferenca_absoluta": 6.85173
+        },
+        {
+          "municipio_id": "4101200",
+          "municipio_nome": "Antonina",
+          "uf_sigla": "PR",
+          "ponderado": 23.352161,
+          "media_simples": 29.933333,
+          "diferenca_absoluta": 6.581172000000002
+        },
+        {
+          "municipio_id": "4211892",
+          "municipio_nome": "Painel",
+          "uf_sigla": "SC",
+          "ponderado": 8.078859,
+          "media_simples": 14.165,
+          "diferenca_absoluta": 6.086141
+        }
+      ],
+      "por_uf": {
+        "PR": {
+          "n": 190,
+          "diferenca_absoluta_mediana": 1.2963135000000001,
+          "diferenca_absoluta_p95": 4.606892549999998
+        },
+        "SC": {
+          "n": 117,
+          "diferenca_absoluta_mediana": 1.834339,
+          "diferenca_absoluta_p95": 5.6525976
+        },
+        "RS": {
+          "n": 75,
+          "diferenca_absoluta_mediana": 1.5389620000000015,
+          "diferenca_absoluta_p95": 5.5263648000000005
+        }
+      }
+    },
+    "INF-ENE-02": {
+      "municipios_afetados": 382,
+      "spearman": 0.8190626270335322,
+      "diferenca_absoluta_mediana": 0.8111829999999998,
+      "diferenca_absoluta_p95": 2.7445301000000004,
+      "diferenca_maxima": 5.690169000000001,
+      "maiores_mudancas": [
+        {
+          "municipio_id": "4203808",
+          "municipio_nome": "Canoinhas",
+          "uf_sigla": "SC",
+          "ponderado": 4.234831,
+          "media_simples": 9.925,
+          "diferenca_absoluta": 5.690169000000001
+        },
+        {
+          "municipio_id": "4207908",
+          "municipio_nome": "Irineópolis",
+          "uf_sigla": "SC",
+          "ponderado": 14.825772,
+          "media_simples": 9.925,
+          "diferenca_absoluta": 4.900772
+        },
+        {
+          "municipio_id": "4111258",
+          "municipio_nome": "Itaperuçu",
+          "uf_sigla": "PR",
+          "ponderado": 18.218659,
+          "media_simples": 13.46,
+          "diferenca_absoluta": 4.758658999999998
+        },
+        {
+          "municipio_id": "4215059",
+          "municipio_nome": "Rio Rufino",
+          "uf_sigla": "SC",
+          "ponderado": 12.30141,
+          "media_simples": 7.903333,
+          "diferenca_absoluta": 4.398077000000001
+        },
+        {
+          "municipio_id": "4127882",
+          "municipio_nome": "Tunas do Paraná",
+          "uf_sigla": "PR",
+          "ponderado": 20.002056,
+          "media_simples": 15.655,
+          "diferenca_absoluta": 4.347056
+        },
+        {
+          "municipio_id": "4107553",
+          "municipio_nome": "Farol",
+          "uf_sigla": "PR",
+          "ponderado": 3.537014,
+          "media_simples": 7.4,
+          "diferenca_absoluta": 3.8629860000000003
+        },
+        {
+          "municipio_id": "4321857",
+          "municipio_nome": "Três Palmeiras",
+          "uf_sigla": "RS",
+          "ponderado": 9.675996,
+          "media_simples": 5.89,
+          "diferenca_absoluta": 3.785996
+        },
+        {
+          "municipio_id": "4105201",
+          "municipio_nome": "Cerro Azul",
+          "uf_sigla": "PR",
+          "ponderado": 19.408651,
+          "media_simples": 15.8,
+          "diferenca_absoluta": 3.6086509999999983
+        },
+        {
+          "municipio_id": "4103008",
+          "municipio_nome": "Boa Esperança",
+          "uf_sigla": "PR",
+          "ponderado": 11.120178,
+          "media_simples": 7.76,
+          "diferenca_absoluta": 3.3601779999999994
+        },
+        {
+          "municipio_id": "4105805",
+          "municipio_nome": "Colombo",
+          "uf_sigla": "PR",
+          "ponderado": 4.964319,
+          "media_simples": 8.245714,
+          "diferenca_absoluta": 3.281395
+        }
+      ],
+      "por_uf": {
+        "PR": {
+          "n": 190,
+          "diferenca_absoluta_mediana": 0.8046859999999998,
+          "diferenca_absoluta_p95": 2.9979440999999993
+        },
+        "SC": {
+          "n": 117,
+          "diferenca_absoluta_mediana": 0.9630400000000003,
+          "diferenca_absoluta_p95": 2.3167147999999997
+        },
+        "RS": {
+          "n": 75,
+          "diferenca_absoluta_mediana": 0.6416409999999999,
+          "diferenca_absoluta_p95": 2.4584773
+        }
+      }
+    }
+  },
+  "territorializacao": {
+    "nivel_1": {
+      "municipios": 241,
+      "percentual": 20.2351
+    },
+    "nivel_2": {
+      "municipios": 382,
+      "percentual": 32.0739
+    },
+    "nivel_3": {
+      "municipios": 0,
+      "percentual": 0.0
+    },
+    "nivel_4": {
+      "municipios": 563,
+      "percentual": 47.2712
+    },
+    "ausente": {
+      "municipios": 5,
+      "percentual": 0.4198
+    }
+  }
+}
