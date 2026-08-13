@@ -7,7 +7,12 @@ python -m pip install -e '.[dev]'
 python -m pip install pyogrio
 python -m ice_sul.transform.aneel_materialize \
   --bdgd data/raw/aneel/ceee.zip data/raw/aneel/celesc.zip \
-  data/raw/aneel/copel.zip data/raw/aneel/rge.zip
+  data/raw/aneel/copel.zip data/raw/aneel/rge.zip \
+  data/raw/aneel/certel.zip data/raw/aneel/cerfox.zip \
+  data/raw/aneel/creluz.zip data/raw/aneel/celetro.zip \
+  data/raw/aneel/cermissoes.zip data/raw/aneel/ceriluz.zip \
+  data/raw/aneel/certaja.zip data/raw/aneel/cooperluz.zip \
+  data/raw/aneel/eletrocar.zip data/raw/aneel/coprel.zip
 ```
 
 O comando valida o ZIP, extrai em diretório temporário exatamente
@@ -58,13 +63,14 @@ locais foram inventariadas, mas não baixadas em massa porque os quatro grandes
 arquivos já forneceram todos os pesos completos que puderam ser aplicados aos
 municípios multiconjunto atendidos por esses agentes; não se atribuiu peso parcial.
 
-Foram obtidas **3.084 células município × conjunto** com UCs ativas. Só há nível
+Na primeira execução, apenas com as quatro BDGDs principais, foram obtidas
+**3.084 células município × conjunto** com UCs ativas. Só há nível
 2 quando todos os conjuntos com DEC/FEC completo relacionados ao município têm
 peso positivo; isso tornou 382 municípios ponderáveis. Ausência de uma célula
 leva ao nível 4, nunca a peso zero. Não havia duas margens oficiais contemporâneas
 para os restantes, portanto IPF (nível 3) não foi acionado.
 
-## Resultado e QA
+## Baseline anterior às BDGDs locais
 
 | situação | municípios | % do universo |
 |---|---:|---:|
@@ -74,15 +80,69 @@ para os restantes, portanto IPF (nível 3) não foi acionado.
 | nível 4 | 563 | 47,27% |
 | sem DEC e FEC | 5 | 0,42% |
 
-A BDGD retirou **382 municípios** do nível 4. DEC e FEC têm, cada um, 1.186
+As quatro BDGDs principais retiraram **382 municípios** do nível 4. DEC e FEC
+têm, cada um, 1.186
 observações (99,58%) e 5 ausências. Os ausentes são Anitápolis/SC, Bombinhas/SC,
 Balneário Rincão/SC, Colorado/RS e Pinto Bandeira/RS; detalhes por indicador,
 motivo e conjuntos constam em `qa.json`.
 
-Nos 382 ponderados, ponderação BDGD versus média simples apresentou: DEC Spearman
-0,8296, diferença absoluta mediana 1,4718, P95 5,4675 e máxima 12,1006;
-FEC Spearman 0,8191, mediana 0,8112, P95 2,7445 e máxima 5,6902. Maiores mudanças
-e cortes por UF estão em `qa.json`, que também contém estatísticas Sul/UF/método,
-percentis, extremos, zeros, negativos, não finitos e inspeções de Curitiba,
-Florianópolis, Porto Alegre, Abatiá, Abdon Batista e Aceguá. Nenhum extremo foi
-removido, imputado ou winsorizado.
+Esse quadro é preservado somente como baseline para mensurar o ganho incremental;
+o resultado publicável final aparece abaixo.
+
+## Fechamento dos fallbacks e BDGDs locais direcionadas
+
+Partindo dos 563 municípios em nível 4, o cruzamento `conjunto_id → SigAgente`
+foi feito diretamente nas linhas DEC/FEC 2025 da base de continuidade. Os maiores
+responsáveis por conjuntos ainda sem célula eram RGE SUL (161 municípios),
+COPEL-DIS (95), COPREL (67), CELESC (52), conjunto com agente “Não Informado”
+(39), CERTEL Energia (43), CERFOX (34), CRELUZ-D (32), CELETRO (30),
+CERMISSÕES (24), CERILUZ (23), CERTAJA (17), COOPERLUZ (17) e ELETROCAR (17).
+
+Foram então baixadas apenas as BDGDs locais oficiais com alto potencial e baixo
+volume: Certel, Cerfox, Creluz-D, Celetro, Cermissões, Ceriluz, Certaja,
+Cooperluz, Eletrocar (vintage 2024-12-31) e Coprel (última disponível,
+2023-12-31). Elas trouxeram 264 novas células únicas além das quatro BDGDs
+principais. Em conjunto, converteram mais 84 municípios para nível 2. Coprel não
+converteu municípios: sua publicação 2023 não contém os conjuntos 15457/15458 de
+2025. URLs, hashes, tamanhos, schemas, células por arquivo e conversões isoladas
+estão no manifesto.
+
+A distribuição final é nível 1: 241; nível 2: 466; nível 3: 0; nível 4: 479; e
+ambos ausentes: 5. Para cada um dos 479 fallbacks, o arquivo
+`fallback_nivel4_diagnostico.csv` lista conjuntos necessários/presentes/ausentes,
+agente oficial, disponibilidade/investigação e motivo categorizado. São 240
+conjuntos sem peso. Os motivos agregados são: 289 municípios com conjunto sem
+célula municipal apesar da BDGD principal; 106 associados a agente local ainda
+não investigado; 45 compatíveis com mudança de conjunto entre vintages; e 39 com
+agente não informado pela fonte.
+
+Nos 466 ponderados finais, ponderação BDGD versus média simples apresentou: DEC
+Spearman 0,8246, diferença absoluta mediana 1,5488, P95 5,9772 e máxima 15,9916;
+FEC Spearman 0,7844, mediana 0,8275, P95 3,4361 e máxima 8,3686. Maiores mudanças
+e cortes por UF estão em `qa.json`, que também preserva estatísticas Sul/UF/método,
+percentis, extremos, zeros, negativos, não finitos e sanity checks. Nenhum extremo
+foi removido, imputado ou winsorizado.
+
+### Curitiba e Porto Alegre
+
+**Curitiba** usa 34 conjuntos COPEL-DIS. A BDGD possui peso municipal positivo
+para 31; faltam `15921` (São José dos Pinhais), `15924` (Araucária) e `15938`
+(Fazenda Iguaçu). Esses IDs existem na BDGD 2024 em outras células, mas não na
+célula Curitiba × conjunto. Portanto não é outra distribuidora nem ID totalmente
+novo: é ausência da célula municipal no vintage 2024 em relação ao vínculo
+IndQual/continuidade 2025. Sem evidência oficial para transferir UCs entre
+municípios, Curitiba permanece nível 4.
+
+**Porto Alegre** usa 23 conjuntos CEEE-D. Há peso para 22; falta `12542` (Guaíba).
+O conjunto existe na BDGD CEEE Equatorial 2024, porém sem UC ativa na célula
+Porto Alegre × 12542, enquanto o IndQual 2025 relaciona ambos. Sem peso parcial e
+sem equivalência oficial, Porto Alegre permanece nível 4.
+
+### Compatibilidade temporal
+
+Entre os conjuntos completos requeridos em 2025, 501 IDs são usados e 44 não
+aparecem em nenhuma BDGD carregada. Isso afeta 203 municípios multiconjunto.
+Ausências e células municipais divergentes são compatíveis com criação,
+renomeação, reorganização ou alteração de área 2024→2025, mas nenhuma equivalência
+foi inferida por nome. O QA registra `equivalencias_inferidas=0` e preserva o
+fallback quando não existe relação oficial entre IDs.

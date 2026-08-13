@@ -7,7 +7,7 @@ import pytest
 
 from ice_sul.extract.aneel import AneelCollector
 from ice_sul.extract.contracts import CollectionStatus
-from ice_sul.transform.aneel import PERIODO, audit, ipf, read_annual_set_values, territorialize
+from ice_sul.transform.aneel import PERIODO, aggregate_bdgd_rows, audit, ipf, read_annual_set_values, territorialize
 from ice_sul.transform.aneel_materialize import canonical, materialize, validate_output
 
 
@@ -97,6 +97,25 @@ def test_zero_or_invalid_weight_falls_back_explicitly():
     relations = [{"municipio_id": "1", "conjunto_id": x} for x in ("a", "b")]
     rows = territorialize(["1"], relations, VALUES, {("1", "a"): 0, ("1", "b"): -1})
     assert {r["metodo_territorializacao"] for r in rows} == {"nivel_4"}
+
+
+def test_partial_weights_for_three_sets_never_produce_level_2():
+    values = {**VALUES, "c": {"DEC": 30.0, "FEC": 6.0}}
+    relations = [{"municipio_id": "1", "conjunto_id": set_id} for set_id in ("a", "b", "c")]
+    rows = territorialize(["1"], relations, values, {("1", "a"): 10, ("1", "b"): 20})
+    assert {r["metodo_territorializacao"] for r in rows} == {"nivel_4"}
+    assert all(r["territorializacao_aproximada"] for r in rows)
+
+
+def test_bdgd_aggregation_real_schema_across_voltage_layers():
+    layers = [
+        ("UCBT_tab", [{"MUN": "4106902", "CONJ": 100, "SIT_ATIV": "AT"}, {"MUN": "4106902", "CONJ": 100, "SIT_ATIV": "AT"}, {"MUN": "4106902", "CONJ": 100, "SIT_ATIV": "IN"}]),
+        ("UCMT_tab", [{"MUN": "4106902", "CONJ": "100", "SIT_ATIV": "AT"}, {"MUN": "", "CONJ": 100, "SIT_ATIV": "AT"}]),
+        ("UCAT_tab", [{"MUN": "4106902", "CONJ": 101, "SIT_ATIV": "AT"}, {"MUN": "4106902", "CONJ": None, "SIT_ATIV": "AT"}]),
+    ]
+    weights, sources = aggregate_bdgd_rows(layers)
+    assert weights == {("4106902", "100"): 3, ("4106902", "101"): 1}
+    assert [source["registros_ativos"] for source in sources] == [2, 1, 1]
 
 
 def test_combination_levels_and_indicator_specific_missing():

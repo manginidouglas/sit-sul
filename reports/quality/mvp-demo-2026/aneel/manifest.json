@@ -100,5 +100,345 @@
       "SHA-256 e tamanho conferidos",
       "ZIP íntegro e schema validado na materialização"
     ]
+  },
+  {
+    "fonte": "ANEEL/BDGD ArcGIS",
+    "url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/c74678897d244e4f7a8e6f86d4948492ec/data",
+    "metodo": "GET",
+    "data_hora_utc": "2026-08-13T01:18:00+00:00",
+    "periodo_vintage": "2024-12-31",
+    "tamanho_bytes": 27296281,
+    "sha256": "a1a85da811ba41be73d6001fc12429f47e70e21ef6696210abb2d408e92fdee0",
+    "content_type": "application/zip",
+    "status_http": 200,
+    "nome_arquivo": "certel.zip",
+    "licenca": "Portal ANEEL - acesso público",
+    "schema_usado": {
+      "tabelas": [
+        "UCBT_tab",
+        "UCMT_tab",
+        "UCAT_tab"
+      ],
+      "campos": [
+        "MUN",
+        "CONJ",
+        "SIT_ATIV"
+      ],
+      "filtro": "SIT_ATIV='AT'"
+    },
+    "novas_celulas_no_arquivo": 58,
+    "validacoes": [
+      "ZIP íntegro",
+      "File Geodatabase aberto",
+      "três tabelas e campos validados",
+      "UCs ativas agregadas sem peso parcial"
+    ],
+    "municipios_convertidos_isoladamente": 14
+  },
+  {
+    "fonte": "ANEEL/BDGD ArcGIS",
+    "url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/f8856cad71a343778ae704d8c52148e7/data",
+    "metodo": "GET",
+    "data_hora_utc": "2026-08-13T01:18:00+00:00",
+    "periodo_vintage": "2024-12-31",
+    "tamanho_bytes": 8013858,
+    "sha256": "d529510dfeb072ff730f2f698d1e940b6151084e57c8ada42c6f37701b19d517",
+    "content_type": "application/zip",
+    "status_http": 200,
+    "nome_arquivo": "cerfox.zip",
+    "licenca": "Portal ANEEL - acesso público",
+    "schema_usado": {
+      "tabelas": [
+        "UCBT_tab",
+        "UCMT_tab",
+        "UCAT_tab"
+      ],
+      "campos": [
+        "MUN",
+        "CONJ",
+        "SIT_ATIV"
+      ],
+      "filtro": "SIT_ATIV='AT'"
+    },
+    "novas_celulas_no_arquivo": 34,
+    "validacoes": [
+      "ZIP íntegro",
+      "File Geodatabase aberto",
+      "três tabelas e campos validados",
+      "UCs ativas agregadas sem peso parcial"
+    ],
+    "municipios_convertidos_isoladamente": 17
+  },
+  {
+    "fonte": "ANEEL/BDGD ArcGIS",
+    "url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/38ea3efaee63433e81e5d9d14ad01469/data",
+    "metodo": "GET",
+    "data_hora_utc": "2026-08-13T01:18:00+00:00",
+    "periodo_vintage": "2024-12-31",
+    "tamanho_bytes": 12065354,
+    "sha256": "d0dd06e4798feae7a0f787bf22a303469cd926c42b2c493b7b1dd7913c1bd050",
+    "content_type": "application/zip",
+    "status_http": 200,
+    "nome_arquivo": "creluz.zip",
+    "licenca": "Portal ANEEL - acesso público",
+    "schema_usado": {
+      "tabelas": [
+        "UCBT_tab",
+        "UCMT_tab",
+        "UCAT_tab"
+      ],
+      "campos": [
+        "MUN",
+        "CONJ",
+        "SIT_ATIV"
+      ],
+      "filtro": "SIT_ATIV='AT'"
+    },
+    "novas_celulas_no_arquivo": 36,
+    "validacoes": [
+      "ZIP íntegro",
+      "File Geodatabase aberto",
+      "três tabelas e campos validados",
+      "UCs ativas agregadas sem peso parcial"
+    ],
+    "municipios_convertidos_isoladamente": 21
+  },
+  {
+    "fonte": "ANEEL/BDGD ArcGIS",
+    "url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/d984afaac96e4eb08806dd05497410d9/data",
+    "metodo": "GET",
+    "data_hora_utc": "2026-08-13T01:18:00+00:00",
+    "periodo_vintage": "2024-12-31",
+    "tamanho_bytes": 13042317,
+    "sha256": "5509978e09c75f4d69a6805f8194d2beba7a1a61f6665da797c1893273575317",
+    "content_type": "application/zip",
+    "status_http": 200,
+    "nome_arquivo": "celetro.zip",
+    "licenca": "Portal ANEEL - acesso público",
+    "schema_usado": {
+      "tabelas": [
+        "UCBT_tab",
+        "UCMT_tab",
+        "UCAT_tab"
+      ],
+      "campos": [
+        "MUN",
+        "CONJ",
+        "SIT_ATIV"
+      ],
+      "filtro": "SIT_ATIV='AT'"
+    },
+    "novas_celulas_no_arquivo": 28,
+    "validacoes": [
+      "ZIP íntegro",
+      "File Geodatabase aberto",
+      "três tabelas e campos validados",
+      "UCs ativas agregadas sem peso parcial"
+    ],
+    "municipios_convertidos_isoladamente": 4
+  },
+  {
+    "fonte": "ANEEL/BDGD ArcGIS",
+    "url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/53953a2fbb334d9aac1e5ad9a08ec9af/data",
+    "metodo": "GET",
+    "data_hora_utc": "2026-08-13T01:18:00+00:00",
+    "periodo_vintage": "2024-12-31",
+    "tamanho_bytes": 15446298,
+    "sha256": "518b05f5281cfb1882282a837f02d20487ebeb6272493f9eab5efe27bdfa4f87",
+    "content_type": "application/zip",
+    "status_http": 200,
+    "nome_arquivo": "cermissoes.zip",
+    "licenca": "Portal ANEEL - acesso público",
+    "schema_usado": {
+      "tabelas": [
+        "UCBT_tab",
+        "UCMT_tab",
+        "UCAT_tab"
+      ],
+      "campos": [
+        "MUN",
+        "CONJ",
+        "SIT_ATIV"
+      ],
+      "filtro": "SIT_ATIV='AT'"
+    },
+    "novas_celulas_no_arquivo": 32,
+    "validacoes": [
+      "ZIP íntegro",
+      "File Geodatabase aberto",
+      "três tabelas e campos validados",
+      "UCs ativas agregadas sem peso parcial"
+    ],
+    "municipios_convertidos_isoladamente": 10
+  },
+  {
+    "fonte": "ANEEL/BDGD ArcGIS",
+    "url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/15d9c8197f5e43438fbede5f2b0c9a41/data",
+    "metodo": "GET",
+    "data_hora_utc": "2026-08-13T01:18:00+00:00",
+    "periodo_vintage": "2024-12-31",
+    "tamanho_bytes": 8858880,
+    "sha256": "4d20dd1601ad29ee3adee49d1e358b769db04c858d644e16d0046fa0a6cb9070",
+    "content_type": "application/zip",
+    "status_http": 200,
+    "nome_arquivo": "ceriluz.zip",
+    "licenca": "Portal ANEEL - acesso público",
+    "schema_usado": {
+      "tabelas": [
+        "UCBT_tab",
+        "UCMT_tab",
+        "UCAT_tab"
+      ],
+      "campos": [
+        "MUN",
+        "CONJ",
+        "SIT_ATIV"
+      ],
+      "filtro": "SIT_ATIV='AT'"
+    },
+    "novas_celulas_no_arquivo": 24,
+    "validacoes": [
+      "ZIP íntegro",
+      "File Geodatabase aberto",
+      "três tabelas e campos validados",
+      "UCs ativas agregadas sem peso parcial"
+    ],
+    "municipios_convertidos_isoladamente": 4
+  },
+  {
+    "fonte": "ANEEL/BDGD ArcGIS",
+    "url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/ddc1475f9a074b9db912402154e2c4df/data",
+    "metodo": "GET",
+    "data_hora_utc": "2026-08-13T01:18:00+00:00",
+    "periodo_vintage": "2024-12-31",
+    "tamanho_bytes": 13513279,
+    "sha256": "2233b99cc095c410735c9ab1a6b2a49dee537f8fb1365d0380cfd5b1cbec091e",
+    "content_type": "application/zip",
+    "status_http": 200,
+    "nome_arquivo": "certaja.zip",
+    "licenca": "Portal ANEEL - acesso público",
+    "schema_usado": {
+      "tabelas": [
+        "UCBT_tab",
+        "UCMT_tab",
+        "UCAT_tab"
+      ],
+      "campos": [
+        "MUN",
+        "CONJ",
+        "SIT_ATIV"
+      ],
+      "filtro": "SIT_ATIV='AT'"
+    },
+    "novas_celulas_no_arquivo": 20,
+    "validacoes": [
+      "ZIP íntegro",
+      "File Geodatabase aberto",
+      "três tabelas e campos validados",
+      "UCs ativas agregadas sem peso parcial"
+    ],
+    "municipios_convertidos_isoladamente": 6
+  },
+  {
+    "fonte": "ANEEL/BDGD ArcGIS",
+    "url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/3537dcaea7764f2885328733aef1aa59/data",
+    "metodo": "GET",
+    "data_hora_utc": "2026-08-13T01:18:00+00:00",
+    "periodo_vintage": "2024-12-31",
+    "tamanho_bytes": 9520399,
+    "sha256": "13c5731aa276eb4e430528741c9e1c59e52e74d67a0d0913f6ff352958f8dbb1",
+    "content_type": "application/zip",
+    "status_http": 200,
+    "nome_arquivo": "cooperluz.zip",
+    "licenca": "Portal ANEEL - acesso público",
+    "schema_usado": {
+      "tabelas": [
+        "UCBT_tab",
+        "UCMT_tab",
+        "UCAT_tab"
+      ],
+      "campos": [
+        "MUN",
+        "CONJ",
+        "SIT_ATIV"
+      ],
+      "filtro": "SIT_ATIV='AT'"
+    },
+    "novas_celulas_no_arquivo": 17,
+    "validacoes": [
+      "ZIP íntegro",
+      "File Geodatabase aberto",
+      "três tabelas e campos validados",
+      "UCs ativas agregadas sem peso parcial"
+    ],
+    "municipios_convertidos_isoladamente": 3
+  },
+  {
+    "fonte": "ANEEL/BDGD ArcGIS",
+    "url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/afac3e9a099746928ecf63c73e4c510b/data",
+    "metodo": "GET",
+    "data_hora_utc": "2026-08-13T01:18:00+00:00",
+    "periodo_vintage": "2024-12-31",
+    "tamanho_bytes": 12340158,
+    "sha256": "7955739574f25584b542045400d09aaaa9c8c3ba4a625154f1944f155eff0569",
+    "content_type": "application/zip",
+    "status_http": 200,
+    "nome_arquivo": "eletrocar.zip",
+    "licenca": "Portal ANEEL - acesso público",
+    "schema_usado": {
+      "tabelas": [
+        "UCBT_tab",
+        "UCMT_tab",
+        "UCAT_tab"
+      ],
+      "campos": [
+        "MUN",
+        "CONJ",
+        "SIT_ATIV"
+      ],
+      "filtro": "SIT_ATIV='AT'"
+    },
+    "novas_celulas_no_arquivo": 18,
+    "validacoes": [
+      "ZIP íntegro",
+      "File Geodatabase aberto",
+      "três tabelas e campos validados",
+      "UCs ativas agregadas sem peso parcial"
+    ],
+    "municipios_convertidos_isoladamente": 1
+  },
+  {
+    "fonte": "ANEEL/BDGD ArcGIS",
+    "url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/aa13f439ad714ae0acc890d84683aa21/data",
+    "metodo": "GET",
+    "data_hora_utc": "2026-08-13T01:18:00+00:00",
+    "periodo_vintage": "2023-12-31",
+    "tamanho_bytes": 44788808,
+    "sha256": "81304e694dec3d7a76cfb4c2a759932aac2b6da78911b30c77bc4d7fa1261920",
+    "content_type": "application/zip",
+    "status_http": 200,
+    "nome_arquivo": "coprel.zip",
+    "licenca": "Portal ANEEL - acesso público",
+    "schema_usado": {
+      "tabelas": [
+        "UCBT_tab",
+        "UCMT_tab",
+        "UCAT_tab"
+      ],
+      "campos": [
+        "MUN",
+        "CONJ",
+        "SIT_ATIV"
+      ],
+      "filtro": "SIT_ATIV='AT'"
+    },
+    "novas_celulas_no_arquivo": 1,
+    "validacoes": [
+      "ZIP íntegro",
+      "File Geodatabase aberto",
+      "três tabelas e campos validados",
+      "UCs ativas agregadas sem peso parcial"
+    ],
+    "municipios_convertidos_isoladamente": 0
   }
 ]

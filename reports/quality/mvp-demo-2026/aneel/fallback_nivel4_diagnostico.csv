@@ -1,0 +1,480 @@
+municipio_id,municipio_nome,uf_sigla,conjuntos_necessarios,conjuntos_com_peso,conjuntos_sem_peso,n_conjuntos_necessarios,n_conjuntos_com_peso,motivo_nivel4,distribuidora_provavel_do_conjunto_sem_peso,bdgd_disponivel,bdgd_investigada
+4100459,Altamira do Paraná,PR,14632|16776,16776,14632,2,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4101150,Ângulo,PR,14698|15933,14698,15933,2,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4101606,Arapoti,PR,12637|14678|15929|15940|15953|15966|16780,15953|15966|16780,12637|14678|15929|15940,7,3,conjunto provavelmente pertence a distribuidora local,CERAL-DIS|COPEL-DIS,True,False
+4102000,Assis Chateaubriand,PR,14636|15928|15968|16756|16760,14636|15968|16756,15928|16760,5,3,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4102109,Astorga,PR,14698|15933|15964|16764,14698|15933,15964|16764,4,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4102307,Balsa Nova,PR,14652|14684|15924,14652|14684,15924,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4102505,Barbosa Ferraz,PR,14582|16757|16772,14582|16757,16772,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4102703,Barra do Jacaré,PR,14693|16729,14693,16729,2,1,conjunto provavelmente pertence a distribuidora local,CPFL JAGUARI,True,False
+4103057,Boa Vista da Aparecida,PR,14628|15939,14628,15939,2,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4103206,Bom Sucesso,PR,15964|16755|16764|16772,15964|16764|16772,16755,4,3,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4103800,Cambira,PR,14662|16755|16764|16772,14662|16755|16764,16772,4,3,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4103909,Campina da Lagoa,PR,14647|16760|16768|16776,16776,14647|16760|16768,4,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4103958,Campina do Simão,PR,14632|14642|16770|16785,14632|16770,14642|16785,4,2,conjunto provavelmente pertence a distribuidora local,COPEL-DIS|ESS,True,False
+4104055,Campo Bonito,PR,16760|16768|16776,16768|16776,16760,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4104204,Campo Largo,PR,12639|12640|14638|14680|14684|15924|15952|15970,14638|14680|14684|15924|15952|15970,12639|12640,8,6,conjunto provavelmente pertence a distribuidora local,COCEL,True,False
+4104253,Campo Magro,PR,15563|15952|15970,15563|15952,15970,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4104428,Candói,PR,14642|15946|15967|16770|16785,14642|15946,15967|16770|16785,5,2,conjunto provavelmente pertence a distribuidora local,COPEL-DIS|ESS,True,False
+4104659,Carambeí,PR,14624|14678|15574|15929,14624|14678|15574,15929,4,3,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4105300,Céu Azul,PR,14668|14683|15570,14668|14683,15570,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4105904,Colorado,PR,14435|14666|15458|15945,14666|15945,14435|15458,4,2,conjunto sem peso na BDGD 2024 do agente principal,COPREL|ELETROCAR,True,True
+4106506,Coronel Vivida,PR,4536|15919|15939|15967,15919|15939|15967,4536,4,3,conjunto provavelmente pertence a distribuidora local,PACTO ENERGIA PR,True,False
+4106704,Cruzeiro do Sul,PR,14666|15945|15963,15945|15963,14666,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4106902,Curitiba,PR,14592|15563|15564|15567|15578|15579|15581|15921|15922|15923|15924|15925|15938|15948|15951|15954|15955|15956|15957|15969|15971|15972|15974|16754|16758|16759|16762|16765|16766|16767|16771|16773|16774|16775,14592|15563|15564|15567|15578|15579|15581|15922|15923|15925|15948|15951|15954|15955|15956|15957|15969|15971|15972|15974|16754|16758|16759|16762|16765|16766|16767|16771|16773|16774|16775,15921|15924|15938,34,31,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4107009,Curiúva,PR,15929|15940|15953|15958|15966,15940,15929|15953|15958|15966,5,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4107256,Douradina,PR,15571|15572,15571,15572,2,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4107504,Engenheiro Beltrão,PR,14672|14682|15943|15964,14672|14682,15943|15964,4,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4107652,Fazenda Rio Grande,PR,15924|15938|15956|16773|16774,15924|15938|15956|16773,16774,5,4,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4107801,Floraí,PR,15933|15945|15963,15933|15963,15945,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4108106,Flórida,PR,14666|14698|15963,14666,14698|15963,3,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4108205,Formosa do Oeste,PR,16756|16760,16756,16760,2,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4108452,Foz do Jordão,PR,15946|15967,15946,15967,2,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4108502,General Carneiro,PR,15927|16819,15927,16819,2,1,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4108601,Goioerê,PR,14656|16756,14656,16756,2,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4108650,Goioxim,PR,14632|14642|16770,14632|14642,16770,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4108957,Guamiranga,PR,15565|15947|16770,15947|16770,15565,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4109401,Guarapuava,PR,14619|14632|14642|15565|15946|16770|16785|16786|16787,14619|14632|14642|15565|16770,15946|16785|16786|16787,9,5,conjunto provavelmente pertence a distribuidora local,COPEL-DIS|ESS,True,False
+4109609,Guaratuba,PR,14583|14600|14644|14657|14686|16808,14583|14600|14644|14657|14686,16808,6,5,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4110201,Inácio Martins,PR,14619|14627|15565|15959|16770|16786,14619|14627|15565|15959,16770|16786,6,4,conjunto provavelmente pertence a distribuidora local,COPEL-DIS|ESS,True,False
+4110508,Ipiranga,PR,15565|15574|15947|15958,15574|15947|15958,15565,4,3,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4110706,Irati,PR,14627|15565|15947|16770,14627|15565|15947,16770,4,3,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4111100,Itambé,PR,15943|15964|16757|16772,15943|15964|16772,16757,4,3,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4111407,Ivaí,PR,15565|15947|15958|16770,15947|15958|16770,15565,4,3,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4111704,Jaboti,PR,15966|16780,15966,16780,2,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4111803,Jacarezinho,PR,16246|16729|16780,16780,16246|16729,3,1,conjunto provavelmente pertence a distribuidora local,CPFL JAGUARI,True,False
+4111902,Jaguapitã,PR,14626|14659|14698|16761,14626|14659|14698,16761,4,3,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4112009,Jaguariaíva,PR,12637|14678|15941|15953|16780,14678|15941|16780,12637|15953,5,3,conjunto provavelmente pertence a distribuidora local,CERAL-DIS|COPEL-DIS,True,False
+4112504,Jardim Alegre,PR,14653|16757,14653,16757,2,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4113007,Jussara,PR,14672|15943,14672,15943,2,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4113254,Laranjal,PR,14632|16776,16776,14632,2,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4113452,Lindoeste,PR,14628|14668|16768,14628|14668,16768,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4113601,Lobato,PR,14666|14698|15945,14666|14698,15945,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4113700,Londrina,PR,14626|14650|14662|14671|14696|15585|15930|15932|15935|15936|15961|15965|16755|16761|16763,14650|14662|14671|14696|15585|15930|15932|15935|15936|15961|15965|16755|16761|16763,14626,15,14,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4114203,Mandaguari,PR,15964|16755|16764|16772,15964|16755|16764,16772,4,3,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4114302,Mandirituba,PR,14600|14633|15924|15938|15956,14600|14633|15938|15956,15924,5,4,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4114807,Marialva,PR,14621|15933|15937|15943|15964|16764|16772,14621|15937|15943|15964|16764,15933|16772,7,5,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4115101,Mariluz,PR,14656|15571|16756,14656|15571,16756,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4116109,Moreira Sales,PR,14656|15571,14656,15571,2,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4116901,Nova Esperança,PR,14634|15933|15945|15963,14634|15945|15963,15933,4,3,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4117222,Nova Santa Rosa,PR,14636|14645|15928,14636|14645,15928,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4117271,Nova Tebas,PR,14582|14647|16757,14582|14647,16757,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4117305,Ortigueira,PR,14650|14653|14662|15929|15940|15958,14650|14653|14662|15929|15958,15940,6,5,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4117602,Palmas,PR,14637|14676|15927|16819,14637|14676|15927,16819,4,3,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4117800,Palmital,PR,14632|14642|14647|16776,14632|14642,14647|16776,4,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4117909,Palotina,PR,14636|15928|16756,14636|16756,15928,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4118303,Paranapoema,PR,14666|15945,14666,15945,2,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4119152,Pinhais,PR,14581|15922|15923|15954|16775,14581|15922|15923,15954|16775,5,3,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4119202,Pinhalão,PR,15953|15966|16780,15966|16780,15953,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4119400,Piraí do Sul,PR,12637|14678|15929|15941|15953,14678|15953,12637|15929|15941,5,2,conjunto provavelmente pertence a distribuidora local,CERAL-DIS|COPEL-DIS,True,False
+4119905,Ponta Grossa,PR,14624|14638|14680|14694|15573|15574|15947,14624|14638|14680|14694|15573|15574,15947,7,6,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4120150,Porto Barreiro,PR,14642|15946|15967,14642,15946|15967,3,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4120333,Prado Ferreira,PR,14659|16761,14659,16761,2,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4120655,Quarto Centenário,PR,14656|16756|16760|16776,14656,16756|16760|16776,4,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4120903,Quedas do Iguaçu,PR,14629|15939,14629,15939,2,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4121703,Reserva,PR,14632|14653|15929|15947|15958,14632|14653|15958,15929|15947,5,3,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4121802,Ribeirão Claro,PR,16247|16727|16729|16780,16780,16247|16727|16729,4,1,conjunto provavelmente pertence a distribuidora local,CPFL JAGUARI,True,False
+4121901,Ribeirão do Pinhal,PR,14665|14697|15940,14665|14697,15940,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4122107,Rio Bom,PR,14662|16755,14662,16755,2,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4122156,Rio Bonito do Iguaçu,PR,14642|15939|15967,14642|15939,15967,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4122651,Rosário do Ivaí,PR,14653|15958,14653,15958,2,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4122701,Sabáudia,PR,14698|15585|16755|16764,14698|15585|16755,16764,4,3,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4123501,Santa Helena,PR,14645|15569|15570|15928,14645|15569,15570|15928,4,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4124608,São Carlos do Ivaí,PR,14634|15933|15943|15945|15963,14634|15933|15945|15963,15943,5,4,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4124707,São Jerônimo da Serra,PR,14650|14699|15940|15958,14650|14699|15940,15958,4,3,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4125100,São João do Triunfo,PR,14627|14638|14687|15565,14638|14687|15565,14627,4,3,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4125308,São Jorge do Ivaí,PR,14672|15933|15943|15945|15963|16772,14672|15933|15943|15963,15945|16772,6,4,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4125407,São José da Boa Vista,PR,12637|15953|16780,15953|16780,12637,3,2,conjunto provavelmente pertence a distribuidora local,CERAL-DIS,True,False
+4125506,São José dos Pinhais,PR,14588|14591|14600|15921|15922|15938|15951|15972|16759|16773|16775,14588|14591|14600|15921|15938|15951|15972|16759|16773|16775,15922,11,10,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4125704,São Miguel do Iguaçu,PR,15570|15577,15570,15577,2,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4125753,São Pedro do Iguaçu,PR,14668|14683|15928|15968|16768,14668|14683|15928,15968|16768,5,3,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4125803,São Pedro do Ivaí,PR,15964|16757|16772,16772,15964|16757,3,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4126108,São Tomé,PR,14672|15933|15943|15945,14672,15933|15943|15945,4,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4126207,Sapopema,PR,14699|15940|15958,14699|15940,15958,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4126256,Sarandi,PR,14435|14621|15457|15937|15964,14621|15937|15964,14435|15457,5,3,conjunto sem peso na BDGD 2024 do agente principal,COPREL|ELETROCAR,True,True
+4126306,Sengés,PR,15941|15953|16780,15941|16780,15953,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4126504,Sertanópolis,PR,14665|14696,14696,14665,2,1,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4126678,Tamarana,PR,14650|14662|15958,14650|14662,15958,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4126801,Tapejara,PR,14672|15457|15571,14672|15571,15457,3,2,possível mudança de conjunto 2024→2025,COPREL,True,True
+4127007,Teixeira Soares,PR,15565|15574|15947,15565|15947,15574,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4127106,Telêmaco Borba,PR,15929|15940|15953|15958,15929|15953|15958,15940,4,3,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4127205,Terra Boa,PR,14672|14682|15943,14672|14682,15943,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4127502,Tibagi,PR,15565|15574|15929|15947|15958,15574|15929|15947|15958,15565,5,4,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4127601,Tijucas do Sul,PR,14588|14600|14633,14600|14633,14588,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4127858,Três Barras do Paraná,PR,14628|14629|15939,14628|14629,15939,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4128005,Ubiratã,PR,14656|16760|16776,14656|16776,16760,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4128534,Ventania,PR,14678|15929|15940|15953|15966,15929|15940|15953,14678|15966,5,3,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4128559,Vera Cruz do Oeste,PR,14668|14683|15569|15928,14683|15569,14668|15928,4,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4128609,Verê,PR,14658|15919|15939,14658|15939,15919,3,2,conjunto sem peso na BDGD 2024 do agente principal,COPEL-DIS,True,True
+4200101,Abelardo Luz,SC,13109|13426|13448,13426|13448,13109,3,2,conjunto provavelmente pertence a distribuidora local,DCELT,True,False
+4200200,Agrolândia,SC,13438|16812,13438,16812,2,1,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4200507,Águas de Chapecó,SC,13300|16042|16822,16042|16822,13300,3,2,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4200606,Águas Mornas,SC,13443|15560,13443,15560,2,1,conjunto provavelmente pertence a distribuidora local,CEREJ,True,False
+4200903,Angelina,SC,13443|15560,13443,15560,2,1,conjunto provavelmente pertence a distribuidora local,CEREJ,True,False
+4201208,Antônio Carlos,SC,13435|15560,,13435|15560,2,0,conjunto provavelmente pertence a distribuidora local,CELESC|CEREJ,True,False
+4201257,Apiúna,SC,13345|16052|16812,13345|16052,16812,3,2,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4201307,Araquari,SC,12482|13265|13331|16047|16048,13265|13331|16047|16048,12482,5,4,conjunto provavelmente pertence a distribuidora local,CERSUL,True,False
+4201406,Araranguá,SC,13398|14768|16037|16827|16828,13398|16037|16827,14768|16828,5,3,conjunto provavelmente pertence a distribuidora local,CELESC|COOPERALIANÇA,True,False
+4201505,Armazém,SC,12475|12636|16613,,12475|12636|16613,3,0,conjunto provavelmente pertence a distribuidora local,CERBRANORTE|CERGRAL|COOPERZEM,True,False
+4201950,Balneário Arroio do Silva,SC,16037|16800|16801|16827,16037|16827,16800|16801,4,2,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4202107,Barra Velha,SC,15591|16810,15591,16810,2,1,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4202206,Benedito Novo,SC,16658|16811,16811,16658,2,1,conjunto provavelmente pertence a distribuidora local,CERSAD DISTRIBUI,True,False
+4202305,Biguaçu,SC,13435|15560|16800|16801,13435|16800,15560|16801,4,2,conjunto provavelmente pertence a distribuidora local,CELESC|CEREJ,True,False
+4202800,Braço do Norte,SC,12636|15440|16612,,12636|15440|16612,3,0,conjunto provavelmente pertence a distribuidora local,CEGERO|CERBRANORTE|CERGAPA,True,False
+4202875,Brunópolis,SC,13293|16816,16816,13293,2,1,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4203709,Canelinha,SC,13435|15560,13435,15560,2,1,conjunto provavelmente pertence a distribuidora local,CEREJ,True,False
+4203956,Capivari de Baixo,SC,12475|13439,13439,12475,2,1,conjunto provavelmente pertence a distribuidora local,CERGRAL,True,False
+4204251,Cocal do Sul,SC,15443|15445,,15443|15445,2,0,conjunto provavelmente pertence a distribuidora local,CERMOFUL|COOPERCOCAL,True,False
+4204350,Cordilheira Alta,SC,13109|13299|13300,13299|13300,13109,3,2,conjunto provavelmente pertence a distribuidora local,DCELT,True,False
+4204400,Coronel Freitas,SC,13109|13300|13413|16822,13300|13413|16822,13109,4,3,conjunto provavelmente pertence a distribuidora local,DCELT,True,False
+4204509,Corupá,SC,13307|13420,13307,13420,2,1,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4204608,Criciúma,SC,12480|12482|13318|13398|13432|15443|15444|15445|16825|16826,13318|13398|13432|16825|16826,12480|12482|15443|15444|15445,10,5,conjunto provavelmente pertence a distribuidora local,CERMOFUL|CERSUL|CERTREL|COOPERA|COOPERCOCAL,True,False
+4204905,Descanso,SC,16042|16823,16823,16042,2,1,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4205100,Dona Emma,SC,13414|16052|16053|16054,16054,13414|16052|16053,4,1,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4205159,Doutor Pedrinho,SC,13447|16658|16809|16811,13447|16811,16658|16809,4,2,conjunto provavelmente pertence a distribuidora local,CELESC|CERSAD DISTRIBUI,True,False
+4205191,Ermo,SC,12478|12482|16037|16802|16827,,12478|12482|16037|16802|16827,5,0,conjunto provavelmente pertence a distribuidora local,CEJAMA|CELESC|CERSUL,True,False
+4205308,Faxinal dos Guedes,SC,13109|13314,13314,13109,2,1,conjunto provavelmente pertence a distribuidora local,DCELT,True,False
+4205431,Formosa do Sul,SC,13413|13426,13413,13426,2,1,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4205456,Forquilhinha,SC,12480|12482,,12480|12482,2,0,conjunto provavelmente pertence a distribuidora local,CERSUL|COOPERA,True,False
+4205704,Garopaba,SC,12479|13321|13344,13321|13344,12479,3,2,conjunto provavelmente pertence a distribuidora local,CERPALO,True,False
+4205902,Gaspar,SC,13274|13281|13325|16810|16813,13274|13325|16810|16813,13281,5,4,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4206009,Governador Celso Ramos,SC,13327|13435|15560|16800|16801,13327|13435|16800,15560|16801,5,3,conjunto provavelmente pertence a distribuidora local,CELESC|CEREJ,True,False
+4206108,Grão-Pará,SC,12636|15440,,12636|15440,2,0,conjunto provavelmente pertence a distribuidora local,CERBRANORTE|CERGAPA,True,False
+4206207,Gravatal,SC,12475|12476|12636|16613,,12475|12476|12636|16613,4,0,conjunto provavelmente pertence a distribuidora local,CERBRANORTE|CERGAL|CERGRAL|COOPERZEM,True,False
+4206504,Guaramirim,SC,13329|13331|13384|13430|16806|16810,13329|13331|16806,13384|13430|16810,6,3,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4206652,Guatambú,SC,13299|13300|16042,13300|16042,13299,3,2,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4207007,Içara,SC,14768|15443|16825,16825,14768|15443,3,1,conjunto provavelmente pertence a distribuidora local,CERMOFUL|COOPERALIANÇA,True,False
+4207205,Imaruí,SC,12479|13344|13439|16613,13344|13439,12479|16613,4,2,conjunto provavelmente pertence a distribuidora local,CERPALO|COOPERZEM,True,False
+4207304,Imbituba,SC,12479|13344,13344,12479,2,1,conjunto provavelmente pertence a distribuidora local,CERPALO,True,False
+4207684,Ipuaçu,SC,13109|13448,13448,13109,2,1,conjunto provavelmente pertence a distribuidora local,DCELT,True,False
+4207858,Irati,SC,13413|16822,13413,16822,2,1,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4208104,Itaiópolis,SC,13395|13447|16054|16809,13395|16809,13447|16054,4,2,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4208609,Jaborá,SC,13298|16060|16820,13298|16820,16060,3,2,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4208708,Jacinto Machado,SC,12478|12482|16803|16827,16827,12478|12482|16803,4,1,conjunto provavelmente pertence a distribuidora local,CEJAMA|CELESC|CERSUL,True,False
+4208807,Jaguaruna,SC,12476|14768|16824,16824,12476|14768,3,1,conjunto provavelmente pertence a distribuidora local,CERGAL|COOPERALIANÇA,True,False
+4208906,Jaraguá do Sul,SC,13307|13329|13364|13370|13430|16806|16810|16811,13307|13329|13364|13370|13430|16806|16810,16811,8,7,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4209003,Joaçaba,SC,13296|13298|16060|16819,13298|16060,13296|16819,4,2,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4209102,Joinville,SC,13331|13372|13376|13381|13384|13421|13430|16046|16047|16048|16049|16807|16808,13372|13376|13381|13384|13421|16046|16047|16048|16049|16807|16808,13331|13430,13,11,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4209151,José Boiteux,SC,16052|16054|16809|16811,16052|16054,16809|16811,4,2,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4209409,Laguna,SC,12476|13344|13388|13439,13344|13388|13439,12476,4,3,conjunto provavelmente pertence a distribuidora local,CERGAL,True,False
+4209607,Lauro Müller,SC,12477|13391|13424|15445,13391,12477|13424|15445,4,1,conjunto provavelmente pertence a distribuidora local,CELESC|COOPERCOCAL|COOPERMILA,True,False
+4209706,Lebon Régis,SC,13284|13289|13320|16816,13284|13289|13320,16816,4,3,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4209805,Leoberto Leal,SC,15560|16812,16812,15560,2,1,conjunto provavelmente pertence a distribuidora local,CEREJ,True,False
+4210209,Major Gercino,SC,13435|15560,13435,15560,2,1,conjunto provavelmente pertence a distribuidora local,CEREJ,True,False
+4210407,Maracajá,SC,12482|13398,13398,12482,2,1,conjunto provavelmente pertence a distribuidora local,CERSUL,True,False
+4210605,Massaranduba,SC,13331|13370|16806|16810,13370|16810,13331|16806,4,2,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4210803,Meleiro,SC,12482|16037,16037,12482,2,1,conjunto provavelmente pertence a distribuidora local,CERSUL,True,False
+4211207,Morro da Fumaça,SC,15443|15445|16825,16825,15443|15445,3,1,conjunto provavelmente pertence a distribuidora local,CERMOFUL|COOPERCOCAL,True,False
+4211306,Navegantes,SC,15590|16810,15590,16810,2,1,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4211504,Nova Trento,SC,13435|15560,13435,15560,2,1,conjunto provavelmente pertence a distribuidora local,CEREJ,True,False
+4211603,Nova Veneza,SC,12480|12482|13432|16826,16826,12480|12482|13432,4,1,conjunto provavelmente pertence a distribuidora local,CELESC|CERSUL|COOPERA,True,False
+4211702,Orleans,SC,12474|12477|13401|15445|16612,13401,12474|12477|15445|16612,5,1,conjunto provavelmente pertence a distribuidora local,CEGERO|COOPERCOCAL|COOPERMILA|COORSEL,True,False
+4211900,Palhoça,SC,13408|15560|16802|16803,13408|16802|16803,15560,4,3,conjunto provavelmente pertence a distribuidora local,CEREJ,True,False
+4212254,Passo de Torres,SC,15442|16804|16827,16827,15442|16804,3,1,conjunto provavelmente pertence a distribuidora local,CELESC|CEPRAG,True,False
+4212403,Pedras Grandes,SC,12474|13439|15443|15445|16612,13439,12474|15443|15445|16612,5,1,conjunto provavelmente pertence a distribuidora local,CEGERO|CERMOFUL|COOPERCOCAL|COORSEL,True,False
+4213005,Pinheiro Preto,SC,16818|16819,16818,16819,2,1,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4213401,Ponte Serrada,SC,13267|13298|13314|13347,13314|13347,13267|13298,4,2,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4213500,Porto Belo,SC,13435|16804|16805,16804|16805,13435,3,2,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4213807,Praia Grande,SC,12478|15442,,12478|15442,2,0,conjunto provavelmente pertence a distribuidora local,CEJAMA|CEPRAG,True,False
+4214102,Presidente Nereu,SC,13345|16052|16812,16812,13345|16052,3,1,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4214300,Rancho Queimado,SC,13279|13443|15560,13279|13443,15560,3,2,conjunto provavelmente pertence a distribuidora local,CEREJ,True,False
+4214607,Rio do Oeste,SC,13414|13434|13438,13414|13434,13438,3,2,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4214904,Rio Fortuna,SC,12636|15440,,12636|15440,2,0,conjunto provavelmente pertence a distribuidora local,CERBRANORTE|CERGAPA,True,False
+4215000,Rio Negrinho,SC,13416|13447|16809,13416|13447,16809,3,2,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4215455,Sangão,SC,14768|16824,16824,14768,2,1,conjunto provavelmente pertence a distribuidora local,COOPERALIANÇA,True,False
+4215653,Santa Rosa do Sul,SC,12478|16805|16827,16827,12478|16805,3,1,conjunto provavelmente pertence a distribuidora local,CEJAMA|CELESC,True,False
+4215679,Santa Terezinha,SC,13434|16054|16809,16809,13434|16054,3,1,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4215703,Santo Amaro da Imperatriz,SC,15560|16802,16802,15560,2,1,conjunto provavelmente pertence a distribuidora local,CEREJ,True,False
+4216404,São João do Sul,SC,15442|16806|16827,16827,15442|16806,3,1,conjunto provavelmente pertence a distribuidora local,CELESC|CEPRAG,True,False
+4216602,São José,SC,15560|16798|16799|16800|16801|16802|16803|16828,16798|16799|16800|16801|16802|16803|16828,15560,8,7,conjunto provavelmente pertence a distribuidora local,CEREJ,True,False
+4217253,São Pedro de Alcântara,SC,13443|15560|16800|16801|16802,16800|16801|16802,13443|15560,5,3,conjunto provavelmente pertence a distribuidora local,CELESC|CEREJ,True,False
+4217600,Siderópolis,SC,2142|15444|15445|16826,,2142|15444|15445|16826,4,0,conjunto provavelmente pertence a distribuidora local,CELESC|CERTREL|COOPERCOCAL|EFLJC,True,False
+4217709,Sombrio,SC,12478|12482|16807|16827,16827,12478|12482|16807,4,1,conjunto provavelmente pertence a distribuidora local,CEJAMA|CELESC|CERSUL,True,False
+4217808,Taió,SC,13414|13434|16054|16816,13434,13414|16054|16816,4,1,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4218004,Tijucas,SC,13435|15560|16804,13435|16804,15560,3,2,conjunto provavelmente pertence a distribuidora local,CEREJ,True,False
+4218103,Timbé do Sul,SC,12478|12482,,12478|12482,2,0,conjunto provavelmente pertence a distribuidora local,CEJAMA|CERSUL,True,False
+4218350,Treviso,SC,15444|15445,,15444|15445,2,0,conjunto provavelmente pertence a distribuidora local,CERTREL|COOPERCOCAL,True,False
+4218400,Treze de Maio,SC,12474|16824,,12474|16824,2,0,conjunto provavelmente pertence a distribuidora local,CELESC|COORSEL,True,False
+4218707,Tubarão,SC,12474|12475|12476|13439|16612|16824,13439|16824,12474|12475|12476|16612,6,2,conjunto provavelmente pertence a distribuidora local,CEGERO|CERGAL|CERGRAL|COORSEL,True,False
+4218806,Turvo,SC,12478|12482|16037,16037,12478|12482,3,1,conjunto provavelmente pertence a distribuidora local,CEJAMA|CERSUL,True,False
+4219002,Urussanga,SC,5273|12477|15443|15445,,5273|12477|15443|15445,4,0,conjunto provavelmente pertence a distribuidora local,CERMOFUL|COOPERCOCAL|COOPERMILA|EFLUL,True,False
+4219176,Vargem Bonita,SC,13298|16819,13298,16819,2,1,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4219358,Vitor Meireles,SC,13434|16052|16054,16052|16054,13434,3,2,conjunto sem peso na BDGD 2024 do agente principal,CELESC,True,True
+4300059,Água Santa,RS,15457|16518,16518,15457,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4300109,Agudo,RS,13183|16374|16896,13183|16896,16374,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4300208,Ajuricaba,RS,15446|17106|17107,15446|17106,17107,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4300307,Alecrim,RS,15456|16521|16542|16694,15456|16521|16542,16694,4,3,conjunto provavelmente pertence a distribuidora local,CERTHIL,True,False
+4300406,Alegrete,RS,13202|13214|13216|16376|16378|16379,16376|16378|16379,13202|13214|13216,6,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4300455,Alegria,RS,15446|16508|16530|16694,15446|16508|16530,16694,4,3,conjunto provavelmente pertence a distribuidora local,CERTHIL,True,False
+4300505,Alpestre,RS,15441|16515|16520,15441|16515,16520,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4300570,Alto Feliz,RS,16504|16517,16517,16504,2,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4300661,André da Rocha,RS,16503|16506|16534|16545,16503|16506|16545,16534,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4300802,Antônio Prado,RS,16503|16516|16534|16540|16546,16503|16516|16534|16546,16540,5,4,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4300877,Araricá,RS,13185|13219,13219,13185,2,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4301008,Arroio do Meio,RS,13186|13192|13193|15451,13186|13192|15451,13193,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4301057,Arroio do Sal,RS,12574|15977|15984|16873,15977|16873,12574|15984,4,2,conjunto sem peso na BDGD 2024 do agente principal,CEEE-D,True,True
+4301107,Arroio dos Ratos,RS,15985|16009|16866,15985|16866,16009,3,2,conjunto sem peso na BDGD 2024 do agente principal,CEEE-D,True,True
+4301503,Augusto Pestana,RS,15446|16543|17106|17107,15446|16543|17106,17107,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4301552,Áurea,RS,15447|16514|16519,16514,15447|16519,3,1,conjunto não identificado,Não Informado|RGE SUL,False,False
+4301602,Bagé,RS,12539|12576|15982|15983|16724,15982|15983,12539|12576|16724,5,2,conjunto provavelmente pertence a distribuidora local,CEEE-D|COOPERSUL,True,False
+4301651,Barão,RS,15453|16375|16528,15453|16528,16375,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4301800,Barracão,RS,15447|16502|16506,16502|16506,15447,3,2,conjunto não identificado,Não Informado,False,False
+4301925,Barra do Rio Azul,RS,15447|16519|16520,16519|16520,15447,3,2,conjunto não identificado,Não Informado,False,False
+4301958,Barra Funda,RS,14435|14436|17108|17109,17108,14435|14436|17109,4,1,conjunto sem peso na BDGD 2024 do agente principal,ELETROCAR|RGE SUL,True,True
+4302006,Barros Cassal,RS,15452|15458|16538|16614,15452|16538|16614,15458,4,3,possível mudança de conjunto 2024→2025,COPREL,True,True
+4302055,Benjamin Constant do Sul,RS,15447|16520,16520,15447,2,1,conjunto não identificado,Não Informado,False,False
+4302154,Boa Vista das Missões,RS,15441|16501|16535,15441|16501,16535,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4302220,Boa Vista do Cadeado,RS,15446|15458|16544|17106|17107,15446|16544|17106,15458|17107,5,3,conjunto sem peso na BDGD 2024 do agente principal,COPREL|RGE SUL,True,True
+4302402,Bom Retiro do Sul,RS,12485|13189|16372|16375,12485|13189,16372|16375,4,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4302501,Bossoroca,RS,15448|15449|16376|16377,15448|15449|16377,16376,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4302584,Bozano,RS,15446|15458,15446,15458,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4302659,Brochier,RS,13189|15450|16375,15450|16375,13189,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4302808,Caçapava do Sul,RS,13183|13214|13230|16374|16896,13230|16896,13183|13214|16374,5,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4302907,Cacequi,RS,13202|13208|13214|13216|13230|16376|16379,13202|13214|13216|16376|16379,13208|13230,7,5,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4303004,Cachoeira do Sul,RS,13183|13214|13230|16374|16896,13183|13230|16374|16896,13214,5,4,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4303202,Cacique Doble,RS,15447|16502,16502,15447,2,1,conjunto não identificado,Não Informado,False,False
+4303558,Camargo,RS,15457|16505|16614,16505|16614,15457,3,2,possível mudança de conjunto 2024→2025,COPREL,True,True
+4303673,Campestre da Serra,RS,16534|16540|16545,16534|16545,16540,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4303806,Campinas do Sul,RS,15447|16519|16520,16519|16520,15447,3,2,conjunto não identificado,Não Informado,False,False
+4303905,Campo Bom,RS,13185|13187|13219|15779|15782|15786,13185|15779|15782|15786,13187|13219,6,4,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4304200,Candelária,RS,13183|13201|13204|13230|16367|16374|16896,13183|13201|16367|16374|16896,13204|13230,7,5,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4304309,Cândido Godói,RS,15456|16497|16523|16542,15456|16523|16542,16497,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4304358,Candiota,RS,12576|15983|16724,12576|15983,16724,3,2,conjunto provavelmente pertence a distribuidora local,COOPERSUL,True,False
+4304408,Canela,RS,16512|16525|16529|16536,16529|16536,16512|16525,4,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4304507,Canguçu,RS,12525|12571|12576|15361|16893,12525|12571|15361|16893,12576,5,4,conjunto sem peso na BDGD 2024 do agente principal,CEEE-D,True,True
+4304606,Canoas,RS,13185|13188|13219|15780|15781|15783,13188|15780|15781|15783,13185|13219,6,4,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4304655,Capão do Cipó,RS,15458|16376|16377,16376,15458|16377,3,1,conjunto sem peso na BDGD 2024 do agente principal,COPREL|RGE SUL,True,True
+4304697,Capitão,RS,13186|13192|15451|16614,13186|15451|16614,13192,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4304853,Carlos Gomes,RS,15447|16502|16514,16502|16514,15447,3,2,conjunto não identificado,Não Informado,False,False
+4304903,Casca,RS,15457|16503|16505|16509|16614,16503|16509|16614,15457|16505,5,3,conjunto sem peso na BDGD 2024 do agente principal,COPREL|RGE SUL,True,True
+4304952,Caseiros,RS,15457|16506,16506,15457,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4305009,Catuípe,RS,15446|15449|16496,15446|16496,15449,3,2,conjunto sem peso na BDGD 2024 do agente principal,CERMISSÕES,True,True
+4305116,Centenário,RS,15447|16502|16514,16502|16514,15447,3,2,conjunto não identificado,Não Informado,False,False
+4305132,Cerro Branco,RS,13183|13230|16374|16896,13183|16896,13230|16374,4,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4305157,Cerro Grande,RS,15441|17108|17109,15441|17109,17108,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4305306,Chapada,RS,14436|15458,14436,15458,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4305371,Charrua,RS,15447|15457|16513|16518,16513|16518,15447|15457,4,2,conjunto não identificado,COPREL|Não Informado,False,False
+4305504,Ciríaco,RS,15457|16503|16506,16503|16506,15457,3,2,possível mudança de conjunto 2024→2025,COPREL,True,True
+4305702,Condor,RS,12723|15446|15458,15446,12723|15458,3,1,conjunto provavelmente pertence a distribuidora local,COPREL|HIDROPAN,True,False
+4305801,Constantina,RS,16520|17108|17109,16520|17109,17108,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4305835,Coqueiro Baixo,RS,13186|13192|15452|16614,13186|15452|16614,13192,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4305850,Coqueiros do Sul,RS,14435|15457,14435,15457,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4305975,Coxilha,RS,15457|16499,16499,15457,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4306106,Cruz Alta,RS,15446|15458|17106|17107,15446|17106|17107,15458,4,3,possível mudança de conjunto 2024→2025,COPREL,True,True
+4306130,Cruzaltense,RS,15447|16519|16520,16519|16520,15447,3,2,conjunto não identificado,Não Informado,False,False
+4306205,Cruzeiro do Sul,RS,13192|13193|13204|15451|16372,13193|16372,13192|13204|15451,5,2,conjunto sem peso na BDGD 2024 do agente principal,CERTEL ENERGIA|RGE SUL,True,True
+4306304,David Canabarro,RS,15457|16503|16506|16614,16503|16506|16614,15457,4,3,possível mudança de conjunto 2024→2025,COPREL,True,True
+4306379,Dilermando de Aguiar,RS,13205|13207|13208|13214|13216,13208|13214|13216,13205|13207,5,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4306403,Dois Irmãos,RS,13185|13187|13218|13219|15782,13185|13187|13219|15782,13218,5,4,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4306700,Dona Francisca,RS,13683|16896,16896,13683,2,1,conjunto provavelmente pertence a distribuidora local,UHENPAL,True,False
+4306734,Doutor Maurício Cardoso,RS,16508|16535|16694,16508|16535,16694,3,2,conjunto provavelmente pertence a distribuidora local,CERTHIL,True,False
+4306759,Doutor Ricardo,RS,13186|13192,13186,13192,2,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4306809,Encantado,RS,13186|13189|13192|15451|16614,13186|15451|16614,13189|13192,5,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4306908,Encruzilhada do Sul,RS,12541|15361|16374|16866|16896,12541|15361|16866|16896,16374,5,4,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4306924,Engenho Velho,RS,16520|17108|17109,17108|17109,16520,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4306932,Entre-Ijuís,RS,15446|15449|16496|16543,15446|15449|16543,16496,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4306957,Entre Rios do Sul,RS,15447|16520,16520,15447,2,1,conjunto não identificado,Não Informado,False,False
+4306973,Erebango,RS,15447|16513|16519,16513|16519,15447,3,2,conjunto não identificado,Não Informado,False,False
+4307005,Erechim,RS,15447|16513|16514|16518|16519,16513|16514|16518|16519,15447,5,4,conjunto não identificado,Não Informado,False,False
+4307054,Ernestina,RS,15457|16499,16499,15457,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4307203,Erval Grande,RS,15447|16519|16520,16519|16520,15447,3,2,conjunto não identificado,Não Informado,False,False
+4307401,Esmeralda,RS,16502|16506|16545,16506|16545,16502,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4307500,Espumoso,RS,15458|16507,16507,15458,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4307559,Estação,RS,15447|15457|16513,16513,15447|15457,3,1,conjunto não identificado,COPREL|Não Informado,False,False
+4307609,Estância Velha,RS,13185|13187|13218|13220|13226|15784|16368|16369,13187|15784|16368|16369,13185|13218|13220|13226,8,4,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4307708,Esteio,RS,13187|13188|13189|13220|13226|15783,13188|15783,13187|13189|13220|13226,6,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4307815,Estrela Velha,RS,13183|16896,16896,13183,2,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4307864,Fagundes Varela,RS,16503|16509|16546,16503|16546,16509,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4307906,Farroupilha,RS,15453|16504|16517|16527|16528|16532|16533|16534,15453|16517|16527|16528|16533,16504|16532|16534,8,5,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4308003,Faxinal do Soturno,RS,13183|13683|16896,13183,13683|16896,3,1,conjunto provavelmente pertence a distribuidora local,CELETRO|UHENPAL,True,False
+4308052,Faxinalzinho,RS,15447|16520,16520,15447,2,1,conjunto não identificado,Não Informado,False,False
+4308078,Fazenda Vilanova,RS,12485|13189|15450|16375,12485|13189|15450,16375,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4308102,Feliz,RS,16504|16517,16517,16504,2,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4308201,Flores da Cunha,RS,16516|16517|16524|16525|16534|16540,16516|16524|16525|16534,16517|16540,6,4,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4308250,Floriano Peixoto,RS,15447|15457|16513|16514,,15447|15457|16513|16514,4,0,conjunto não identificado,COPREL|Não Informado|RGE SUL,False,False
+4308458,Fortaleza dos Valos,RS,15458|16507,16507,15458,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4308706,Gaurama,RS,15447|16514|16518|16519,16514|16518,15447|16519,4,2,conjunto não identificado,Não Informado|RGE SUL,False,False
+4308854,Gentil,RS,15457|16503,16503,15457,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4308904,Getúlio Vargas,RS,15447|15457|16513|16514|16519,16513|16514,15447|15457|16519,5,2,conjunto não identificado,COPREL|Não Informado|RGE SUL,False,False
+4309001,Giruá,RS,15446|15449|15456|16521|16543|16694,15446|15456|16521,15449|16543|16694,6,3,conjunto provavelmente pertence a distribuidora local,CERMISSÕES|CERTHIL|RGE SUL,True,False
+4309050,Glorinha,RS,16511|16537|17110,16511|16537,17110,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4309100,Gramado,RS,16504|16512|16525|16529|16536,16504|16512|16529|16536,16525,5,4,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4309126,Gramado dos Loureiros,RS,15447|16515|16520,16520,15447|16515,3,1,conjunto não identificado,Não Informado|RGE SUL,False,False
+4309209,Gravataí,RS,15786|16511|16531|16537|17110,16511|16531|16537|17110,15786,5,4,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4309407,Guaporé,RS,16503|16509|16546|16614,16509|16614,16503|16546,4,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4309605,Horizontina,RS,16508|16530|16535|16694,16508,16530|16535|16694,4,1,conjunto provavelmente pertence a distribuidora local,CERTHIL|RGE SUL,True,False
+4309654,Hulha Negra,RS,15982|15983|16724,15983,15982|16724,3,1,conjunto provavelmente pertence a distribuidora local,CEEE-D|COOPERSUL,True,False
+4309803,Ibiaçá,RS,12722|15447|15457,,12722|15447|15457,3,0,conjunto não identificado,COPREL|MUXENERGIA|Não Informado,False,False
+4309902,Ibiraiaras,RS,15457|16503|16506,16503|16506,15457,3,2,possível mudança de conjunto 2024→2025,COPREL,True,True
+4309951,Ibirapuitã,RS,15457|16499,16499,15457,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4310009,Ibirubá,RS,15458|16507,16507,15458,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4310207,Ijuí,RS,15446|16191|16192,15446,16191|16192,3,1,conjunto provavelmente pertence a distribuidora local,DEMEI,True,False
+4310306,Ilópolis,RS,15454|16509|16538|16614,16509|16614,15454|16538,4,2,conjunto sem peso na BDGD 2024 do agente principal,CERTEL ENERGIA|RGE SUL,True,True
+4310330,Imbé,RS,12575|15981|16882,12575|15981,16882,3,2,conjunto sem peso na BDGD 2024 do agente principal,CEEE-D,True,True
+4310405,Independência,RS,15446|15456|16508|16521|16694,15446|15456|16508,16521|16694,5,3,conjunto provavelmente pertence a distribuidora local,CERTHIL|RGE SUL,True,False
+4310413,Inhacorá,RS,15446|16530|16694,15446|16530,16694,3,2,conjunto provavelmente pertence a distribuidora local,CERTHIL,True,False
+4310462,Ipiranga do Sul,RS,15447|16513,16513,15447,2,1,conjunto não identificado,Não Informado,False,False
+4310538,Itaara,RS,13191|13205|13207|13208|13216,13205|13207|13208,13191|13216,5,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4310579,Itapuca,RS,16503|16509|16538|16614,16503|16509|16614,16538,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4310702,Itatiba do Sul,RS,15447|16519|16520,16519|16520,15447,3,2,conjunto não identificado,Não Informado,False,False
+4310751,Ivorá,RS,13205|13207|13208|13683,13205|13207,13208|13683,4,2,conjunto provavelmente pertence a distribuidora local,RGE SUL|UHENPAL,True,False
+4310801,Ivoti,RS,13185|13187|13218|13219|15784,13185|13187,13218|13219|15784,5,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4310900,Jacutinga,RS,15447|16519,16519,15447,2,1,conjunto não identificado,Não Informado,False,False
+4311130,Jari,RS,13216|15458|16376|16544,13216|16376,15458|16544,4,2,conjunto sem peso na BDGD 2024 do agente principal,COPREL|RGE SUL,True,True
+4311155,Jóia,RS,15446|15449|15458|16543|16544,15446|15449|16543|16544,15458,5,4,possível mudança de conjunto 2024→2025,COPREL,True,True
+4311205,Júlio de Castilhos,RS,13683|15458|16544|16896,16544|16896,13683|15458,4,2,conjunto provavelmente pertence a distribuidora local,COPREL|UHENPAL,True,False
+4311239,Lagoa Bonita do Sul,RS,13183|13204|16374|16896,13183|16896,13204|16374,4,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4311254,Lagoão,RS,13183|13204|15458|16896,13183|13204|16896,15458,4,3,possível mudança de conjunto 2024→2025,COPREL,True,True
+4311270,Lagoa dos Três Cantos,RS,15458|16507,16507,15458,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4311304,Lagoa Vermelha,RS,15457|16502|16503|16506|16545,16502|16503|16506|16545,15457,5,4,possível mudança de conjunto 2024→2025,COPREL,True,True
+4311403,Lajeado,RS,13186|13192|13193|15451|16372,13192|13193|15451,13186|16372,5,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4311429,Lajeado do Bugre,RS,15441|16501|17108|17109,15441|16501|17109,17108,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4311502,Lavras do Sul,RS,12539|15361|15983|16896,12539|15983|16896,15361,4,3,conjunto sem peso na BDGD 2024 do agente principal,CEEE-D,True,True
+4311601,Liberato Salzano,RS,15441|16515|16520|17108|17109,15441|16520|17109,16515|17108,5,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4311627,Lindolfo Collor,RS,13185|13187|13218,13185|13218,13187,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4311700,Machadinho,RS,15447|16502,16502,15447,2,1,conjunto não identificado,Não Informado,False,False
+4311718,Maçambará,RS,13191|16376|16377|16379,16376|16377|16379,13191,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4311734,Mampituba,RS,12574|16873,12574,16873,2,1,conjunto sem peso na BDGD 2024 do agente principal,CEEE-D,True,True
+4311775,Maquiné,RS,12574|15978|16873|16882,16873|16882,12574|15978,4,2,conjunto sem peso na BDGD 2024 do agente principal,CEEE-D,True,True
+4311809,Marau,RS,15457|16499|16505,16499|16505,15457,3,2,possível mudança de conjunto 2024→2025,COPREL,True,True
+4312104,Mata,RS,13208|13216|16376,16376,13208|13216,3,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4312153,Mato Leitão,RS,13193|13204|16372,13193,13204|16372,3,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4312252,Minas do Leão,RS,16372|16866,16866,16372,2,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4312351,Montauri,RS,15457|16503|16509|16614,16503|16509|16614,15457,4,3,possível mudança de conjunto 2024→2025,COPREL,True,True
+4312377,Monte Alegre dos Campos,RS,16529|16545,16545,16529,2,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4312401,Montenegro,RS,12485|13189|15783|16375,12485|15783|16375,13189,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4312427,Mormaço,RS,15458|16538,16538,15458,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4312476,Morro Reuter,RS,13185|13187|13218|13219,13185,13187|13218|13219,4,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4312617,Muitos Capões,RS,16506|16534|16545,16506|16545,16534,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4312625,Muliterno,RS,15457|16506,16506,15457,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4312658,Não-Me-Toque,RS,14435|15458|16507,14435|16507,15458,3,2,possível mudança de conjunto 2024→2025,COPREL,True,True
+4312708,Nonoai,RS,15447|16515|16520|17108|17109,16520,15447|16515|17108|17109,5,1,conjunto não identificado,Não Informado|RGE SUL,False,False
+4312757,Nova Alvorada,RS,15457|16503|16614,16503|16614,15457,3,2,possível mudança de conjunto 2024→2025,COPREL,True,True
+4312955,Nova Boa Vista,RS,14436|17108|17109,14436|17108,17109,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4313003,Nova Bréscia,RS,13186|13192|16614,13186|16614,13192,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4313086,Nova Pádua,RS,16516|16517|16524|16534,16516,16517|16524|16534,4,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4313102,Nova Palma,RS,13683|16896,16896,13683,2,1,conjunto provavelmente pertence a distribuidora local,UHENPAL,True,False
+4313359,Nova Roma do Sul,RS,16516|16517|16534|16546,16534|16546,16516|16517,4,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4313375,Nova Santa Rita,RS,13187|13188|13218|15780|15783|16369|16375,13188|15780|15783,13187|13218|16369|16375,7,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4313391,Novo Cabrais,RS,13183|13230|16374|16896,16374|16896,13183|13230,4,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4313409,Novo Hamburgo,RS,13185|13187|13218|13219|13220|13226|15779|15782|15784|15785|15786|16368,13187|15779|15782|15784|15785|15786|16368,13185|13218|13219|13220|13226,12,7,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4313425,Novo Machado,RS,16508|16521|16694,16508|16521,16694,3,2,conjunto provavelmente pertence a distribuidora local,CERTHIL,True,False
+4313466,Novo Xingu,RS,17108|17109,17109,17108,2,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4313490,Novo Barreiro,RS,14436|15441|16501|17108|17109,14436|15441|16501|17108,17109,5,4,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4313607,Paim Filho,RS,15447|16502|16514,16502|16514,15447,3,2,conjunto não identificado,Não Informado,False,False
+4313706,Palmeira das Missões,RS,14436|15441|15446|15458|16501|16535,14436|15441|16501|16535,15446|15458,6,4,conjunto sem peso na BDGD 2024 do agente principal,CERILUZ|COPREL,True,True
+4313904,Panambi,RS,12723|15458,,12723|15458,2,0,conjunto provavelmente pertence a distribuidora local,COPREL|HIDROPAN,True,False
+4314068,Passa Sete,RS,13183|13204|16374|16896,13183|16374|16896,13204,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4314076,Passo do Sobrado,RS,12485|13193|13201|13204|16372,12485|13204,13193|13201|16372,5,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4314100,Passo Fundo,RS,14435|15457|16498|16499|16505,14435|16498|16499|16505,15457,5,4,possível mudança de conjunto 2024→2025,COPREL,True,True
+4314308,Pejuçara,RS,15458|17106|17107,17106,15458|17107,3,1,conjunto sem peso na BDGD 2024 do agente principal,COPREL|RGE SUL,True,True
+4314464,Pinhal da Serra,RS,16502|16506,16506,16502,2,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4314506,Pinheiro Machado,RS,12576|15361|15983|16894,12576|15983|16894,15361,4,3,conjunto sem peso na BDGD 2024 do agente principal,CEEE-D,True,True
+4314779,Pontão,RS,14435|15457,14435,15457,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4314787,Ponte Preta,RS,15447|16519|16520,16519|16520,15447,3,2,conjunto não identificado,Não Informado,False,False
+4314902,Porto Alegre,RS,12540|12542|12559|15362|16863|16864|16870|16871|16874|16875|16876|16877|16878|16880|16881|16884|16885|16887|16889|16890|16891|16892|16895,12540|12559|15362|16863|16864|16870|16871|16874|16875|16876|16877|16878|16880|16881|16884|16885|16887|16889|16890|16891|16892|16895,12542,23,22,conjunto sem peso na BDGD 2024 do agente principal,CEEE-D,True,True
+4315057,Porto Mauá,RS,16521|16694,16521,16694,2,1,conjunto provavelmente pertence a distribuidora local,CERTHIL,True,False
+4315149,Presidente Lucena,RS,13185|13187|13218,13185,13187|13218,3,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4315206,Putinga,RS,15452|16509|16538|16614,15452|16509|16614,16538,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4315305,Quaraí,RS,13194|13202|16365|16379,16365|16379,13194|13202,4,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4315313,Quatro Irmãos,RS,15447|16513|16519,16513|16519,15447,3,2,conjunto não identificado,Não Informado,False,False
+4315321,Quevedos,RS,13216|15458,13216,15458,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4315354,Quinze de Novembro,RS,15458|16507,16507,15458,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4315453,Relvado,RS,13186|13192|16614,13186|16614,13192,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4315503,Restinga Sêca,RS,13183|13683|16374|16896,13183|16374|16896,13683,4,3,conjunto provavelmente pertence a distribuidora local,UHENPAL,True,False
+4315552,Rio dos Índios,RS,15447|16515|16520,16515|16520,15447,3,2,conjunto não identificado,Não Informado,False,False
+4315602,Rio Grande,RS,12540|16867|16868|16872|16886|16888,16867|16868|16872|16886|16888,12540,6,5,conjunto sem peso na BDGD 2024 do agente principal,CEEE-D,True,True
+4315701,Rio Pardo,RS,12485|13183|13201|13204|13230|16366|16367|16372|16374|16896,12485|13201|13204|16366|16367|16374|16896,13183|13230|16372,10,7,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4315800,Roca Sales,RS,13186|13189|13192|15450,13186|13189|15450,13192,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4315958,Rolador,RS,15449|16523|16541,15449|16541,16523,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4316006,Rolante,RS,16529|16537,16537,16529,2,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4316105,Ronda Alta,RS,15457|17108|17109,17108|17109,15457,3,2,possível mudança de conjunto 2024→2025,COPREL,True,True
+4316204,Rondinha,RS,15457|17108|17109,17108|17109,15457,3,2,possível mudança de conjunto 2024→2025,COPREL,True,True
+4316402,Rosário do Sul,RS,13194|13202|13208|13214|13216|16376|16379,13202|13214|16376|16379,13194|13208|13216,7,4,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4316428,Sagrada Família,RS,15441|16501|17108|17109,15441|16501|17109,17108,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4316436,Saldanha Marinho,RS,14435|15458|16507,16507,14435|15458,3,1,conjunto sem peso na BDGD 2024 do agente principal,COPREL|ELETROCAR,True,True
+4316451,Salto do Jacuí,RS,15458|16544|16896,16544|16896,15458,3,2,possível mudança de conjunto 2024→2025,COPREL,True,True
+4316600,Sananduva,RS,15447|15457|16502|16506|16514,16502|16506|16514,15447|15457,5,3,conjunto não identificado,COPREL|Não Informado,False,False
+4316709,Santa Bárbara do Sul,RS,14435|15458|16507,16507,14435|15458,3,1,conjunto sem peso na BDGD 2024 do agente principal,COPREL|ELETROCAR,True,True
+4316758,Santa Clara do Sul,RS,13193|15451|16372|16373,13193|15451|16373,16372,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4316808,Santa Cruz do Sul,RS,12485|13193|13201|13204|16366|16367|16373,12485|13201|13204|16366|16367,13193|16373,7,5,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4316907,Santa Maria,RS,13205|13207|13208|13209|13214|13216|13683|16896,13205|13207|13208|13209|13214|13216|16896,13683,8,7,conjunto provavelmente pertence a distribuidora local,UHENPAL,True,False
+4316956,Santa Maria do Herval,RS,13185|13187|13219,13185,13187|13219,3,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4316972,Santa Margarida do Sul,RS,13202|13208|13214|13216|16896,13214|16896,13202|13208|13216,5,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4317004,Santana da Boa Vista,RS,13183|13214|13230|16374,13230,13183|13214|16374,4,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4317103,Sant'ana do Livramento,RS,13194|13202|13214|16365|16379,13194|13202|16365,13214|16379,5,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4317202,Santa Rosa,RS,15456|16497|16521|16542|16694,15456|16497|16521|16542,16694,5,4,conjunto provavelmente pertence a distribuidora local,CERTHIL,True,False
+4317400,Santiago,RS,13204|13205|13207|13208|13209|16376|16377,16376,13204|13205|13207|13208|13209|16377,7,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4317558,Santo Antônio do Palma,RS,15457|16503,16503,15457,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4317608,Santo Antônio da Patrulha,RS,12547|12570|16723|16882|16890,12547|12570|16882|16890,16723,5,4,conjunto provavelmente pertence a distribuidora local,COOPERNORTE,True,False
+4317756,Santo Antônio do Planalto,RS,14435|15457|15458,14435,15457|15458,3,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4317806,Santo Augusto,RS,15446|16501|16530,15446|16530,16501,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4317954,Santo Expedito do Sul,RS,15447|16502,16502,15447,2,1,conjunto não identificado,Não Informado,False,False
+4318002,São Borja,RS,13191|16376|16377|16379,16376|16377|16379,13191,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4318101,São Francisco de Assis,RS,16376|16377|16379,16376|16377,16379,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4318200,São Francisco de Paula,RS,15455|16525|16529|16537|16540|16545,15455|16525|16529|16537|16545,16540,6,5,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4318309,São Gabriel,RS,13183|13202|13208|13214|13216|13230|16376|16896,13202|13208|13214|13216|16376,13183|13230|16896,8,5,conjunto sem peso na BDGD 2024 do agente principal,CELETRO|RGE SUL,True,True
+4318424,São João da Urtiga,RS,15447|16502|16514,16502|16514,15447,3,2,conjunto não identificado,Não Informado,False,False
+4318432,São João do Polêsine,RS,13183|13683,,13183|13683,2,0,conjunto provavelmente pertence a distribuidora local,RGE SUL|UHENPAL,True,False
+4318457,São José das Missões,RS,15441|16501|17108|17109,16501|17109,15441|17108,4,2,conjunto sem peso na BDGD 2024 do agente principal,CRELUZ-D|RGE SUL,True,True
+4318481,São José do Hortêncio,RS,13185|13187|13218,13185|13218,13187,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4318499,São José do Inhacorá,RS,16508|16530|16694,16508|16530,16694,3,2,conjunto provavelmente pertence a distribuidora local,CERTHIL,True,False
+4318606,São José do Ouro,RS,15447|16502,16502,15447,2,1,conjunto não identificado,Não Informado,False,False
+4318614,São José do Sul,RS,13218|15453|16375,15453|16375,13218,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4318705,São Leopoldo,RS,13187|13188|13220|13226|15786|16368|16369,13187|13220|13226|15786|16368|16369,13188,7,6,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4318903,São Luiz Gonzaga,RS,15448|15449|16376|16541,15448|15449|16541,16376,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4319000,São Marcos,RS,16516|16525|16534|16540|16545,16516|16525|16534|16540,16545,5,4,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4319109,São Martinho,RS,15446|16508|16530|16694,15446|16530,16508|16694,4,2,conjunto provavelmente pertence a distribuidora local,CERTHIL|RGE SUL,True,False
+4319125,São Martinho da Serra,RS,13205|13207|13208|13214|13216,13205|13207|13208|13216,13214,5,4,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4319158,São Miguel das Missões,RS,15449|15458|16376|16377,15449|16376,15458|16377,4,2,conjunto sem peso na BDGD 2024 do agente principal,COPREL|RGE SUL,True,True
+4319307,São Paulo das Missões,RS,15448|15456|16523|16542,15448|15456|16542,16523,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4319406,São Pedro do Sul,RS,13205|13208|13216|16376,13208|13216|16376,13205,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4319505,São Sebastião do Caí,RS,13218|16369|16375,13218|16369,16375,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4319604,São Sepé,RS,13183|13214|13230|16374|16896,13183|13230|16896,13214|16374,5,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4319703,São Valentim,RS,15447|16519|16520,16519|16520,15447,3,2,conjunto não identificado,Não Informado,False,False
+4319737,São Valério do Sul,RS,15446|16530|16694,15446|16530,16694,3,2,conjunto provavelmente pertence a distribuidora local,CERTHIL,True,False
+4319752,São Vendelino,RS,13218|15453,15453,13218,2,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4319802,São Vicente do Sul,RS,16376|16379,16376,16379,2,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4319901,Sapiranga,RS,13185|13187|13188|13219|13220|13226|15779,13185|13187|13219|15779,13188|13220|13226,7,4,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4320008,Sapucaia do Sul,RS,13187|13188|13220|13226|15786|16369,13188|13220|13226|15786,13187|16369,6,4,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4320107,Sarandi,RS,15441|16501|17108|17109,15441|17108|17109,16501,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4320263,Segredo,RS,13183|13204|16896,13183|16896,13204,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4320305,Selbach,RS,14435|15458,14435,15458,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4320321,Senador Salgado Filho,RS,15456|16497,15456,16497,2,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4320354,Sentinela do Sul,RS,12485|12524|12532,12485|12524,12532,3,2,conjunto sem peso na BDGD 2024 do agente principal,CEEE-D,True,True
+4320453,Sério,RS,13193|13204|15452|16373,15452|16373,13193|13204,4,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4320503,Sertão,RS,15457|16499|16513,16499|16513,15457,3,2,possível mudança de conjunto 2024→2025,COPREL,True,True
+4320578,Sete de Setembro,RS,15456|16521|16523|16543,15456|16523|16543,16521,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4320602,Severiano de Almeida,RS,15447|16514|16520,16514|16520,15447,3,2,conjunto não identificado,Não Informado,False,False
+4320677,Sinimbu,RS,13201|13204|16374,13204|16374,13201,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4320701,Sobradinho,RS,13183|13204|16896,13183|16896,13204,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4320859,Tabaí,RS,12485|13189|13204|16375,12485|13189,13204|16375,4,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4321006,Tapera,RS,14435|15458|16507,14435|16507,15458,3,2,possível mudança de conjunto 2024→2025,COPREL,True,True
+4321204,Taquara,RS,15454|16500|16511|16529|16536|16537|17110,15454|16500|16511|16529|16536|16537,17110,7,6,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4321303,Taquari,RS,12485|13189|16375,12485|16375,13189,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4321469,Tio Hugo,RS,15457|15458,,15457|15458,2,0,possível mudança de conjunto 2024→2025,COPREL,True,True
+4321634,Três Arroios,RS,15447|16514|16518|16519|16520,16514|16518|16519|16520,15447,5,4,conjunto não identificado,Não Informado,False,False
+4321808,Três de Maio,RS,15456|16508|16521|16530|16694,15456|16508|16521|16530,16694,5,4,conjunto provavelmente pertence a distribuidora local,CERTHIL,True,False
+4321956,Trindade do Sul,RS,15447|16520|17108|17109,16520|17109,15447|17108,4,2,conjunto não identificado,Não Informado|RGE SUL,False,False
+4322103,Tucunduva,RS,16508|16521|16694,16508|16521,16694,3,2,conjunto provavelmente pertence a distribuidora local,CERTHIL,True,False
+4322152,Tunas,RS,13183|15458,13183,15458,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4322202,Tupanciretã,RS,15458|16376|16544,16544,15458|16376,3,1,conjunto sem peso na BDGD 2024 do agente principal,COPREL|RGE SUL,True,True
+4322251,Tupandi,RS,13216|13218|15453,13218|15453,13216,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4322301,Tuparendi,RS,15456|16521|16542|16694,15456|16521|16542,16694,4,3,conjunto provavelmente pertence a distribuidora local,CERTHIL,True,False
+4322343,Ubiretama,RS,15456|16497|16523,15456|16523,16497,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4322350,União da Serra,RS,16503|16509|16614,16509|16614,16503,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4322400,Uruguaiana,RS,16365|16370|16371|16379,16370|16371|16379,16365,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4322509,Vacaria,RS,16506|16545,16545,16506,2,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4322525,Vale Verde,RS,12485|16372|16375,12485|16372,16375,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4322533,Vale do Sol,RS,13183|13201|13204|16374,13204|16374,13183|13201,4,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4322541,Vale Real,RS,16504|16517|16527,16517|16527,16504,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4322558,Vanini,RS,15457|16503|16614,16503|16614,15457,3,2,possível mudança de conjunto 2024→2025,COPREL,True,True
+4322608,Venâncio Aires,RS,13189|13193|13201|13204|15451|16372|16373|16375,13193|13204|15451|16372|16373|16375,13189|13201,8,6,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4322707,Vera Cruz,RS,13201|13204|16366|16367|16374,13201|13204|16367|16374,16366,5,4,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4322905,Viadutos,RS,15447|16502|16514,16502|16514,15447,3,2,conjunto não identificado,Não Informado,False,False
+4323002,Viamão,RS,12559|12570|16723|16871|16878|16879|16880|16889|16890,12570|16871|16878|16879|16880|16889|16890,12559|16723,9,7,conjunto provavelmente pertence a distribuidora local,CEEE-D|COOPERNORTE,True,False
+4323200,Victor Graeff,RS,15458|16507,16507,15458,2,1,possível mudança de conjunto 2024→2025,COPREL,True,True
+4323309,Vila Flores,RS,16503|16534|16546,16503|16546,16534,3,2,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4323408,Vila Maria,RS,15457|16503|16505,16505,15457|16503,3,1,conjunto sem peso na BDGD 2024 do agente principal,COPREL|RGE SUL,True,True
+4323457,Vila Nova do Sul,RS,13183|13214|13230|16896,13214|13230|16896,13183,4,3,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True
+4323705,Vista Gaúcha,RS,16515|16535,16535,16515,2,1,conjunto sem peso na BDGD 2024 do agente principal,RGE SUL,True,True

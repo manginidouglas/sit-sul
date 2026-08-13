@@ -68,6 +68,20 @@ def read_relations(path:Path):
       except UnicodeDecodeError:pass
     raise ValueError("codificação do IndQual Município não reconhecida")
 
+def aggregate_bdgd_rows(layers:Iterable[tuple[str,Iterable[dict[str,object]]]]):
+    """Agrega UCs ativas de camadas de tensão disjuntas no peso município×conjunto."""
+    weights=Counter();sources=[]
+    for layer,rows in layers:
+      count=0
+      for row in rows:
+        municipality=row.get("MUN");set_id=row.get("CONJ");status=row.get("SIT_ATIV")
+        if municipality and set_id is not None and str(set_id).strip() and str(status).strip()=="AT":
+          try: normalized_set=str(int(set_id))
+          except (TypeError,ValueError):continue
+          weights[(str(municipality),normalized_set)]+=1;count+=1
+      sources.append({"tabela":layer,"registros_ativos":count,"campos":["MUN","CONJ","SIT_ATIV"]})
+    return dict(weights),sources
+
 def read_bdgd_weights(paths:Iterable[Path]):
     """Conta UCs ativas nas tabelas disjuntas por tensão UCBT/UCMT/UCAT."""
     try:from pyogrio.raw import read
@@ -77,11 +91,12 @@ def read_bdgd_weights(paths:Iterable[Path]):
     for path in paths:
       if not path.exists():continue
       root=zipfile.ZipFile(path).namelist()[0].rstrip("/");dataset=f"/vsizip/{path.resolve()}/{root}"
+      layer_rows=[]
       for layer in ("UCBT_tab","UCMT_tab","UCAT_tab"):
-        meta,_,_,arrays=read(dataset,layer=layer,read_geometry=False,columns=["MUN","CONJ","SIT_ATIV"]);columns=dict(zip(meta["fields"],arrays));count=0
-        for municipality,set_id,status in zip(columns["MUN"],columns["CONJ"],columns["SIT_ATIV"]):
-          if municipality and set_id is not None and str(status).strip()=="AT":weights[(str(municipality),str(int(set_id)))]+=1;count+=1
-        sources.append({"arquivo":path.name,"tabela":layer,"registros_ativos":count,"campos":["MUN","CONJ","SIT_ATIV"]})
+        meta,_,_,arrays=read(dataset,layer=layer,read_geometry=False,columns=["MUN","CONJ","SIT_ATIV"]);columns=dict(zip(meta["fields"],arrays))
+        layer_rows.append((layer,({"MUN":m,"CONJ":c,"SIT_ATIV":s} for m,c,s in zip(columns["MUN"],columns["CONJ"],columns["SIT_ATIV"]))))
+      found,details=aggregate_bdgd_rows(layer_rows);weights.update(found)
+      for detail in details:detail["arquivo"]=path.name;sources.append(detail)
     return dict(weights),sources
 
 def audit(rows:list[dict[str,object]]):
