@@ -9,3 +9,9 @@ data/interim/*
 !data/interim/.gitkeep
 data/output/*
 !data/output/.gitkeep
+
+# Rebuildable, large OSRM inputs and graph
+/data/raw/osm/*.osm.pbf
+/data/interim/routing/osrm/
+/data/raw/routing/*.zip
+/data/raw/routing/*.gpkg

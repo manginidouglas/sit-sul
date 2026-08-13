@@ -1,0 +1,35 @@
+{
+  "periodo": "2026-06",
+  "formato": "OGC KML 2.2",
+  "crs": "EPSG:4326 (coordenadas longitude,latitude KML)",
+  "tecnologia": "4G5G",
+  "operadora": "todas (união oficial)",
+  "unidade_geografica": "geometrias de cobertura separadas por município e sufixo R/U no Placemark name",
+  "membros_sul": [
+    {
+      "membro": "4G5G_todas_pr_municipio_simple.kml",
+      "tamanho_descompactado": 47088438,
+      "crc32": "3c02248f"
+    },
+    {
+      "membro": "4G5G_todas_sc_municipio_simple.kml",
+      "tamanho_descompactado": 37048948,
+      "crc32": "e3d443c2"
+    },
+    {
+      "membro": "4G5G_todas_rs_municipio_simple.kml",
+      "tamanho_descompactado": 46436392,
+      "crc32": "9f520565"
+    }
+  ],
+  "schema_xml": [
+    "Document",
+    "Folder",
+    "Placemark/name",
+    "MultiGeometry/Polygon/outerBoundaryIs/LinearRing/coordinates"
+  ],
+  "procedimento": "Extrair os três membros; dissolver R/U por código IBGE (7 primeiros caracteres); validar/reparar geometrias; intersectar com a futura camada oficial de área agrícola em CRS equal-area; calcular 100 * área(interseção) / área(elegível); área elegível zero => nao_aplicavel.",
+  "raw_path": "data/raw/anatel/2026-08-12/areas_cobertas.zip",
+  "raw_sha256": "1a88d8e5d0989fd32f9d8c924debed3cdd9848614b5a05c729a97f0e186759a6",
+  "aquisição": "AnatelCollector(include_spatial=True).collect()"
+}
