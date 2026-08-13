@@ -1,0 +1,33 @@
+{
+  "fonte": "ANTAQ",
+  "coletado_em_utc": "2026-08-13T00:00:00Z",
+  "artefatos": [
+    {
+      "recurso": "Instalações portuárias 06/05/2025",
+      "url": "https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip",
+      "metodo": "GET",
+      "status_http": 200,
+      "content_type": "application/zip",
+      "tamanho": 518623,
+      "sha256": "79e28332bdd031388a6f2305e4f1e2e741c057a64a63724ea4278f78a040fb63",
+      "arquivo": "data/raw/antaq/instalacoes-portuarias-2025-05-06.zip",
+      "validacao": "ZIP íntegro contendo Portos.xlsx, SHP, DBF, KML, PRJ, SHX e QMD",
+      "versionado_git": false,
+      "politica_raw": "binário externo; baixar da URL oficial e validar SHA-256"
+    },
+    {
+      "recurso": "Desempenho Aquaviário 2025",
+      "url": "https://www.gov.br/antaq/pt-br/central-de-conteudos/publicacoes-da-antaq/Anuario2025.pdf",
+      "metodo": "GET",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "tamanho": 6318182,
+      "sha256": "75a258baeb9267d1cf1c0be8b9353aa31850b950b55197e79b9072e484961e2e",
+      "arquivo": "data/raw/antaq/Anuario2025.pdf",
+      "periodo": "2025-01-01/2025-12-31",
+      "validacao": "PDF íntegro; evidência nominal utilizada na página 19",
+      "versionado_git": false,
+      "politica_raw": "binário externo; baixar da URL oficial e validar SHA-256"
+    }
+  ]
+}

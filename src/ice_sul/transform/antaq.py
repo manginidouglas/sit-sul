@@ -153,3 +153,76 @@ def write_csv(rows: list[dict[str, object]], path: Path) -> None:
     with path.open("w", encoding="utf-8", newline="") as stream:
         writer = csv.DictWriter(stream, fieldnames=OUTPUT_FIELDS)
         writer.writeheader(); writer.writerows(rows)
+
+
+def read_antaq_installations(path: Path) -> list[dict[str, object]]:
+    """Lê o XLSX oficial ``Portos.xlsx`` diretamente do ZIP geográfico ANTAQ.
+
+    O leitor é intencionalmente stdlib-only e valida os nomes reais do snapshot
+    de 06/05/2025, em vez de impor ao raw o schema interno.
+    """
+    import io
+    import xml.etree.ElementTree as ET
+    import zipfile
+
+    ns = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main", "r": "http://schemas.openxmlformats.org/officeDocument/2006/relationships"}
+    with zipfile.ZipFile(path) as outer:
+        xlsx_name = next((n for n in outer.namelist() if n.lower().endswith("portos.xlsx")), None)
+        if not xlsx_name:
+            raise ValueError("ZIP ANTAQ sem Portos.xlsx")
+        payload = io.BytesIO(outer.read(xlsx_name))
+    with zipfile.ZipFile(payload) as book:
+        shared = []
+        if "xl/sharedStrings.xml" in book.namelist():
+            root = ET.fromstring(book.read("xl/sharedStrings.xml"))
+            shared = ["".join(si.itertext()).strip() for si in root.findall("m:si", ns)]
+        sheet = ET.fromstring(book.read("xl/worksheets/sheet1.xml"))
+        rows = []
+        for xml_row in sheet.findall(".//m:sheetData/m:row", ns):
+            values = []
+            for cell in xml_row.findall("m:c", ns):
+                letters = re.match(r"[A-Z]+", cell.get("r", "A")).group()
+                column = 0
+                for letter in letters: column = column * 26 + ord(letter) - 64
+                while len(values) < column - 1: values.append("")
+                value = cell.find("m:v", ns)
+                text = "" if value is None else value.text or ""
+                if cell.get("t") == "s": text = shared[int(text)]
+                elif cell.get("t") == "inlineStr": text = "".join(cell.itertext()).strip()
+                values.append(text)
+            rows.append(values)
+    required = {"cdi_tuaria", "nome", "tipo", "estado", "cidade", "latitude", "longitude", "fonte"}
+    headers = rows[0]
+    if not required <= set(headers):
+        raise ValueError(f"schema Portos.xlsx inesperado: ausentes {sorted(required - set(headers))}")
+    result = []
+    for values in rows[1:]:
+        raw = dict(zip(headers, values))
+        if not raw.get("cdi_tuaria") or not raw.get("nome"): continue
+        clean_coord = lambda value: str(value).replace("°", "").replace("�", "").strip()
+        result.append({
+            "instalacao_id": raw["cdi_tuaria"].strip(), "nome": raw["nome"].strip(" �"),
+            "tipo": raw["tipo"], "uf": raw.get("estado", ""), "municipio": raw.get("cidade", ""),
+            "latitude": clean_coord(raw["latitude"]), "longitude": clean_coord(raw["longitude"]),
+            "referencia_coordenada": "ponto da camada geográfica ANTAQ; natureza não especificada",
+            "fonte_cadastro": raw.get("fonte", "ANTAQ"),
+        })
+    return result
+
+
+def read_antaq_movements(path: Path) -> list[dict[str, object]]:
+    """Lê evidências tabulares transcritas do Anuário ANTAQ 2025.
+
+    O TSV preserva o texto/valor publicado e a página. Valores ``mi t`` são
+    convertidos programaticamente em toneladas. Não se infere carga ausente.
+    """
+    with path.open(encoding="utf-8", newline="") as stream:
+        rows = list(csv.DictReader(stream, delimiter="\t"))
+    required = {"instalacao_id", "nome_publicado", "valor_publicado", "unidade", "natureza_carga", "pagina"}
+    if not rows or not required <= set(rows[0]):
+        raise ValueError("schema da evidência do Anuário 2025 inesperado")
+    result = []
+    for row in rows:
+        multiplier = Decimal("1000000") if row["unidade"] == "mi t" else Decimal("1")
+        result.append({"instalacao_id": row["instalacao_id"], "nome_publicado": row["nome_publicado"], "periodo": "2025-12", "movimentacao_t": str(_decimal(row["valor_publicado"]) * multiplier), "natureza_carga": row["natureza_carga"], "pagina_fonte": row["pagina"]})
+    return result
