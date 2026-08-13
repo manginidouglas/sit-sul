@@ -3,9 +3,9 @@
     "por_indicador": {
       "INF-ENE-01": {
         "metodos": {
-          "nivel_2": 466,
+          "nivel_2": 522,
           "nivel_1": 241,
-          "nivel_4": 479
+          "nivel_4": 423
         },
         "n_ausente": 5,
         "municipios_ausentes": [
@@ -18,9 +18,9 @@
       },
       "INF-ENE-02": {
         "metodos": {
-          "nivel_2": 466,
+          "nivel_2": 522,
           "nivel_1": 241,
-          "nivel_4": 479
+          "nivel_4": 423
         },
         "n_ausente": 5,
         "municipios_ausentes": [
@@ -39,26 +39,26 @@
       "INF-ENE-01": {
         "n_observado": 1186,
         "n_ausente": 5,
-        "minimo": 2.38,
-        "p1": 3.7069807999999997,
-        "p5": 5.533125,
-        "mediana": 11.3429165,
+        "minimo": 1.82434,
+        "p1": 3.76143505,
+        "p5": 5.44560725,
+        "mediana": 11.2193615,
         "p95": 21.009650750000002,
         "p99": 27.149319350000116,
         "maximo": 54.41,
-        "media": 12.097690334738617
+        "media": 12.055870963743676
       },
       "INF-ENE-02": {
         "n_observado": 1186,
         "n_ausente": 5,
-        "minimo": 1.77,
-        "p1": 2.3124992,
+        "minimo": 1.745463,
+        "p1": 2.19895495,
         "p5": 3.27365075,
         "mediana": 6.5,
-        "p95": 10.67472575,
+        "p95": 10.678626,
         "p99": 12.68433305,
         "maximo": 20.980334,
-        "media": 6.760672155143339
+        "media": 6.733366306070827
       }
     },
     "por_uf": {
@@ -68,62 +68,62 @@
           "n_ausente": 0,
           "minimo": 3.005884,
           "p1": 3.55050568,
-          "p5": 4.66,
-          "mediana": 9.29,
+          "p5": 4.6597139,
+          "mediana": 9.282586,
           "p95": 17.148955899999994,
           "p99": 23.882145379999727,
           "maximo": 54.41,
-          "media": 9.981317501253132
+          "media": 9.96607384962406
         },
         "SC": {
           "n_observado": 292,
           "n_ausente": 3,
-          "minimo": 2.87,
-          "p1": 3.371,
-          "p5": 5.45891685,
-          "mediana": 10.694901999999999,
+          "minimo": 1.82434,
+          "p1": 3.4711000000000003,
+          "p5": 5.3395833,
+          "mediana": 10.651429499999999,
           "p95": 18.972708849999997,
           "p99": 26.434339869999988,
           "maximo": 26.958236,
-          "media": 11.26082654109589
+          "media": 11.183063643835617
         },
         "RS": {
           "n_observado": 495,
           "n_ausente": 2,
           "minimo": 2.38,
-          "p1": 5.6153395800000006,
+          "p1": 5.56900558,
           "p5": 7.2517153,
-          "mediana": 13.506731,
-          "p95": 22.241273099999997,
+          "mediana": 13.464409,
+          "p95": 22.271859999999997,
           "p99": 28.285400000000003,
           "maximo": 39.163878,
-          "media": 14.29728021010101
+          "media": 14.255242248484848
         }
       },
       "INF-ENE-02": {
         "PR": {
           "n_observado": 399,
           "n_ausente": 0,
-          "minimo": 1.77,
+          "minimo": 1.745463,
           "p1": 2.01,
-          "p5": 2.5111396,
+          "p5": 2.4851631,
           "mediana": 5.821577,
           "p95": 11.1,
           "p99": 18.233085819999985,
           "maximo": 20.03,
-          "media": 6.134416523809524
+          "media": 6.125214313283208
         },
         "SC": {
           "n_observado": 292,
           "n_ausente": 3,
-          "minimo": 2.44,
-          "p1": 3.1419613600000003,
-          "p5": 4.01555105,
+          "minimo": 1.958969,
+          "p1": 2.7377789,
+          "p5": 3.85735225,
           "mediana": 6.79,
           "p95": 10.590689099999999,
           "p99": 12.305719649999999,
           "maximo": 14.825772,
-          "media": 6.9459495924657535
+          "media": 6.9221775
         },
         "RS": {
           "n_observado": 495,
@@ -131,11 +131,11 @@
           "minimo": 1.87,
           "p1": 3.1719182800000003,
           "p5": 3.8023936000000003,
-          "mediana": 6.985,
-          "p95": 10.6553331,
+          "mediana": 6.98,
+          "p95": 10.66,
           "p99": 12.22494266,
           "maximo": 20.980334,
-          "media": 7.156177175757576
+          "media": 7.112194137373737
         }
       }
     },
@@ -154,32 +154,32 @@
           "media": 12.10219917012448
         },
         "nivel_2": {
-          "n_observado": 466,
+          "n_observado": 522,
           "n_ausente": 0,
-          "minimo": 3.005884,
-          "p1": 4.244517500000001,
-          "p5": 5.33774525,
-          "mediana": 10.8552915,
-          "p95": 21.165305500000002,
-          "p99": 27.404097150000027,
+          "minimo": 1.82434,
+          "p1": 3.589919,
+          "p5": 4.89009575,
+          "mediana": 10.6940805,
+          "p95": 21.0949314,
+          "p99": 26.95806842,
           "maximo": 41.676036,
-          "media": 11.862368291845494
+          "media": 11.591330810344827
         },
         "nivel_3": {
           "n_observado": 0,
           "n_ausente": 0
         },
         "nivel_4": {
-          "n_observado": 479,
+          "n_observado": 423,
           "n_ausente": 0,
-          "minimo": 2.87,
-          "p1": 3.54921144,
-          "p5": 5.6014997,
-          "mediana": 12.205,
+          "minimo": 3.42,
+          "p1": 4.58426318,
+          "p5": 6.25825,
+          "mediana": 12.295,
           "p95": 20.983333,
           "p99": 23.076667,
           "maximo": 23.595,
-          "media": 12.324357229645093
+          "media": 12.602738250591017
         }
       },
       "INF-ENE-02": {
@@ -196,32 +196,32 @@
           "media": 7.0181742738589215
         },
         "nivel_2": {
-          "n_observado": 466,
+          "n_observado": 522,
           "n_ausente": 0,
-          "minimo": 2.090146,
-          "p1": 2.42595265,
-          "p5": 3.254522,
-          "mediana": 6.467596,
-          "p95": 11.096789,
-          "p99": 18.1932479,
+          "minimo": 1.745463,
+          "p1": 2.13815249,
+          "p5": 3.1576243,
+          "mediana": 6.439724,
+          "p95": 10.969279299999998,
+          "p99": 17.47526846999988,
           "maximo": 20.980334,
-          "media": 6.735479710300429
+          "media": 6.653374948275862
         },
         "nivel_3": {
           "n_observado": 0,
           "n_ausente": 0
         },
         "nivel_4": {
-          "n_observado": 479,
+          "n_observado": 423,
           "n_ausente": 0,
           "minimo": 1.77,
-          "p1": 2.61191766,
-          "p5": 3.6213330000000004,
-          "mediana": 6.495,
-          "p95": 9.800249999999998,
-          "p99": 11.129199999999994,
+          "p1": 2.7108204199999997,
+          "p5": 3.76675,
+          "mediana": 6.553,
+          "p95": 9.7423336,
+          "p99": 11.260799999999994,
           "maximo": 12.683333,
-          "media": 6.655623446764092
+          "media": 6.669812567375886
         }
       }
     }
@@ -230,153 +230,33 @@
     "fontes": [
       {
         "tabela": "UCBT_tab",
-        "registros_ativos": 1935168,
+        "registros_ativos": 7633,
         "campos": [
           "MUN",
           "CONJ",
           "SIT_ATIV"
         ],
-        "arquivo": "ceee.zip"
+        "arquivo": "eflul.zip"
       },
       {
         "tabela": "UCMT_tab",
-        "registros_ativos": 13520,
+        "registros_ativos": 57,
         "campos": [
           "MUN",
           "CONJ",
           "SIT_ATIV"
         ],
-        "arquivo": "ceee.zip"
+        "arquivo": "eflul.zip"
       },
       {
         "tabela": "UCAT_tab",
-        "registros_ativos": 21,
+        "registros_ativos": 1,
         "campos": [
           "MUN",
           "CONJ",
           "SIT_ATIV"
         ],
-        "arquivo": "ceee.zip"
-      },
-      {
-        "tabela": "UCBT_tab",
-        "registros_ativos": 3442573,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "celesc.zip"
-      },
-      {
-        "tabela": "UCMT_tab",
-        "registros_ativos": 17085,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "celesc.zip"
-      },
-      {
-        "tabela": "UCAT_tab",
-        "registros_ativos": 118,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "celesc.zip"
-      },
-      {
-        "tabela": "UCBT_tab",
-        "registros_ativos": 4975276,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "copel.zip"
-      },
-      {
-        "tabela": "UCMT_tab",
-        "registros_ativos": 16925,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "copel.zip"
-      },
-      {
-        "tabela": "UCAT_tab",
-        "registros_ativos": 71,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "copel.zip"
-      },
-      {
-        "tabela": "UCBT_tab",
-        "registros_ativos": 3113915,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "rge.zip"
-      },
-      {
-        "tabela": "UCMT_tab",
-        "registros_ativos": 21121,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "rge.zip"
-      },
-      {
-        "tabela": "UCAT_tab",
-        "registros_ativos": 110,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "rge.zip"
-      },
-      {
-        "tabela": "UCBT_tab",
-        "registros_ativos": 75028,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "certel.zip"
-      },
-      {
-        "tabela": "UCMT_tab",
-        "registros_ativos": 519,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "certel.zip"
-      },
-      {
-        "tabela": "UCAT_tab",
-        "registros_ativos": 0,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "certel.zip"
+        "arquivo": "eflul.zip"
       },
       {
         "tabela": "UCBT_tab",
@@ -410,6 +290,186 @@
       },
       {
         "tabela": "UCBT_tab",
+        "registros_ativos": 3981,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cergapa.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 8,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cergapa.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cergapa.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 75028,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "certel.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 519,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "certel.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "certel.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 5691,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "coopersul.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 61,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "coopersul.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "coopersul.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 1406,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "coopermila.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 3,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "coopermila.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "coopermila.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 9485,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "coorsel.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 34,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "coorsel.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "coorsel.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 1384,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cersad_distribui.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 14,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cersad_distribui.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cersad_distribui.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
         "registros_ativos": 25281,
         "campos": [
           "MUN",
@@ -437,156 +497,6 @@
           "SIT_ATIV"
         ],
         "arquivo": "creluz.zip"
-      },
-      {
-        "tabela": "UCBT_tab",
-        "registros_ativos": 24089,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "celetro.zip"
-      },
-      {
-        "tabela": "UCMT_tab",
-        "registros_ativos": 79,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "celetro.zip"
-      },
-      {
-        "tabela": "UCAT_tab",
-        "registros_ativos": 0,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "celetro.zip"
-      },
-      {
-        "tabela": "UCBT_tab",
-        "registros_ativos": 27551,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "cermissoes.zip"
-      },
-      {
-        "tabela": "UCMT_tab",
-        "registros_ativos": 395,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "cermissoes.zip"
-      },
-      {
-        "tabela": "UCAT_tab",
-        "registros_ativos": 0,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "cermissoes.zip"
-      },
-      {
-        "tabela": "UCBT_tab",
-        "registros_ativos": 14842,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "ceriluz.zip"
-      },
-      {
-        "tabela": "UCMT_tab",
-        "registros_ativos": 231,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "ceriluz.zip"
-      },
-      {
-        "tabela": "UCAT_tab",
-        "registros_ativos": 0,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "ceriluz.zip"
-      },
-      {
-        "tabela": "UCBT_tab",
-        "registros_ativos": 26332,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "certaja.zip"
-      },
-      {
-        "tabela": "UCMT_tab",
-        "registros_ativos": 124,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "certaja.zip"
-      },
-      {
-        "tabela": "UCAT_tab",
-        "registros_ativos": 0,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "certaja.zip"
-      },
-      {
-        "tabela": "UCBT_tab",
-        "registros_ativos": 17273,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "cooperluz.zip"
-      },
-      {
-        "tabela": "UCMT_tab",
-        "registros_ativos": 81,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "cooperluz.zip"
-      },
-      {
-        "tabela": "UCAT_tab",
-        "registros_ativos": 0,
-        "campos": [
-          "MUN",
-          "CONJ",
-          "SIT_ATIV"
-        ],
-        "arquivo": "cooperluz.zip"
       },
       {
         "tabela": "UCBT_tab",
@@ -620,6 +530,36 @@
       },
       {
         "tabela": "UCBT_tab",
+        "registros_ativos": 8870,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cooperzem.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 40,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cooperzem.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cooperzem.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
         "registros_ativos": 0,
         "campos": [
           "MUN",
@@ -647,9 +587,969 @@
           "SIT_ATIV"
         ],
         "arquivo": "coprel.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 12940,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "muxenergia.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 37,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "muxenergia.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "muxenergia.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 4723,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "certrel.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 27,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "certrel.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "certrel.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 34916,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "demei.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 133,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "demei.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "demei.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 58338,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cocel.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 255,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cocel.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cocel.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 16248,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cerej.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 18,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cerej.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cerej.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 41001,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "dcelt.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 272,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "dcelt.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "dcelt.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 27954,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "coopera.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 218,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "coopera.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 1,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "coopera.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 1935168,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "ceee.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 13520,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "ceee.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 21,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "ceee.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 20500,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cergal.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 60,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cergal.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cergal.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 21568,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "ceprag.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 31,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "ceprag.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "ceprag.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 11906,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "coopercocal.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 116,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "coopercocal.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 1,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "coopercocal.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 7036,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cergral.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 18,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cergral.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cergral.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 20159,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "hidropan.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 111,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "hidropan.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "hidropan.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 4975276,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "copel.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 16925,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "copel.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 71,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "copel.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 26332,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "certaja.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 124,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "certaja.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "certaja.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 512177,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cpfl_jaguari.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 2692,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cpfl_jaguari.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 13,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cpfl_jaguari.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 24089,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "celetro.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 79,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "celetro.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "celetro.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 8609,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "certhil.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 60,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "certhil.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "certhil.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 43577,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cooperalianca.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 236,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cooperalianca.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cooperalianca.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 7007,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "coopernorte.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 12,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "coopernorte.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "coopernorte.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 16384,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cermoful.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 123,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cermoful.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cermoful.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 14842,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "ceriluz.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 231,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "ceriluz.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "ceriluz.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 27551,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cermissoes.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 395,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cermissoes.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cermissoes.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 1119,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "ceral_dis.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 17,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "ceral_dis.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "ceral_dis.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 18554,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cersul.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 124,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cersul.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cersul.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 6948,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cegero.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 155,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cegero.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cegero.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 3113915,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "rge.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 21121,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "rge.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 110,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "rge.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 3442573,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "celesc.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 17085,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "celesc.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 118,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "celesc.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 18120,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cerbranorte.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 200,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cerbranorte.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cerbranorte.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 17305,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cerpalo.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 31,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cerpalo.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cerpalo.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 17273,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cooperluz.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 81,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cooperluz.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cooperluz.zip"
+      },
+      {
+        "tabela": "UCBT_tab",
+        "registros_ativos": 5704,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cejama.zip"
+      },
+      {
+        "tabela": "UCMT_tab",
+        "registros_ativos": 22,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cejama.zip"
+      },
+      {
+        "tabela": "UCAT_tab",
+        "registros_ativos": 0,
+        "campos": [
+          "MUN",
+          "CONJ",
+          "SIT_ATIV"
+        ],
+        "arquivo": "cejama.zip"
       }
     ],
-    "n_pesos_municipio_conjunto": 3351
+    "n_pesos_municipio_conjunto": 3523
   },
   "ausentes": [
     {
@@ -1028,7 +1928,9 @@
       "conjuntos": [
         "16724"
       ],
-      "pesos": {},
+      "pesos": {
+        "16724": 2534
+      },
       "resultados": [
         {
           "municipio_id": "4300034",
@@ -1057,6 +1959,16 @@
     "INF-ENE-01": {
       "bottom_10": [
         {
+          "municipio_id": "4211207",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 1.82434,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "15443:8232|15445:152|16825:3"
+        },
+        {
           "municipio_id": "4320909",
           "indicador_id": "INF-ENE-01",
           "valor_bruto": 2.38,
@@ -1067,24 +1979,14 @@
           "pesos_uc": ""
         },
         {
-          "municipio_id": "4211207",
+          "municipio_id": "4205456",
           "indicador_id": "INF-ENE-01",
-          "valor_bruto": 2.87,
+          "valor_bruto": 2.743682,
           "periodo_referencia": "2025",
-          "flag_qualidade": "territorializacao_aproximada",
-          "metodo_territorializacao": "nivel_4",
-          "territorializacao_aproximada": true,
-          "pesos_uc": ""
-        },
-        {
-          "municipio_id": "4204251",
-          "indicador_id": "INF-ENE-01",
-          "valor_bruto": 2.995,
-          "periodo_referencia": "2025",
-          "flag_qualidade": "territorializacao_aproximada",
-          "metodo_territorializacao": "nivel_4",
-          "territorializacao_aproximada": true,
-          "pesos_uc": ""
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "12480:13192|12482:241"
         },
         {
           "municipio_id": "4101507",
@@ -1117,16 +2019,6 @@
           "pesos_uc": "14626:8|14696:496|15930:106|15936:8680|15961:253|16761:18042|16763:20461"
         },
         {
-          "municipio_id": "4205456",
-          "indicador_id": "INF-ENE-01",
-          "valor_bruto": 3.38,
-          "periodo_referencia": "2025",
-          "flag_qualidade": "territorializacao_aproximada",
-          "metodo_territorializacao": "nivel_4",
-          "territorializacao_aproximada": true,
-          "pesos_uc": ""
-        },
-        {
           "municipio_id": "4119152",
           "indicador_id": "INF-ENE-01",
           "valor_bruto": 3.42,
@@ -1155,6 +2047,16 @@
           "metodo_territorializacao": "nivel_1",
           "territorializacao_aproximada": false,
           "pesos_uc": ""
+        },
+        {
+          "municipio_id": "4203956",
+          "indicador_id": "INF-ENE-01",
+          "valor_bruto": 3.498105,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "12475:21|13439:10576"
         }
       ],
       "top_10": [
@@ -1263,6 +2165,26 @@
     "INF-ENE-02": {
       "bottom_10": [
         {
+          "municipio_id": "4111803",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 1.745463,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "16246:603|16729:17342|16780:9"
+        },
+        {
+          "municipio_id": "4102703",
+          "indicador_id": "INF-ENE-02",
+          "valor_bruto": 1.769558,
+          "periodo_referencia": "2025",
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "14693:28|16729:1261"
+        },
+        {
           "municipio_id": "4120333",
           "indicador_id": "INF-ENE-02",
           "valor_bruto": 1.77,
@@ -1283,14 +2205,14 @@
           "pesos_uc": ""
         },
         {
-          "municipio_id": "4102703",
+          "municipio_id": "4211207",
           "indicador_id": "INF-ENE-02",
-          "valor_bruto": 1.98,
+          "valor_bruto": 1.958969,
           "periodo_referencia": "2025",
-          "flag_qualidade": "territorializacao_aproximada",
-          "metodo_territorializacao": "nivel_4",
-          "territorializacao_aproximada": true,
-          "pesos_uc": ""
+          "flag_qualidade": "observado",
+          "metodo_territorializacao": "nivel_2",
+          "territorializacao_aproximada": false,
+          "pesos_uc": "15443:8232|15445:152|16825:3"
         },
         {
           "municipio_id": "4105102",
@@ -1341,26 +2263,6 @@
           "metodo_territorializacao": "nivel_2",
           "territorializacao_aproximada": false,
           "pesos_uc": "14659:2215|14666:88"
-        },
-        {
-          "municipio_id": "4116000",
-          "indicador_id": "INF-ENE-02",
-          "valor_bruto": 2.123564,
-          "periodo_referencia": "2025",
-          "flag_qualidade": "observado",
-          "metodo_territorializacao": "nivel_2",
-          "territorializacao_aproximada": false,
-          "pesos_uc": "14659:948|14698:62"
-        },
-        {
-          "municipio_id": "4103701",
-          "indicador_id": "INF-ENE-02",
-          "valor_bruto": 2.193033,
-          "periodo_referencia": "2025",
-          "flag_qualidade": "observado",
-          "metodo_territorializacao": "nivel_2",
-          "territorializacao_aproximada": false,
-          "pesos_uc": "14626:8|14696:496|15930:106|15936:8680|15961:253|16761:18042|16763:20461"
         }
       ],
       "top_10": [
@@ -1480,16 +2382,16 @@
       "percentual": 20.2351
     },
     "nivel_2": {
-      "municipios": 466,
-      "percentual": 39.1268
+      "municipios": 522,
+      "percentual": 43.8287
     },
     "nivel_3": {
       "municipios": 0,
       "percentual": 0.0
     },
     "nivel_4": {
-      "municipios": 479,
-      "percentual": 40.2183
+      "municipios": 423,
+      "percentual": 35.5164
     },
     "ausente": {
       "municipios": 5,
@@ -1498,10 +2400,10 @@
   },
   "comparacao_bdgd_media_simples": {
     "INF-ENE-01": {
-      "municipios_afetados": 466,
-      "spearman": 0.824630421047218,
-      "diferenca_absoluta_mediana": 1.548810500000001,
-      "diferenca_absoluta_p95": 5.977209750000001,
+      "municipios_afetados": 522,
+      "spearman": 0.8359797756473528,
+      "diferenca_absoluta_mediana": 1.5847535000000006,
+      "diferenca_absoluta_p95": 5.943067449999998,
       "diferenca_maxima": 15.991614,
       "maiores_mudancas": [
         {
@@ -1587,27 +2489,27 @@
       ],
       "por_uf": {
         "PR": {
-          "n": 190,
+          "n": 194,
           "diferenca_absoluta_mediana": 1.2963135000000001,
-          "diferenca_absoluta_p95": 4.606892549999998
+          "diferenca_absoluta_p95": 4.576080349999999
         },
         "SC": {
-          "n": 117,
-          "diferenca_absoluta_mediana": 1.834339,
-          "diferenca_absoluta_p95": 5.6525976
+          "n": 154,
+          "diferenca_absoluta_mediana": 1.7348430000000001,
+          "diferenca_absoluta_p95": 5.6527173
         },
         "RS": {
-          "n": 159,
-          "diferenca_absoluta_mediana": 1.7610399999999995,
-          "diferenca_absoluta_p95": 8.9046705
+          "n": 174,
+          "diferenca_absoluta_mediana": 1.8220129999999992,
+          "diferenca_absoluta_p95": 8.441817049999996
         }
       }
     },
     "INF-ENE-02": {
-      "municipios_afetados": 466,
-      "spearman": 0.7843750782402984,
-      "diferenca_absoluta_mediana": 0.8274850000000002,
-      "diferenca_absoluta_p95": 3.4361342500000003,
+      "municipios_afetados": 522,
+      "spearman": 0.788887195711787,
+      "diferenca_absoluta_mediana": 0.8444120000000002,
+      "diferenca_absoluta_p95": 3.353953149999999,
       "diferenca_maxima": 8.368594,
       "maiores_mudancas": [
         {
@@ -1693,31 +2595,31 @@
       ],
       "por_uf": {
         "PR": {
-          "n": 190,
+          "n": 194,
           "diferenca_absoluta_mediana": 0.8046859999999998,
-          "diferenca_absoluta_p95": 2.9979440999999993
+          "diferenca_absoluta_p95": 2.9961196999999995
         },
         "SC": {
-          "n": 117,
-          "diferenca_absoluta_mediana": 0.9630400000000003,
-          "diferenca_absoluta_p95": 2.3167147999999997
+          "n": 154,
+          "diferenca_absoluta_mediana": 0.9319080000000004,
+          "diferenca_absoluta_p95": 2.251175849999999
         },
         "RS": {
-          "n": 159,
-          "diferenca_absoluta_mediana": 0.8355539999999997,
-          "diferenca_absoluta_p95": 4.638096800000001
+          "n": 174,
+          "diferenca_absoluta_mediana": 0.9091874999999998,
+          "diferenca_absoluta_p95": 4.3540354999999975
         }
       }
     }
   },
   "fallback_nivel4": {
-    "n_municipios": 479,
-    "n_conjuntos_sem_peso": 240,
+    "n_municipios": 423,
+    "n_conjuntos_sem_peso": 210,
     "municipios_por_motivo": {
-      "conjunto sem peso na BDGD 2024 do agente principal": 289,
-      "conjunto provavelmente pertence a distribuidora local": 106,
-      "possível mudança de conjunto 2024→2025": 45,
-      "conjunto não identificado": 39
+      "bdgd_investigada_sem_celula_municipio_conjunto": 323,
+      "bdgd_oficial_nao_disponivel": 14,
+      "incompatibilidade_vintage_2024_2025": 47,
+      "agente_nao_informado_na_fonte": 39
     }
   },
   "fallback_por_distribuidora": [
@@ -1725,422 +2627,353 @@
       "distribuidora": "RGE SUL",
       "n_conjuntos_sem_peso": 73,
       "n_municipios_nivel4_afetados": 161,
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
       "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 1,
-      "bdgd_investigada": true
+      "bdgd_url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/9ad0d5bfc98648f880c488dfbfff1646/data",
+      "bdgd_vintage": "2024-12-31",
+      "bdgd_item_id": "9ad0d5bfc98648f880c488dfbfff1646",
+      "bdgd_tamanho_bytes": 1011089204,
+      "bdgd_baixada": true,
+      "motivo_nao_download": null,
+      "evidencia_catalogo": "Item oficial ANEEL localizado, baixado e validado.",
+      "prioridade": 1
     },
     {
       "distribuidora": "COPEL-DIS",
       "n_conjuntos_sem_peso": 54,
       "n_municipios_nivel4_afetados": 95,
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
       "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 2,
-      "bdgd_investigada": true
+      "bdgd_url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/d31f897573b64963ba31a820aabca897/data",
+      "bdgd_vintage": "2024-12-31",
+      "bdgd_item_id": "d31f897573b64963ba31a820aabca897",
+      "bdgd_tamanho_bytes": 1572568872,
+      "bdgd_baixada": true,
+      "motivo_nao_download": null,
+      "evidencia_catalogo": "Item oficial ANEEL localizado, baixado e validado.",
+      "prioridade": 2
     },
     {
       "distribuidora": "COPREL",
       "n_conjuntos_sem_peso": 2,
       "n_municipios_nivel4_afetados": 67,
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
       "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 3,
-      "bdgd_investigada": true
+      "bdgd_url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/aa13f439ad714ae0acc890d84683aa21/data",
+      "bdgd_vintage": "2023-12-31",
+      "bdgd_item_id": "aa13f439ad714ae0acc890d84683aa21",
+      "bdgd_tamanho_bytes": 44788808,
+      "bdgd_baixada": true,
+      "motivo_nao_download": null,
+      "evidencia_catalogo": "Item oficial ANEEL localizado, baixado e validado.",
+      "prioridade": 3
     },
     {
       "distribuidora": "CELESC",
       "n_conjuntos_sem_peso": 47,
       "n_municipios_nivel4_afetados": 52,
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
       "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 4,
-      "bdgd_investigada": true
+      "bdgd_url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/bdbcd6d12aee4a4fb9d86dca8aca1323/data",
+      "bdgd_vintage": "2024-12-31",
+      "bdgd_item_id": "bdbcd6d12aee4a4fb9d86dca8aca1323",
+      "bdgd_tamanho_bytes": 1380664715,
+      "bdgd_baixada": true,
+      "motivo_nao_download": null,
+      "evidencia_catalogo": "Item oficial ANEEL localizado, baixado e validado.",
+      "prioridade": 4
     },
     {
       "distribuidora": "Não Informado",
       "n_conjuntos_sem_peso": 1,
       "n_municipios_nivel4_afetados": 39,
-      "bdgd_disponivel": false,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 5,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "CERTHIL",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 16,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 6,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "CEREJ",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 15,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 7,
-      "bdgd_investigada": false
+      "distribuidora_identificada": false,
+      "bdgd_catalogo_verificado": false,
+      "bdgd_disponivel": null,
+      "bdgd_url": null,
+      "bdgd_vintage": null,
+      "bdgd_item_id": null,
+      "bdgd_tamanho_bytes": null,
+      "bdgd_baixada": false,
+      "motivo_nao_download": "Agente não informado na fonte oficial de continuidade.",
+      "evidencia_catalogo": "Pesquisa por agente impossível sem identificação oficial.",
+      "prioridade": 5
     },
     {
       "distribuidora": "CEEE-D",
       "n_conjuntos_sem_peso": 14,
       "n_municipios_nivel4_afetados": 14,
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
       "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 8,
-      "bdgd_investigada": true
-    },
-    {
-      "distribuidora": "CERSUL",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 11,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 9,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "COOPERCOCAL",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 9,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 10,
-      "bdgd_investigada": false
+      "bdgd_url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/15b77072ab3b46bb8581cca726cdf08a/data",
+      "bdgd_vintage": "2024-12-31",
+      "bdgd_item_id": "15b77072ab3b46bb8581cca726cdf08a",
+      "bdgd_tamanho_bytes": 558242774,
+      "bdgd_baixada": true,
+      "motivo_nao_download": null,
+      "evidencia_catalogo": "Item oficial ANEEL localizado, baixado e validado.",
+      "prioridade": 6
     },
     {
       "distribuidora": "UHENPAL",
       "n_conjuntos_sem_peso": 1,
       "n_municipios_nivel4_afetados": 8,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 11,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "CEJAMA",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 7,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 12,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "CERMOFUL",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 6,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 13,
-      "bdgd_investigada": false
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
+      "bdgd_disponivel": false,
+      "bdgd_url": null,
+      "bdgd_vintage": null,
+      "bdgd_item_id": null,
+      "bdgd_tamanho_bytes": null,
+      "bdgd_baixada": false,
+      "motivo_nao_download": "Nenhuma File Geodatabase BDGD vintage 2024 ou 2023 localizada no catálogo oficial.",
+      "evidencia_catalogo": "Consulta ArcGIS oficial orgId J5unWNi0P2dwjI3y por 'UHENPAL' retornou 3 itens, sem File Geodatabase 2024/2023 aplicável.",
+      "prioridade": 7
     },
     {
       "distribuidora": "ELETROCAR",
       "n_conjuntos_sem_peso": 2,
       "n_municipios_nivel4_afetados": 5,
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
       "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 14,
-      "bdgd_investigada": true
-    },
-    {
-      "distribuidora": "DCELT",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 5,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 15,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "CERBRANORTE",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 5,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 16,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "CERAL-DIS",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 4,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 17,
-      "bdgd_investigada": false
+      "bdgd_url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/afac3e9a099746928ecf63c73e4c510b/data",
+      "bdgd_vintage": "2024-12-31",
+      "bdgd_item_id": "afac3e9a099746928ecf63c73e4c510b",
+      "bdgd_tamanho_bytes": 12340158,
+      "bdgd_baixada": true,
+      "motivo_nao_download": null,
+      "evidencia_catalogo": "Item oficial ANEEL localizado, baixado e validado.",
+      "prioridade": 8
     },
     {
       "distribuidora": "ESS",
       "n_conjuntos_sem_peso": 3,
       "n_municipios_nivel4_afetados": 4,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 18,
-      "bdgd_investigada": false
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
+      "bdgd_disponivel": false,
+      "bdgd_url": null,
+      "bdgd_vintage": null,
+      "bdgd_item_id": null,
+      "bdgd_tamanho_bytes": null,
+      "bdgd_baixada": false,
+      "motivo_nao_download": "Nenhuma File Geodatabase BDGD vintage 2024 ou 2023 localizada no catálogo oficial.",
+      "evidencia_catalogo": "Consulta ArcGIS oficial orgId J5unWNi0P2dwjI3y por 'ESS' retornou 3 itens, sem File Geodatabase 2024/2023 aplicável.",
+      "prioridade": 9
     },
     {
-      "distribuidora": "COOPERALIANÇA",
+      "distribuidora": "CEJAMA",
       "n_conjuntos_sem_peso": 1,
       "n_municipios_nivel4_afetados": 4,
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
       "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 19,
-      "bdgd_investigada": false
+      "bdgd_url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/2c33183fd1084232b4f5ebeed2e43568/data",
+      "bdgd_vintage": "2024-12-31",
+      "bdgd_item_id": "2c33183fd1084232b4f5ebeed2e43568",
+      "bdgd_tamanho_bytes": 2555866,
+      "bdgd_baixada": true,
+      "motivo_nao_download": null,
+      "evidencia_catalogo": "Consulta oficial ArcGIS encontrou Cejama_5372_2024-12-31_V11_20250926-1357; ZIP baixado e validado.",
+      "prioridade": 10
     },
     {
-      "distribuidora": "CERGRAL",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 4,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 20,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "CEGERO",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 4,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 21,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "CERGAL",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 4,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 22,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "COORSEL",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 4,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 23,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "CPFL JAGUARI",
-      "n_conjuntos_sem_peso": 4,
-      "n_municipios_nivel4_afetados": 3,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 24,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "COOPERZEM",
+      "distribuidora": "DCELT",
       "n_conjuntos_sem_peso": 1,
       "n_municipios_nivel4_afetados": 3,
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
       "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 25,
-      "bdgd_investigada": false
+      "bdgd_url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/4670fc267d3e45dd9470d9087b2b185c/data",
+      "bdgd_vintage": "2024-12-31",
+      "bdgd_item_id": "4670fc267d3e45dd9470d9087b2b185c",
+      "bdgd_tamanho_bytes": 12410045,
+      "bdgd_baixada": true,
+      "motivo_nao_download": null,
+      "evidencia_catalogo": "Consulta oficial ArcGIS encontrou Dcelt_87_2024-12-31_V11_20250804-1815; ZIP baixado e validado.",
+      "prioridade": 11
     },
     {
-      "distribuidora": "CERGAPA",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 3,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 26,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "COOPERA",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 3,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 27,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "CERTREL",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 3,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 28,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "CERPALO",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 3,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 29,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "COOPERMILA",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 3,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 30,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "CEPRAG",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 3,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 31,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "COOPERSUL",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 3,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 32,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "CERSAD DISTRIBUI",
+      "distribuidora": "CERSUL",
       "n_conjuntos_sem_peso": 1,
       "n_municipios_nivel4_afetados": 2,
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
       "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 33,
-      "bdgd_investigada": false
+      "bdgd_url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/95087e6227be430ba078b528e9116a96/data",
+      "bdgd_vintage": "2024-12-31",
+      "bdgd_item_id": "95087e6227be430ba078b528e9116a96",
+      "bdgd_tamanho_bytes": 9459057,
+      "bdgd_baixada": true,
+      "motivo_nao_download": null,
+      "evidencia_catalogo": "Consulta oficial ArcGIS encontrou Cersul_5368_2024-12-31_V11_20250923-0734; ZIP baixado e validado.",
+      "prioridade": 12
     },
     {
       "distribuidora": "CERMISSÕES",
       "n_conjuntos_sem_peso": 1,
       "n_municipios_nivel4_afetados": 2,
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
       "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 34,
-      "bdgd_investigada": true
-    },
-    {
-      "distribuidora": "HIDROPAN",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 2,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 35,
-      "bdgd_investigada": false
+      "bdgd_url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/53953a2fbb334d9aac1e5ad9a08ec9af/data",
+      "bdgd_vintage": "2024-12-31",
+      "bdgd_item_id": "53953a2fbb334d9aac1e5ad9a08ec9af",
+      "bdgd_tamanho_bytes": 15446298,
+      "bdgd_baixada": true,
+      "motivo_nao_download": null,
+      "evidencia_catalogo": "Item oficial ANEEL localizado, baixado e validado.",
+      "prioridade": 13
     },
     {
       "distribuidora": "CERTEL ENERGIA",
       "n_conjuntos_sem_peso": 2,
       "n_municipios_nivel4_afetados": 2,
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
       "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 36,
-      "bdgd_investigada": true
+      "bdgd_url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/c74678897d244e4f7a8e6f86d4948492ec/data",
+      "bdgd_vintage": "2024-12-31",
+      "bdgd_item_id": "c74678897d244e4f7a8e6f86d4948492ec",
+      "bdgd_tamanho_bytes": 27296281,
+      "bdgd_baixada": true,
+      "motivo_nao_download": null,
+      "evidencia_catalogo": "Item oficial ANEEL localizado, baixado e validado.",
+      "prioridade": 14
     },
     {
       "distribuidora": "CELETRO",
       "n_conjuntos_sem_peso": 1,
       "n_municipios_nivel4_afetados": 2,
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
       "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 37,
-      "bdgd_investigada": true
-    },
-    {
-      "distribuidora": "COOPERNORTE",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 2,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 38,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "COCEL",
-      "n_conjuntos_sem_peso": 2,
-      "n_municipios_nivel4_afetados": 1,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 39,
-      "bdgd_investigada": false
+      "bdgd_url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/d984afaac96e4eb08806dd05497410d9/data",
+      "bdgd_vintage": "2024-12-31",
+      "bdgd_item_id": "d984afaac96e4eb08806dd05497410d9",
+      "bdgd_tamanho_bytes": 13042317,
+      "bdgd_baixada": true,
+      "motivo_nao_download": null,
+      "evidencia_catalogo": "Item oficial ANEEL localizado, baixado e validado.",
+      "prioridade": 15
     },
     {
       "distribuidora": "PACTO ENERGIA PR",
       "n_conjuntos_sem_peso": 1,
       "n_municipios_nivel4_afetados": 1,
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
+      "bdgd_disponivel": false,
+      "bdgd_url": null,
+      "bdgd_vintage": null,
+      "bdgd_item_id": null,
+      "bdgd_tamanho_bytes": null,
+      "bdgd_baixada": false,
+      "motivo_nao_download": "Nenhuma File Geodatabase BDGD vintage 2024 ou 2023 localizada no catálogo oficial.",
+      "evidencia_catalogo": "Consulta ArcGIS oficial orgId J5unWNi0P2dwjI3y por 'Pacto Energia' retornou 0 itens, sem File Geodatabase 2024/2023 aplicável.",
+      "prioridade": 16
+    },
+    {
+      "distribuidora": "CERAL-DIS",
+      "n_conjuntos_sem_peso": 1,
+      "n_municipios_nivel4_afetados": 1,
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
       "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 40,
-      "bdgd_investigada": false
+      "bdgd_url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/2a0e3388af314869999d9c0d5b4e6bc5/data",
+      "bdgd_vintage": "2024-12-31",
+      "bdgd_item_id": "2a0e3388af314869999d9c0d5b4e6bc5",
+      "bdgd_tamanho_bytes": 954269,
+      "bdgd_baixada": true,
+      "motivo_nao_download": null,
+      "evidencia_catalogo": "Consulta oficial ArcGIS encontrou Ceral-Dis_4248_2024-12-31_V11_20250704-1437; ZIP baixado e validado.",
+      "prioridade": 17
+    },
+    {
+      "distribuidora": "COOPERALIANÇA",
+      "n_conjuntos_sem_peso": 1,
+      "n_municipios_nivel4_afetados": 1,
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
+      "bdgd_disponivel": true,
+      "bdgd_url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/4aa9ad15849a4a5f8113da5a623dc96e/data",
+      "bdgd_vintage": "2023-12-31",
+      "bdgd_item_id": "4aa9ad15849a4a5f8113da5a623dc96e",
+      "bdgd_tamanho_bytes": 12832029,
+      "bdgd_baixada": true,
+      "motivo_nao_download": null,
+      "evidencia_catalogo": "Consulta oficial ArcGIS encontrou Cooperalianca_2904_2023-12-31_V11_20240429-1338; ZIP baixado e validado.",
+      "prioridade": 18
     },
     {
       "distribuidora": "EFLJC",
       "n_conjuntos_sem_peso": 1,
       "n_municipios_nivel4_afetados": 1,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 41,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "EFLUL",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 1,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 42,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "MUXENERGIA",
-      "n_conjuntos_sem_peso": 1,
-      "n_municipios_nivel4_afetados": 1,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 43,
-      "bdgd_investigada": false
-    },
-    {
-      "distribuidora": "DEMEI",
-      "n_conjuntos_sem_peso": 2,
-      "n_municipios_nivel4_afetados": 1,
-      "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 44,
-      "bdgd_investigada": false
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
+      "bdgd_disponivel": false,
+      "bdgd_url": null,
+      "bdgd_vintage": null,
+      "bdgd_item_id": null,
+      "bdgd_tamanho_bytes": null,
+      "bdgd_baixada": false,
+      "motivo_nao_download": "Nenhuma File Geodatabase BDGD vintage 2024 ou 2023 localizada no catálogo oficial.",
+      "evidencia_catalogo": "Consulta ArcGIS oficial orgId J5unWNi0P2dwjI3y por 'Efljc' retornou 3 itens, sem File Geodatabase 2024/2023 aplicável.",
+      "prioridade": 19
     },
     {
       "distribuidora": "CERILUZ",
       "n_conjuntos_sem_peso": 1,
       "n_municipios_nivel4_afetados": 1,
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
       "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 45,
-      "bdgd_investigada": true
+      "bdgd_url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/15d9c8197f5e43438fbede5f2b0c9a41/data",
+      "bdgd_vintage": "2024-12-31",
+      "bdgd_item_id": "15d9c8197f5e43438fbede5f2b0c9a41",
+      "bdgd_tamanho_bytes": 8858880,
+      "bdgd_baixada": true,
+      "motivo_nao_download": null,
+      "evidencia_catalogo": "Item oficial ANEEL localizado, baixado e validado.",
+      "prioridade": 20
     },
     {
       "distribuidora": "CRELUZ-D",
       "n_conjuntos_sem_peso": 1,
       "n_municipios_nivel4_afetados": 1,
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
       "bdgd_disponivel": true,
-      "vintage": "2024-12-31 (Coprel: 2023-12-31)",
-      "prioridade_de_download": 46,
-      "bdgd_investigada": true
+      "bdgd_url": "https://aneel.maps.arcgis.com/sharing/rest/content/items/38ea3efaee63433e81e5d9d14ad01469/data",
+      "bdgd_vintage": "2024-12-31",
+      "bdgd_item_id": "38ea3efaee63433e81e5d9d14ad01469",
+      "bdgd_tamanho_bytes": 12065354,
+      "bdgd_baixada": true,
+      "motivo_nao_download": null,
+      "evidencia_catalogo": "Item oficial ANEEL localizado, baixado e validado.",
+      "prioridade": 21
     }
   ],
+  "investigacao_bdgd": {
+    "distribuidoras_relevantes": 21,
+    "distribuidoras_identificadas": 20,
+    "catalogo_verificado": 20,
+    "bdgd_disponivel": 16,
+    "bdgd_baixada": 16,
+    "sem_recurso_oficial": 4,
+    "nao_baixadas_restricao_operacional": 0
+  },
   "compatibilidade_temporal": {
     "vintage_bdgd": "2024-12-31 (Coprel: 2023-12-31)",
     "conjuntos_2025_necessarios": 501,
-    "conjuntos_2025_ausentes_nas_bdgd": 44,
-    "municipios_multiconjunto_impedidos_por_ausencia_de_conjunto": 203,
+    "conjuntos_2025_ausentes_nas_bdgd": 9,
+    "municipios_multiconjunto_impedidos_por_ausencia_de_conjunto": 113,
     "equivalencias_inferidas": 0,
     "nota": "IDs não foram ligados por nome; ausências são compatíveis com criação, renomeação ou reorganização entre vintages, mas só relação oficial permitiria afirmar equivalência."
   },
@@ -2154,10 +2987,14 @@
       "conjuntos_sem_peso": "15921|15924|15938",
       "n_conjuntos_necessarios": 34,
       "n_conjuntos_com_peso": 31,
-      "motivo_nivel4": "conjunto sem peso na BDGD 2024 do agente principal",
-      "distribuidora_provavel_do_conjunto_sem_peso": "COPEL-DIS",
+      "motivo_nivel4": "bdgd_investigada_sem_celula_municipio_conjunto",
+      "distribuidoras_conjuntos_sem_peso": "COPEL-DIS",
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
       "bdgd_disponivel": true,
-      "bdgd_investigada": true
+      "bdgd_baixada": true,
+      "bdgd_vintage": "2024-12-31",
+      "evidencia_catalogo": "Item oficial ANEEL localizado, baixado e validado."
     },
     "Porto Alegre": {
       "municipio_id": "4314902",
@@ -2168,10 +3005,14 @@
       "conjuntos_sem_peso": "12542",
       "n_conjuntos_necessarios": 23,
       "n_conjuntos_com_peso": 22,
-      "motivo_nivel4": "conjunto sem peso na BDGD 2024 do agente principal",
-      "distribuidora_provavel_do_conjunto_sem_peso": "CEEE-D",
+      "motivo_nivel4": "bdgd_investigada_sem_celula_municipio_conjunto",
+      "distribuidoras_conjuntos_sem_peso": "CEEE-D",
+      "distribuidora_identificada": true,
+      "bdgd_catalogo_verificado": true,
       "bdgd_disponivel": true,
-      "bdgd_investigada": true
+      "bdgd_baixada": true,
+      "bdgd_vintage": "2024-12-31",
+      "evidencia_catalogo": "Item oficial ANEEL localizado, baixado e validado."
     }
   }
 }

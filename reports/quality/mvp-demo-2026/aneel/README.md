@@ -5,14 +5,8 @@
 ```bash
 python -m pip install -e '.[dev]'
 python -m pip install pyogrio
-python -m ice_sul.transform.aneel_materialize \
-  --bdgd data/raw/aneel/ceee.zip data/raw/aneel/celesc.zip \
-  data/raw/aneel/copel.zip data/raw/aneel/rge.zip \
-  data/raw/aneel/certel.zip data/raw/aneel/cerfox.zip \
-  data/raw/aneel/creluz.zip data/raw/aneel/celetro.zip \
-  data/raw/aneel/cermissoes.zip data/raw/aneel/ceriluz.zip \
-  data/raw/aneel/certaja.zip data/raw/aneel/cooperluz.zip \
-  data/raw/aneel/eletrocar.zip data/raw/aneel/coprel.zip
+python -m ice_sul.transform.aneel_materialize --bdgd $(find data/raw/aneel \
+  -maxdepth 1 -name '*.zip' ! -name 'indicadores-*' -print | sort)
 ```
 
 O comando valida o ZIP, extrai em diretório temporário exatamente
@@ -146,3 +140,36 @@ Ausências e células municipais divergentes são compatíveis com criação,
 renomeação, reorganização ou alteração de área 2024→2025, mas nenhuma equivalência
 foi inferida por nome. O QA registra `equivalencias_inferidas=0` e preserva o
 fallback quando não existe relação oficial entre IDs.
+
+## Verificação final do catálogo residual
+
+A rodada final partiu de 479 municípios nível 4 e pesquisou individualmente no
+ArcGIS oficial ANEEL as **34 distribuidoras identificadas que ainda não tinham
+catálogo encerrado**. O inventário auditável está em
+`bdgd_catalogo_investigacao.json` e separa identificação do agente, consulta ao
+catálogo, disponibilidade real e download. A consulta encontrou BDGD baixável
+para 30 agentes; todas eram de volume operacionalmente razoável (inclusive CPFL
+Jaguari/Santa Cruz, 166.838.408 bytes), foram baixadas e processadas. Não foi
+encontrada File Geodatabase 2024/2023 aplicável para UHENPAL, ESS, Pacto Energia
+PR e EFLJC. Não houve arquivo disponível deixado sem download por restrição.
+
+As 30 BDGDs acrescentaram **172 células município × conjunto** às 3.351 anteriores
+e promoveram **56 municípios** adicionais ao nível 2. O resultado final é:
+nível 1 = 241; nível 2 = 522; nível 3 = 0; nível 4 = 423; ausentes = 5; com
+3.523 células de peso e 210 conjuntos ainda sem peso.
+
+Todos os 423 fallbacks finais estão em categorias fechadas:
+
+- `bdgd_investigada_sem_celula_municipio_conjunto`: 323 municípios;
+- `incompatibilidade_vintage_2024_2025`: 47;
+- `bdgd_oficial_nao_disponivel`: 14;
+- `agente_nao_informado_na_fonte`: 39;
+- `bdgd_disponivel_mas_nao_baixada_por_restricao_operacional`: 0;
+- `nao_diagnosticado`: 0.
+
+Assim, não permanece a categoria aberta “conjunto provavelmente pertence a
+distribuidora local”. `bdgd_disponivel` somente é verdadeiro quando uma consulta
+documentada encontrou item oficial realmente baixável; agente identificado não
+implica disponibilidade. Para os agentes relevantes aos fallbacks finais: 21
+entradas, 20 identificadas e com catálogo verificado, 16 com BDGD disponível e
+baixada, quatro sem recurso oficial e nenhuma não baixada por restrição.

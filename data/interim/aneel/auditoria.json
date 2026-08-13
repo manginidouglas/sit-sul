@@ -2,9 +2,9 @@
   "por_indicador": {
     "INF-ENE-01": {
       "metodos": {
-        "nivel_2": 466,
+        "nivel_2": 522,
         "nivel_1": 241,
-        "nivel_4": 479
+        "nivel_4": 423
       },
       "n_ausente": 5,
       "municipios_ausentes": [
@@ -17,9 +17,9 @@
     },
     "INF-ENE-02": {
       "metodos": {
-        "nivel_2": 466,
+        "nivel_2": 522,
         "nivel_1": 241,
-        "nivel_4": 479
+        "nivel_4": 423
       },
       "n_ausente": 5,
       "municipios_ausentes": [

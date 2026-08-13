@@ -50,22 +50,27 @@ def ranks(values):
 def correlation(a,b):
     ra,rb=ranks(a),ranks(b);ma,mb=statistics.mean(ra),statistics.mean(rb);den=math.sqrt(sum((x-ma)**2 for x in ra)*sum((y-mb)**2 for y in rb));return sum((x-ma)*(y-mb) for x,y in zip(ra,rb))/den if den else None
 
-def fallback_diagnostics(rows,municipalities,relations,weights,set_agents,bdgd_paths):
+def fallback_diagnostics(rows,municipalities,relations,weights,set_agents,catalog):
     metadata={r["municipio_id"]:r for r in municipalities};links=defaultdict(set)
     for r in relations:links[r["municipio_id"]].add(r["conjunto_id"])
-    aliases={"copel":"COPEL-DIS","celesc":"CELESC","rge":"RGE SUL","ceee":"CEEE-D","certel":"CERTEL ENERGIA","cerfox":"CERFOX","creluz":"CRELUZ-D","celetro":"CELETRO","cermissoes":"CERMISSÕES","ceriluz":"CERILUZ","certaja":"CERTAJA","cooperluz":"COOPERLUZ","eletrocar":"ELETROCAR","coprel":"COPREL"}
-    investigated={aliases.get(p.stem.lower(),p.stem.upper()) for p in bdgd_paths};all_weighted_sets={s for _,s in weights};output=[]
+    all_weighted_sets={s for _,s in weights};output=[]
     level4={r["municipio_id"] for r in rows if r["indicador_id"]=="INF-ENE-01" and r["metodo_territorializacao"]=="nivel_4"}
     for municipality in sorted(level4):
-      needed=sorted(links[municipality],key=int);present=[s for s in needed if weights.get((municipality,s),0)>0];missing=[s for s in needed if s not in present];agents=sorted({set_agents.get(s,{}).get("distribuidora","Não identificado") for s in missing})
-      if any(a=="Não identificado" or a=="Não Informado" for a in agents):reason="conjunto não identificado"
-      elif any(a not in investigated for a in agents):reason="conjunto provavelmente pertence a distribuidora local"
-      elif any(s in all_weighted_sets for s in missing):reason="conjunto sem peso na BDGD 2024 do agente principal"
-      else:reason="possível mudança de conjunto 2024→2025"
-      m=metadata[municipality];output.append({"municipio_id":municipality,"municipio_nome":m["municipio_nome"],"uf_sigla":m["uf_sigla"],"conjuntos_necessarios":"|".join(needed),"conjuntos_com_peso":"|".join(present),"conjuntos_sem_peso":"|".join(missing),"n_conjuntos_necessarios":len(needed),"n_conjuntos_com_peso":len(present),"motivo_nivel4":reason,"distribuidora_provavel_do_conjunto_sem_peso":"|".join(agents),"bdgd_disponivel":all(a not in {"Não identificado","Não Informado"} for a in agents),"bdgd_investigada":all(a in investigated for a in agents)})
+      needed=sorted(links[municipality],key=int);present=[s for s in needed if weights.get((municipality,s),0)>0];missing=[s for s in needed if s not in present];agents=sorted({set_agents.get(s,{}).get("distribuidora","Não identificado") for s in missing});records=[catalog.get(a,{}) for a in agents]
+      identified=all(a not in {"Não identificado","Não Informado"} for a in agents)
+      checked=identified and all(r.get("bdgd_catalogo_verificado") is True for r in records)
+      available=checked and all(r.get("bdgd_disponivel") is True for r in records)
+      downloaded=available and all(r.get("bdgd_baixada") is True for r in records)
+      if not identified:reason="agente_nao_informado_na_fonte"
+      elif checked and any(r.get("bdgd_disponivel") is False for r in records):reason="bdgd_oficial_nao_disponivel"
+      elif available and not downloaded:reason="bdgd_disponivel_mas_nao_baixada_por_restricao_operacional"
+      elif downloaded and any(s in all_weighted_sets for s in missing):reason="bdgd_investigada_sem_celula_municipio_conjunto"
+      elif downloaded:reason="incompatibilidade_vintage_2024_2025"
+      else:reason="nao_diagnosticado"
+      m=metadata[municipality];output.append({"municipio_id":municipality,"municipio_nome":m["municipio_nome"],"uf_sigla":m["uf_sigla"],"conjuntos_necessarios":"|".join(needed),"conjuntos_com_peso":"|".join(present),"conjuntos_sem_peso":"|".join(missing),"n_conjuntos_necessarios":len(needed),"n_conjuntos_com_peso":len(present),"motivo_nivel4":reason,"distribuidoras_conjuntos_sem_peso":"|".join(agents),"distribuidora_identificada":identified,"bdgd_catalogo_verificado":checked,"bdgd_disponivel":available if checked else None,"bdgd_baixada":downloaded,"bdgd_vintage":"|".join(sorted({r.get("bdgd_vintage") for r in records if r.get("bdgd_vintage")})),"evidencia_catalogo":" || ".join(r.get("evidencia_catalogo","") for r in records)})
     return output
 
-def qa(rows,municipalities,relations,weights,bdgd_sources,set_values,set_agents,bdgd_paths,report_dir):
+def qa(rows,municipalities,relations,weights,bdgd_sources,set_values,set_agents,catalog,report_dir):
     metadata={r["municipio_id"]:r for r in municipalities};links=defaultdict(set)
     for r in relations:links[r["municipio_id"]].add(r["conjunto_id"])
     report={"auditoria":audit(rows),"estatisticas":{"sul":{},"por_uf":{},"por_metodo":{}},"bdgd":{"fontes":bdgd_sources,"n_pesos_municipio_conjunto":len(weights)},"ausentes":[],"sanity_checks":[],"extremos":{},"validacoes":{}}
@@ -96,24 +101,24 @@ def qa(rows,municipalities,relations,weights,bdgd_sources,set_values,set_agents,
       weighted=[x[0]["valor_bruto"] for x in pairs];unweighted=[x[1]["valor_bruto"] for x in pairs];differences=[x[2] for x in pairs]
       comparison[indicator]={"municipios_afetados":len(pairs),"spearman":correlation(weighted,unweighted) if pairs else None,"diferenca_absoluta_mediana":statistics.median(differences) if pairs else None,"diferenca_absoluta_p95":percentile(differences,.95) if pairs else None,"diferenca_maxima":max(differences) if pairs else None,"maiores_mudancas":[{"municipio_id":x[0]["municipio_id"],"municipio_nome":metadata[x[0]["municipio_id"]]["municipio_nome"],"uf_sigla":metadata[x[0]["municipio_id"]]["uf_sigla"],"ponderado":x[0]["valor_bruto"],"media_simples":x[1]["valor_bruto"],"diferenca_absoluta":x[2]} for x in sorted(pairs,key=lambda x:x[2],reverse=True)[:10]],"por_uf":{uf:{"n":len(d),"diferenca_absoluta_mediana":statistics.median(d) if d else None,"diferenca_absoluta_p95":percentile(d,.95) if d else None} for uf in ("PR","SC","RS") for d in [[x[2] for x in pairs if metadata[x[0]["municipio_id"]]["uf_sigla"]==uf]]}}
     report["comparacao_bdgd_media_simples"]=comparison
-    diagnostics=fallback_diagnostics(rows,municipalities,relations,weights,set_agents,bdgd_paths)
+    diagnostics=fallback_diagnostics(rows,municipalities,relations,weights,set_agents,catalog)
     diagnostic_path=report_dir/"fallback_nivel4_diagnostico.csv"
     if diagnostics:write_csv(diagnostics,diagnostic_path)
-    else:diagnostic_path.write_text("municipio_id,municipio_nome,uf_sigla,conjuntos_necessarios,conjuntos_com_peso,conjuntos_sem_peso,n_conjuntos_necessarios,n_conjuntos_com_peso,motivo_nivel4,distribuidora_provavel_do_conjunto_sem_peso,bdgd_disponivel,bdgd_investigada\n",encoding="utf-8")
+    else:diagnostic_path.write_text("municipio_id,municipio_nome,uf_sigla,conjuntos_necessarios,conjuntos_com_peso,conjuntos_sem_peso,n_conjuntos_necessarios,n_conjuntos_com_peso,motivo_nivel4,distribuidoras_conjuntos_sem_peso,distribuidora_identificada,bdgd_catalogo_verificado,bdgd_disponivel,bdgd_baixada,bdgd_vintage,evidencia_catalogo\n",encoding="utf-8")
     report["fallback_nivel4"]={"n_municipios":len(diagnostics),"n_conjuntos_sem_peso":len({s for d in diagnostics for s in d["conjuntos_sem_peso"].split("|") if s}),"municipios_por_motivo":dict(Counter(d["motivo_nivel4"] for d in diagnostics))}
     agent_sets=defaultdict(set);agent_municipalities=defaultdict(set)
     for d in diagnostics:
       for s in d["conjuntos_sem_peso"].split("|"):
        if s:agent=set_agents.get(s,{}).get("distribuidora","Não identificado");agent_sets[agent].add(s);agent_municipalities[agent].add(d["municipio_id"])
-    aliases={"copel":"COPEL-DIS","celesc":"CELESC","rge":"RGE SUL","ceee":"CEEE-D","certel":"CERTEL ENERGIA","cerfox":"CERFOX","creluz":"CRELUZ-D","celetro":"CELETRO","cermissoes":"CERMISSÕES","ceriluz":"CERILUZ","certaja":"CERTAJA","cooperluz":"COOPERLUZ","eletrocar":"ELETROCAR","coprel":"COPREL"}
-    investigated={aliases.get(Path(d["arquivo"]).stem.lower(),Path(d["arquivo"]).stem.upper()) for d in bdgd_sources}
-    report["fallback_por_distribuidora"]=[{"distribuidora":a,"n_conjuntos_sem_peso":len(agent_sets[a]),"n_municipios_nivel4_afetados":len(agent_municipalities[a]),"bdgd_disponivel":a not in {"Não identificado","Não Informado"},"bdgd_investigada":a in investigated,"vintage":"2024-12-31 (Coprel: 2023-12-31)","prioridade_de_download":i+1} for i,a in enumerate(sorted(agent_sets,key=lambda a:len(agent_municipalities[a]),reverse=True))]
+    report["fallback_por_distribuidora"]=[{"distribuidora":a,"n_conjuntos_sem_peso":len(agent_sets[a]),"n_municipios_nivel4_afetados":len(agent_municipalities[a]),**{k:catalog.get(a,{}).get(k) for k in ("distribuidora_identificada","bdgd_catalogo_verificado","bdgd_disponivel","bdgd_url","bdgd_vintage","bdgd_item_id","bdgd_tamanho_bytes","bdgd_baixada","motivo_nao_download","evidencia_catalogo")},"prioridade":i+1} for i,a in enumerate(sorted(agent_sets,key=lambda a:len(agent_municipalities[a]),reverse=True))]
+    relevant=[catalog.get(a,{}) for a in agent_sets]
+    report["investigacao_bdgd"]={"distribuidoras_relevantes":len(relevant),"distribuidoras_identificadas":sum(x.get("distribuidora_identificada") is True for x in relevant),"catalogo_verificado":sum(x.get("bdgd_catalogo_verificado") is True for x in relevant),"bdgd_disponivel":sum(x.get("bdgd_disponivel") is True for x in relevant),"bdgd_baixada":sum(x.get("bdgd_baixada") is True for x in relevant),"sem_recurso_oficial":sum(x.get("bdgd_catalogo_verificado") is True and x.get("bdgd_disponivel") is False for x in relevant),"nao_baixadas_restricao_operacional":sum(x.get("bdgd_disponivel") is True and x.get("bdgd_baixada") is False for x in relevant)}
     weighted_sets={s for _,s in weights};required={r["conjunto_id"] for r in relations};missing_sets=required-weighted_sets
     report["compatibilidade_temporal"]={"vintage_bdgd":"2024-12-31 (Coprel: 2023-12-31)","conjuntos_2025_necessarios":len(required),"conjuntos_2025_ausentes_nas_bdgd":len(missing_sets),"municipios_multiconjunto_impedidos_por_ausencia_de_conjunto":sum(any(s in missing_sets for s in d["conjuntos_sem_peso"].split("|")) for d in diagnostics),"equivalencias_inferidas":0,"nota":"IDs não foram ligados por nome; ausências são compatíveis com criação, renomeação ou reorganização entre vintages, mas só relação oficial permitiria afirmar equivalência."}
     report["diagnosticos_capitais"]={name:next((d for d in diagnostics if d["municipio_nome"]==name),None) for name in ("Curitiba","Porto Alegre")}
     return report
 
-def materialize(raw_dir:Path,canonical_path:Path,interim_dir:Path,report_dir:Path,bdgd_paths=()):
+def materialize(raw_dir:Path,canonical_path:Path,interim_dir:Path,report_dir:Path,bdgd_paths=(),catalog_path:Path|None=None):
     municipalities=canonical(canonical_path);ids=[r["municipio_id"] for r in municipalities];idset=set(ids)
     with tempfile.TemporaryDirectory() as tmp:
       continuity=extract_continuity(raw_dir/"indicadores-continuidade-2020-2029.zip",Path(tmp)/"continuidade.csv");values=read_annual_set_values(continuity);set_agents=read_set_agents(continuity)
@@ -122,7 +127,8 @@ def materialize(raw_dir:Path,canonical_path:Path,interim_dir:Path,report_dir:Pat
     weights,sources=read_bdgd_weights(bdgd_paths) if bdgd_paths else ({},[]);weights={k:v for k,v in weights.items() if k[0] in idset}
     rows=territorialize(ids,relations,values,weights);validate_output(rows,ids)
     interim_dir.mkdir(parents=True,exist_ok=True);write_csv(rows,interim_dir/"indicadores_municipais_2025.csv")
-    report_dir.mkdir(parents=True,exist_ok=True);report=qa(rows,municipalities,relations,weights,sources,values,set_agents,bdgd_paths,report_dir);(interim_dir/"auditoria.json").write_text(json.dumps(report["auditoria"],ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    catalog_path=catalog_path or report_dir/"bdgd_catalogo_investigacao.json";catalog={x["distribuidora"]:x for x in json.loads(catalog_path.read_text(encoding="utf-8"))} if catalog_path.exists() else {}
+    report_dir.mkdir(parents=True,exist_ok=True);report=qa(rows,municipalities,relations,weights,sources,values,set_agents,catalog,report_dir);(interim_dir/"auditoria.json").write_text(json.dumps(report["auditoria"],ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     (report_dir/"qa.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     return report
 

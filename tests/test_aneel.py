@@ -8,7 +8,7 @@ import pytest
 from ice_sul.extract.aneel import AneelCollector
 from ice_sul.extract.contracts import CollectionStatus
 from ice_sul.transform.aneel import PERIODO, aggregate_bdgd_rows, audit, ipf, read_annual_set_values, territorialize
-from ice_sul.transform.aneel_materialize import canonical, materialize, validate_output
+from ice_sul.transform.aneel_materialize import canonical, fallback_diagnostics, materialize, validate_output
 
 
 VALUES = {"a": {"DEC": 10.0, "FEC": 2.0}, "b": {"DEC": 20.0, "FEC": 4.0}}
@@ -116,6 +116,25 @@ def test_bdgd_aggregation_real_schema_across_voltage_layers():
     weights, sources = aggregate_bdgd_rows(layers)
     assert weights == {("4106902", "100"): 3, ("4106902", "101"): 1}
     assert [source["registros_ativos"] for source in sources] == [2, 1, 1]
+
+
+def test_identified_agent_with_verified_absent_bdgd_is_not_available():
+    rows = territorialize(["1"], [{"municipio_id": "1", "conjunto_id": x} for x in ("1", "2")], {"1": VALUES["a"], "2": VALUES["b"]})
+    catalog = {"LOCAL": {"distribuidora_identificada": True, "bdgd_catalogo_verificado": True, "bdgd_disponivel": False, "bdgd_baixada": False, "evidencia_catalogo": "consulta oficial sem resultado"}}
+    result = fallback_diagnostics(rows, [{"municipio_id": "1", "municipio_nome": "X", "uf_sigla": "PR"}], [{"municipio_id": "1", "conjunto_id": x} for x in ("1", "2")], {}, {"1": {"distribuidora": "LOCAL"}, "2": {"distribuidora": "LOCAL"}}, catalog)[0]
+    assert result["distribuidora_identificada"] is True
+    assert result["bdgd_catalogo_verificado"] is True
+    assert result["bdgd_disponivel"] is False
+    assert result["motivo_nivel4"] == "bdgd_oficial_nao_disponivel"
+
+
+def test_identified_agent_without_catalog_check_does_not_imply_availability():
+    rows = territorialize(["1"], [{"municipio_id": "1", "conjunto_id": x} for x in ("1", "2")], {"1": VALUES["a"], "2": VALUES["b"]})
+    result = fallback_diagnostics(rows, [{"municipio_id": "1", "municipio_nome": "X", "uf_sigla": "PR"}], [{"municipio_id": "1", "conjunto_id": x} for x in ("1", "2")], {}, {"1": {"distribuidora": "LOCAL"}, "2": {"distribuidora": "LOCAL"}}, {})[0]
+    assert result["distribuidora_identificada"] is True
+    assert result["bdgd_catalogo_verificado"] is False
+    assert result["bdgd_disponivel"] is None
+    assert result["motivo_nivel4"] == "nao_diagnosticado"
 
 
 def test_combination_levels_and_indicator_specific_missing():
