@@ -1,0 +1,27 @@
+{
+  "generation": {
+    "universo-antes.geojson": {
+      "sha256": "3d0063c0470cc4900b8f3e644e43edb23ae309ced190cd42ecabde50247a3632",
+      "registros": 6111
+    },
+    "universo-depois.geojson": {
+      "sha256": "9c2feb22b9795fb42dcdb4c45ed5c38a452e1be036efe814e583951038e7b911",
+      "registros": 4755
+    },
+    "elegiveis.geojson": {
+      "sha256": "d08eb99212a5b46501929e7527284b2e98afaca8ce2c73f5e5b8ed00e9ac8010",
+      "registros": 3653
+    },
+    "inspecoes.json": {
+      "sha256": "a74871159227aa679a8dbe707fc441c679c300dae0b3dba2fe1a7c3110911469"
+    },
+    "estudo-osrm.json": {
+      "sha256": "0a7dc938341dede718f66d02ad975f11c260eaa9077679d93f485e230a726325"
+    },
+    "qa.json": {
+      "sha256": "80d8353b447d5fa7d7407e567992277261f46577ae3cf7a738f4cd279bdb8b08"
+    }
+  },
+  "daer_access_constraints": "vedado o uso comercial",
+  "avaliacao_uso": "uso institucional não comercial; redistribuição comercial vedada"
+}

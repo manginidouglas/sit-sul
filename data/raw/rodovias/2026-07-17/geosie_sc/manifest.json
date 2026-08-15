@@ -1,0 +1,36 @@
+{
+  "source_id": "geosie_sc",
+  "status": "ok",
+  "raw": {
+    "status": "reused",
+    "http_status": 200,
+    "content_type": "application/json",
+    "bytes": 4862195,
+    "sha256": "ff4318dab8f7d4306c04610a179b8522a76e87fe921a8834b6a80cead0c1d65a",
+    "requested_url": "https://geo.sie.sc.gov.br/api/geo_rodovia_estadual.php",
+    "final_url": "https://geo.sie.sc.gov.br/api/geo_rodovia_estadual.php",
+    "redirects": [],
+    "path": "data/raw/rodovias/2026-07-17/geosie_sc/rodovias.geojson",
+    "collected_at": "2026-08-15T00:48:34.552110+00:00",
+    "reused_at": "2026-08-15T01:40:18.875556+00:00",
+    "failed_attempts": []
+  },
+  "inventory": {
+    "fields": [
+      "CDORGAOSETOR",
+      "CDTRECHO",
+      "DESITUACAO",
+      "NMRODOVIA",
+      "NMTRECHO",
+      "NUEXTENSAO",
+      "NUGEO",
+      "NUKMFINAL",
+      "NUKMINICIAL",
+      "SGRODOVIA",
+      "SGSITUACAO"
+    ],
+    "crs": "OGC:CRS84",
+    "records": 624
+  },
+  "feature_count": 624
+}

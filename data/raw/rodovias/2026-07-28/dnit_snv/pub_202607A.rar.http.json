@@ -1,0 +1,29 @@
+{
+  "status": "downloaded",
+  "http_status": 200,
+  "content_type": "application/octet-stream",
+  "bytes": 78034601,
+  "sha256": "c1db63e22f6e074bcf378d915a94a30c1f31939c6d4d68e9b19e65762f885091",
+  "requested_url": "https://servicos.dnit.gov.br/dnitcloud/index.php/s/Sj77FA3ywWDWkdK/download",
+  "final_url": "https://servicos.dnit.gov.br/dnitcloud/index.php/s/Sj77FA3ywWDWkdK/download",
+  "redirects": [],
+  "path": "data/raw/rodovias/2026-07-28/dnit_snv/pub_202607A.rar",
+  "collected_at": "2026-08-15T00:46:52.114810+00:00",
+  "transport": {
+    "requested_url": "https://github.com/manginidouglas/sit-sul/releases/download/tmp-dnit-snv-202607A/pub_202607A.rar",
+    "role": "temporary_transport_only",
+    "redirects_enabled": true,
+    "final_url": "https://release-assets.githubusercontent.com/github-production-release-asset/1327073520/160faeb7-a4c8-45b2-8a4d-b23aeb2bd2a9",
+    "redirects": [
+      {
+        "status": 302,
+        "from": "github.com",
+        "to": "release-assets.githubusercontent.com"
+      }
+    ]
+  },
+  "official_source": {
+    "institution": "DNIT/SNV",
+    "url": "https://servicos.dnit.gov.br/dnitcloud/index.php/s/Sj77FA3ywWDWkdK/download"
+  }
+}
