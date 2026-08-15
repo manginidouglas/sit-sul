@@ -32,10 +32,10 @@ def _strict(value:object, pattern:str, field:str)->str:
  return text
 
 def parse_active(value:object)->str: return _strict(value,r"[01]","indicador de vínculo ativo")
-def parse_municipality(value:object)->str: return _strict(value,r"\d{6}(?:\d)?","código municipal")
+def parse_municipality(value:object)->str: return _strict(value,r"\d{6}","código municipal")
 def parse_cnae(value:object)->str:
- value=_strict(value,r"\d{7}","CNAE 2.0 classe")
- if not 1<=int(value[:2])<=99: raise ValueError(f"CNAE 2.0 classe inválida: {value!r}")
+ value=_strict(value,r"\d{5}","CNAE 2.0 classe")
+ if value[:2]=="00": raise ValueError(f"CNAE 2.0 classe inválida: {value!r}")
  return value
 def parse_legal_nature(value:object)->str:
  value=_strict(value,r"\d{4}","Natureza Jurídica")

@@ -11,8 +11,31 @@
     "tamanho": 23640,
     "sha256": "4be7a7421ce44e40c4b18ea044c624e16775a5d0e3429dac18acb6afd7545117",
     "validacao": "workbook OOXML funcional aberto com openpyxl em modo somente leitura",
-    "abas": ["VINC_PUB", "VINC_ID", "ESTAB_PUB", "ESTAB_ID"],
-    "campos_confirmados_vinc_pub": ["cnae20classecódigo", "indvínculoativo3112código", "municípiotrabcódigo", "municípiocódigo", "naturezajurídicacódigo"]
+    "abas": [
+      "VINC_PUB",
+      "VINC_ID",
+      "ESTAB_PUB",
+      "ESTAB_ID"
+    ],
+    "campos_confirmados_vinc_pub": [
+      "cnae20classecódigo",
+      "indvínculoativo3112código",
+      "municípiotrabcódigo",
+      "municípiocódigo",
+      "naturezajurídicacódigo"
+    ],
+    "dimensoes_vinc_pub": {
+      "linhas": 63,
+      "colunas": 39
+    },
+    "linhas_criticas": {
+      "cnae20classecódigo": 10,
+      "indvínculoativo3112código": 13,
+      "municípiotrabcódigo": 26,
+      "municípiocódigo": 27,
+      "naturezajurídicacódigo": 29
+    },
+    "limite_evidencia": "linhas críticas contêm somente mapeamento De/Para; tipo, largura e domínio não são informados"
   },
   "microdados": {
     "diretorio_https": "https://ftp.mtps.gov.br/pdet/microdados/RAIS/2024/",
@@ -26,5 +49,10 @@
     "ufs_processadas": [],
     "vinculos_lidos": 0
   },
-  "status_coleta_real": "blocked_source"
+  "status_coleta_real": "blocked_source",
+  "relatorio_layout": "layout-campos-confirmados.json",
+  "classificacao_erros": {
+    "https_e_ftp_inacessiveis": "blocked_source",
+    "bytes_ou_schema_invalidos": "failed_validation"
+  }
 }

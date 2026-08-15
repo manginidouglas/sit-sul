@@ -1,6 +1,6 @@
 """Coletor auditável RAIS 2024: descoberta, raws validados e publicação atômica."""
 from __future__ import annotations
-import csv, ftplib, hashlib, json, mimetypes, re, shutil, tempfile, zipfile
+import csv, errno, ftplib, hashlib, json, mimetypes, re, socket, tempfile, zipfile
 from dataclasses import dataclass
 from datetime import UTC,datetime
 from html.parser import HTMLParser
@@ -30,7 +30,8 @@ class RaisArchive:
  def filename(self)->str:return self.url.rstrip("/").rsplit("/",1)[-1]
 
 class OfficialRoutesUnavailable(OSError):
- def __init__(self,attempts): super().__init__("listagens oficiais HTTPS e FTP indisponíveis"); self.attempts=attempts
+ def __init__(self,attempts): super().__init__("rotas oficiais HTTPS e FTP indisponíveis"); self.attempts=attempts
+class FTPTransportError(OSError): pass
 class _Links(HTMLParser):
  def __init__(self):super().__init__();self.links=[]
  def handle_starttag(self,tag,attrs):
@@ -59,13 +60,20 @@ def validate_xlsx(path:Path)->dict:
    sheet=workbook["VINC_PUB"]
    if str(sheet["A1"].value).strip().lower() != "de" or str(sheet["B1"].value).strip().lower() != "para":
     raise ValueError("VINC_PUB sem estrutura De/Para oficial")
-   target_values={str(row[1].value).strip().lower() for row in sheet.iter_rows(min_col=1,max_col=2) if row[1].value is not None}
+   field_rows={}
+   for row_number,row in enumerate(sheet.iter_rows(values_only=True),1):
+    values=list(row)
+    for value in values:
+     normalized=str(value).strip().lower() if value is not None else ""
+     if normalized in REQUIRED_FIELDS|MUNICIPAL_FIELDS:
+      field_rows[normalized]={"linha":row_number,"celulas_nao_vazias":[{"coluna":index+1,"valor":item} for index,item in enumerate(values) if item is not None]}
+   target_values=set(field_rows)
    missing=REQUIRED_FIELDS-target_values
    if missing or not MUNICIPAL_FIELDS&target_values: raise ValueError(f"VINC_PUB sem campos obrigatórios: {sorted(missing | ({'campo_municipal'} if not MUNICIPAL_FIELDS&target_values else set()))}")
    confirmed=sorted(REQUIRED_FIELDS | (MUNICIPAL_FIELDS&target_values))
   finally: workbook.close()
  except (OSError,zipfile.BadZipFile,KeyError) as exc: raise ValueError(f"workbook XLSX corrompido: {exc}") from exc
- return {"tipo":"XLSX OOXML funcional","abas":sheets,"campos_confirmados":confirmed,"tamanho":path.stat().st_size,"sha256":sha256_file(path)}
+ return {"tipo":"XLSX OOXML funcional","abas":sheets,"campos_confirmados":confirmed,"linhas_campos":field_rows,"tamanho":path.stat().st_size,"sha256":sha256_file(path)}
 
 def _validate_open_archive(seven)->dict:
  names=seven.getnames()
@@ -202,16 +210,29 @@ def _download_ftp_validated(spec:RaisArchive,destination:Path)->dict:
      nonlocal size
      output.write(chunk);digest.update(chunk);size+=len(chunk)
     reply=ftp.retrbinary(f"RETR {OFFICIAL_DIR}/{spec.filename}",receive,blocksize=8*1024*1024)
-  if not size:raise ValueError("download FTP vazio")
-  validation=validate_7z(part);part.replace(destination)
+  if not size:raise FTPTransportError("download FTP vazio")
+ except (ftplib.Error,ConnectionError,TimeoutError,socket.gaierror) as exc:
+  part.unlink(missing_ok=True);raise FTPTransportError(str(exc)) from exc
+ except OSError as exc:
+  part.unlink(missing_ok=True)
+  if exc.errno in {errno.ENETUNREACH,errno.EHOSTUNREACH,errno.ECONNREFUSED,errno.ECONNRESET,errno.ETIMEDOUT}:
+   raise FTPTransportError(str(exc)) from exc
+  raise
+ try:validation=validate_7z(part);part.replace(destination)
  except Exception:part.unlink(missing_ok=True);raise
  entry=_manifest(url=f"ftp://{OFFICIAL_HOST}{OFFICIAL_DIR}/{spec.filename}",method="FTP RETR",path=destination,uf=spec.uf)
  entry.update(resposta_ftp=reply,tamanho_transferido=size,sha256=digest.hexdigest(),validacao=validation);return entry
 
 def _download_archive(spec:RaisArchive,path:Path)->dict:
+ attempts=[]
  try:return _download_validated(spec.url,path,uf=spec.uf,validator=validate_7z)
- except (HTTPError,URLError,TimeoutError,OSError) as exc:
-  entry=_download_ftp_validated(spec,path);entry["tentativas_anteriores"]=[{"metodo":"HTTPS","erro":f"{type(exc).__name__}: {exc}"}];return entry
+ except (HTTPError,URLError,TimeoutError,ConnectionError,socket.gaierror) as exc:
+  attempts.append({"metodo":"HTTPS","url":spec.url,"status":"failed","erro":f"{type(exc).__name__}: {exc}"})
+ try:
+  entry=_download_ftp_validated(spec,path);entry["tentativas_anteriores"]=attempts;return entry
+ except FTPTransportError as exc:
+  attempts.append({"metodo":"FTP RETR","url":f"ftp://{OFFICIAL_HOST}{OFFICIAL_DIR}/{spec.filename}","status":"failed","erro":f"{type(exc).__name__}: {exc}"})
+  raise OfficialRoutesUnavailable(attempts) from exc
 
 def _write_csv(path:Path,rows:list[dict]):
  with path.open("w",newline="",encoding="utf-8") as f:writer=csv.DictWriter(f,fieldnames=list(rows[0]));writer.writeheader();writer.writerows(rows)

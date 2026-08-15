@@ -49,12 +49,30 @@ Downloads novos seguem `.part` → hash em streaming → validação → rename 
 Raw existente é integralmente revalidado e re-hasheado em streaming e recebe
 `status=reused`; raw inválido interrompe a execução sem outputs.
 
+## Classificação de falhas de fonte e validação
+
+Falha de transporte em HTTPS seguida de falha de transporte em FTP é encapsulada
+com evidência das duas tentativas e retorna `BLOCKED_SOURCE`. Bytes efetivamente
+recebidos mas inválidos (HTML, truncamento, contêiner/layout inválido) e domínio
+incompatível retornam `FAILED_VALIDATION`; nesses casos não há reclassificação
+como indisponibilidade de rede nem publicação parcial.
+
 ## Parser, produtos e portões nacionais
 
-Os parsers de ativo, município, CNAE e Natureza usam correspondência integral e
-não removem caracteres. Ativo aceita somente `0`/`1`; município, seis ou sete
-dígitos; CNAE classe, sete dígitos; Natureza, quatro dígitos e grupos 1–5. Lixo,
-pontuação, vazio, comprimento incorreto e grupo desconhecido falham.
+A inspeção integral da aba `VINC_PUB` mostrou que as linhas críticas possuem
+conteúdo somente nas colunas `De` e `Para`: CNAE na linha 10, vínculo ativo na
+13, município de trabalho na 26, município na 27 e Natureza Jurídica na 29. O
+De-Para confirma os nomes e confirma que o campo CNAE é **classe**, mas não
+informa tipo, largura, domínio, ausentes ou zeros à esquerda. A evidência célula
+a célula e essas limitações estão em `layout-campos-confirmados.json`.
+
+O parser CNAE foi corrigido de sete dígitos (subclasse) para cinco dígitos
+(classe), conforme a hierarquia CNAE oficial: preserva zeros (`07235`), deriva a
+divisão somente após validar e rejeita subclasse de sete dígitos. Os contratos
+operacionais de ativo (`[01]`), município bruto (`\d{6}`) e Natureza
+(`\d{4}`, grupos 1–5) continuam estritos, mas suas larguras/domínios **não são
+confirmados pelo De-Para** e aguardam confronto com `.comt` real. Letras,
+pontuação, vazio e larguras alternativas falham.
 
 `emprego_privado_municipal.csv` é esparso e contém `municipio_id`, estoque,
 período, flag `observado`, `fonte_id`, `fonte_arquivo` e `versao_fonte`.

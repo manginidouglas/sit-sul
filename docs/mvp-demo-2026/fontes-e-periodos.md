@@ -25,7 +25,11 @@ microdados e o De-Para efetivamente identificados são da edição 2024. Assim,
 “mais recente disponível” significa aqui a edição mais recente cujo recurso
 individual VINC_PUB e esquema podem ser tecnicamente sustentados, não o ano mais
 recente exibido em uma publicação agregada. A decisão e as tentativas oficiais
-estão em `reports/quality/mvp-demo-2026/rais/`.
+estão em `reports/quality/mvp-demo-2026/rais/`. O De-Para confirma os nomes e o
+nível classe de `cnae20classecódigo`; a largura de cinco dígitos segue a estrutura
+oficial CNAE. O workbook não informa largura/domínio de ativo, município ou
+Natureza Jurídica, que permanecem contratos operacionais ainda não confrontados
+com `.comt` real.
 
 ## Preflight das instituições em 12/08/2026
 
