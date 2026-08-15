@@ -1,0 +1,78 @@
+{
+  "data_verificacao": "2026-08-15",
+  "workbook": {
+    "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais/rais-2024/rais-2024-1/de-para-microdados.xlsx/@@download/file",
+    "arquivo": "De-Para Microdados.xlsx",
+    "sha256": "4be7a7421ce44e40c4b18ea044c624e16775a5d0e3429dac18acb6afd7545117",
+    "tamanho": 23640,
+    "aba": "VINC_PUB",
+    "dimensoes": {"linhas": 63, "colunas": 39},
+    "observacao": "Nas cinco linhas críticas, somente as colunas A (De) e B (Para) possuem conteúdo; o workbook não informa tipo, largura, domínio, ausentes ou zeros à esquerda."
+  },
+  "campos": [
+    {
+      "nome_novo": "cnae20classecódigo",
+      "nome_antigo": "cnae20classe",
+      "aba": "VINC_PUB",
+      "linha": 10,
+      "celulas": {"A10": "cnae20classe", "B10": "cnae20classecódigo"},
+      "nivel_classificacao_confirmado": "classe",
+      "tipo_confirmado_no_de_para": null,
+      "largura_confirmada_no_de_para": null,
+      "dominio_confirmado_no_de_para": null,
+      "regra_parser_adotada": "\\d{5}",
+      "interpretacao": "Código de classe CNAE 2.0 sem pontuação; divisão são os dois primeiros dígitos; zeros à esquerda preservados.",
+      "base_complementar": "Estrutura oficial da CNAE/CONCLA distingue classe de cinco dígitos de subclasse de sete dígitos.",
+      "url_base_complementar": "https://concla.ibge.gov.br/classificacoes/por-tema/atividades-economicas/classificacao-nacional-de-atividades-economicas.html",
+      "limitacoes": "Nível confirmado pelo De-Para; largura decorre da estrutura CNAE oficial e ainda não foi confrontada com .comt RAIS 2024 real."
+    },
+    {
+      "nome_novo": "indvínculoativo3112código",
+      "nome_antigo": "vínculoativo3112",
+      "aba": "VINC_PUB",
+      "linha": 13,
+      "celulas": {"A13": "vínculoativo3112", "B13": "indvínculoativo3112código"},
+      "tipo_confirmado_no_de_para": null,
+      "largura_confirmada_no_de_para": null,
+      "dominio_confirmado_no_de_para": null,
+      "regra_parser_adotada": "[01]",
+      "interpretacao": "0=inativo e 1=ativo em 31/12 como contrato operacional conservador.",
+      "limitacoes": "Nome confirmado; largura, domínio e significados não aparecem no De-Para e não foram confrontados com .comt real."
+    },
+    {
+      "nome_novo": "municípiotrabcódigo",
+      "nome_antigo": "muntrab",
+      "aba": "VINC_PUB",
+      "linha": 26,
+      "celulas": {"A26": "muntrab", "B26": "municípiotrabcódigo"},
+      "tipo_confirmado_no_de_para": null,
+      "largura_confirmada_no_de_para": null,
+      "dominio_confirmado_no_de_para": null,
+      "regra_parser_adotada": "\\d{6}",
+      "interpretacao": "Código municipal bruto RAIS sem cálculo de dígito verificador; ligação explícita ao IBGE de sete dígitos.",
+      "limitacoes": "Nome e prioridade territorial confirmados pelo De-Para; largura não é informada e ainda não foi confrontada com .comt real."
+    },
+    {
+      "nome_novo": "municípiocódigo",
+      "nome_antigo": "município",
+      "aba": "VINC_PUB",
+      "linha": 27,
+      "celulas": {"A27": "município", "B27": "municípiocódigo"},
+      "regra_uso": "alias oficial secundário; municípiotrabcódigo tem prioridade no resolver de colunas",
+      "limitacoes": "O De-Para não informa largura nem diferença substantiva entre os dois campos."
+    },
+    {
+      "nome_novo": "naturezajurídicacódigo",
+      "nome_antigo": "naturezajurídica",
+      "aba": "VINC_PUB",
+      "linha": 29,
+      "celulas": {"A29": "naturezajurídica", "B29": "naturezajurídicacódigo"},
+      "tipo_confirmado_no_de_para": null,
+      "largura_confirmada_no_de_para": null,
+      "dominio_confirmado_no_de_para": null,
+      "regra_parser_adotada": "\\d{4}, primeiro dígito em 1-5",
+      "interpretacao": "Grupo 1 identifica Administração Pública no contrato operacional.",
+      "limitacoes": "Nome confirmado; largura, domínio, DV e ausentes não aparecem no De-Para e não foram confrontados com .comt real."
+    }
+  ]
+}

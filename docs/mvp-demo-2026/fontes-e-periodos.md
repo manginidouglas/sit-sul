@@ -13,11 +13,26 @@ Uma fonte só muda para `apta` depois de confirmação de esquema, licença, cob
 | INF-LOG-02–03 | ANAC, aeródromos e voos realizados | 12 meses completos mais recentes | pendente de elegibilidade/rotas |
 | INF-LOG-04 | ANTAQ, instalações e Estatístico Aquaviário | 12 meses completos mais recentes | pendente de elegibilidade/rotas |
 | MER-01 | IBGE Censo 2022, PNAD Contínua e população | últimas PNAD/população até o corte | pendente de extração/rotas Brasil |
-| MER-02 e DIAG-01 | MTE, RAIS | edição mais recente disponível | pendente de filtro público/rotas |
+| MER-02 e DIAG-01 | MTE, RAIS | microdados 2024 (mais recentes tecnicamente confirmados até o corte) | em_verificacao — De-Para validado; listagem e microdados VINC_PUB bloqueados no ambiente |
 | MER-DIAG-02 | RFB, Dados Abertos CNPJ; IBGE | snapshot mais recente/população 18–64 | pendente de extração |
 | MER-DIAG-03 | IBGE/SIDRA, PIB e deflator nacional | três anos comparáveis mais recentes | pendente de extração |
 
 SCM deve documentar unidade da velocidade, códigos de fibra e prestador/grupo. Voos são regulares de passageiros realizados em ao menos seis meses. Portos precisam de carga efetiva; TUPs entram somente com carga geral/conteinerizada. RAIS deve excluir administração pública por regra reproduzível. Cada raw precisa de URL, parâmetros, horário UTC, status HTTP, tamanho, SHA-256, licença e versão.
+
+Para RAIS, a página de resultados estatísticos 2025 existia até o corte, mas não
+foi tomada como prova de microdados 2025 completos. O comunicado oficial de
+microdados e o De-Para efetivamente identificados são da edição 2024. Assim,
+“mais recente disponível” significa aqui a edição mais recente cujo recurso
+individual VINC_PUB e esquema podem ser tecnicamente sustentados, não o ano mais
+recente exibido em uma publicação agregada. A decisão e as tentativas oficiais
+estão em `reports/quality/mvp-demo-2026/rais/`. O De-Para confirma os nomes e o
+nível classe de `cnae20classecódigo`; a largura de cinco dígitos segue a estrutura
+oficial CNAE. O workbook não informa largura/domínio de ativo, município ou
+Natureza Jurídica, que permanecem contratos operacionais ainda não confrontados
+com `.comt` real. A quantidade e a partição territorial dos arquivos também não
+foram observadas: o coletor valida cobertura das 27 UFs e foi exercitado offline
+com topologias estadual, regional e nacional, sem afirmar qual delas corresponde
+à publicação RAIS 2024.
 
 ## Preflight das instituições em 12/08/2026
 
