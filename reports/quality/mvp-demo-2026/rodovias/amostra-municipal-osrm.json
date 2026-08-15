@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "source": "data/interim/routing/municipal_seats_south_2022.csv",
+  "selection_rule": "quatro estratos por UF; seleção explícita e reproduzível para estudo metodológico",
+  "municipalities": [
+    {
+      "municipio_id": "4100202",
+      "municipio_nome": "Adrianópolis",
+      "uf": "PR",
+      "estrato": "pequena_remota",
+      "latitude": -24.658199310302734,
+      "longitude": -48.99209976196289,
+      "populacao_2022": 5857,
+      "pertence_arranjo_metropolitano": false,
+      "justificativa_estrato": "pequena, fora de arranjo metropolitano e no Vale do Ribeira remoto"
+    },
+    {
+      "municipio_id": "4105508",
+      "municipio_nome": "Cianorte",
+      "uf": "PR",
+      "estrato": "pequena_eixo_estadual",
+      "latitude": -23.654300689697266,
+      "longitude": -52.61240005493164,
+      "populacao_2022": 79527,
+      "pertence_arranjo_metropolitano": false,
+      "justificativa_estrato": "pequena, sede servida pelo eixo estadual PR-323"
+    },
+    {
+      "municipio_id": "4106902",
+      "municipio_nome": "Curitiba",
+      "uf": "PR",
+      "estrato": "metropolitana",
+      "latitude": -25.413299560546875,
+      "longitude": -49.26789855957031,
+      "populacao_2022": 1773733,
+      "pertence_arranjo_metropolitano": true,
+      "justificativa_estrato": "núcleo do arranjo metropolitano de Curitiba"
+    },
+    {
+      "municipio_id": "4113700",
+      "municipio_nome": "Londrina",
+      "uf": "PR",
+      "estrato": "media",
+      "latitude": -23.335500717163086,
+      "longitude": -51.15060043334961,
+      "populacao_2022": 555937,
+      "pertence_arranjo_metropolitano": false,
+      "justificativa_estrato": "população superior a 100 mil; polo médio/grande não metropolitano da amostra"
+    },
+    {
+      "municipio_id": "4200051",
+      "municipio_nome": "Abdon Batista",
+      "uf": "SC",
+      "estrato": "pequena_remota",
+      "latitude": -27.611299514770508,
+      "longitude": -51.02220153808594,
+      "populacao_2022": 2598,
+      "pertence_arranjo_metropolitano": false,
+      "justificativa_estrato": "pequena, fora de arranjo metropolitano e relativamente remota"
+    },
+    {
+      "municipio_id": "4205407",
+      "municipio_nome": "Florianópolis",
+      "uf": "SC",
+      "estrato": "metropolitana",
+      "latitude": -27.59749984741211,
+      "longitude": -48.54970169067383,
+      "populacao_2022": 537211,
+      "pertence_arranjo_metropolitano": true,
+      "justificativa_estrato": "núcleo do arranjo metropolitano de Florianópolis"
+    },
+    {
+      "municipio_id": "4208500",
+      "municipio_nome": "Ituporanga",
+      "uf": "SC",
+      "estrato": "pequena_eixo_estadual",
+      "latitude": -27.41550064086914,
+      "longitude": -49.60219955444336,
+      "populacao_2022": 26525,
+      "pertence_arranjo_metropolitano": false,
+      "justificativa_estrato": "pequena, sede associada a eixos estaduais do Alto Vale"
+    },
+    {
+      "municipio_id": "4209102",
+      "municipio_nome": "Joinville",
+      "uf": "SC",
+      "estrato": "media",
+      "latitude": -26.30120086669922,
+      "longitude": -48.840999603271484,
+      "populacao_2022": 616323,
+      "pertence_arranjo_metropolitano": false,
+      "justificativa_estrato": "população superior a 100 mil; polo médio/grande não metropolitano da amostra"
+    },
+    {
+      "municipio_id": "4305108",
+      "municipio_nome": "Caxias do Sul",
+      "uf": "RS",
+      "estrato": "media",
+      "latitude": -29.173099517822266,
+      "longitude": -51.17679977416992,
+      "populacao_2022": 463501,
+      "pertence_arranjo_metropolitano": false,
+      "justificativa_estrato": "população superior a 100 mil; polo médio/grande não metropolitano da amostra"
+    },
+    {
+      "municipio_id": "4308656",
+      "municipio_nome": "Garruchos",
+      "uf": "RS",
+      "estrato": "pequena_remota",
+      "latitude": -28.183300018310547,
+      "longitude": -55.6416015625,
+      "populacao_2022": 2886,
+      "pertence_arranjo_metropolitano": false,
+      "justificativa_estrato": "pequena, fronteiriça e relativamente remota"
+    },
+    {
+      "municipio_id": "4314902",
+      "municipio_nome": "Porto Alegre",
+      "uf": "RS",
+      "estrato": "metropolitana",
+      "latitude": -30.028200149536133,
+      "longitude": -51.228599548339844,
+      "populacao_2022": 1332845,
+      "pertence_arranjo_metropolitano": true,
+      "justificativa_estrato": "núcleo do arranjo metropolitano de Porto Alegre"
+    },
+    {
+      "municipio_id": "4316808",
+      "municipio_nome": "Santa Cruz do Sul",
+      "uf": "RS",
+      "estrato": "pequena_eixo_estadual",
+      "latitude": -29.713699340820312,
+      "longitude": -52.4286003112793,
+      "populacao_2022": 133230,
+      "pertence_arranjo_metropolitano": false,
+      "justificativa_estrato": "sede selecionada junto a eixos estaduais regionais; exceção de porte registrada"
+    }
+  ],
+  "strata_definition": {
+    "metropolitana": "sede pertencente a arranjo metropolitano; variável pertence_arranjo_metropolitano=true",
+    "media": "população 2022 >= 100.000 fora do estrato metropolitano selecionado",
+    "pequena_eixo_estadual": "sede de menor porte relativo escolhida por vínculo documentado com eixo estadual; população é preservada, não usada como corte rígido",
+    "pequena_remota": "população 2022 < 100.000, fora de arranjo metropolitano e selecionada por isolamento relativo dos eixos estruturantes"
+  },
+  "population_source": {
+    "institution": "IBGE",
+    "dataset": "Censo Demográfico 2022 - população residente por município",
+    "reference_year": 2022,
+    "usage": "variável auxiliar de estratificação; valores versionados neste arquivo"
+  },
+  "metropolitan_classification_source": {
+    "institution": "IBGE",
+    "dataset": "Arranjos Populacionais e Concentrações Urbanas do Brasil / recortes metropolitanos usados pelo SIT",
+    "usage": "classificação explícita pertence_arranjo_metropolitano; revisão metodológica requerida antes do congelamento"
+  }
+}
