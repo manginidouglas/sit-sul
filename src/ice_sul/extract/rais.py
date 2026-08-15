@@ -20,7 +20,7 @@ from ice_sul.transform.rais import load_municipality_map, transform_archive
 
 OFFICIAL_ROOT = "https://ftp.mtps.gov.br/pdet/microdados/RAIS/2024"
 DE_PARA_URL = f"{OFFICIAL_ROOT}/De-Para%20Microdados.xlsx"
-RAIS_2024_PORTAL_URL = "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho/rais/rais-2024"
+RAIS_2024_PORTAL_URL = "https://www.gov.br/trabalho-e-emprego/pt-br/servicos/empregador/rais"
 IBGE_MUNICIPALITIES_URL = "https://servicodados.ibge.gov.br/api/v1/localidades/municipios?orderBy=id"
 UF_CODES = "AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO".split()
 

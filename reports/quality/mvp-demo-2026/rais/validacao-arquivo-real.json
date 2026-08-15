@@ -1,24 +1,37 @@
 {
-  "data_hora_utc": "2026-08-15T11:56:15Z",
-  "fonte": "MTE/PDET RAIS 2024",
+  "data_hora_utc": "2026-08-15T14:00:00Z",
+  "data_corte_edicao": "2026-08-12",
+  "fonte": "MTE/PDET RAIS",
+  "decisao_temporal": {
+    "edicao_selecionada": 2024,
+    "periodo_referencia": "2024-12-31",
+    "justificativa": "edição mais recente com documentação oficial VINC_PUB e De-Para identificados até a data de corte; ciclo declaratório 2025 não equivale a microdados definitivos publicados"
+  },
   "tentativas": [
     {
+      "url": "https://ftp.mtps.gov.br/pdet/microdados/RAIS/2025/",
+      "metodo": "GET",
+      "resultado": "HTTP 503 Service Unavailable"
+    },
+    {
+      "url": "ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2025/",
+      "metodo": "FTP anônimo/CWD",
+      "resultado": "OSError 101: Network is unreachable"
+    },
+    {
       "url": "https://ftp.mtps.gov.br/pdet/microdados/RAIS/2024/",
+      "metodo": "GET",
       "resultado": "HTTP 503 Service Unavailable"
     },
     {
-      "url": "https://ftp.mtps.gov.br/pdet/microdados/RAIS/2024/RAIS_VINC_PUB_DF.7z",
-      "resultado": "HTTP 503 Service Unavailable"
-    },
-    {
-      "url": "ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2024/RAIS_VINC_PUB_DF.7z",
-      "metodo": "FTP RETR anônimo",
+      "url": "ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2024/",
+      "metodo": "FTP anônimo/CWD",
       "resultado": "gaierror -2: Name or service not known"
     },
     {
-      "url": "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho/rais/rais-2024",
-      "finalidade": "fallback oficial para De-Para Microdados.xlsx",
-      "resultado": "HTTP 403 Forbidden"
+      "url": "https://www.gov.br/trabalho-e-emprego/pt-br/servicos/empregador/rais",
+      "finalidade": "página oficial RAIS e fallback para De-Para Microdados.xlsx",
+      "resultado": "HTTP 200; HTML 149322 bytes; nenhum link .xlsx De-Para identificado"
     }
   ],
   "status_coleta": "blocked_source",

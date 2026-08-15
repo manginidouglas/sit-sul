@@ -1,0 +1,207 @@
+{
+  "universo_cadastral": {
+    "total": 1179,
+    "porto_organizado": 37,
+    "tup": 259,
+    "outras_categorias": 883,
+    "coordenadas_validas": 1162,
+    "sem_coordenadas": 17
+  },
+  "status_mvp": {
+    "elegivel": 7,
+    "nao_elegivel": 0,
+    "indeterminado": 290,
+    "fora_escopo_mvp": 882
+  },
+  "por_tipo": {
+    "porto_organizado": {
+      "elegivel": 7,
+      "nao_elegivel": 0,
+      "indeterminado": 30
+    },
+    "tup": {
+      "elegivel": 0,
+      "nao_elegivel": 0,
+      "indeterminado": 259
+    }
+  },
+  "evidencias": {
+    "instalacoes_com_evidencia": 7,
+    "sem_evidencia_suficiente": 290,
+    "fontes": [
+      "ANTAQ — Desempenho Aquaviário 2025",
+      "Autoridade Portuária de Imbituba — Estatísticas",
+      "Portos do Paraná — estatísticas operacionais",
+      "Superintendência do Porto de Itajaí — Estatística de dezembro de 2025"
+    ],
+    "periodo": "2025-01-01/2025-12-31"
+  },
+  "coordenadas": {
+    "validas": 1162,
+    "invalidas_ou_ausentes": 17,
+    "ajuste_acesso_terrestre_onda2_true": 1179,
+    "ajuste_acesso_terrestre_onda2_false": 0,
+    "ausentes": 17
+  },
+  "inconsistencias": {
+    "n_linhas_cadastro": 1179,
+    "n_instalacao_id_antaq_distintos": 1178,
+    "n_instalacao_uid_distintos": 1179,
+    "ids_conflitantes": [
+      "BRAM021"
+    ],
+    "solucao_bram021": "dois UIDs determinísticos por tipo; ambas as linhas bloqueadas para elegibilidade e routing",
+    "duplicidades_uid": {},
+    "ids_vazios": 0,
+    "coordenadas_invalidas": [],
+    "categorias_desconhecidas_fora_escopo": [
+      "Estação de transbordo de cargas",
+      "IP4",
+      "Instalação portuária de turismo",
+      "Plataforma Marítima",
+      "Porto Internacional",
+      "Porto Público",
+      "Registro - Estaleiro",
+      "Registro - Estaleiro até 1.000 TPB",
+      "Registro - Instalação de apoio",
+      "Registro - Instalação flutuante",
+      "Registro - Instalação para transferência",
+      "Registro - Instalação portuária pública",
+      "Registro - Instalação rudimentar",
+      "Registro - Instalação temporária",
+      "Registro - Terminal de uso privado",
+      "TNA"
+    ],
+    "evidencia_sem_cadastro": []
+  },
+  "casos_manuais": [
+    {
+      "instalacao_uid": "BRPNG",
+      "instalacao_id_antaq": "BRPNG",
+      "nome": "Paranaguá",
+      "tipo_oficial": "Porto Organizado",
+      "status_mvp": "elegivel",
+      "justificativa_status": "porto organizado com evidência oficial positiva de movimentação em 2025",
+      "movimentacao_evidenciada_t": "19700000.0",
+      "escopo_movimentacao_evidenciada": "milho e soja",
+      "fonte_movimentacao": "ANTAQ — Desempenho Aquaviário 2025",
+      "pagina_ou_referencia": "p. 19",
+      "periodo_inicio": "2025-01-01",
+      "periodo_fim": "2025-12-31",
+      "latitude": "-25.502221",
+      "longitude": "-48.505555",
+      "coordenada_valida": true,
+      "ajuste_acesso_terrestre_onda2": true
+    },
+    {
+      "instalacao_uid": "BRANT",
+      "instalacao_id_antaq": "BRANT",
+      "nome": "Antonina",
+      "tipo_oficial": "Porto Organizado",
+      "status_mvp": "elegivel",
+      "justificativa_status": "porto organizado com evidência oficial positiva de movimentação em 2025",
+      "movimentacao_evidenciada_t": "",
+      "escopo_movimentacao_evidenciada": "movimentação portuária em 2025",
+      "fonte_movimentacao": "Portos do Paraná — estatísticas operacionais",
+      "pagina_ou_referencia": "estatísticas oficiais dos Portos de Paranaguá e Antonina",
+      "periodo_inicio": "2025-01-01",
+      "periodo_fim": "2025-12-31",
+      "latitude": "-25.444167",
+      "longitude": "-48.69333300000001",
+      "coordenada_valida": true,
+      "ajuste_acesso_terrestre_onda2": true
+    },
+    {
+      "instalacao_uid": "BRSFS",
+      "instalacao_id_antaq": "BRSFS",
+      "nome": "São Francisco do Sul",
+      "tipo_oficial": "Porto Organizado",
+      "status_mvp": "elegivel",
+      "justificativa_status": "porto organizado com evidência oficial positiva de movimentação em 2025",
+      "movimentacao_evidenciada_t": "9100000.0",
+      "escopo_movimentacao_evidenciada": "milho e soja",
+      "fonte_movimentacao": "ANTAQ — Desempenho Aquaviário 2025",
+      "pagina_ou_referencia": "p. 19",
+      "periodo_inicio": "2025-01-01",
+      "periodo_fim": "2025-12-31",
+      "latitude": "-26.238889",
+      "longitude": "-48.634721",
+      "coordenada_valida": true,
+      "ajuste_acesso_terrestre_onda2": true
+    },
+    {
+      "instalacao_uid": "BRITJ",
+      "instalacao_id_antaq": "BRITJ",
+      "nome": "Itajaí",
+      "tipo_oficial": "Porto Organizado",
+      "status_mvp": "elegivel",
+      "justificativa_status": "porto organizado com evidência oficial positiva de movimentação em 2025",
+      "movimentacao_evidenciada_t": "",
+      "escopo_movimentacao_evidenciada": "movimentação mensal em 2025",
+      "fonte_movimentacao": "Superintendência do Porto de Itajaí — Estatística de dezembro de 2025",
+      "pagina_ou_referencia": "relatório estatístico oficial de dezembro de 2025",
+      "periodo_inicio": "2025-01-01",
+      "periodo_fim": "2025-12-31",
+      "latitude": "-26.90083200000001",
+      "longitude": "-48.666389",
+      "coordenada_valida": true,
+      "ajuste_acesso_terrestre_onda2": true
+    },
+    {
+      "instalacao_uid": "BRSC008",
+      "instalacao_id_antaq": "BRSC008",
+      "nome": "Portonave - Terminais Portuários de Navegantes",
+      "tipo_oficial": "Terminal de uso privado",
+      "status_mvp": "indeterminado",
+      "justificativa_status": "sem evidência oficial recuperável suficiente; ausência não implica inelegibilidade",
+      "movimentacao_evidenciada_t": "",
+      "escopo_movimentacao_evidenciada": "",
+      "fonte_movimentacao": "",
+      "pagina_ou_referencia": "",
+      "periodo_inicio": "2025-01-01",
+      "periodo_fim": "2025-12-31",
+      "latitude": "-26.8981",
+      "longitude": "-48.6616",
+      "coordenada_valida": true,
+      "ajuste_acesso_terrestre_onda2": true
+    },
+    {
+      "instalacao_uid": "BRIBB",
+      "instalacao_id_antaq": "BRIBB",
+      "nome": "Imbituba",
+      "tipo_oficial": "Porto Organizado",
+      "status_mvp": "elegivel",
+      "justificativa_status": "porto organizado com evidência oficial positiva de movimentação em 2025",
+      "movimentacao_evidenciada_t": "7071663",
+      "escopo_movimentacao_evidenciada": "movimentação total",
+      "fonte_movimentacao": "Autoridade Portuária de Imbituba — Estatísticas",
+      "pagina_ou_referencia": "gráfico anual oficial, 2025",
+      "periodo_inicio": "2025-01-01",
+      "periodo_fim": "2025-12-31",
+      "latitude": "-28.231389",
+      "longitude": "-48.65416700000001",
+      "coordenada_valida": true,
+      "ajuste_acesso_terrestre_onda2": true
+    },
+    {
+      "instalacao_uid": "BRRIG",
+      "instalacao_id_antaq": "BRRIG",
+      "nome": "Rio Grande",
+      "tipo_oficial": "Porto Organizado",
+      "status_mvp": "elegivel",
+      "justificativa_status": "porto organizado com evidência oficial positiva de movimentação em 2025",
+      "movimentacao_evidenciada_t": "5600000.0",
+      "escopo_movimentacao_evidenciada": "milho e soja",
+      "fonte_movimentacao": "ANTAQ — Desempenho Aquaviário 2025",
+      "pagina_ou_referencia": "p. 19",
+      "periodo_inicio": "2025-01-01",
+      "periodo_fim": "2025-12-31",
+      "latitude": "-32.042499",
+      "longitude": "-52.075555",
+      "coordenada_valida": true,
+      "ajuste_acesso_terrestre_onda2": true
+    }
+  ],
+  "encoding_replacement_char_count": 0,
+  "artefatos_manifestados": 2
+}

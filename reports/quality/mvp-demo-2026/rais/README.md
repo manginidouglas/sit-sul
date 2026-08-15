@@ -24,6 +24,17 @@ Conta-se o estoque de vínculos formais ativos em 31/12/2024 — não trabalhado
 Pública se a divisão CNAE 2.0 for `84` **OU** o primeiro dígito da Natureza
 Jurídica for `1`. O MER-DIAG-01 é `1 - Σp_s²`, por divisão CNAE 2.0.
 
+### Decisão temporal
+
+A edição congelada é **RAIS 2024**, com estoque em 31/12/2024. Na data de corte
+da edição SIT (12/08/2026), esta é a edição anual mais recente para a qual foi
+identificada a documentação oficial de microdados `VINC_PUB` e a respectiva
+planilha `De-Para Microdados.xlsx`. A existência do ciclo declaratório RAIS 2025
+não é tratada como prova de que os microdados estatísticos definitivos de 2025
+estavam publicados. As rotas oficiais dos diretórios 2025 e 2024 foram testadas
+separadamente; como o host de microdados não respondeu neste ambiente, o
+resultado da coleta continua bloqueado e não é substituído por CAGED.
+
 Os códigos RAIS são ligados por de-para explícito: os seis dígitos observados no
 campo municipal são procurados em uma tabela construída a partir dos IDs de
 sete dígitos do cadastro oficial IBGE. O dígito verificador nunca é calculado ou
@@ -51,10 +62,11 @@ onda não calcula a acessibilidade temporal do MER-02.
 
 ### Arquivo oficial real
 
-Em 15/08/2026 foram tentados HTTPS e FTP no servidor oficial, além do fallback
-gov.br para a documentação. HTTPS do PDET respondeu HTTP 503, a resolução DNS
-direta exigida pelo FTP falhou (`gaierror`) e a página gov.br respondeu HTTP
-403 neste ambiente, conforme `validacao-arquivo-real.json`. Portanto **nenhum cabeçalho, encoding,
+Em 15/08/2026 foram tentados HTTPS e FTP no servidor oficial, além do portal
+gov.br para a documentação. HTTPS do PDET respondeu HTTP 503; FTP falhou por
+bloqueio de rede/resolução; a página RAIS do portal gov.br respondeu HTTP 200,
+mas não expôs uma planilha `.xlsx` no HTML recebido, conforme
+`validacao-arquivo-real.json`. Portanto **nenhum cabeçalho, encoding,
 delimitador, código municipal ou contagem foi declarado como empiricamente
 confirmado em arquivo real neste ambiente**. O coletor retorna `blocked_source`
 somente depois de esgotar as rotas oficiais, em vez de declarar sucesso com base
