@@ -154,22 +154,26 @@ def transform_rows(
     sectors: dict[str, Counter[str]] = defaultdict(Counter)
     qa: Counter[str] = Counter()
     unmatched: Counter[str] = Counter()
+    linked_codes: set[str] = set()
     file_uf = file_uf.upper()
     for row in rows:
         qa["vinculos_lidos"] += 1
         if _digits(row[columns["ativo"]]) != "1":
             qa["vinculos_inativos_excluidos"] += 1
             continue
+        qa["vinculos_ativos_lidos"] += 1
         raw_code = _digits(row[columns["municipio"]])
         code = municipality_map.get(raw_code)
         if code is None:
             unmatched[raw_code] += 1
+            qa["vinculos_municipio_nao_ligado"] += 1
             continue
         expected_uf = UF_PREFIX.get(code[:2])
         if expected_uf != file_uf:
             raise ValueError(f"UF do arquivo inconsistente para {raw_code}->{code}: {file_uf} != {expected_uf}")
         if "uf" in columns and str(row[columns["uf"]]).strip().upper() != file_uf:
             raise ValueError(f"UF da coluna diverge do metadado do arquivo: {raw_code}")
+        linked_codes.add(code)
         division = cnae_division(row[columns["cnae"]])
         if is_public_administration(row[columns["cnae"]], row[columns["natureza"]]):
             qa["vinculos_administracao_publica_excluidos"] += 1
@@ -193,14 +197,22 @@ def transform_rows(
         diagnostic.append({
             "municipio_id": code, "indicador_id": "MER-DIAG-01",
             "valor_bruto": value, "periodo_referencia": str(year),
-            "flag_qualidade": "ausente_sem_vinculo_privado" if value is None else "observado",
+            "flag_qualidade": (
+                "ausente" if value is None else "zero_observado" if value == 0 else "observado"
+            ),
+            "motivo_qualidade": "sem_vinculo_privado" if value is None else "",
         })
     quality = {
         "ano": year, **dict(qa), "uf_processada": file_uf,
-        "municipios_ligados": len(totals), "codigos_nao_ligados": dict(sorted(unmatched.items())),
+        "municipios_ligados": len(linked_codes), "codigos_nao_ligados": dict(sorted(unmatched.items())),
         "municipios_nao_ligados": len(unmatched),
         "soma_municipal": sum(totals.values()),
         "reconciliacao_ok": sum(totals.values()) == qa["vinculos_privados_elegiveis"],
+        "reconciliacao_territorial_ok": qa["vinculos_ativos_lidos"] == (
+            qa["vinculos_municipio_nao_ligado"]
+            + qa["vinculos_administracao_publica_excluidos"]
+            + qa["vinculos_privados_elegiveis"]
+        ),
     }
     return RaisResult(private, diagnostic, quality)
 

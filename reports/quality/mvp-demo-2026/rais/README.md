@@ -9,7 +9,9 @@ diretório da distribuição MTE/PDET. Os nomes primários implementados são
 `municípiotrabcódigo` (com `municípiocódigo` como alternativa documentada) e
 `naturezajurídicacódigo`. Aliases antigos existem apenas para compatibilidade.
 
-Fonte: `https://ftp.mtps.gov.br/pdet/microdados/RAIS/2024/`. A planilha e cada
+Fonte: `ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2024/`, com tentativa HTTPS
+no mesmo host seguida de fallback FTP anônimo. A planilha aceita ainda o
+fallback oficial da página RAIS 2024 no portal gov.br. A planilha e cada
 `.7z` são persistidos imutavelmente com URL, horário, tamanho e SHA-256. O
 download dos arquivos grandes é feito em blocos. O `.7z` deve conter exatamente
 um `.comt`; caminhos absolutos/traversal e arquivos sem ou com múltiplos `.comt`
@@ -40,20 +42,23 @@ esteja presente, ela também é validada.
 - `reports/quality/mvp-demo-2026/rais/qa.json`: UFs processadas, vínculos lidos,
   inativos, públicos e privados, municípios ligados/não ligados e reconciliação.
 
-Sem vínculo privado elegível, `valor_bruto` é `NA` e a flag é
-`ausente_sem_vinculo_privado`. Havendo vínculos em uma só divisão, o valor é
-zero observado. Esta onda não calcula a acessibilidade temporal do MER-02.
+Sem vínculo privado elegível, `valor_bruto` é `NA`, a flag oficial é `ausente` e
+o motivo é `sem_vinculo_privado`. Havendo vínculos em uma só divisão, o valor é
+zero e a flag é `zero_observado`. Os demais resultados usam `observado`. Esta
+onda não calcula a acessibilidade temporal do MER-02.
 
 ## Evidência desta revisão
 
 ### Arquivo oficial real
 
-Em 15/08/2026 foi tentado acesso ao diretório, à planilha e ao arquivo DF no
-servidor oficial. O endpoint respondeu HTTP 503, documentado em
-`validacao-arquivo-real.json`. Portanto **nenhum cabeçalho, encoding,
+Em 15/08/2026 foram tentados HTTPS e FTP no servidor oficial, além do fallback
+gov.br para a documentação. HTTPS do PDET respondeu HTTP 503, a resolução DNS
+direta exigida pelo FTP falhou (`gaierror`) e a página gov.br respondeu HTTP
+403 neste ambiente, conforme `validacao-arquivo-real.json`. Portanto **nenhum cabeçalho, encoding,
 delimitador, código municipal ou contagem foi declarado como empiricamente
 confirmado em arquivo real neste ambiente**. O coletor retorna `blocked_source`
-nessa condição, em vez de declarar sucesso com base na fixture.
+somente depois de esgotar as rotas oficiais, em vez de declarar sucesso com base
+na fixture.
 
 ### Fixture derivada do De-Para
 

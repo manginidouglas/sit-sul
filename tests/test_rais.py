@@ -5,7 +5,12 @@ import py7zr
 import pytest
 
 from ice_sul.extract.contracts import CollectionStatus
-from ice_sul.extract.rais import RaisArchive, RaisCollector
+from ice_sul.extract.rais import (
+    OfficialRoutesUnavailable,
+    RaisArchive,
+    RaisCollector,
+    download_large,
+)
 from ice_sul.extract.registry import build_collectors
 from ice_sul.transform.rais import (
     extracted_comt,
@@ -62,11 +67,14 @@ def test_end_to_end_7z_comt_real_headers_filters_and_contract(tmp_path):
     assert values["4106902"]["valor_bruto"] == pytest.approx(4 / 9)
     assert values["4106902"]["flag_qualidade"] == "observado"
     assert values["4120002"]["valor_bruto"] is None
-    assert values["4120002"]["flag_qualidade"] == "ausente_sem_vinculo_privado"
+    assert values["4120002"]["flag_qualidade"] == "ausente"
+    assert values["4120002"]["motivo_qualidade"] == "sem_vinculo_privado"
     assert list(values["4106902"]) == [
-        "municipio_id", "indicador_id", "valor_bruto", "periodo_referencia", "flag_qualidade"
+        "municipio_id", "indicador_id", "valor_bruto", "periodo_referencia",
+        "flag_qualidade", "motivo_qualidade",
     ]
     assert result.quality["vinculos_lidos"] == 6
+    assert result.quality["vinculos_ativos_lidos"] == 5
     assert result.quality["vinculos_inativos_excluidos"] == 1
     assert result.quality["vinculos_administracao_publica_excluidos"] == 2
     assert result.quality["vinculos_privados_elegiveis"] == 3
@@ -92,12 +100,15 @@ def test_single_division_is_zero_and_unmatched_is_recorded(tmp_path):
         south_municipalities=["5300108"],
     )
     assert result.diversification[0]["valor_bruto"] == 0
+    assert result.diversification[0]["flag_qualidade"] == "zero_observado"
     limited = {key: value for key, value in MAP.items() if key != "530010"}
     unmatched = transform_archive(
         archive_fixture(tmp_path / "other", "RAIS_VINC_PUB_DF_2024.comt"),
         file_uf="DF", municipality_map=limited,
     )
     assert unmatched.quality["codigos_nao_ligados"] == {"530010": 2}
+    assert unmatched.quality["vinculos_municipio_nao_ligado"] == 2
+    assert unmatched.quality["reconciliacao_territorial_ok"] is True
 
 
 def test_explicit_municipality_crosswalk_uses_canonical_reference(tmp_path):
@@ -131,3 +142,28 @@ def test_rais_collector_is_registered_and_reports_blocked_source(tmp_path, monke
     ).collect()
     assert result.status == CollectionStatus.BLOCKED_SOURCE
     assert result.errors
+
+
+def test_large_download_exhausts_https_and_ftp_before_blocking(tmp_path, monkeypatch):
+    from urllib.error import HTTPError
+    monkeypatch.setattr(
+        "ice_sul.extract.rais._download_https",
+        lambda *args, **kwargs: (_ for _ in ()).throw(HTTPError("url", 503, "busy", {}, None)),
+    )
+    monkeypatch.setattr(
+        "ice_sul.extract.rais._download_ftp",
+        lambda *args, **kwargs: (_ for _ in ()).throw(OSError("FTP blocked")),
+    )
+    with pytest.raises(OfficialRoutesUnavailable) as caught:
+        download_large("https://ftp.mtps.gov.br/file.7z", tmp_path / "file.7z", uf="DF")
+    attempts = caught.value.attempts
+    assert [item["metodo"] for item in attempts] == ["GET", "FTP RETR"]
+    assert attempts[0]["status_http"] == 503
+    assert attempts[1]["url"].startswith("ftp://ftp.mtps.gov.br/")
+    required = {
+        "fonte", "url", "metodo", "parametros", "periodo", "data_hora_utc",
+        "status_http", "resposta_ftp", "url_final", "redirects", "content_type",
+        "tamanho_transferido", "tamanho_persistido", "sha256", "arquivo",
+        "licenca", "versao_snapshot", "validacao",
+    }
+    assert required <= attempts[1].keys()
