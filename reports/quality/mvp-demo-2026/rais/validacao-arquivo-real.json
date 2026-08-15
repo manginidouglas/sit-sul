@@ -47,7 +47,23 @@
     "padrao_nominal_confirmado": false,
     "arquivo_real_lido": false,
     "ufs_processadas": [],
-    "vinculos_lidos": 0
+    "vinculos_lidos": 0,
+    "topologia_oficial_observada": null,
+    "topologias_compativeis_testadas": {
+      "estadual": {
+        "arquivos": 27,
+        "status": "fixture_offline"
+      },
+      "regional": {
+        "arquivos": 6,
+        "status": "fixture_offline"
+      },
+      "nacional": {
+        "arquivos": 1,
+        "status": "fixture_offline"
+      }
+    },
+    "criterio_cobertura": "união das partições cobre exatamente as 27 UFs, sem lacunas ou sobreposição"
   },
   "status_coleta_real": "blocked_source",
   "relatorio_layout": "layout-campos-confirmados.json",

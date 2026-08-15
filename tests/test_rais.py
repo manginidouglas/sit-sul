@@ -4,8 +4,8 @@ from urllib.error import URLError
 import openpyxl,py7zr,pytest
 from ice_sul.extract.contracts import CollectionStatus
 from ice_sul.extract.rais import (DE_PARA_URL,OFFICIAL_HOST,FTPTransportError,RaisArchive,RaisCollector,OfficialRoutesUnavailable,
- UF_CODES,_download_archive,_download_validated,_validate_open_archive,archives_from_listing,content_type,discover_de_para_url,
- discover_official_archives,download_de_para,parse_archive_listing,reused_manifest,sha256_file,validate_7z,validate_xlsx,view_to_download)
+ REGIONAL_PARTITIONS,UF_CODES,_download_archive,_download_validated,_validate_open_archive,archives_from_listing,content_type,discover_de_para_url,
+ discover_official_archives,download_de_para,parse_archive_listing,parse_archive_name,partition_coverage,reused_manifest,sha256_file,validate_7z,validate_archive_coverage,validate_xlsx,view_to_download)
 from ice_sul.transform.rais import (UF_PREFIX,cnae_division,is_public_administration,parse_active,parse_cnae,parse_legal_nature,parse_municipality,
  read_comt,resolve_columns,transform_archive,transform_rows)
 
@@ -37,7 +37,30 @@ def offline_tree(tmp_path:Path):
   rows=[["1","62015","2062",codes[0][:6]],["0","62015","2062",codes[0][:6]],["1","84116","1015",codes[0][:6]]]
   if uf=="PR":rows.append(["1","47113","2062",codes[0][:6]])
   if uf=="RS":rows=[["1","84116","1015",codes[0][:6]]]
-  name=f"RAIS_VINC_PUB_{uf}.7z";archive(raw/name,rows);specs.append(RaisArchive(uf,f"https://{OFFICIAL_HOST}/pdet/microdados/RAIS/2024/{name}"))
+  name=f"RAIS_VINC_PUB_{uf}.7z";archive(raw/name,rows);specs.append(RaisArchive(uf,(uf,),f"https://{OFFICIAL_HOST}/pdet/microdados/RAIS/2024/{name}"))
+ (raw/"municipios-ibge.json").write_text(json.dumps([{"id":int(c)} for c in all_codes]))
+ reference=tmp_path/"south.csv";reference.write_text("municipio_id\n"+"\n".join(south)+"\n")
+ return RaisCollector(raw,interim,quality,reference,specs),raw,interim,quality
+
+def partitioned_offline_tree(tmp_path:Path,partitions:dict[str,tuple[str,...]]):
+ raw=tmp_path/"raw";raw.mkdir(); interim=tmp_path/"interim";quality=tmp_path/"quality"
+ workbook(raw/"De-Para Microdados.xlsx")
+ south=[];all_codes=[];codes_by_uf={};specs=[]
+ for uf in UF_CODES:
+  count=397 if uf in {"PR","SC","RS"} else 1
+  codes=[f"{PREFIX[uf]}{i:04d}{i%10}" for i in range(1,count+1)]
+  codes_by_uf[uf]=codes;all_codes+=codes
+  if uf in {"PR","SC","RS"}:south+=codes
+ for partition_id,covered_ufs in partitions.items():
+  rows=[]
+  for uf in covered_ufs:
+   raw_code=codes_by_uf[uf][0][:6]
+   rows.append(["1","62015","2062",raw_code])
+   rows.append(["0","62015","2062",raw_code])
+   rows.append(["1","84116","1015",raw_code])
+   if uf=="PR":rows.append(["1","47113","2062",raw_code])
+  name=f"RAIS_VINC_PUB_{partition_id}.7z";archive(raw/name,rows)
+  specs.append(RaisArchive(partition_id,tuple(covered_ufs),f"https://{OFFICIAL_HOST}/pdet/microdados/RAIS/2024/{name}"))
  (raw/"municipios-ibge.json").write_text(json.dumps([{"id":int(c)} for c in all_codes]))
  reference=tmp_path/"south.csv";reference.write_text("municipio_id\n"+"\n".join(south)+"\n")
  return RaisCollector(raw,interim,quality,reference,specs),raw,interim,quality
@@ -167,7 +190,7 @@ def test_versioned_layout_evidence_records_exact_depara_rows_and_limitations():
  assert fields["indvínculoativo3112código"]["dominio_confirmado_no_de_para"] is None
  assert evidence["workbook"]["sha256"]=="4be7a7421ce44e40c4b18ea044c624e16775a5d0e3429dac18acb6afd7545117"
 def test_transform_contract_and_active_frequencies(tmp_path):
- p=archive(tmp_path/"PR.7z",[["1","47113","2062","410690"],["1","62015","2062","410690"],["0","62015","2062","410690"]]);result=transform_archive(p,file_uf="PR",municipality_map={"410690":"4106902"},south_municipalities=["4106902","4100001"])
+ p=archive(tmp_path/"PR.7z",[["1","47113","2062","410690"],["1","62015","2062","410690"],["0","62015","2062","410690"]]);result=transform_archive(p,allowed_ufs=("PR",),municipality_map={"410690":"4106902"},south_municipalities=["4106902","4100001"])
  assert set(result.private_employment[0])=={"municipio_id","empregos_formais_privados","periodo_referencia","flag_qualidade","fonte_id","fonte_arquivo","versao_fonte"};assert result.private_employment[0]["flag_qualidade"]=="observado"
  assert set(result.diversification[0])=={"municipio_id","indicador_id","valor_bruto","periodo_referencia","flag_qualidade","motivo_qualidade","fonte_id","fonte_arquivo","versao_fonte"};assert result.quality["frequencias_vinculo_ativo"]=={"0":1,"1":2}
 
@@ -209,21 +232,68 @@ def test_https_and_ftp_network_failures_are_wrapped_as_blocked_source(tmp_path,m
  monkeypatch.setattr("ice_sul.extract.rais._download_ftp_validated",lambda *a,**k:(_ for _ in ()).throw(FTPTransportError("FTP network unreachable")))
  result=collector.collect();assert result.status==CollectionStatus.BLOCKED_SOURCE;assert [a["metodo"] for a in result.manifest_entries[-2:]]==["HTTPS","FTP RETR"];assert not (interim/"mer_diag_01.csv").exists()
 def test_https_failure_and_ftp_temporary_error_are_blocked(tmp_path,monkeypatch):
- spec=RaisArchive("PR",f"https://{OFFICIAL_HOST}/RAIS_VINC_PUB_PR.7z")
+ spec=RaisArchive("PR",("PR",),f"https://{OFFICIAL_HOST}/RAIS_VINC_PUB_PR.7z")
  monkeypatch.setattr("ice_sul.extract.rais._download_validated",lambda *a,**k:(_ for _ in ()).throw(URLError("down")))
  monkeypatch.setattr("ice_sul.extract.rais._download_ftp_validated",lambda *a,**k:(_ for _ in ()).throw(FTPTransportError("421 temporary")))
  with pytest.raises(OfficialRoutesUnavailable) as caught:_download_archive(spec,tmp_path/spec.filename)
  assert len(caught.value.attempts)==2
 def test_https_failure_then_valid_ftp_succeeds(tmp_path,monkeypatch):
- spec=RaisArchive("PR",f"https://{OFFICIAL_HOST}/RAIS_VINC_PUB_PR.7z");destination=tmp_path/spec.filename
+ spec=RaisArchive("PR",("PR",),f"https://{OFFICIAL_HOST}/RAIS_VINC_PUB_PR.7z");destination=tmp_path/spec.filename
  monkeypatch.setattr("ice_sul.extract.rais._download_validated",lambda *a,**k:(_ for _ in ()).throw(URLError("down")))
  def valid_ftp(spec,path):archive(path);return {"metodo":"FTP RETR","url":"ftp://official","validacao":validate_7z(path)}
  monkeypatch.setattr("ice_sul.extract.rais._download_ftp_validated",valid_ftp)
  entry=_download_archive(spec,destination);assert entry["metodo"]=="FTP RETR";assert destination.exists();assert len(entry["tentativas_anteriores"])==1
 def test_invalid_bytes_from_https_or_ftp_are_failed_validation_not_blocked(tmp_path,monkeypatch):
- spec=RaisArchive("PR",f"https://{OFFICIAL_HOST}/RAIS_VINC_PUB_PR.7z")
+ spec=RaisArchive("PR",("PR",),f"https://{OFFICIAL_HOST}/RAIS_VINC_PUB_PR.7z")
  monkeypatch.setattr("ice_sul.extract.rais._download_validated",lambda *a,**k:(_ for _ in ()).throw(ValueError("assinatura inválida")))
  with pytest.raises(ValueError,match="assinatura"):_download_archive(spec,tmp_path/"https.7z")
  monkeypatch.setattr("ice_sul.extract.rais._download_validated",lambda *a,**k:(_ for _ in ()).throw(URLError("down")))
  monkeypatch.setattr("ice_sul.extract.rais._download_ftp_validated",lambda *a,**k:(_ for _ in ()).throw(ValueError("7-Zip truncado")))
  with pytest.raises(ValueError,match="truncado"):_download_archive(spec,tmp_path/"ftp.7z")
+
+# Partições territoriais: arquivos estaduais, regionais ou nacional.
+def test_partition_parser_supports_state_regional_and_national():
+ state=parse_archive_name("RAIS_VINC_PUB_PR_2024.7z")
+ regional=parse_archive_name("RAIS_VINC_PUB_SUL.7z")
+ national=parse_archive_name("RAIS_VINC_PUB_BRASIL.7z")
+ assert state.partition_id=="PR" and state.covered_ufs==("PR",)
+ assert regional.covered_ufs==("PR","SC","RS")
+ assert set(national.covered_ufs)==set(UF_CODES)
+ assert partition_coverage("CENTRO-OESTE")==REGIONAL_PARTITIONS["CENTRO_OESTE"]
+
+
+def test_partition_coverage_rejects_missing_overlap_and_unknown_partition():
+ with pytest.raises(ValueError,match="UFs ausentes"):
+  validate_archive_coverage([RaisArchive("SUL",REGIONAL_PARTITIONS["SUL"],"https://official/RAIS_VINC_PUB_SUL.7z")])
+ regional=[RaisArchive(name,ufs,f"https://official/RAIS_VINC_PUB_{name}.7z") for name,ufs in REGIONAL_PARTITIONS.items()]
+ with pytest.raises(ValueError,match="UFs sobrepostas"):
+  validate_archive_coverage(regional+[RaisArchive("PR",("PR",),"https://official/RAIS_VINC_PUB_PR.7z")])
+ with pytest.raises(ValueError,match="desconhecida"):
+  parse_archive_name("RAIS_VINC_PUB_DESCONHECIDA.7z")
+
+
+def test_full_offline_collector_regional_partitions(tmp_path,monkeypatch):
+ collector,raw,interim,quality=partitioned_offline_tree(tmp_path,REGIONAL_PARTITIONS)
+ monkeypatch.setattr("ice_sul.extract.rais.build_opener",lambda *a:(_ for _ in ()).throw(AssertionError("network")))
+ result=collector.collect();assert result.status==CollectionStatus.SUCCESS
+ qa=json.loads((quality/"qa.json").read_text())
+ assert len(qa["particoes_processadas"])==6;assert len(qa["ufs_cobertas"])==27;assert qa["coverage_complete"] is True
+ with (interim/"mer_diag_01.csv").open() as f:diag=list(csv.DictReader(f))
+ assert len(diag)==1191;assert {r["fonte_arquivo"] for r in diag}=={"RAIS_VINC_PUB_SUL.7z"}
+ assert {r["flag_qualidade"] for r in diag}>={"ausente","zero_observado","observado"}
+
+
+def test_single_national_partition_publishes_complete_coverage(tmp_path,monkeypatch):
+ collector,raw,interim,quality=partitioned_offline_tree(tmp_path,{"BRASIL":UF_CODES})
+ monkeypatch.setattr("ice_sul.extract.rais.build_opener",lambda *a:(_ for _ in ()).throw(AssertionError("network")))
+ result=collector.collect();assert result.status==CollectionStatus.SUCCESS
+ qa=json.loads((quality/"qa.json").read_text())
+ assert qa["particoes_processadas"]==["BRASIL"];assert len(qa["ufs_cobertas"])==27;assert qa["coverage_complete"] is True
+ with (interim/"mer_diag_01.csv").open() as f:diag=list(csv.DictReader(f))
+ assert len(diag)==1191;assert {r["fonte_arquivo"] for r in diag}=={"RAIS_VINC_PUB_BRASIL.7z"}
+
+
+def test_multi_uf_partition_rejects_municipality_outside_coverage(tmp_path):
+ p=archive(tmp_path/"SUL.7z",[["1","62015","2062","350000"]])
+ with pytest.raises(ValueError,match="fora da cobertura"):
+  transform_archive(p,allowed_ufs=REGIONAL_PARTITIONS["SUL"],municipality_map={"350000":"3500001"})

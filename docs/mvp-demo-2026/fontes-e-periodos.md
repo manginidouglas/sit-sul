@@ -29,7 +29,10 @@ estão em `reports/quality/mvp-demo-2026/rais/`. O De-Para confirma os nomes e o
 nível classe de `cnae20classecódigo`; a largura de cinco dígitos segue a estrutura
 oficial CNAE. O workbook não informa largura/domínio de ativo, município ou
 Natureza Jurídica, que permanecem contratos operacionais ainda não confrontados
-com `.comt` real.
+com `.comt` real. A quantidade e a partição territorial dos arquivos também não
+foram observadas: o coletor valida cobertura das 27 UFs e foi exercitado offline
+com topologias estadual, regional e nacional, sem afirmar qual delas corresponde
+à publicação RAIS 2024.
 
 ## Preflight das instituições em 12/08/2026
 
