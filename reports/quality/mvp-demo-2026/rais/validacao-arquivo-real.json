@@ -1,0 +1,30 @@
+{
+  "data_hora_utc": "2026-08-15T11:56:15Z",
+  "fonte": "MTE/PDET RAIS 2024",
+  "tentativas": [
+    {
+      "url": "https://ftp.mtps.gov.br/pdet/microdados/RAIS/2024/",
+      "resultado": "HTTP 503 Service Unavailable"
+    },
+    {
+      "url": "https://ftp.mtps.gov.br/pdet/microdados/RAIS/2024/RAIS_VINC_PUB_DF.7z",
+      "resultado": "HTTP 503 Service Unavailable"
+    }
+  ],
+  "status_coleta": "blocked_source",
+  "arquivo_real_lido": false,
+  "ufs_processadas": [],
+  "vinculos_lidos": 0,
+  "vinculos_administracao_publica_excluidos": 0,
+  "vinculos_privados_elegiveis": 0,
+  "municipios_ligados": 0,
+  "municipios_nao_ligados": 0,
+  "confirmado_em_arquivo_real": [],
+  "nao_confirmado_em_arquivo_real": [
+    "cabeçalho",
+    "encoding",
+    "delimitador",
+    "formato do código municipal",
+    "contagens"
+  ]
+}

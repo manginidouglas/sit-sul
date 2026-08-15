@@ -1,132 +1,133 @@
 import csv
+from pathlib import Path
+
+import py7zr
 import pytest
 
+from ice_sul.extract.contracts import CollectionStatus
+from ice_sul.extract.rais import RaisArchive, RaisCollector
+from ice_sul.extract.registry import build_collectors
 from ice_sul.transform.rais import (
-    cnae_division,
-    is_public_administration,
+    extracted_comt,
+    load_municipality_map,
+    read_comt,
     resolve_columns,
-    transform_rows,
-    write_outputs,
+    transform_archive,
 )
 
-
-COLUMNS = {
-    "ano": "Ano",
-    "municipio": "Município",
-    "uf": "UF",
-    "cnae": "CNAE 2.0 Classe",
-    "natureza": "Natureza Jurídica",
-    "ativo": "Vínculo Ativo 31/12",
+FIXTURES = Path("tests/fixtures/rais")
+MAP = {
+    "410690": "4106902", "420540": "4205407", "430510": "4305108",
+    "530010": "5300108",
 }
 
 
-def row(municipio, uf, cnae, natureza="2062", ativo="1", ano="2024"):
-    return {
-        "Ano": ano,
-        "Município": municipio,
-        "UF": uf,
-        "CNAE 2.0 Classe": cnae,
-        "Natureza Jurídica": natureza,
-        "Vínculo Ativo 31/12": ativo,
+def archive_fixture(tmp_path, fixture="RAIS_VINC_PUB_SUL_2024.comt"):
+    tmp_path.mkdir(parents=True, exist_ok=True)
+    archive = tmp_path / "RAIS_VINC_PUB_TEST.7z"
+    with py7zr.SevenZipFile(archive, "w") as seven:
+        seven.write(FIXTURES / fixture, arcname=fixture)
+    return archive
+
+
+def test_official_2024_vinc_pub_headers_from_de_para_are_primary():
+    reader, stream, metadata = read_comt(FIXTURES / "RAIS_VINC_PUB_SUL_2024.comt")
+    try:
+        columns = resolve_columns(reader.fieldnames)
+    finally:
+        stream.close()
+    assert columns == {
+        "municipio": "municípiotrabcódigo",
+        "cnae": "cnae20classecódigo",
+        "natureza": "naturezajurídicacódigo",
+        "ativo": "indvínculoativo3112código",
+    }
+    assert metadata == {"encoding": "utf-8-sig", "delimitador": ";"}
+
+
+def test_end_to_end_7z_comt_real_headers_filters_and_contract(tmp_path):
+    archive = archive_fixture(tmp_path)
+    with extracted_comt(archive) as member:
+        assert member.suffix == ".comt"
+    result = transform_archive(
+        archive, file_uf="PR", municipality_map=MAP, year=2024,
+        south_municipalities=["4106902", "4120002"],
+    )
+    assert result.private_employment == [{
+        "municipio_id": "4106902", "empregos_formais_privados": 3,
+        "periodo_referencia": "2024",
+        "fonte": "MTE/PDET RAIS 2024 VINC_PUB; RAIS_VINC_PUB_TEST.7z",
+    }]
+    values = {row["municipio_id"]: row for row in result.diversification}
+    assert values["4106902"]["valor_bruto"] == pytest.approx(4 / 9)
+    assert values["4106902"]["flag_qualidade"] == "observado"
+    assert values["4120002"]["valor_bruto"] is None
+    assert values["4120002"]["flag_qualidade"] == "ausente_sem_vinculo_privado"
+    assert list(values["4106902"]) == [
+        "municipio_id", "indicador_id", "valor_bruto", "periodo_referencia", "flag_qualidade"
+    ]
+    assert result.quality["vinculos_lidos"] == 6
+    assert result.quality["vinculos_inativos_excluidos"] == 1
+    assert result.quality["vinculos_administracao_publica_excluidos"] == 2
+    assert result.quality["vinculos_privados_elegiveis"] == 3
+    assert result.quality["reconciliacao_ok"] is True
+
+
+def test_brasilia_file_metadata_replaces_nonexistent_uf_column(tmp_path):
+    result = transform_archive(
+        archive_fixture(tmp_path, "RAIS_VINC_PUB_DF_2024.comt"),
+        file_uf="DF", municipality_map=MAP,
+        south_municipalities=[],
+    )
+    assert result.private_employment[0]["municipio_id"] == "5300108"
+    assert result.quality["vinculos_lidos"] == 3
+    assert result.quality["vinculos_inativos_excluidos"] == 1
+    assert result.quality["vinculos_administracao_publica_excluidos"] == 1
+
+
+def test_single_division_is_zero_and_unmatched_is_recorded(tmp_path):
+    result = transform_archive(
+        archive_fixture(tmp_path, "RAIS_VINC_PUB_DF_2024.comt"),
+        file_uf="DF", municipality_map=MAP,
+        south_municipalities=["5300108"],
+    )
+    assert result.diversification[0]["valor_bruto"] == 0
+    limited = {key: value for key, value in MAP.items() if key != "530010"}
+    unmatched = transform_archive(
+        archive_fixture(tmp_path / "other", "RAIS_VINC_PUB_DF_2024.comt"),
+        file_uf="DF", municipality_map=limited,
+    )
+    assert unmatched.quality["codigos_nao_ligados"] == {"530010": 2}
+
+
+def test_explicit_municipality_crosswalk_uses_canonical_reference(tmp_path):
+    reference = tmp_path / "municipios.csv"
+    reference.write_text("municipio_id\n4106902\n5300108\n", encoding="utf-8")
+    assert load_municipality_map(reference) == {
+        "410690": "4106902", "4106902": "4106902",
+        "530010": "5300108", "5300108": "5300108",
     }
 
 
-def test_resolves_realistic_rais_headers_and_requires_stock_concept():
-    assert resolve_columns(COLUMNS.values()) == COLUMNS
-    with pytest.raises(ValueError, match="ativo em 31/12"):
-        resolve_columns(["Município", "UF", "CNAE", "Natureza Jurídica"])
+def test_archive_rejects_missing_or_multiple_comt(tmp_path):
+    archive = tmp_path / "bad.7z"
+    text = tmp_path / "x.txt"; text.write_text("x")
+    with py7zr.SevenZipFile(archive, "w") as seven: seven.write(text, "x.txt")
+    with pytest.raises(ValueError, match="exatamente um"):
+        with extracted_comt(archive): pass
 
 
-def test_private_stock_and_diversification_exclude_public_by_both_rules(tmp_path):
-    rows = [
-        row("4106902", "PR", "1011201"),
-        row("4106902", "PR", "4711301"),
-        row("4106902", "PR", "4711301"),
-        row("4106902", "PR", "8411600", natureza="3999"),  # divisão 84
-        row("4106902", "PR", "8610101", natureza="1015"),  # natureza pública
-        row("4205407", "SC", "4711301", ativo="0"),
-        row("4305108", "RS", "6201501"),
-    ]
-    result = transform_rows(
-        rows,
-        columns=COLUMNS,
-        year=2024,
-        south_municipalities=["4106902", "4205407", "4305108"],
-    )
-    assert result.private_employment == [
-        {"municipio_id": "4106902", "ano": 2024, "empregos_formais_privados": 3},
-        {"municipio_id": "4305108", "ano": 2024, "empregos_formais_privados": 1},
-    ]
-    values = {item["municipio_id"]: item["valor"] for item in result.diversification}
-    assert values["4106902"] == pytest.approx(1 - (1 / 3) ** 2 - (2 / 3) ** 2)
-    assert values["4205407"] is None
-    assert values["4305108"] == 0
-    assert result.quality["empregos_publicos_excluidos"] == 2
-    assert result.quality["vinculos_nao_ativos_descartados"] == 1
-
-    write_outputs(result, tmp_path / "interim", tmp_path / "quality")
-    with (tmp_path / "interim/mer_diag_01.csv").open() as stream:
-        saved = list(csv.DictReader(stream))
-    assert saved[1]["valor"] == ""
-
-
-def test_aggregated_stock_is_supported_without_confusing_rows_and_jobs():
-    columns = {**COLUMNS, "empregos": "Empregos"}
-    columns.pop("ativo")
-    item = row("3550308", "SP", "6201501")
-    item["Empregos"] = "12"
-    result = transform_rows([item], columns=columns, year=2024)
-    assert result.private_employment[0]["empregos_formais_privados"] == 12
-
-
-@pytest.mark.parametrize("value", ["", "0", "AA", "0010000"])
-def test_rejects_invalid_cnae_division(value):
-    with pytest.raises(ValueError):
-        cnae_division(value)
-
-
-def test_rejects_year_municipality_uf_and_negative_stock():
-    with pytest.raises(ValueError, match="ano diferente"):
-        transform_rows([row("4106902", "PR", "4711301", ano="2023")], columns=COLUMNS, year=2024)
-    with pytest.raises(ValueError, match="não harmonizado"):
-        transform_rows([row("410690", "PR", "4711301")], columns=COLUMNS, year=2024)
-    with pytest.raises(ValueError, match="UF inconsistente"):
-        transform_rows([row("4106902", "SC", "4711301")], columns=COLUMNS, year=2024)
-    columns = {**COLUMNS, "empregos": "Empregos"}; columns.pop("ativo")
-    bad = row("4106902", "PR", "4711301"); bad["Empregos"] = "-1"
-    with pytest.raises(ValueError, match="impossível"):
-        transform_rows([bad], columns=columns, year=2024)
-
-
-def test_public_filter_is_reproducible():
-    assert is_public_administration("8411600", "2062")
-    assert is_public_administration("6201501", "1015")
-    assert not is_public_administration("6201501", "2062")
-
-
-def test_brasilia_high_public_administration_case_is_removed():
-    result = transform_rows(
-        [
-            row("5300108", "DF", "8411600", natureza="1015"),
-            row("5300108", "DF", "6201501", natureza="2062"),
-        ],
-        columns=COLUMNS,
-        year=2024,
-    )
-    assert result.private_employment == [
-        {"municipio_id": "5300108", "ano": 2024, "empregos_formais_privados": 1}
-    ]
-    assert result.quality["empregos_publicos_excluidos"] == 1
-
-
-def test_rejects_duplicate_or_incomplete_south_universe():
-    with pytest.raises(ValueError, match="duplicados"):
-        transform_rows([], columns=COLUMNS, year=2024, south_municipalities=["4106902"] * 2)
-    with pytest.raises(ValueError, match="cobertura"):
-        transform_rows(
-            [],
-            columns=COLUMNS,
-            year=2024,
-            south_municipalities=["4106902"],
-            expected_south_count=1191,
-        )
+def test_rais_collector_is_registered_and_reports_blocked_source(tmp_path, monkeypatch):
+    assert build_collectors(["rais"])[0].source == "rais"
+    reference = tmp_path / "south.csv"; reference.write_text("municipio_id\n4106902\n", encoding="utf-8")
+    def blocked(*args, **kwargs):
+        from urllib.error import HTTPError
+        raise HTTPError("url", 503, "unavailable", {}, None)
+    monkeypatch.setattr("ice_sul.extract.rais.download", blocked)
+    result = RaisCollector(
+        destination=tmp_path / "raw", interim=tmp_path / "interim",
+        quality=tmp_path / "quality", south_reference=reference,
+        archives=[RaisArchive("PR", "https://example.invalid/file.7z")],
+    ).collect()
+    assert result.status == CollectionStatus.BLOCKED_SOURCE
+    assert result.errors
