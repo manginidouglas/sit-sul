@@ -1,0 +1,61 @@
+{
+  "source_id": "der_pr",
+  "status": "ok",
+  "raw": {
+    "status": "reused",
+    "http_status": 200,
+    "content_type": "application/zip",
+    "bytes": 4426401,
+    "sha256": "4e238f003034858159422fcec0ab7eb7c9bad45951d734829d6ab24c160c5845",
+    "requested_url": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2022-10/shapefile2021.zip",
+    "final_url": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2022-10/shapefile2021.zip",
+    "redirects": [],
+    "path": "data/raw/rodovias/2021/der_pr/shapefile2021.zip",
+    "collected_at": "2026-08-15T00:48:23.010865+00:00",
+    "reused_at": "2026-08-15T01:40:17.762726+00:00",
+    "failed_attempts": []
+  },
+  "inventory": {
+    "members": [
+      "SRE_2021_UTM_SIRGAS2000_22S_LN.cpg",
+      "SRE_2021_UTM_SIRGAS2000_22S_LN.dbf",
+      "SRE_2021_UTM_SIRGAS2000_22S_LN.prj",
+      "SRE_2021_UTM_SIRGAS2000_22S_LN.qmd",
+      "SRE_2021_UTM_SIRGAS2000_22S_LN.qml",
+      "SRE_2021_UTM_SIRGAS2000_22S_LN.shp",
+      "SRE_2021_UTM_SIRGAS2000_22S_LN.shx"
+    ],
+    "fields": [
+      "Rod_Num",
+      "Trecho",
+      "De",
+      "Para",
+      "Km_Inicial",
+      "Km_Final",
+      "Extensao",
+      "Situacao",
+      "Coinc1",
+      "Coinc2",
+      "Ref_Inicio",
+      "Latitudei",
+      "Longitudei",
+      "Alt_i",
+      "Latitudef",
+      "Longitudef",
+      "Alt_f",
+      "Resp",
+      "Esc_Reg",
+      "Concessao",
+      "Jurisdicao",
+      "Tipo",
+      "Conv_Del",
+      "TipoJuris",
+      "Rod_Txt",
+      "Ref_Fim",
+      "area_gest"
+    ],
+    "crs": "EPSG:31982",
+    "records": 2328
+  },
+  "feature_count": 2328
+}

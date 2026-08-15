@@ -7,7 +7,7 @@ name = "ice-sul"
 version = "0.1.0"
 description = "Infraestrutura reproduzível do SIT — Sistema de Inteligência Territorial"
 requires-python = ">=3.11"
-dependencies = ["PyYAML>=6,<7"]
+dependencies = ["PyYAML>=6,<7", "libarchive-c>=5.1,<6", "pyshp>=2.3,<3", "pyproj>=3.6,<4"]
 
 [project.scripts]
 ice-sul-municipios = "ice_sul.municipios:main"

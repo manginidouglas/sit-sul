@@ -1,0 +1,92 @@
+{
+  "PR:BR-116": {
+    "segments": 20,
+    "km": 240.331,
+    "sources": [
+      "dnit_snv"
+    ],
+    "original_status": [
+      "DUP",
+      "PAV"
+    ],
+    "jurisdictions": [
+      "federal"
+    ],
+    "eligible": true
+  },
+  "PR:PR-323": {
+    "segments": 43,
+    "km": 292.76,
+    "sources": [
+      "der_pr"
+    ],
+    "original_status": [
+      "DUP",
+      "PAV"
+    ],
+    "jurisdictions": [
+      "estadual"
+    ],
+    "eligible": true
+  },
+  "SC:BR-101": {
+    "segments": 61,
+    "km": 525.601,
+    "sources": [
+      "dnit_snv"
+    ],
+    "original_status": [
+      "DUP",
+      "PAV"
+    ],
+    "jurisdictions": [
+      "federal"
+    ],
+    "eligible": true
+  },
+  "SC:SC-401": {
+    "segments": 8,
+    "km": 31.359,
+    "sources": [
+      "geosie_sc"
+    ],
+    "original_status": [
+      "DUP",
+      "PAV"
+    ],
+    "jurisdictions": [
+      "estadual"
+    ],
+    "eligible": true
+  },
+  "RS:BR-290": {
+    "segments": 40,
+    "km": 729.866,
+    "sources": [
+      "dnit_snv"
+    ],
+    "original_status": [
+      "DUP",
+      "PAV"
+    ],
+    "jurisdictions": [
+      "federal"
+    ],
+    "eligible": true
+  },
+  "RS:RS-040": {
+    "segments": 6,
+    "km": 94.62,
+    "sources": [
+      "daer_rs"
+    ],
+    "original_status": [
+      "DUPLICADA",
+      "PAVIMENTADA"
+    ],
+    "jurisdictions": [
+      "estadual"
+    ],
+    "eligible": true
+  }
+}

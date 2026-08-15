@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "cutoff": "2026-08-14",
+  "note": "URLs de distribuição devem ser reconfirmadas antes da coleta integral; nunca substituir por OSM.",
+  "sources": [
+    {
+      "source_id": "dnit_snv",
+      "institution": "DNIT / Sistema Nacional de Viação",
+      "jurisdiction": "federal",
+      "states": ["PR", "SC", "RS"],
+      "url": "https://servicos.dnit.gov.br/dnitcloud/index.php/s/Sj77FA3ywWDWkdK/download",
+      "filename": "pub_202607A.rar",
+      "reference_date": "2026-07-28",
+      "expected_size": 78034601,
+      "expected_sha256": "c1db63e22f6e074bcf378d915a94a30c1f31939c6d4d68e9b19e65762f885091",
+      "expected_members": ["pub_202607A/02_Dados/Shapefile 202607A.zip"]
+    },
+    {
+      "source_id": "der_pr",
+      "institution": "Departamento de Estradas de Rodagem do Paraná",
+      "jurisdiction": "estadual",
+      "states": ["PR"],
+      "url": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2022-10/shapefile2021.zip",
+      "filename": "shapefile2021.zip",
+      "reference_date": "2021",
+      "layer": "SRE_2021_UTM_SIRGAS2000_22S_LN",
+      "crs": "EPSG:31982"
+    },
+    {
+      "source_id": "geosie_sc",
+      "institution": "Secretaria de Estado da Infraestrutura e Mobilidade de Santa Catarina / GeoSIE",
+      "jurisdiction": "estadual",
+      "states": ["SC"],
+      "url": "https://geo.sie.sc.gov.br/api/geo_rodovia_estadual.php",
+      "filename": "rodovias.geojson",
+      "reference_date": "2026-07-17",
+      "format": "GeoJSON",
+      "crs": "OGC:CRS84"
+    },
+    {
+      "source_id": "daer_rs",
+      "institution": "Departamento Autônomo de Estradas de Rodagem do Rio Grande do Sul",
+      "jurisdiction": "estadual",
+      "states": ["RS"],
+      "url": "https://iede.rs.gov.br/server/rest/services/DAER/Rodovias_RS/MapServer/0/query?where=1%3D1&outFields=%2A&returnGeometry=true&resultRecordCount=4000&outSR=4326&f=geojson",
+      "filename": "rodovias_rs.geojson",
+      "reference_date": "2026-08-14",
+      "type_name": "rod_sre",
+      "crs": "OGC:CRS84",
+      "format": "GeoJSON (ArcGIS REST)",
+      "expected_features": 1683,
+      "expected_sha256": "d607dbe0aec8a7e47384b058e18d44433472aa70018c24a6bfcec97976d08376",
+      "fees": "none",
+      "access_constraints": "vedado o uso comercial"
+    }
+  ]
+}
