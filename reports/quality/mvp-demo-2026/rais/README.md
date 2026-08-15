@@ -1,75 +1,80 @@
 # RAIS — emprego formal privado nacional e MER-DIAG-01
 
-## Decisão temporal na data de corte
+## Decisão temporal e estado da fonte
 
-A data de corte da edição é **12/08/2026**. O portal do MTE já apresenta a
-RAIS 2025 e seus produtos estatísticos (página atualizada em 17/06/2026), mas o
-comunicado oficial de **microdados** vigente e a planilha De-Para disponibilizam
-explicitamente a RAIS **2024**. Não foi encontrada evidência oficial suficiente
-de que os microdados individualizados 2025 estivessem publicados e completos
-até o corte. Portanto 2024 é a edição mais recente *tecnicamente utilizável para
-este contrato*, e não se afirma que seja a estatística RAIS mais recente.
+Na data de corte de 12/08/2026, a RAIS 2025 possuía publicação estatística
+agregada, mas isso não comprova a existência do bulk VINC_PUB 2025. O recurso
+individual e o layout que puderam ser confirmados são da RAIS 2024; ela é,
+portanto, a edição operacional adotada. A disponibilidade dos microdados 2025
+permanece não confirmada.
 
-A decisão deve ser revista quando uma listagem oficial 2025 expuser os arquivos
-VINC_PUB e seu dicionário. Uma página de resultados agregados 2025, isoladamente,
-não autoriza inventar URLs de microdados.
+Estado: **em_verificacao**. O De-Para foi validado, mas nenhuma listagem real dos
+`.7z` nem microdado VINC_PUB real pôde ser processado neste ambiente. Logo,
+licença, cobertura nacional, amostra manual, quebra de série e padrão nominal
+real dos arquivos ainda não estão confirmados.
 
-## Descoberta e validação oficiais
+## De-Para oficial validado
 
-O De-Para vem do recurso vinculado no comunicado oficial “Microdados RAIS
-2024”; o coletor reconhece tanto `.xlsx/view`/`.xlsx` quanto `@@download/file`.
-Em 15/08/2026 o download oficial respondeu 200, com 23.640 bytes e SHA-256
+O recurso `de-para-microdados.xlsx/@@download/file` respondeu HTTP 200 em
+15/08/2026. O arquivo tem 23.640 bytes e SHA-256
 `4be7a7421ce44e40c4b18ea044c624e16775a5d0e3429dac18acb6afd7545117`.
-O contêiner OOXML foi integralmente testado e contém, entre outros,
-`cnae20classecódigo`, `indvínculoativo3112código`,
-`municípiotrabcódigo` e `naturezajurídicacódigo`.
+O `openpyxl`, em modo somente leitura, confirmou um workbook OOXML funcional com
+as abas `VINC_PUB`, `VINC_ID`, `ESTAB_PUB` e `ESTAB_ID`. Na aba `VINC_PUB` foram
+confirmados `cnae20classecódigo`, `indvínculoativo3112código`,
+`municípiotrabcódigo`, `municípiocódigo` e `naturezajurídicacódigo`.
 
-Os `.7z` não têm nomes sintetizados. O coletor primeiro lista o diretório
-oficial 2024, aceita apenas `RAIS_VINC_PUB_<UF>.7z`, exige exatamente as 27 UFs
-e só então baixa as URLs enumeradas. Nesta execução o endpoint do diretório
-retornou 503 via proxy e FTP direto era inalcançável; por isso nenhum `.7z` real
-foi baixado e nenhum produto real foi materializado. O estado correto permanece
-`blocked_source`, sem substituir arquivo real por fixture.
+O coletor tenta o download direto e, se necessário, lê a página oficial
+`rais-2024/rais-2024-1`, aceita o link `.xlsx/view` e o converte de forma
+controlada para `@@download/file`. HTML, host/redirect externo, ZIP artificial,
+workbook sem aba/campos e arquivo corrompido são rejeitados antes da promoção do
+`.part` ao raw definitivo.
 
-Todo XLSX é verificado como ZIP OOXML íntegro. Todo 7-Zip tem assinatura,
-integridade, caminho seguro e exatamente um `.comt` verificados. Raw existente
-não é confiado: ele é revalidado, re-hasheado e recebe entrada completa de
-manifesto com método `REUSE`.
+## Descoberta e validação dos `.7z`
 
-## Parser e regra substantiva
+A descoberta tenta HTTPS e depois FTP anônimo: `MLSD`, com fallback `NLST`.
+Todas as tentativas e o hash da listagem usada são registrados. A listagem
+completa é validada antes de qualquer download. O parser offline aceita como
+**hipótese testada** o padrão `RAIS_VINC_PUB_<UF>[_2024].7z`, preserva o nome
+listado, exclui Estabelecimentos, rejeita ano/nome/host inesperado, duplicidade e
+UF ausente e exige 27 UFs. Esse padrão não é declarado como padrão real
+confirmado enquanto uma listagem oficial não for observada.
 
-Conta-se estoque de **vínculos** formais ativos em 31/12/2024. O domínio do
-indicador ativo é estritamente `{0,1}`; qualquer outro valor interrompe a
-execução. Exclui-se Administração Pública quando a divisão CNAE 2.0 é 84 **ou**
-a Natureza Jurídica pertence ao grupo 1. Natureza vazia, com comprimento inválido
-ou grupo desconhecido também interrompe a execução, em vez de virar “privada”.
-CNAE, UF, código municipal, encoding e delimitador têm validação explícita.
+Cada 7-Zip é validado por assinatura, abertura, `testzip()`, semântica correta de
+`test()` (`False` falha; `True` passa; `None` exige extração), segurança de todos
+os membros e exatamente um `.comt`. O `.comt` é extraído e lido, inclusive sem
+CRC. HTML, truncamento, path traversal, caminho absoluto e múltiplos `.comt` são
+rejeitados. Os nomes dos membros entram no manifesto.
 
-A ligação RAIS (seis dígitos) → IBGE (sete) deriva do cadastro nacional oficial;
-o dígito verificador nunca é calculado. Qualquer vínculo ativo não ligado impede
-a publicação.
+Downloads novos seguem `.part` → hash em streaming → validação → rename atômico.
+Raw existente é integralmente revalidado e re-hasheado em streaming e recebe
+`status=reused`; raw inválido interrompe a execução sem outputs.
 
-## Produtos e semântica
+## Parser, produtos e portões nacionais
 
-* `emprego_privado_municipal.csv` é a base nacional preparada para MER-02. Ela é
-  **esparsa**: contém somente municípios com estoque privado positivo. Ausência
-  de linha significa zero apenas quando a execução terminou com sucesso para as
-  27 UFs e reconciliou integralmente todos os vínculos; em execução parcial ou
-  bloqueada significa desconhecido e não pode ser convertida em zero.
-* `mer_diag_01.csv` contém exatamente os 1.191 municípios canônicos do Sul.
-  Calcula `1 - Σp²` por divisão CNAE. Sem vínculo privado, usa `ausente`; uma só
-  divisão produz `zero_observado`; demais valores usam `observado`.
-* `qa.json` registra leitura, exclusões, ligação, reconciliação, UFs e a semântica
-  da base esparsa. As linhas nacionais preservam período e fonte/arquivo.
+Os parsers de ativo, município, CNAE e Natureza usam correspondência integral e
+não removem caracteres. Ativo aceita somente `0`/`1`; município, seis ou sete
+dígitos; CNAE classe, sete dígitos; Natureza, quatro dígitos e grupos 1–5. Lixo,
+pontuação, vazio, comprimento incorreto e grupo desconhecido falham.
 
-Esta etapa fornece o recurso municipal nacional para a futura acessibilidade do
-MER-02; não calcula aqui as rotas nem a soma com decaimento temporal.
+`emprego_privado_municipal.csv` é esparso e contém `municipio_id`, estoque,
+período, flag `observado`, `fonte_id`, `fonte_arquivo` e `versao_fonte`.
+Ausência de linha equivale a zero somente com `coverage_complete=true`.
 
-## Testes offline
+`mer_diag_01.csv` contém exatamente os 1.191 municípios do Sul, os campos
+analíticos e a mesma proveniência. Sem vínculo privado usa `ausente` e
+`sem_vinculo_privado`; uma divisão usa `zero_observado`; mais de uma usa
+`observado`. Até município ausente aponta para o arquivo de sua UF.
 
-As fixtures usam os cabeçalhos confirmados no XLSX real e exercitam `.7z` →
-`.comt`, UTF-8, delimitador, ativo/inativo, CNAE 84, Natureza grupo 1, Brasília,
-ligação desconhecida, ausência, concentração e diversificação. Testes separados
-cobrem domínios inválidos, listagem incompleta, contêiner corrompido, reuso de raw
-e esgotamento HTTPS/FTP. Fixture valida código; nunca serve como evidência de
-que os 27 arquivos reais foram coletados.
+Nenhum CSV é publicado antes de validar 27 UFs únicas, todos os raws, domínios,
+ligação territorial, 1.191 diagnósticos e reconciliações. A publicação usa staging
+e promoção conjunta. O QA inclui UFs/arquivos esperados e processados,
+`coverage_complete`, estoque positivo, vínculos elegíveis, não ligados e
+reconciliações.
+
+## Evidência de teste versus execução real
+
+O teste integral offline gera 27 7-Zips pequenos, cadastro nacional e exatamente
+1.191 municípios do Sul, sem rede. Ele prova os contratos e a publicação atômica,
+mas **não é execução dos microdados reais**. As rotas reais do diretório
+continuaram bloqueadas; nenhum `.7z` real, raw nacional ou output nacional foi
+versionado ou declarado processado.

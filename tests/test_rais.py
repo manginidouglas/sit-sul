@@ -1,214 +1,183 @@
-import zipfile
+import csv,json,zipfile
 from pathlib import Path
-
-import py7zr
-import pytest
-
+from urllib.error import URLError
+import openpyxl,py7zr,pytest
 from ice_sul.extract.contracts import CollectionStatus
-from ice_sul.extract.rais import (
-    OfficialRoutesUnavailable,
-    RaisArchive,
-    RaisCollector,
-    download_large,
-    archives_from_listing,
-    reused_manifest,
-    validate_7z,
-    validate_xlsx,
-)
-from ice_sul.extract.registry import build_collectors
-from ice_sul.transform.rais import (
-    extracted_comt,
-    load_municipality_map,
-    read_comt,
-    resolve_columns,
-    transform_archive,
-    transform_rows,
-)
+from ice_sul.extract.rais import (DE_PARA_URL,OFFICIAL_HOST,RaisArchive,RaisCollector,OfficialRoutesUnavailable,
+ UF_CODES,_download_validated,_validate_open_archive,archives_from_listing,content_type,discover_de_para_url,
+ discover_official_archives,download_de_para,parse_archive_listing,reused_manifest,sha256_file,validate_7z,validate_xlsx,view_to_download)
+from ice_sul.transform.rais import (UF_PREFIX,parse_active,parse_cnae,parse_legal_nature,parse_municipality,
+ read_comt,resolve_columns,transform_archive,transform_rows)
 
-FIXTURES = Path("tests/fixtures/rais")
-MAP = {
-    "410690": "4106902", "420540": "4205407", "430510": "4305108",
-    "530010": "5300108",
-}
+HEADERS=["indvínculoativo3112código","cnae20classecódigo","naturezajurídicacódigo","municípiotrabcódigo"]
+PREFIX={uf:prefix for prefix,uf in UF_PREFIX.items()}
 
+def workbook(path:Path,*,sheet="VINC_PUB",fields=None):
+ wb=openpyxl.Workbook();ws=wb.active;ws.title=sheet;ws.append(["De","Para"])
+ for value in fields or ["cnae20classecódigo","indvínculoativo3112código","municípiotrabcódigo","naturezajurídicacódigo"]:ws.append(["origem",value])
+ wb.save(path);wb.close();return path
 
-def archive_fixture(tmp_path, fixture="RAIS_VINC_PUB_SUL_2024.comt"):
-    tmp_path.mkdir(parents=True, exist_ok=True)
-    archive = tmp_path / "RAIS_VINC_PUB_TEST.7z"
-    with py7zr.SevenZipFile(archive, "w") as seven:
-        seven.write(FIXTURES / fixture, arcname=fixture)
-    return archive
+def archive(path:Path,rows=None,members=1):
+ text=path.parent/(path.stem+".comt");text.write_text(";".join(HEADERS)+"\n"+"\n".join(";".join(r) for r in (rows or [["1","6201501","2062","410690"]]))+"\n",encoding="utf-8")
+ with py7zr.SevenZipFile(path,"w") as z:
+  for i in range(members):z.write(text,arcname=f"vinc_{i}.comt")
+ text.unlink();return path
 
+def full_listing():return [f"RAIS_VINC_PUB_{uf}.7z" for uf in UF_CODES]
 
-def test_official_2024_vinc_pub_headers_from_de_para_are_primary():
-    reader, stream, metadata = read_comt(FIXTURES / "RAIS_VINC_PUB_SUL_2024.comt")
-    try:
-        columns = resolve_columns(reader.fieldnames)
-    finally:
-        stream.close()
-    assert columns == {
-        "municipio": "municípiotrabcódigo",
-        "cnae": "cnae20classecódigo",
-        "natureza": "naturezajurídicacódigo",
-        "ativo": "indvínculoativo3112código",
-    }
-    assert metadata == {"encoding": "utf-8-sig", "delimitador": ";"}
+def offline_tree(tmp_path:Path):
+ raw=tmp_path/"raw";raw.mkdir(); interim=tmp_path/"interim";quality=tmp_path/"quality"
+ workbook(raw/"De-Para Microdados.xlsx")
+ south=[];all_codes=[];specs=[]
+ for uf in UF_CODES:
+  count=397 if uf in {"PR","SC","RS"} else 1
+  codes=[f"{PREFIX[uf]}{i:04d}{i%10}" for i in range(1,count+1)]
+  all_codes+=codes
+  if uf in {"PR","SC","RS"}:south+=codes
+  rows=[["1","6201501","2062",codes[0][:6]],["0","6201501","2062",codes[0][:6]],["1","8411600","1015",codes[0][:6]]]
+  if uf=="PR":rows.append(["1","4711301","2062",codes[0][:6]])
+  if uf=="RS":rows=[["1","8411600","1015",codes[0][:6]]]
+  name=f"RAIS_VINC_PUB_{uf}.7z";archive(raw/name,rows);specs.append(RaisArchive(uf,f"https://{OFFICIAL_HOST}/pdet/microdados/RAIS/2024/{name}"))
+ (raw/"municipios-ibge.json").write_text(json.dumps([{"id":int(c)} for c in all_codes]))
+ reference=tmp_path/"south.csv";reference.write_text("municipio_id\n"+"\n".join(south)+"\n")
+ return RaisCollector(raw,interim,quality,reference,specs),raw,interim,quality
 
+# Workbook real e descoberta do link.
+def test_valid_workbook_confirms_sheet_fields_hash_and_size(tmp_path):
+ info=validate_xlsx(workbook(tmp_path/"valid.xlsx"));assert info["abas"]==["VINC_PUB"];assert set(info["campos_confirmados"])>=set(HEADERS[1:]);assert len(info["sha256"])==64
+@pytest.mark.parametrize("kind",["html","minimal_zip","corrupt"])
+def test_workbook_rejects_nonfunctional_files(tmp_path,kind):
+ p=tmp_path/"bad.xlsx"
+ if kind=="html":p.write_text("<html>error</html>")
+ elif kind=="minimal_zip":
+  with zipfile.ZipFile(p,"w") as z:z.writestr("xl/workbook.xml","<workbook/>")
+ else:p.write_bytes(b"PK\x03\x04broken")
+ with pytest.raises(ValueError):validate_xlsx(p)
+def test_workbook_rejects_missing_sheet_or_fields(tmp_path):
+ with pytest.raises(ValueError,match="VINC_PUB"):validate_xlsx(workbook(tmp_path/"sheet.xlsx",sheet="OTHER"))
+ with pytest.raises(ValueError,match="campos"):validate_xlsx(workbook(tmp_path/"fields.xlsx",fields=["cnae20classecódigo"]))
+def test_depara_view_is_converted_and_external_rejected():
+ html=f'<a href="{DE_PARA_URL.replace("/@@download/file","/view")}">De-Para</a>'
+ assert discover_de_para_url(html)==DE_PARA_URL
+ assert view_to_download(DE_PARA_URL)==DE_PARA_URL
+ with pytest.raises(ValueError,match="domínio"):view_to_download("https://evil.test/de-para.xlsx/view")
+def test_depara_direct_download_route_is_preferred(tmp_path,monkeypatch):
+ called=[]
+ def fake(url,destination,**kwargs):called.append(url);workbook(destination);return {"url":url,"validacao":validate_xlsx(destination)}
+ monkeypatch.setattr("ice_sul.extract.rais._download_validated",fake)
+ entry,attempts=download_de_para(tmp_path/"raw.xlsx");assert attempts==[];assert called==[DE_PARA_URL];assert entry["url"]==DE_PARA_URL
 
-def test_end_to_end_7z_comt_real_headers_filters_and_contract(tmp_path):
-    archive = archive_fixture(tmp_path)
-    with extracted_comt(archive) as member:
-        assert member.suffix == ".comt"
-    result = transform_archive(
-        archive, file_uf="PR", municipality_map=MAP, year=2024,
-        south_municipalities=["4106902", "4120002"],
-    )
-    assert result.private_employment == [{
-        "municipio_id": "4106902", "empregos_formais_privados": 3,
-        "periodo_referencia": "2024",
-        "fonte": "MTE/PDET RAIS 2024 VINC_PUB; RAIS_VINC_PUB_TEST.7z",
-    }]
-    values = {row["municipio_id"]: row for row in result.diversification}
-    assert values["4106902"]["valor_bruto"] == pytest.approx(4 / 9)
-    assert values["4106902"]["flag_qualidade"] == "observado"
-    assert values["4120002"]["valor_bruto"] is None
-    assert values["4120002"]["flag_qualidade"] == "ausente"
-    assert values["4120002"]["motivo_qualidade"] == "sem_vinculo_privado"
-    assert list(values["4106902"]) == [
-        "municipio_id", "indicador_id", "valor_bruto", "periodo_referencia",
-        "flag_qualidade", "motivo_qualidade",
-    ]
-    assert result.quality["vinculos_lidos"] == 6
-    assert result.quality["vinculos_ativos_lidos"] == 5
-    assert result.quality["vinculos_inativos_excluidos"] == 1
-    assert result.quality["vinculos_administracao_publica_excluidos"] == 2
-    assert result.quality["vinculos_privados_elegiveis"] == 3
-    assert result.quality["reconciliacao_ok"] is True
+# 7-Zip: semântica CRC, todos os membros e contêineres inválidos.
+class FakeSeven:
+ def __init__(self,names=("vinc.comt",),testzip=None,test=None):self.names=names;self.bad=testzip;self.crc=test
+ def getnames(self):return list(self.names)
+ def testzip(self):return self.bad
+ def test(self):return self.crc
+@pytest.mark.parametrize("crc",[True,None])
+def test_7z_crc_true_or_absent_is_accepted_by_available_test(crc):assert _validate_open_archive(FakeSeven(test=crc))["crc_result"] is crc
+def test_7z_crc_false_and_bad_member_are_rejected():
+ with pytest.raises(ValueError,match="CRC.*falhou"):_validate_open_archive(FakeSeven(test=False))
+ with pytest.raises(ValueError,match="CRC inválido"):_validate_open_archive(FakeSeven(testzip="vinc.comt",test=True))
+@pytest.mark.parametrize("names",[("vinc.comt","../evil.txt"),("vinc.comt","/absolute.txt"),("readme.txt",),("a.comt","b.comt")])
+def test_7z_rejects_unsafe_or_wrong_members(names):
+ with pytest.raises(ValueError):_validate_open_archive(FakeSeven(names=names))
+def test_7z_valid_without_crc_is_extractable(tmp_path):assert validate_7z(archive(tmp_path/"valid.7z"))["crc_result"] is None
+@pytest.mark.parametrize("payload",[b"<html>503</html>",b"7z\xbc\xaf\x27\x1c"])
+def test_7z_rejects_html_and_truncation(tmp_path,payload):
+ p=tmp_path/"bad.7z";p.write_bytes(payload)
+ with pytest.raises(ValueError):validate_7z(p)
 
+# Listagem oficial e fallback.
+def test_complete_listing_preserves_names_and_excludes_establishments():
+ specs=parse_archive_listing(full_listing()+["RAIS_ESTAB_PUB_PR.7z"],source_url=f"https://{OFFICIAL_HOST}/x/");assert len(specs)==27;assert specs[0].filename in full_listing()
+@pytest.mark.parametrize("items,match",[(full_listing()[:-1],"ausentes"),(full_listing()+[full_listing()[0]],"duplicada"),(full_listing()+["RAIS_VINC_PUB_PR_2023.7z"],"inesperado"),(full_listing()+["odd.7z"],"inesperado")])
+def test_listing_rejects_missing_duplicate_other_year_or_unexpected(items,match):
+ with pytest.raises(ValueError,match=match):archives_from_listing(items)
+def test_listing_rejects_external_url_or_host():
+ with pytest.raises(ValueError,match="externa"):archives_from_listing(full_listing()+["https://evil.test/RAIS_VINC_PUB_PR.7z"])
+ with pytest.raises(ValueError,match="externo"):parse_archive_listing(full_listing(),source_url="https://evil.test/")
+def test_discovery_https_success(monkeypatch):
+ monkeypatch.setattr("ice_sul.extract.rais._https_listing",lambda:(full_listing(),{"metodo":"HTTPS","status":"success"}));specs,attempts=discover_official_archives();assert len(specs)==27 and attempts[-1]["status"]=="success"
+def test_discovery_https_failure_ftp_mlsd_success(monkeypatch):
+ monkeypatch.setattr("ice_sul.extract.rais._https_listing",lambda:(_ for _ in ()).throw(URLError("down")))
+ monkeypatch.setattr("ice_sul.extract.rais._ftp_listing",lambda:(full_listing(),[{"metodo":"FTP MLSD","status":"success"}]))
+ specs,attempts=discover_official_archives();assert len(specs)==27;assert [a["metodo"] for a in attempts][:2]==["HTTPS","FTP MLSD"]
+def test_ftp_listing_falls_back_to_nlst(monkeypatch):
+ class FTP:
+  def __enter__(self):return self
+  def __exit__(self,*a):pass
+  def connect(self,*a,**k):pass
+  def login(self):pass
+  def cwd(self,*a):pass
+  def mlsd(self):raise ftplib.error_perm("500 unsupported")
+  def nlst(self):return full_listing()
+ import ftplib
+ monkeypatch.setattr("ice_sul.extract.rais.ftplib.FTP",FTP)
+ from ice_sul.extract.rais import _ftp_listing
+ names,attempts=_ftp_listing();assert names==full_listing();assert [a["status"] for a in attempts]==["failed","success"]
+def test_discovery_all_routes_fail(monkeypatch):
+ import ftplib
+ monkeypatch.setattr("ice_sul.extract.rais._https_listing",lambda:(_ for _ in ()).throw(URLError("down")))
+ monkeypatch.setattr("ice_sul.extract.rais._ftp_listing",lambda:(_ for _ in ()).throw(ftplib.error_temp("down")))
+ with pytest.raises(OfficialRoutesUnavailable) as exc:discover_official_archives()
+ assert len(exc.value.attempts)==2
 
-def test_brasilia_file_metadata_replaces_nonexistent_uf_column(tmp_path):
-    result = transform_archive(
-        archive_fixture(tmp_path, "RAIS_VINC_PUB_DF_2024.comt"),
-        file_uf="DF", municipality_map=MAP,
-        south_municipalities=[],
-    )
-    assert result.private_employment[0]["municipio_id"] == "5300108"
-    assert result.quality["vinculos_lidos"] == 3
-    assert result.quality["vinculos_inativos_excluidos"] == 1
-    assert result.quality["vinculos_administracao_publica_excluidos"] == 1
+# Hash streaming, MIME, reuso e promoção somente após validação.
+def test_reuse_hashes_streaming_and_mime(tmp_path,monkeypatch):
+ p=tmp_path/"x.json";p.write_text("{}")
+ monkeypatch.setattr(Path,"read_bytes",lambda self:(_ for _ in ()).throw(AssertionError("not streaming")))
+ entry=reused_manifest(p,url="https://example.test/x",uf="BR",validation={"ok":True});assert entry["status"]=="reused";assert entry["content_type"]=="application/json";assert entry["sha256"]==sha256_file(p)
+def test_invalid_reused_raw_fails_validation(tmp_path):
+ p=tmp_path/"raw.7z";p.write_text("html")
+ with pytest.raises(ValueError):reused_manifest(p,url="x",uf="PR",validation=validate_7z(p))
+def test_invalid_download_never_promotes_part(tmp_path,monkeypatch):
+ class Response:
+  status=200;url=DE_PARA_URL;headers={"Content-Type":"text/html"}
+  def __enter__(self):return self
+  def __exit__(self,*a):pass
+  def read(self,n=-1):out=getattr(self,"out",False);self.out=True;return b"<html>bad</html>" if not out else b""
+ class Opener:
+  def open(self,*a,**k):return Response()
+ monkeypatch.setattr("ice_sul.extract.rais.build_opener",lambda *a:Opener());dest=tmp_path/"raw.xlsx"
+ with pytest.raises(ValueError):_download_validated(DE_PARA_URL,dest,uf="BR",validator=validate_xlsx)
+ assert not dest.exists() and not (tmp_path/"raw.xlsx.part").exists()
 
+# Parsers estritos e transformações/proveniência.
+@pytest.mark.parametrize("func,value",[(parse_active,"1x"),(parse_active,"2"),(parse_municipality,"410690x"),(parse_municipality,"410.690"),(parse_cnae,"47abc"),(parse_cnae,"47"),(parse_cnae,"47113010"),(parse_legal_nature,"2x0x6x2"),(parse_legal_nature,"20.62"),(parse_legal_nature,""),(parse_legal_nature,"9999")])
+def test_strict_parsers_reject_entire_invalid_value(func,value):
+ with pytest.raises(ValueError):func(value)
+def test_transform_contract_and_active_frequencies(tmp_path):
+ p=archive(tmp_path/"PR.7z",[["1","4711301","2062","410690"],["1","6201501","2062","410690"],["0","6201501","2062","410690"]]);result=transform_archive(p,file_uf="PR",municipality_map={"410690":"4106902"},south_municipalities=["4106902","4100001"])
+ assert set(result.private_employment[0])=={"municipio_id","empregos_formais_privados","periodo_referencia","flag_qualidade","fonte_id","fonte_arquivo","versao_fonte"};assert result.private_employment[0]["flag_qualidade"]=="observado"
+ assert set(result.diversification[0])=={"municipio_id","indicador_id","valor_bruto","periodo_referencia","flag_qualidade","motivo_qualidade","fonte_id","fonte_arquivo","versao_fonte"};assert result.quality["frequencias_vinculo_ativo"]=={"0":1,"1":2}
 
-def test_single_division_is_zero_and_unmatched_is_recorded(tmp_path):
-    result = transform_archive(
-        archive_fixture(tmp_path, "RAIS_VINC_PUB_DF_2024.comt"),
-        file_uf="DF", municipality_map=MAP,
-        south_municipalities=["5300108"],
-    )
-    assert result.diversification[0]["valor_bruto"] == 0
-    assert result.diversification[0]["flag_qualidade"] == "zero_observado"
-    limited = {key: value for key, value in MAP.items() if key != "530010"}
-    unmatched = transform_archive(
-        archive_fixture(tmp_path / "other", "RAIS_VINC_PUB_DF_2024.comt"),
-        file_uf="DF", municipality_map=limited,
-    )
-    assert unmatched.quality["codigos_nao_ligados"] == {"530010": 2}
-    assert unmatched.quality["vinculos_municipio_nao_ligado"] == 2
-    assert unmatched.quality["reconciliacao_territorial_ok"] is True
-
-
-def test_explicit_municipality_crosswalk_uses_canonical_reference(tmp_path):
-    reference = tmp_path / "municipios.csv"
-    reference.write_text("municipio_id\n4106902\n5300108\n", encoding="utf-8")
-    assert load_municipality_map(reference) == {
-        "410690": "4106902", "4106902": "4106902",
-        "530010": "5300108", "5300108": "5300108",
-    }
-
-
-def test_archive_rejects_missing_or_multiple_comt(tmp_path):
-    archive = tmp_path / "bad.7z"
-    text = tmp_path / "x.txt"; text.write_text("x")
-    with py7zr.SevenZipFile(archive, "w") as seven: seven.write(text, "x.txt")
-    with pytest.raises(ValueError, match="exatamente um"):
-        with extracted_comt(archive): pass
-
-
-def test_rais_collector_is_registered_and_reports_blocked_source(tmp_path, monkeypatch):
-    assert build_collectors(["rais"])[0].source == "rais"
-    reference = tmp_path / "south.csv"; reference.write_text("municipio_id\n4106902\n", encoding="utf-8")
-    def blocked(*args, **kwargs):
-        from urllib.error import HTTPError
-        raise HTTPError("url", 503, "unavailable", {}, None)
-    monkeypatch.setattr("ice_sul.extract.rais.download", blocked)
-    result = RaisCollector(
-        destination=tmp_path / "raw", interim=tmp_path / "interim",
-        quality=tmp_path / "quality", south_reference=reference,
-        archives=[RaisArchive("PR", "https://example.invalid/file.7z")],
-    ).collect()
-    assert result.status == CollectionStatus.BLOCKED_SOURCE
-    assert result.errors
-
-
-def test_large_download_exhausts_https_and_ftp_before_blocking(tmp_path, monkeypatch):
-    from urllib.error import HTTPError
-    monkeypatch.setattr(
-        "ice_sul.extract.rais._download_https",
-        lambda *args, **kwargs: (_ for _ in ()).throw(HTTPError("url", 503, "busy", {}, None)),
-    )
-    monkeypatch.setattr(
-        "ice_sul.extract.rais._download_ftp",
-        lambda *args, **kwargs: (_ for _ in ()).throw(OSError("FTP blocked")),
-    )
-    with pytest.raises(OfficialRoutesUnavailable) as caught:
-        download_large("https://ftp.mtps.gov.br/file.7z", tmp_path / "file.7z", uf="DF")
-    attempts = caught.value.attempts
-    assert [item["metodo"] for item in attempts] == ["GET", "FTP RETR"]
-    assert attempts[0]["status_http"] == 503
-    assert attempts[1]["url"].startswith("ftp://ftp.mtps.gov.br/")
-    required = {
-        "fonte", "url", "metodo", "parametros", "periodo", "data_hora_utc",
-        "status_http", "resposta_ftp", "url_final", "redirects", "content_type",
-        "tamanho_transferido", "tamanho_persistido", "sha256", "arquivo",
-        "licenca", "versao_snapshot", "validacao",
-    }
-    assert required <= attempts[1].keys()
-
-
-def test_archive_names_come_from_complete_official_listing():
-    links = [f"RAIS_VINC_PUB_{uf}.7z" for uf in
-             "AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO".split()]
-    links += ["README.txt", "RAIS_ESTAB_PUB_PR.7z"]
-    archives = archives_from_listing(links)
-    assert len(archives) == 27
-    assert archives[-1].filename == "RAIS_VINC_PUB_TO.7z"
-    with pytest.raises(ValueError, match="UFs ausentes"):
-        archives_from_listing(links[:-3])
-
-
-def test_strict_domains_reject_unknown_active_and_legal_nature():
-    columns = {"municipio": "m", "cnae": "c", "natureza": "n", "ativo": "a"}
-    base = {"m": "410690", "c": "6201501", "n": "2062", "a": "2"}
-    with pytest.raises(ValueError, match="ativo desconhecido"):
-        transform_rows([base], columns=columns, year=2024, file_uf="PR", municipality_map=MAP)
-    for invalid in ("", "9999", "206"):
-        row = {**base, "a": "1", "n": invalid}
-        with pytest.raises(ValueError, match="Natureza Jurídica"):
-            transform_rows([row], columns=columns, year=2024, file_uf="PR", municipality_map=MAP)
-
-
-def test_full_container_validation_and_reuse_manifest(tmp_path):
-    archive = archive_fixture(tmp_path)
-    assert "7-Zip íntegro" in validate_7z(archive)
-    xlsx = tmp_path / "de-para.xlsx"
-    with zipfile.ZipFile(xlsx, "w") as book:
-        book.writestr("[Content_Types].xml", "<Types/>")
-        book.writestr("xl/workbook.xml", "<workbook/>")
-    assert validate_xlsx(xlsx) == "XLSX OOXML íntegro"
-    entry = reused_manifest(xlsx, url="https://example.test/de-para.xlsx", uf="BR",
-                            validation=validate_xlsx(xlsx))
-    assert entry["metodo"] == "REUSE" and entry["reutilizado"] is True
-    assert entry["tamanho_persistido"] == xlsx.stat().st_size
-    assert len(entry["sha256"]) == 64
-    broken = tmp_path / "broken.xlsx"; broken.write_bytes(b"PK not a workbook")
-    with pytest.raises(ValueError, match="XLSX inválido"):
-        validate_xlsx(broken)
+# Execução nacional integral offline e portões atômicos.
+def test_full_offline_collector_27_ufs_publishes_atomically(tmp_path,monkeypatch):
+ collector,raw,interim,quality=offline_tree(tmp_path);monkeypatch.setattr("ice_sul.extract.rais.build_opener",lambda *a:(_ for _ in ()).throw(AssertionError("network")))
+ result=collector.collect();assert result.status==CollectionStatus.SUCCESS
+ qa=json.loads((quality/"qa.json").read_text());assert len(qa["ufs_esperadas"])==len(qa["ufs_processadas"])==27;assert qa["coverage_complete"] is True;assert not qa["codigos_nao_ligados"]
+ with (interim/"mer_diag_01.csv").open() as f:diag=list(csv.DictReader(f))
+ with (interim/"emprego_privado_municipal.csv").open() as f:private=list(csv.DictReader(f))
+ assert len(diag)==1191;assert {r["flag_qualidade"] for r in diag}>={"ausente","zero_observado","observado"};assert all(r["fonte_arquivo"] for r in diag+private);assert all((interim/n).exists() for n in ("mer_diag_01.csv","emprego_privado_municipal.csv"))
+@pytest.mark.parametrize("mutation",["missing_uf","duplicate_uf","unmatched","invalid_active","invalid_cnae","invalid_nature","invalid_raw"])
+def test_national_gate_failure_leaves_no_csv(tmp_path,mutation):
+ collector,raw,interim,quality=offline_tree(tmp_path)
+ if mutation=="missing_uf":collector.archives=collector.archives[:-1]
+ elif mutation=="duplicate_uf":collector.archives[-1]=collector.archives[0]
+ else:
+  spec=collector.archives[0];path=raw/spec.filename;path.unlink()
+  if mutation=="invalid_raw":path.write_text("html")
+  else:
+   values={"unmatched":["1","6201501","2062","999999"],"invalid_active":["1x","6201501","2062","120001"],"invalid_cnae":["1","47abc","2062","120001"],"invalid_nature":["1","6201501","2x0x6x2","120001"]}[mutation];archive(path,[values])
+ result=collector.collect();assert result.status==CollectionStatus.FAILED_VALIDATION;assert not (interim/"emprego_privado_municipal.csv").exists();assert not (interim/"mer_diag_01.csv").exists();assert json.loads((quality/"qa.json").read_text())["coverage_complete"] is False
+def test_post_transform_duplicate_failure_is_collection_result_without_outputs(tmp_path,monkeypatch):
+ collector,raw,interim,quality=offline_tree(tmp_path)
+ original=transform_archive;first={"result":None}
+ def duplicate(*args,**kwargs):
+  result=original(*args,**kwargs)
+  if result.private_employment:
+   if first["result"] is None:first["result"]=result.private_employment[0]["municipio_id"]
+   else:result.private_employment[0]["municipio_id"]=first["result"]
+  return result
+ monkeypatch.setattr("ice_sul.extract.rais.transform_archive",duplicate)
+ result=collector.collect();assert result.status==CollectionStatus.FAILED_VALIDATION;assert not (interim/"emprego_privado_municipal.csv").exists();assert json.loads((quality/"qa.json").read_text())["coverage_complete"] is False

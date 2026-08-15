@@ -13,7 +13,7 @@ Uma fonte só muda para `apta` depois de confirmação de esquema, licença, cob
 | INF-LOG-02–03 | ANAC, aeródromos e voos realizados | 12 meses completos mais recentes | pendente de elegibilidade/rotas |
 | INF-LOG-04 | ANTAQ, instalações e Estatístico Aquaviário | 12 meses completos mais recentes | pendente de elegibilidade/rotas |
 | MER-01 | IBGE Censo 2022, PNAD Contínua e população | últimas PNAD/população até o corte | pendente de extração/rotas Brasil |
-| MER-02 e DIAG-01 | MTE, RAIS | microdados 2024 (mais recentes tecnicamente confirmados até o corte) | apta com ressalva: De-Para validado; diretório VINC_PUB bloqueado no ambiente |
+| MER-02 e DIAG-01 | MTE, RAIS | microdados 2024 (mais recentes tecnicamente confirmados até o corte) | em_verificacao — De-Para validado; listagem e microdados VINC_PUB bloqueados no ambiente |
 | MER-DIAG-02 | RFB, Dados Abertos CNPJ; IBGE | snapshot mais recente/população 18–64 | pendente de extração |
 | MER-DIAG-03 | IBGE/SIDRA, PIB e deflator nacional | três anos comparáveis mais recentes | pendente de extração |
 

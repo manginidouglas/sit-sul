@@ -1,28 +1,30 @@
 {
   "data_hora_utc": "2026-08-15T14:45:00Z",
   "data_corte_edicao": "2026-08-12",
+  "estado_fonte": "em_verificacao",
   "decisao_periodo": "2024",
-  "justificativa_periodo": "RAIS 2025 possui produtos estatísticos, mas não houve confirmação oficial suficiente de microdados VINC_PUB 2025 completos; o comunicado de microdados e De-Para vigentes identificados são RAIS 2024",
+  "justificativa_periodo": "RAIS 2025 agregada não comprova bulk VINC_PUB 2025; o layout operacional confirmado é RAIS 2024",
   "de_para": {
     "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais/rais-2024/rais-2024-1/de-para-microdados.xlsx/@@download/file",
     "status_http": 200,
     "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     "tamanho": 23640,
     "sha256": "4be7a7421ce44e40c4b18ea044c624e16775a5d0e3429dac18acb6afd7545117",
-    "validacao": "ZIP OOXML íntegro; [Content_Types].xml e xl/workbook.xml presentes",
-    "cabecalhos_confirmados": ["cnae20classecódigo", "indvínculoativo3112código", "municípiotrabcódigo", "naturezajurídicacódigo"]
+    "validacao": "workbook OOXML funcional aberto com openpyxl em modo somente leitura",
+    "abas": ["VINC_PUB", "VINC_ID", "ESTAB_PUB", "ESTAB_ID"],
+    "campos_confirmados_vinc_pub": ["cnae20classecódigo", "indvínculoativo3112código", "municípiotrabcódigo", "municípiocódigo", "naturezajurídicacódigo"]
   },
   "microdados": {
     "diretorio_https": "https://ftp.mtps.gov.br/pdet/microdados/RAIS/2024/",
     "resultado_https": "HTTP 503: upstream connection timeout",
     "diretorio_2025_https": "https://ftp.mtps.gov.br/pdet/microdados/RAIS/2025/",
     "resultado_2025_https": "HTTP 503: upstream connection timeout",
-    "ftp_ip_oficial_resolvido": "189.9.32.26",
     "resultado_ftp_direto": "network unreachable neste ambiente",
+    "listagem_real_observada": false,
+    "padrao_nominal_confirmado": false,
     "arquivo_real_lido": false,
-    "nomes_arquivos_inventados": false,
     "ufs_processadas": [],
     "vinculos_lidos": 0
   },
-  "status_coleta": "blocked_source"
+  "status_coleta_real": "blocked_source"
 }
