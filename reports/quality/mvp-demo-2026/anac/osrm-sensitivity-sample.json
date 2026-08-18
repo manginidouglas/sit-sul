@@ -1,0 +1,142 @@
+{
+  "aeroportos": [
+    {
+      "aeroporto_id": "SBCT",
+      "coordenadas": [
+        -49.176673,
+        -25.531876
+      ]
+    },
+    {
+      "aeroporto_id": "SBJV",
+      "coordenadas": [
+        -48.796477,
+        -26.222123
+      ]
+    },
+    {
+      "aeroporto_id": "SBPA",
+      "coordenadas": [
+        -51.170625,
+        -29.997527
+      ]
+    }
+  ],
+  "data_hora_utc": "2026-08-15T13:00:00+00:00",
+  "municipios": [
+    {
+      "coordenadas": [
+        -49.267944,
+        -25.413486
+      ],
+      "municipio_id": "4106902",
+      "nome": "Curitiba"
+    },
+    {
+      "coordenadas": [
+        -49.716,
+        -25.769
+      ],
+      "municipio_id": "4113205",
+      "nome": "Lapa"
+    }
+  ],
+  "ordem_coordenadas": "longitude,latitude",
+  "parametros": {
+    "annotations": "duration,distance",
+    "destinations": "2;3;4",
+    "sources": "0;1"
+  },
+  "perfil": "driving",
+  "resposta": {
+    "code": "Ok",
+    "destinations": [
+      {
+        "distance": 60.8068241,
+        "hint": "0La-idK2vokWAAAAAAAAAAAAAAAAAAAAB48UQQAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAAAAAACWlQAAn58R_Rxqev7coRH9zGp6_gAAPwIAAAAA",
+        "location": [
+          -49.176673,
+          -25.531876
+        ],
+        "name": ""
+      },
+      {
+        "distance": 279.0351584,
+        "hint": "Dl1siVoXKYwZAAAAAAAAAC8BAAAAAAAAc9MpQQAAAACIEPxCAAAAABkAAAAAAAAALwEAAAAAAACWlQAAw2wX_dXhb_4oaRf9jNhv_hwAjwkAAAAA",
+        "location": [
+          -48.796477,
+          -26.222123
+        ],
+        "name": ""
+      },
+      {
+        "distance": 316.7139385,
+        "hint": "OKlYg2k_XYscAAAA2wAAAPsBAAAmAQAAQTM7QV5ctkKic1NDpfP0QhwAAADbAAAA-wEAACYBAACWlQAAvzLz_ClGNv7kMPP8NFE2_goAHwUAAAAA",
+        "location": [
+          -51.170625,
+          -29.997527
+        ],
+        "name": ""
+      }
+    ],
+    "distances": [
+      [
+        18621.2,
+        131892.9,
+        735435.3
+      ],
+      [
+        75203.7,
+        180327.2,
+        783869.6
+      ]
+    ],
+    "durations": [
+      [
+        1479.3,
+        7668,
+        34253.6
+      ],
+      [
+        4061.2,
+        9781.5,
+        36367.1
+      ]
+    ],
+    "sources": [
+      {
+        "distance": 21.07502418,
+        "hint": "QKN3i____38yAAAArgAAAAAAAAAxAAAAzJCoQXdvTkIAAAAAJvCjQTIAAACuAAAAAAAAADEAAACWlQAAGDsQ_ZI4fP5EOxD9TDl8_gAAnxEAAAAA",
+        "location": [
+          -49.267944,
+          -25.413486
+        ],
+        "name": ""
+      },
+      {
+        "distance": 60.23943448,
+        "hint": "XOluhUZQloULAAAATAAAAAAAAAAZAAAAU-f4QBXtU0IAAAAA8qaKQQsAAABMAAAAAAAAABkAAACWlQAANYkJ_d_Idv6Miwn9uMh2_gAATwAAAAAA",
+        "location": [
+          -49.706699,
+          -25.769761
+        ],
+        "name": "Rua João Lacerda Braga"
+      }
+    ]
+  },
+  "servidor": "https://router.project-osrm.org",
+  "sha256_resposta": "6698470ad09dd4392638bb8d7cbc2c0db911699edf7dc7cc5782ed7a944658c6",
+  "snapping": {
+    "destinos_metros": [
+      60.807,
+      279.035,
+      316.714
+    ],
+    "origens_metros": [
+      21.075,
+      0
+    ]
+  },
+  "snapshot_rede": null,
+  "status": "exploratorio_nao_reproduzivel_sem_snapshot"
+}

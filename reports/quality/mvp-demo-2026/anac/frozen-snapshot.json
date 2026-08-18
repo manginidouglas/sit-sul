@@ -1,0 +1,90 @@
+{
+  "artefatos": [
+    {
+      "content_length": 357795130,
+      "content_type": "application/octet-stream",
+      "data_coleta_utc": "2026-08-15T11:25:53.156520+00:00",
+      "data_revalidacao_utc": "2026-08-17T21:10:00+00:00",
+      "etag": "\"6a77fe23-1553853a\"",
+      "id": "movimentos",
+      "last_modified": "Sun, 09 Aug 2026 04:12:19 GMT",
+      "redirects": [],
+      "sha256": "db14c86b7a2ab24c7c3629a7df5ab75be4c980cd5ac84d9fabecbe9a0e996551",
+      "status_http": 200,
+      "url_download": "https://sistemas.anac.gov.br/dadosabertos/Voos%20e%20opera%C3%A7%C3%B5es%20a%C3%A9reas/Dados%20Estat%C3%ADsticos%20do%20Transporte%20A%C3%A9reo/Dados_Estatisticos.csv",
+      "url_final": "https://sistemas.anac.gov.br/dadosabertos/Voos%20e%20opera%C3%A7%C3%B5es%20a%C3%A9reas/Dados%20Estat%C3%ADsticos%20do%20Transporte%20A%C3%A9reo/Dados_Estatisticos.csv"
+    },
+    {
+      "content_length": 101163,
+      "content_type": "application/octet-stream",
+      "data_coleta_utc": "2026-08-17T21:05:42+00:00",
+      "data_revalidacao_utc": "2026-08-17T21:10:00+00:00",
+      "etag": "\"6a8000bb-18b2b\"",
+      "id": "publicos",
+      "last_modified": "Sat, 15 Aug 2026 06:01:31 GMT",
+      "redirects": [],
+      "sha256": "322aa0905f44ce87d5c86d4d76db2986b1eb345ea8871247bd3206dd9d45a58b",
+      "status_http": 200,
+      "url_download": "https://sistemas.anac.gov.br/dadosabertos/Aerodromos/Aer%C3%B3dromos%20P%C3%BAblicos/Lista%20de%20aer%C3%B3dromos%20p%C3%BAblicos/AerodromosPublicos.csv",
+      "url_final": "https://sistemas.anac.gov.br/dadosabertos/Aerodromos/Aer%C3%B3dromos%20P%C3%BAblicos/Lista%20de%20aer%C3%B3dromos%20p%C3%BAblicos/AerodromosPublicos.csv"
+    },
+    {
+      "content_length": 905736,
+      "content_type": "application/octet-stream",
+      "data_coleta_utc": "2026-08-18T09:00:00+00:00",
+      "data_revalidacao_utc": "2026-08-18T09:00:00+00:00",
+      "etag": "\"6a841227-dd208\"",
+      "id": "privativos",
+      "last_modified": "Tue, 18 Aug 2026 08:04:55 GMT",
+      "redirects": [],
+      "sha256": "537c59f8b7748e5a62f3fb1cd9bc6d43cfbd27b0cc64c0628b0b92e19a03e63a",
+      "status_http": 200,
+      "url_download": "https://sistemas.anac.gov.br/dadosabertos/Aerodromos/Aer%C3%B3dromos%20Privados/Lista%20de%20aer%C3%B3dromos%20privados/Aerodromos%20Privados/AerodromosPrivados.csv",
+      "url_final": "https://sistemas.anac.gov.br/dadosabertos/Aerodromos/Aer%C3%B3dromos%20Privados/Lista%20de%20aer%C3%B3dromos%20privados/Aerodromos%20Privados/AerodromosPrivados.csv"
+    },
+    {
+      "content_length": 389482,
+      "content_type": "application/octet-stream",
+      "data_coleta_utc": "2026-08-18T09:00:00+00:00",
+      "data_revalidacao_utc": "2026-08-18T09:00:00+00:00",
+      "etag": "\"6a841296-5f16a\"",
+      "id": "helipontos",
+      "last_modified": "Tue, 18 Aug 2026 08:06:46 GMT",
+      "redirects": [],
+      "sha256": "d498dddf6c535233010e64bd798dacd6217b974e9cbeb8d0ed39205f73f9ea8e",
+      "status_http": 200,
+      "url_download": "https://sistemas.anac.gov.br/dadosabertos/Aerodromos/Aer%C3%B3dromos%20Privados/Lista%20de%20aer%C3%B3dromos%20privados/Heliponto/Helipontos.csv",
+      "url_final": "https://sistemas.anac.gov.br/dadosabertos/Aerodromos/Aer%C3%B3dromos%20Privados/Lista%20de%20aer%C3%B3dromos%20privados/Heliponto/Helipontos.csv"
+    },
+    {
+      "content_length": 29170,
+      "content_type": "application/octet-stream",
+      "data_coleta_utc": "2026-08-18T09:00:00+00:00",
+      "data_revalidacao_utc": "2026-08-18T09:00:00+00:00",
+      "etag": "\"6a841229-71f2\"",
+      "id": "helidecks",
+      "last_modified": "Tue, 18 Aug 2026 08:04:57 GMT",
+      "redirects": [],
+      "sha256": "229a2c0356e4ee79052a85799835fda3ef402a3ccd069f3b60c84af82638da7e",
+      "status_http": 200,
+      "url_download": "https://sistemas.anac.gov.br/dadosabertos/Aerodromos/Aer%C3%B3dromos%20Privados/Lista%20de%20aer%C3%B3dromos%20privados/Helideck/Helidecks.csv",
+      "url_final": "https://sistemas.anac.gov.br/dadosabertos/Aerodromos/Aer%C3%B3dromos%20Privados/Lista%20de%20aer%C3%B3dromos%20privados/Helideck/Helidecks.csv"
+    },
+    {
+      "content_length": 899624,
+      "content_type": "application/octet-stream",
+      "data_coleta_utc": "2026-08-17T21:05:44+00:00",
+      "data_revalidacao_utc": "2026-08-17T21:10:00+00:00",
+      "etag": "\"4c7b56561f2edd1:0\"",
+      "id": "siros",
+      "last_modified": "Mon, 17 Aug 2026 08:06:41 GMT",
+      "redirects": [],
+      "sha256": "2e35e2596ebc3aad5ee8139d33c66c882cb4ebe81098633bbe7436f3b5d9b141",
+      "status_http": 200,
+      "url_download": "https://siros.anac.gov.br/siros/registros/aerodromo/aerodromos.csv",
+      "url_final": "https://siros.anac.gov.br/siros/registros/aerodromo/aerodromos.csv"
+    }
+  ],
+  "data_corte": "2026-08-12",
+  "edicao": "mvp-demo-2026"
+}
