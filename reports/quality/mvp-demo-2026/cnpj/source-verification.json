@@ -1,0 +1,113 @@
+{
+  "verified_at_utc": "2026-08-22T13:24:42+00:00",
+  "edition_cutoff": "2026-08-12",
+  "candidate_snapshot": "2026-07",
+  "snapshot_confirmed": false,
+  "topology_observed": false,
+  "domains_observed_in_real_raw": false,
+  "official_catalog": {
+    "url": "https://dados.gov.br/dados/conjuntos-dados/cadastro-nacional-da-pessoa-juridica-cnpj",
+    "http_status": 200,
+    "content_type": "text/html;charset=ISO-8859-1",
+    "content_length": 9632,
+    "last_modified": "Tue, 21 Jul 2026 14:35:22 GMT"
+  },
+  "official_layout": {
+    "url": "https://www.gov.br/receitafederal/dados/cnpj-metadados.pdf",
+    "get_http_status": 200,
+    "content_type": "application/pdf",
+    "persisted_bytes": 59315,
+    "sha256": "0a52d6bdfb61a07425e352a0e692932306a5ec9ecad682f5f9e28059e1a5fce0",
+    "documented_contracts": {
+      "cnpj": "14 posições como texto: raiz 8 e ordem 4 aceitam A-Z/0-9; DV final 2 permanece numérico; formatos legado e alfanumérico coexistem",
+      "active_conceptual_code": "2",
+      "delimiter": ";",
+      "mei_domain": [
+        "S",
+        "N",
+        "BRANCO_OUTROS"
+      ],
+      "municipality_domain": "codigo + descricao",
+      "legal_nature_domain": "codigo + descricao"
+    }
+  },
+  "bulk_index": {
+    "url": "https://dadosabertos.rfb.gov.br/CNPJ/dados_abertos_cnpj/2026-07/",
+    "result": "four HTTP 503 responses after bounded exponential backoff",
+    "evidence": "collection-latest.json"
+  },
+  "legacy_candidate": {
+    "url": "https://arquivos.receitafederal.gov.br/dados/cnpj/dados_abertos_cnpj/2026-07/",
+    "http_status": 404,
+    "accepted_as_alternative": false
+  },
+  "decision": "2026-07 remains an unconfirmed candidate; no snapshot, topology, vintage, raw domain, hash, count, coverage, or municipal product is asserted",
+  "official_alphanumeric_cnpj": {
+    "program_url": "https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/acoes-e-programas/programas-e-atividades/cnpj-alfanumerico",
+    "program_get_http_status": 200,
+    "program_persisted_bytes": 186237,
+    "program_sha256": "c34e1b516da536a57d30d2da81c3aa105c4b5757aeb85f0f86f1189d3cd75fc3",
+    "official_timeline": "produção em 27/07/2026 e primeiro CNPJ alfanumérico em 31/07/2026",
+    "faq_url": "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/perguntas-e-respostas/cnpj/cnpj-alfanumerico.pdf",
+    "faq_get_http_status": 200,
+    "faq_persisted_bytes": 801190,
+    "faq_sha256": "c59ab587536ca22f634373cd6a0603afc834f286d3f557e60ad488f4e6264835",
+    "coexistence_confirmed": true,
+    "character_contract": "primeiras 12 posições A-Z ou 0-9; duas posições de DV numéricas",
+    "publicly_reported_first_identifier": "00.000.000/E08G-12"
+  },
+  "license": {
+    "value": null,
+    "status": "not_confirmed_in_official_material_reviewed",
+    "note": "nenhuma licença explícita foi confirmada nas páginas/documentos oficiais examinados"
+  },
+  "official_access_routes_reviewed": [
+    {
+      "route": "RFB snapshot directory",
+      "url": "https://dadosabertos.rfb.gov.br/CNPJ/dados_abertos_cnpj/2026-07/",
+      "result": "HTTP 503 after bounded retries"
+    },
+    {
+      "route": "RFB individual resource diagnostics",
+      "urls_tested": [
+        "Estabelecimentos0.zip",
+        "Empresas0.zip",
+        "Simples.zip",
+        "Municipios.zip",
+        "Naturezas.zip"
+      ],
+      "result": "HTTP 503 for every diagnostic URL; names were probes only and do not assert topology"
+    },
+    {
+      "route": "RFB legacy arquivos host",
+      "url": "https://arquivos.receitafederal.gov.br/dados/cnpj/dados_abertos_cnpj/2026-07/",
+      "result": "HTTP 404"
+    },
+    {
+      "route": "dados.gov.br public catalog page",
+      "url": "https://dados.gov.br/dados/conjuntos-dados/cadastro-nacional-da-pessoa-juridica-cnpj",
+      "result": "HTTP 200; page shell did not expose snapshot resources"
+    },
+    {
+      "route": "dados.gov.br current public API",
+      "url": "https://dados.gov.br/api/publico/conjuntos-dados/cadastro-nacional-da-pessoa-juridica-cnpj",
+      "result": "HTTP 401 in this environment"
+    },
+    {
+      "route": "dados.gov.br CKAN-compatible API",
+      "url": "https://dados.gov.br/api/3/action/package_show?id=cadastro-nacional-da-pessoa-juridica-cnpj",
+      "result": "HTTP 401 in this environment"
+    },
+    {
+      "route": "www.dados.gov.br CKAN-compatible API",
+      "url": "https://www.dados.gov.br/api/3/action/package_show?id=cadastro-nacional-da-pessoa-juridica-cnpj",
+      "result": "proxy HTTP 502/DNS failure"
+    }
+  ],
+  "access_routes_reviewed_at_utc": "2026-08-22T14:25:47.003342+00:00",
+  "final_limited_retry": {
+    "attempts": 2,
+    "result": "HTTP 503 on every attempt",
+    "coverage_complete": false
+  }
+}
