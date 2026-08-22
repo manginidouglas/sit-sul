@@ -1,0 +1,34 @@
+{
+  "source": "cnpj",
+  "snapshot": "2026-07",
+  "status": "partial",
+  "coverage_complete": false,
+  "cutoff": "2026-08-12",
+  "license": null,
+  "license_status": "not_confirmed_in_official_material_reviewed",
+  "artifacts": [],
+  "failure": {
+    "type": "HTTPError",
+    "http_status": 503,
+    "message": "HTTP Error 503: Service Unavailable",
+    "at_utc": "2026-08-22T14:25:47.003342+00:00"
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "at_utc": "2026-08-22T14:25:40.569218+00:00",
+      "type": "HTTPError",
+      "http_status": 503,
+      "url": "https://dadosabertos.rfb.gov.br/CNPJ/dados_abertos_cnpj/2026-07/",
+      "message": "HTTP Error 503: Service Unavailable"
+    },
+    {
+      "attempt": 2,
+      "at_utc": "2026-08-22T14:25:47.003097+00:00",
+      "type": "HTTPError",
+      "http_status": 503,
+      "url": "https://dadosabertos.rfb.gov.br/CNPJ/dados_abertos_cnpj/2026-07/",
+      "message": "HTTP Error 503: Service Unavailable"
+    }
+  ]
+}
