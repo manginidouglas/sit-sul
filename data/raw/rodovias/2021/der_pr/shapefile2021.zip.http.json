@@ -1,0 +1,12 @@
+{
+  "status": "downloaded",
+  "http_status": 200,
+  "content_type": "application/zip",
+  "bytes": 4426401,
+  "sha256": "4e238f003034858159422fcec0ab7eb7c9bad45951d734829d6ab24c160c5845",
+  "requested_url": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2022-10/shapefile2021.zip",
+  "final_url": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2022-10/shapefile2021.zip",
+  "redirects": [],
+  "path": "data/raw/rodovias/2021/der_pr/shapefile2021.zip",
+  "collected_at": "2026-08-15T00:48:23.010865+00:00"
+}

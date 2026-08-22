@@ -1,0 +1,12 @@
+{
+  "source": "IBGE Localidades do Brasil 2022",
+  "method": "GET",
+  "source_url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/localidades/Localidades_do_Brasil/2022/Localidades_Brasil_gpkg.zip",
+  "snapshot_reference": "2022",
+  "published_file_timestamp": "2025-11-19T16:12:00-03:00",
+  "expected_file": "Localidades_Brasil_gpkg.zip",
+  "persisted_size_bytes": 6477540,
+  "sha256": "1d96d5f0b379972a506d4b18c3696af974fbe59f8f6680557cb3a6dd38a0eb57",
+  "path": "data/raw/routing/ibge-seats/Localidades_Brasil_gpkg.zip",
+  "validation": ["persisted byte count", "SHA-256", "ZIP member BR_localidades_2022.gpkg", "exact code/name/UF match against canonical municipalities"]
+}

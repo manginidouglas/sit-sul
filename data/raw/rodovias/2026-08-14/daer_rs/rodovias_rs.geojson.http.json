@@ -1,0 +1,12 @@
+{
+  "status": "downloaded",
+  "http_status": 200,
+  "content_type": "application/geo+json",
+  "bytes": 49244538,
+  "sha256": "d607dbe0aec8a7e47384b058e18d44433472aa70018c24a6bfcec97976d08376",
+  "requested_url": "https://iede.rs.gov.br/server/rest/services/DAER/Rodovias_RS/MapServer/0/query?where=1%3D1&outFields=%2A&returnGeometry=true&resultRecordCount=4000&outSR=4326&f=geojson",
+  "final_url": "https://iede.rs.gov.br/server/rest/services/DAER/Rodovias_RS/MapServer/0/query?where=1%3D1&outFields=%2A&returnGeometry=true&resultRecordCount=4000&outSR=4326&f=geojson",
+  "redirects": [],
+  "path": "data/raw/rodovias/2026-08-14/daer_rs/rodovias_rs.geojson",
+  "collected_at": "2026-08-15T00:48:43.672182+00:00"
+}

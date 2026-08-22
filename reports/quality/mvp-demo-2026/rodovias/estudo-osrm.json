@@ -1,0 +1,1459 @@
+{
+  "runs": {
+    "5000": {
+      "municipalities": [
+        {
+          "municipio_id": "4100202",
+          "municipio_nome": "Adrianópolis",
+          "uf": "PR",
+          "estrato": "pequena_remota",
+          "populacao_2022": 5857,
+          "pertence_arranjo_metropolitano": false,
+          "justificativa_estrato": "pequena, fora de arranjo metropolitano e no Vale do Ribeira remoto",
+          "federal": {
+            "duration_minutes": 0.0033333333333333335,
+            "distance_meters": 1.9,
+            "origin_snap_meters": 13.872499,
+            "destination_snap_meters": 0.300087,
+            "excessive_snap": false,
+            "segmento_id": "8c6e0417893e735bc3c5",
+            "rodovia_id": "BR-476",
+            "jurisdicao": "federal",
+            "uf": "PR",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -24.658116149999955,
+              "longitude": -48.99199110999996
+            },
+            "route_failure": false,
+            "candidates_total": 733400,
+            "candidates_evaluated": 500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 0.0033333333333333335,
+            "distance_meters": 1.9,
+            "origin_snap_meters": 13.872499,
+            "destination_snap_meters": 0.300087,
+            "excessive_snap": false,
+            "segmento_id": "8c6e0417893e735bc3c5",
+            "rodovia_id": "BR-476",
+            "jurisdicao": "federal",
+            "uf": "PR",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -24.658116149999955,
+              "longitude": -48.99199110999996
+            },
+            "route_failure": false,
+            "candidates_total": 1509934,
+            "candidates_evaluated": 500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 0.0,
+          "difference_percent": 0.0
+        },
+        {
+          "municipio_id": "4105508",
+          "municipio_nome": "Cianorte",
+          "uf": "PR",
+          "estrato": "pequena_eixo_estadual",
+          "populacao_2022": 79527,
+          "pertence_arranjo_metropolitano": false,
+          "justificativa_estrato": "pequena, sede servida pelo eixo estadual PR-323",
+          "federal": {
+            "duration_minutes": 39.505,
+            "distance_meters": 54600.4,
+            "origin_snap_meters": 19.831549,
+            "destination_snap_meters": 7.812876,
+            "excessive_snap": false,
+            "segmento_id": "4b411b132aedad1297f5",
+            "rodovia_id": "BR-487",
+            "jurisdicao": "federal",
+            "uf": "PR",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -23.794921869999953,
+              "longitude": -53.04702356999996
+            },
+            "route_failure": false,
+            "candidates_total": 733400,
+            "candidates_evaluated": 24000,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 2.158333333333333,
+            "distance_meters": 1456.1,
+            "origin_snap_meters": 19.831549,
+            "destination_snap_meters": 2.456332,
+            "excessive_snap": false,
+            "segmento_id": "ba2d3951fc0c38663a14",
+            "rodovia_id": "PR-082",
+            "jurisdicao": "estadual",
+            "uf": "PR",
+            "fonte_id": "der_pr",
+            "candidate": {
+              "latitude": -23.644277777777774,
+              "longitude": -52.60760277777778
+            },
+            "route_failure": false,
+            "candidates_total": 1509934,
+            "candidates_evaluated": 500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 37.34666666666667,
+          "difference_percent": 94.5365565540227
+        },
+        {
+          "municipio_id": "4106902",
+          "municipio_nome": "Curitiba",
+          "uf": "PR",
+          "estrato": "metropolitana",
+          "populacao_2022": 1773733,
+          "pertence_arranjo_metropolitano": true,
+          "justificativa_estrato": "núcleo do arranjo metropolitano de Curitiba",
+          "federal": {
+            "duration_minutes": 9.161666666666667,
+            "distance_meters": 6034.8,
+            "origin_snap_meters": 21.074171,
+            "destination_snap_meters": 6.340208,
+            "excessive_snap": false,
+            "segmento_id": "41eb35865b5476869fd1",
+            "rodovia_id": "BR-476",
+            "jurisdicao": "federal",
+            "uf": "PR",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -25.453065659999954,
+              "longitude": -49.24325080999996
+            },
+            "route_failure": false,
+            "candidates_total": 733400,
+            "candidates_evaluated": 14500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 5.641666666666667,
+            "distance_meters": 4732.4,
+            "origin_snap_meters": 21.074171,
+            "destination_snap_meters": 4.812532,
+            "excessive_snap": false,
+            "segmento_id": "a7e34537d439844302de",
+            "rodovia_id": "PR-092",
+            "jurisdicao": "estadual",
+            "uf": "PR",
+            "fonte_id": "der_pr",
+            "candidate": {
+              "latitude": -25.3800611111111,
+              "longitude": -49.2732083333333
+            },
+            "route_failure": false,
+            "candidates_total": 1509934,
+            "candidates_evaluated": 6000,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 3.5200000000000005,
+          "difference_percent": 38.42095688557395
+        },
+        {
+          "municipio_id": "4113700",
+          "municipio_nome": "Londrina",
+          "uf": "PR",
+          "estrato": "media",
+          "populacao_2022": 555937,
+          "pertence_arranjo_metropolitano": false,
+          "justificativa_estrato": "população superior a 100 mil; polo médio/grande não metropolitano da amostra",
+          "federal": {
+            "duration_minutes": 9.403333333333334,
+            "distance_meters": 5470.7,
+            "origin_snap_meters": 33.740694,
+            "destination_snap_meters": 1.21817,
+            "excessive_snap": false,
+            "segmento_id": "30ae91b3eb62a2307854",
+            "rodovia_id": "BR-369",
+            "jurisdicao": "federal",
+            "uf": "PR",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -23.292800789999955,
+              "longitude": -51.156155509999955
+            },
+            "route_failure": false,
+            "candidates_total": 733400,
+            "candidates_evaluated": 3000,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 3.5766666666666667,
+            "distance_meters": 3066.6,
+            "origin_snap_meters": 33.740694,
+            "destination_snap_meters": 0.243961,
+            "excessive_snap": false,
+            "segmento_id": "6cdd420a1753b213adeb",
+            "rodovia_id": "PR-445",
+            "jurisdicao": "estadual",
+            "uf": "PR",
+            "fonte_id": "der_pr",
+            "candidate": {
+              "latitude": -23.347230283543496,
+              "longitude": -51.17207106202845
+            },
+            "route_failure": false,
+            "candidates_total": 1509934,
+            "candidates_evaluated": 1500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 5.826666666666668,
+          "difference_percent": 61.963842609003905
+        },
+        {
+          "municipio_id": "4200051",
+          "municipio_nome": "Abdon Batista",
+          "uf": "SC",
+          "estrato": "pequena_remota",
+          "populacao_2022": 2598,
+          "pertence_arranjo_metropolitano": false,
+          "justificativa_estrato": "pequena, fora de arranjo metropolitano e relativamente remota",
+          "federal": {
+            "duration_minutes": 27.6,
+            "distance_meters": 21973.3,
+            "origin_snap_meters": 27.883616,
+            "destination_snap_meters": 0.633074,
+            "excessive_snap": false,
+            "segmento_id": "1612fa8dc1660d6d599d",
+            "rodovia_id": "BR-282",
+            "jurisdicao": "federal",
+            "uf": "SC",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -27.489173989999955,
+              "longitude": -50.979663209999956
+            },
+            "route_failure": false,
+            "candidates_total": 733400,
+            "candidates_evaluated": 19000,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 0.2,
+            "distance_meters": 134,
+            "origin_snap_meters": 27.883616,
+            "destination_snap_meters": 1.699582,
+            "excessive_snap": false,
+            "segmento_id": "ec02c1800207392dc92a",
+            "rodovia_id": "SC-284",
+            "jurisdicao": "estadual",
+            "uf": "SC",
+            "fonte_id": "geosie_sc",
+            "candidate": {
+              "latitude": -27.6119816770557,
+              "longitude": -51.023362398427
+            },
+            "route_failure": false,
+            "candidates_total": 1509934,
+            "candidates_evaluated": 500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 27.400000000000002,
+          "difference_percent": 99.27536231884058
+        },
+        {
+          "municipio_id": "4205407",
+          "municipio_nome": "Florianópolis",
+          "uf": "SC",
+          "estrato": "metropolitana",
+          "populacao_2022": 537211,
+          "pertence_arranjo_metropolitano": true,
+          "justificativa_estrato": "núcleo do arranjo metropolitano de Florianópolis",
+          "federal": {
+            "duration_minutes": 4.571666666666667,
+            "distance_meters": 3995.1,
+            "origin_snap_meters": 36.215238,
+            "destination_snap_meters": 4.53726,
+            "excessive_snap": false,
+            "segmento_id": "ee5412824191b97cfc6b",
+            "rodovia_id": "BR-282",
+            "jurisdicao": "federal",
+            "uf": "SC",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -27.598453939999956,
+              "longitude": -48.572020559999956
+            },
+            "route_failure": false,
+            "candidates_total": 733400,
+            "candidates_evaluated": 2000,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 2.5716666666666668,
+            "distance_meters": 2164.3,
+            "origin_snap_meters": 36.215238,
+            "destination_snap_meters": 4.59542,
+            "excessive_snap": false,
+            "segmento_id": "bbf1e2aed0be1f8e8b8c",
+            "rodovia_id": "SC-002",
+            "jurisdicao": "estadual",
+            "uf": "SC",
+            "fonte_id": "geosie_sc",
+            "candidate": {
+              "latitude": -27.5977916803331,
+              "longitude": -48.560097885473
+            },
+            "route_failure": false,
+            "candidates_total": 1509934,
+            "candidates_evaluated": 1000,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 2.0000000000000004,
+          "difference_percent": 43.74772147283996
+        },
+        {
+          "municipio_id": "4208500",
+          "municipio_nome": "Ituporanga",
+          "uf": "SC",
+          "estrato": "pequena_eixo_estadual",
+          "populacao_2022": 26525,
+          "pertence_arranjo_metropolitano": false,
+          "justificativa_estrato": "pequena, sede associada a eixos estaduais do Alto Vale",
+          "federal": {
+            "duration_minutes": 28.248333333333335,
+            "distance_meters": 28029,
+            "origin_snap_meters": 44.919172,
+            "destination_snap_meters": 4.731121,
+            "excessive_snap": false,
+            "segmento_id": "5b1c6cd43c9dbf52ba0c",
+            "rodovia_id": "BR-470",
+            "jurisdicao": "federal",
+            "uf": "SC",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -27.220881529999957,
+              "longitude": -49.66012114999996
+            },
+            "route_failure": false,
+            "candidates_total": 733400,
+            "candidates_evaluated": 19000,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 2.203333333333333,
+            "distance_meters": 1705.5,
+            "origin_snap_meters": 44.919172,
+            "destination_snap_meters": 2.317047,
+            "excessive_snap": false,
+            "segmento_id": "11449cf8698b157ef559",
+            "rodovia_id": "SC-350",
+            "jurisdicao": "estadual",
+            "uf": "SC",
+            "fonte_id": "geosie_sc",
+            "candidate": {
+              "latitude": -27.4265672899188,
+              "longitude": -49.5975620972206
+            },
+            "route_failure": false,
+            "candidates_total": 1509934,
+            "candidates_evaluated": 500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 26.045,
+          "difference_percent": 92.2001298011682
+        },
+        {
+          "municipio_id": "4209102",
+          "municipio_nome": "Joinville",
+          "uf": "SC",
+          "estrato": "media",
+          "populacao_2022": 616323,
+          "pertence_arranjo_metropolitano": false,
+          "justificativa_estrato": "população superior a 100 mil; polo médio/grande não metropolitano da amostra",
+          "federal": {
+            "duration_minutes": 7.301666666666667,
+            "distance_meters": 5663.7,
+            "origin_snap_meters": 21.193779,
+            "destination_snap_meters": 0.454268,
+            "excessive_snap": false,
+            "segmento_id": "5b51b0fa85a6a280a0c9",
+            "rodovia_id": "BR-101",
+            "jurisdicao": "federal",
+            "uf": "SC",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -26.296311959999954,
+              "longitude": -48.88416048999996
+            },
+            "route_failure": false,
+            "candidates_total": 733400,
+            "candidates_evaluated": 4000,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 7.301666666666667,
+            "distance_meters": 5663.7,
+            "origin_snap_meters": 21.193779,
+            "destination_snap_meters": 0.454268,
+            "excessive_snap": false,
+            "segmento_id": "5b51b0fa85a6a280a0c9",
+            "rodovia_id": "BR-101",
+            "jurisdicao": "federal",
+            "uf": "SC",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -26.296311959999954,
+              "longitude": -48.88416048999996
+            },
+            "route_failure": false,
+            "candidates_total": 1509934,
+            "candidates_evaluated": 4500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 0.0,
+          "difference_percent": 0.0
+        },
+        {
+          "municipio_id": "4305108",
+          "municipio_nome": "Caxias do Sul",
+          "uf": "RS",
+          "estrato": "media",
+          "populacao_2022": 463501,
+          "pertence_arranjo_metropolitano": false,
+          "justificativa_estrato": "população superior a 100 mil; polo médio/grande não metropolitano da amostra",
+          "federal": {
+            "duration_minutes": 3.9283333333333332,
+            "distance_meters": 2354.8,
+            "origin_snap_meters": 7.42655,
+            "destination_snap_meters": 4.480195,
+            "excessive_snap": false,
+            "segmento_id": "ebc092eaae270b2694f8",
+            "rodovia_id": "BR-116",
+            "jurisdicao": "federal",
+            "uf": "RS",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -29.168424519999956,
+              "longitude": -51.15833508999996
+            },
+            "route_failure": false,
+            "candidates_total": 733400,
+            "candidates_evaluated": 2500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 3.9283333333333332,
+            "distance_meters": 2354.8,
+            "origin_snap_meters": 7.42655,
+            "destination_snap_meters": 4.480195,
+            "excessive_snap": false,
+            "segmento_id": "ebc092eaae270b2694f8",
+            "rodovia_id": "BR-116",
+            "jurisdicao": "federal",
+            "uf": "RS",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -29.168424519999956,
+              "longitude": -51.15833508999996
+            },
+            "route_failure": false,
+            "candidates_total": 1509934,
+            "candidates_evaluated": 5500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 0.0,
+          "difference_percent": 0.0
+        },
+        {
+          "municipio_id": "4308656",
+          "municipio_nome": "Garruchos",
+          "uf": "RS",
+          "estrato": "pequena_remota",
+          "populacao_2022": 2886,
+          "pertence_arranjo_metropolitano": false,
+          "justificativa_estrato": "pequena, fronteiriça e relativamente remota",
+          "federal": {
+            "duration_minutes": 82.26833333333335,
+            "distance_meters": 54540.6,
+            "origin_snap_meters": 12.585388,
+            "destination_snap_meters": 0.195766,
+            "excessive_snap": false,
+            "segmento_id": "1b14a930b53915505069",
+            "rodovia_id": "BR-285",
+            "jurisdicao": "federal",
+            "uf": "RS",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -28.536811749999956,
+              "longitude": -55.54113919999996
+            },
+            "route_failure": false,
+            "candidates_total": 733400,
+            "candidates_evaluated": 50000,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 79.15666666666667,
+            "distance_meters": 52104.9,
+            "origin_snap_meters": 12.585388,
+            "destination_snap_meters": 1.895269,
+            "excessive_snap": false,
+            "segmento_id": "e9c4ccd6aee7f00aa444",
+            "rodovia_id": "RS-561",
+            "jurisdicao": "estadual",
+            "uf": "RS",
+            "fonte_id": "daer_rs",
+            "candidate": {
+              "latitude": -28.184799999213904,
+              "longitude": -55.268325000000004
+            },
+            "route_failure": false,
+            "candidates_total": 1509934,
+            "candidates_evaluated": 114000,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 3.111666666666679,
+          "difference_percent": 3.782338283260078
+        },
+        {
+          "municipio_id": "4314902",
+          "municipio_nome": "Porto Alegre",
+          "uf": "RS",
+          "estrato": "metropolitana",
+          "populacao_2022": 1332845,
+          "pertence_arranjo_metropolitano": true,
+          "justificativa_estrato": "núcleo do arranjo metropolitano de Porto Alegre",
+          "federal": {
+            "duration_minutes": 5.036666666666666,
+            "distance_meters": 4174.5,
+            "origin_snap_meters": 24.22268,
+            "destination_snap_meters": 0.68462,
+            "excessive_snap": false,
+            "segmento_id": "8eb5a07aecc180a51a8a",
+            "rodovia_id": "BR-116",
+            "jurisdicao": "federal",
+            "uf": "RS",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -29.999043609999955,
+              "longitude": -51.20603732999996
+            },
+            "route_failure": false,
+            "candidates_total": 733400,
+            "candidates_evaluated": 5500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 5.036666666666666,
+            "distance_meters": 4174.5,
+            "origin_snap_meters": 24.22268,
+            "destination_snap_meters": 0.68462,
+            "excessive_snap": false,
+            "segmento_id": "8eb5a07aecc180a51a8a",
+            "rodovia_id": "BR-116",
+            "jurisdicao": "federal",
+            "uf": "RS",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -29.999043609999955,
+              "longitude": -51.20603732999996
+            },
+            "route_failure": false,
+            "candidates_total": 1509934,
+            "candidates_evaluated": 5500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 0.0,
+          "difference_percent": 0.0
+        },
+        {
+          "municipio_id": "4316808",
+          "municipio_nome": "Santa Cruz do Sul",
+          "uf": "RS",
+          "estrato": "pequena_eixo_estadual",
+          "populacao_2022": 133230,
+          "pertence_arranjo_metropolitano": false,
+          "justificativa_estrato": "sede selecionada junto a eixos estaduais regionais; exceção de porte registrada",
+          "federal": {
+            "duration_minutes": 3.75,
+            "distance_meters": 1917.2,
+            "origin_snap_meters": 5.352078,
+            "destination_snap_meters": 4.327269,
+            "excessive_snap": false,
+            "segmento_id": "57b26bdcac9253e10733",
+            "rodovia_id": "BR-471",
+            "jurisdicao": "federal",
+            "uf": "RS",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -29.715099429999956,
+              "longitude": -52.44417931999996
+            },
+            "route_failure": false,
+            "candidates_total": 733400,
+            "candidates_evaluated": 500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 3.75,
+            "distance_meters": 1917.2,
+            "origin_snap_meters": 5.352078,
+            "destination_snap_meters": 4.327269,
+            "excessive_snap": false,
+            "segmento_id": "57b26bdcac9253e10733",
+            "rodovia_id": "BR-471",
+            "jurisdicao": "federal",
+            "uf": "RS",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -29.715099429999956,
+              "longitude": -52.44417931999996
+            },
+            "route_failure": false,
+            "candidates_total": 1509934,
+            "candidates_evaluated": 2500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 0.0,
+          "difference_percent": 0.0
+        }
+      ],
+      "n": 12,
+      "route_failures": 0,
+      "difference_minutes": {
+        "min": 0.0,
+        "median": 2.5558333333333394,
+        "max": 37.34666666666667
+      },
+      "difference_percent": {
+        "min": 0.0,
+        "median": 21.101647584417016,
+        "max": 99.27536231884058
+      },
+      "candidate_generation": {
+        "max_spacing_m": 5000,
+        "count": 1509934,
+        "uses_all_vertices": true
+      },
+      "snapping": {
+        "threshold_m": 1000,
+        "excessive_winners_by_scenario": {
+          "federal": 0,
+          "federal_estadual": 0
+        },
+        "municipalities_affected": 0
+      },
+      "methodological_decision": "inclusao_das_estaduais_altera_materialmente",
+      "substantive_decision_without_snap_gate": "inclusao_das_estaduais_altera_materialmente",
+      "decision_threshold": "material se mediana >=5 min ou >=20%; falhas ou snapping excessivo exigem definição adicional"
+    },
+    "1000": {
+      "municipalities": [
+        {
+          "municipio_id": "4100202",
+          "municipio_nome": "Adrianópolis",
+          "uf": "PR",
+          "estrato": "pequena_remota",
+          "populacao_2022": 5857,
+          "pertence_arranjo_metropolitano": false,
+          "justificativa_estrato": "pequena, fora de arranjo metropolitano e no Vale do Ribeira remoto",
+          "federal": {
+            "duration_minutes": 0.0033333333333333335,
+            "distance_meters": 1.9,
+            "origin_snap_meters": 13.872499,
+            "destination_snap_meters": 0.300087,
+            "excessive_snap": false,
+            "segmento_id": "8c6e0417893e735bc3c5",
+            "rodovia_id": "BR-476",
+            "jurisdicao": "federal",
+            "uf": "PR",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -24.658116149999955,
+              "longitude": -48.99199110999996
+            },
+            "route_failure": false,
+            "candidates_total": 733470,
+            "candidates_evaluated": 500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 0.0033333333333333335,
+            "distance_meters": 1.9,
+            "origin_snap_meters": 13.872499,
+            "destination_snap_meters": 0.300087,
+            "excessive_snap": false,
+            "segmento_id": "8c6e0417893e735bc3c5",
+            "rodovia_id": "BR-476",
+            "jurisdicao": "federal",
+            "uf": "PR",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -24.658116149999955,
+              "longitude": -48.99199110999996
+            },
+            "route_failure": false,
+            "candidates_total": 1510100,
+            "candidates_evaluated": 500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 0.0,
+          "difference_percent": 0.0
+        },
+        {
+          "municipio_id": "4105508",
+          "municipio_nome": "Cianorte",
+          "uf": "PR",
+          "estrato": "pequena_eixo_estadual",
+          "populacao_2022": 79527,
+          "pertence_arranjo_metropolitano": false,
+          "justificativa_estrato": "pequena, sede servida pelo eixo estadual PR-323",
+          "federal": {
+            "duration_minutes": 39.505,
+            "distance_meters": 54600.4,
+            "origin_snap_meters": 19.831549,
+            "destination_snap_meters": 7.812876,
+            "excessive_snap": false,
+            "segmento_id": "4b411b132aedad1297f5",
+            "rodovia_id": "BR-487",
+            "jurisdicao": "federal",
+            "uf": "PR",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -23.794921869999953,
+              "longitude": -53.04702356999996
+            },
+            "route_failure": false,
+            "candidates_total": 733470,
+            "candidates_evaluated": 24000,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 2.158333333333333,
+            "distance_meters": 1456.1,
+            "origin_snap_meters": 19.831549,
+            "destination_snap_meters": 2.456332,
+            "excessive_snap": false,
+            "segmento_id": "ba2d3951fc0c38663a14",
+            "rodovia_id": "PR-082",
+            "jurisdicao": "estadual",
+            "uf": "PR",
+            "fonte_id": "der_pr",
+            "candidate": {
+              "latitude": -23.644277777777774,
+              "longitude": -52.60760277777778
+            },
+            "route_failure": false,
+            "candidates_total": 1510100,
+            "candidates_evaluated": 500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 37.34666666666667,
+          "difference_percent": 94.5365565540227
+        },
+        {
+          "municipio_id": "4106902",
+          "municipio_nome": "Curitiba",
+          "uf": "PR",
+          "estrato": "metropolitana",
+          "populacao_2022": 1773733,
+          "pertence_arranjo_metropolitano": true,
+          "justificativa_estrato": "núcleo do arranjo metropolitano de Curitiba",
+          "federal": {
+            "duration_minutes": 9.161666666666667,
+            "distance_meters": 6034.8,
+            "origin_snap_meters": 21.074171,
+            "destination_snap_meters": 6.340208,
+            "excessive_snap": false,
+            "segmento_id": "41eb35865b5476869fd1",
+            "rodovia_id": "BR-476",
+            "jurisdicao": "federal",
+            "uf": "PR",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -25.453065659999954,
+              "longitude": -49.24325080999996
+            },
+            "route_failure": false,
+            "candidates_total": 733470,
+            "candidates_evaluated": 14500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 5.641666666666667,
+            "distance_meters": 4732.4,
+            "origin_snap_meters": 21.074171,
+            "destination_snap_meters": 4.812532,
+            "excessive_snap": false,
+            "segmento_id": "a7e34537d439844302de",
+            "rodovia_id": "PR-092",
+            "jurisdicao": "estadual",
+            "uf": "PR",
+            "fonte_id": "der_pr",
+            "candidate": {
+              "latitude": -25.3800611111111,
+              "longitude": -49.2732083333333
+            },
+            "route_failure": false,
+            "candidates_total": 1510100,
+            "candidates_evaluated": 6000,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 3.5200000000000005,
+          "difference_percent": 38.42095688557395
+        },
+        {
+          "municipio_id": "4113700",
+          "municipio_nome": "Londrina",
+          "uf": "PR",
+          "estrato": "media",
+          "populacao_2022": 555937,
+          "pertence_arranjo_metropolitano": false,
+          "justificativa_estrato": "população superior a 100 mil; polo médio/grande não metropolitano da amostra",
+          "federal": {
+            "duration_minutes": 9.403333333333334,
+            "distance_meters": 5470.7,
+            "origin_snap_meters": 33.740694,
+            "destination_snap_meters": 1.21817,
+            "excessive_snap": false,
+            "segmento_id": "30ae91b3eb62a2307854",
+            "rodovia_id": "BR-369",
+            "jurisdicao": "federal",
+            "uf": "PR",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -23.292800789999955,
+              "longitude": -51.156155509999955
+            },
+            "route_failure": false,
+            "candidates_total": 733470,
+            "candidates_evaluated": 3000,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 3.5766666666666667,
+            "distance_meters": 3066.6,
+            "origin_snap_meters": 33.740694,
+            "destination_snap_meters": 0.243961,
+            "excessive_snap": false,
+            "segmento_id": "6cdd420a1753b213adeb",
+            "rodovia_id": "PR-445",
+            "jurisdicao": "estadual",
+            "uf": "PR",
+            "fonte_id": "der_pr",
+            "candidate": {
+              "latitude": -23.347230283543496,
+              "longitude": -51.17207106202845
+            },
+            "route_failure": false,
+            "candidates_total": 1510100,
+            "candidates_evaluated": 1500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 5.826666666666668,
+          "difference_percent": 61.963842609003905
+        },
+        {
+          "municipio_id": "4200051",
+          "municipio_nome": "Abdon Batista",
+          "uf": "SC",
+          "estrato": "pequena_remota",
+          "populacao_2022": 2598,
+          "pertence_arranjo_metropolitano": false,
+          "justificativa_estrato": "pequena, fora de arranjo metropolitano e relativamente remota",
+          "federal": {
+            "duration_minutes": 27.6,
+            "distance_meters": 21973.3,
+            "origin_snap_meters": 27.883616,
+            "destination_snap_meters": 0.633074,
+            "excessive_snap": false,
+            "segmento_id": "1612fa8dc1660d6d599d",
+            "rodovia_id": "BR-282",
+            "jurisdicao": "federal",
+            "uf": "SC",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -27.489173989999955,
+              "longitude": -50.979663209999956
+            },
+            "route_failure": false,
+            "candidates_total": 733470,
+            "candidates_evaluated": 19000,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 0.2,
+            "distance_meters": 134,
+            "origin_snap_meters": 27.883616,
+            "destination_snap_meters": 1.699582,
+            "excessive_snap": false,
+            "segmento_id": "ec02c1800207392dc92a",
+            "rodovia_id": "SC-284",
+            "jurisdicao": "estadual",
+            "uf": "SC",
+            "fonte_id": "geosie_sc",
+            "candidate": {
+              "latitude": -27.6119816770557,
+              "longitude": -51.023362398427
+            },
+            "route_failure": false,
+            "candidates_total": 1510100,
+            "candidates_evaluated": 500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 27.400000000000002,
+          "difference_percent": 99.27536231884058
+        },
+        {
+          "municipio_id": "4205407",
+          "municipio_nome": "Florianópolis",
+          "uf": "SC",
+          "estrato": "metropolitana",
+          "populacao_2022": 537211,
+          "pertence_arranjo_metropolitano": true,
+          "justificativa_estrato": "núcleo do arranjo metropolitano de Florianópolis",
+          "federal": {
+            "duration_minutes": 4.571666666666667,
+            "distance_meters": 3995.1,
+            "origin_snap_meters": 36.215238,
+            "destination_snap_meters": 4.53726,
+            "excessive_snap": false,
+            "segmento_id": "ee5412824191b97cfc6b",
+            "rodovia_id": "BR-282",
+            "jurisdicao": "federal",
+            "uf": "SC",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -27.598453939999956,
+              "longitude": -48.572020559999956
+            },
+            "route_failure": false,
+            "candidates_total": 733470,
+            "candidates_evaluated": 2000,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 2.5716666666666668,
+            "distance_meters": 2164.3,
+            "origin_snap_meters": 36.215238,
+            "destination_snap_meters": 4.59542,
+            "excessive_snap": false,
+            "segmento_id": "bbf1e2aed0be1f8e8b8c",
+            "rodovia_id": "SC-002",
+            "jurisdicao": "estadual",
+            "uf": "SC",
+            "fonte_id": "geosie_sc",
+            "candidate": {
+              "latitude": -27.5977916803331,
+              "longitude": -48.560097885473
+            },
+            "route_failure": false,
+            "candidates_total": 1510100,
+            "candidates_evaluated": 1000,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 2.0000000000000004,
+          "difference_percent": 43.74772147283996
+        },
+        {
+          "municipio_id": "4208500",
+          "municipio_nome": "Ituporanga",
+          "uf": "SC",
+          "estrato": "pequena_eixo_estadual",
+          "populacao_2022": 26525,
+          "pertence_arranjo_metropolitano": false,
+          "justificativa_estrato": "pequena, sede associada a eixos estaduais do Alto Vale",
+          "federal": {
+            "duration_minutes": 28.248333333333335,
+            "distance_meters": 28029,
+            "origin_snap_meters": 44.919172,
+            "destination_snap_meters": 4.731121,
+            "excessive_snap": false,
+            "segmento_id": "5b1c6cd43c9dbf52ba0c",
+            "rodovia_id": "BR-470",
+            "jurisdicao": "federal",
+            "uf": "SC",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -27.220881529999957,
+              "longitude": -49.66012114999996
+            },
+            "route_failure": false,
+            "candidates_total": 733470,
+            "candidates_evaluated": 19000,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 2.203333333333333,
+            "distance_meters": 1705.5,
+            "origin_snap_meters": 44.919172,
+            "destination_snap_meters": 2.317047,
+            "excessive_snap": false,
+            "segmento_id": "11449cf8698b157ef559",
+            "rodovia_id": "SC-350",
+            "jurisdicao": "estadual",
+            "uf": "SC",
+            "fonte_id": "geosie_sc",
+            "candidate": {
+              "latitude": -27.4265672899188,
+              "longitude": -49.5975620972206
+            },
+            "route_failure": false,
+            "candidates_total": 1510100,
+            "candidates_evaluated": 500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 26.045,
+          "difference_percent": 92.2001298011682
+        },
+        {
+          "municipio_id": "4209102",
+          "municipio_nome": "Joinville",
+          "uf": "SC",
+          "estrato": "media",
+          "populacao_2022": 616323,
+          "pertence_arranjo_metropolitano": false,
+          "justificativa_estrato": "população superior a 100 mil; polo médio/grande não metropolitano da amostra",
+          "federal": {
+            "duration_minutes": 7.301666666666667,
+            "distance_meters": 5663.7,
+            "origin_snap_meters": 21.193779,
+            "destination_snap_meters": 0.454268,
+            "excessive_snap": false,
+            "segmento_id": "5b51b0fa85a6a280a0c9",
+            "rodovia_id": "BR-101",
+            "jurisdicao": "federal",
+            "uf": "SC",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -26.296311959999954,
+              "longitude": -48.88416048999996
+            },
+            "route_failure": false,
+            "candidates_total": 733470,
+            "candidates_evaluated": 4000,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 7.301666666666667,
+            "distance_meters": 5663.7,
+            "origin_snap_meters": 21.193779,
+            "destination_snap_meters": 0.454268,
+            "excessive_snap": false,
+            "segmento_id": "5b51b0fa85a6a280a0c9",
+            "rodovia_id": "BR-101",
+            "jurisdicao": "federal",
+            "uf": "SC",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -26.296311959999954,
+              "longitude": -48.88416048999996
+            },
+            "route_failure": false,
+            "candidates_total": 1510100,
+            "candidates_evaluated": 4500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 0.0,
+          "difference_percent": 0.0
+        },
+        {
+          "municipio_id": "4305108",
+          "municipio_nome": "Caxias do Sul",
+          "uf": "RS",
+          "estrato": "media",
+          "populacao_2022": 463501,
+          "pertence_arranjo_metropolitano": false,
+          "justificativa_estrato": "população superior a 100 mil; polo médio/grande não metropolitano da amostra",
+          "federal": {
+            "duration_minutes": 3.9283333333333332,
+            "distance_meters": 2354.8,
+            "origin_snap_meters": 7.42655,
+            "destination_snap_meters": 4.480195,
+            "excessive_snap": false,
+            "segmento_id": "ebc092eaae270b2694f8",
+            "rodovia_id": "BR-116",
+            "jurisdicao": "federal",
+            "uf": "RS",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -29.168424519999956,
+              "longitude": -51.15833508999996
+            },
+            "route_failure": false,
+            "candidates_total": 733470,
+            "candidates_evaluated": 2500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 3.9283333333333332,
+            "distance_meters": 2354.8,
+            "origin_snap_meters": 7.42655,
+            "destination_snap_meters": 4.480195,
+            "excessive_snap": false,
+            "segmento_id": "ebc092eaae270b2694f8",
+            "rodovia_id": "BR-116",
+            "jurisdicao": "federal",
+            "uf": "RS",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -29.168424519999956,
+              "longitude": -51.15833508999996
+            },
+            "route_failure": false,
+            "candidates_total": 1510100,
+            "candidates_evaluated": 5500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 0.0,
+          "difference_percent": 0.0
+        },
+        {
+          "municipio_id": "4308656",
+          "municipio_nome": "Garruchos",
+          "uf": "RS",
+          "estrato": "pequena_remota",
+          "populacao_2022": 2886,
+          "pertence_arranjo_metropolitano": false,
+          "justificativa_estrato": "pequena, fronteiriça e relativamente remota",
+          "federal": {
+            "duration_minutes": 82.26833333333335,
+            "distance_meters": 54540.6,
+            "origin_snap_meters": 12.585388,
+            "destination_snap_meters": 0.195766,
+            "excessive_snap": false,
+            "segmento_id": "1b14a930b53915505069",
+            "rodovia_id": "BR-285",
+            "jurisdicao": "federal",
+            "uf": "RS",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -28.536811749999956,
+              "longitude": -55.54113919999996
+            },
+            "route_failure": false,
+            "candidates_total": 733470,
+            "candidates_evaluated": 50000,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 79.15666666666667,
+            "distance_meters": 52104.9,
+            "origin_snap_meters": 12.585388,
+            "destination_snap_meters": 1.895269,
+            "excessive_snap": false,
+            "segmento_id": "e9c4ccd6aee7f00aa444",
+            "rodovia_id": "RS-561",
+            "jurisdicao": "estadual",
+            "uf": "RS",
+            "fonte_id": "daer_rs",
+            "candidate": {
+              "latitude": -28.184799999213904,
+              "longitude": -55.268325000000004
+            },
+            "route_failure": false,
+            "candidates_total": 1510100,
+            "candidates_evaluated": 114000,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 3.111666666666679,
+          "difference_percent": 3.782338283260078
+        },
+        {
+          "municipio_id": "4314902",
+          "municipio_nome": "Porto Alegre",
+          "uf": "RS",
+          "estrato": "metropolitana",
+          "populacao_2022": 1332845,
+          "pertence_arranjo_metropolitano": true,
+          "justificativa_estrato": "núcleo do arranjo metropolitano de Porto Alegre",
+          "federal": {
+            "duration_minutes": 5.036666666666666,
+            "distance_meters": 4174.5,
+            "origin_snap_meters": 24.22268,
+            "destination_snap_meters": 0.68462,
+            "excessive_snap": false,
+            "segmento_id": "8eb5a07aecc180a51a8a",
+            "rodovia_id": "BR-116",
+            "jurisdicao": "federal",
+            "uf": "RS",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -29.999043609999955,
+              "longitude": -51.20603732999996
+            },
+            "route_failure": false,
+            "candidates_total": 733470,
+            "candidates_evaluated": 5500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 5.036666666666666,
+            "distance_meters": 4174.5,
+            "origin_snap_meters": 24.22268,
+            "destination_snap_meters": 0.68462,
+            "excessive_snap": false,
+            "segmento_id": "8eb5a07aecc180a51a8a",
+            "rodovia_id": "BR-116",
+            "jurisdicao": "federal",
+            "uf": "RS",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -29.999043609999955,
+              "longitude": -51.20603732999996
+            },
+            "route_failure": false,
+            "candidates_total": 1510100,
+            "candidates_evaluated": 5500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 0.0,
+          "difference_percent": 0.0
+        },
+        {
+          "municipio_id": "4316808",
+          "municipio_nome": "Santa Cruz do Sul",
+          "uf": "RS",
+          "estrato": "pequena_eixo_estadual",
+          "populacao_2022": 133230,
+          "pertence_arranjo_metropolitano": false,
+          "justificativa_estrato": "sede selecionada junto a eixos estaduais regionais; exceção de porte registrada",
+          "federal": {
+            "duration_minutes": 3.75,
+            "distance_meters": 1917.2,
+            "origin_snap_meters": 5.352078,
+            "destination_snap_meters": 4.327269,
+            "excessive_snap": false,
+            "segmento_id": "57b26bdcac9253e10733",
+            "rodovia_id": "BR-471",
+            "jurisdicao": "federal",
+            "uf": "RS",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -29.715099429999956,
+              "longitude": -52.44417931999996
+            },
+            "route_failure": false,
+            "candidates_total": 733470,
+            "candidates_evaluated": 500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "federal_estadual": {
+            "duration_minutes": 3.75,
+            "distance_meters": 1917.2,
+            "origin_snap_meters": 5.352078,
+            "destination_snap_meters": 4.327269,
+            "excessive_snap": false,
+            "segmento_id": "57b26bdcac9253e10733",
+            "rodovia_id": "BR-471",
+            "jurisdicao": "federal",
+            "uf": "RS",
+            "fonte_id": "dnit_snv",
+            "candidate": {
+              "latitude": -29.715099429999956,
+              "longitude": -52.44417931999996
+            },
+            "route_failure": false,
+            "candidates_total": 1510100,
+            "candidates_evaluated": 2500,
+            "search_bound_max_speed_kmh": 140
+          },
+          "difference_minutes": 0.0,
+          "difference_percent": 0.0
+        }
+      ],
+      "n": 12,
+      "route_failures": 0,
+      "difference_minutes": {
+        "min": 0.0,
+        "median": 2.5558333333333394,
+        "max": 37.34666666666667
+      },
+      "difference_percent": {
+        "min": 0.0,
+        "median": 21.101647584417016,
+        "max": 99.27536231884058
+      },
+      "candidate_generation": {
+        "max_spacing_m": 1000,
+        "count": 1510100,
+        "uses_all_vertices": true
+      },
+      "snapping": {
+        "threshold_m": 1000,
+        "excessive_winners_by_scenario": {
+          "federal": 0,
+          "federal_estadual": 0
+        },
+        "municipalities_affected": 0
+      },
+      "methodological_decision": "inclusao_das_estaduais_altera_materialmente",
+      "substantive_decision_without_snap_gate": "inclusao_das_estaduais_altera_materialmente",
+      "decision_threshold": "material se mediana >=5 min ou >=20%; falhas ou snapping excessivo exigem definição adicional"
+    }
+  },
+  "comparison": [
+    {
+      "municipio_id": "4100202",
+      "scenario": "federal",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4100202",
+      "scenario": "federal_estadual",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4105508",
+      "scenario": "federal",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4105508",
+      "scenario": "federal_estadual",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4106902",
+      "scenario": "federal",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4106902",
+      "scenario": "federal_estadual",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4113700",
+      "scenario": "federal",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4113700",
+      "scenario": "federal_estadual",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4200051",
+      "scenario": "federal",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4200051",
+      "scenario": "federal_estadual",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4205407",
+      "scenario": "federal",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4205407",
+      "scenario": "federal_estadual",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4208500",
+      "scenario": "federal",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4208500",
+      "scenario": "federal_estadual",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4209102",
+      "scenario": "federal",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4209102",
+      "scenario": "federal_estadual",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4305108",
+      "scenario": "federal",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4305108",
+      "scenario": "federal_estadual",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4308656",
+      "scenario": "federal",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4308656",
+      "scenario": "federal_estadual",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4314902",
+      "scenario": "federal",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4314902",
+      "scenario": "federal_estadual",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4316808",
+      "scenario": "federal",
+      "spacing_m": 1000,
+      "stable": true
+    },
+    {
+      "municipio_id": "4316808",
+      "scenario": "federal_estadual",
+      "spacing_m": 1000,
+      "stable": true
+    }
+  ],
+  "stable": true,
+  "n": 12,
+  "route_failures": 0,
+  "route_failures_by_spacing": {
+    "5000": 0,
+    "1000": 0
+  },
+  "snapping_by_spacing_and_scenario": {
+    "5000": {
+      "federal": 0,
+      "federal_estadual": 0
+    },
+    "1000": {
+      "federal": 0,
+      "federal_estadual": 0
+    }
+  },
+  "no_excessive_snap": true,
+  "same_substantive_decision": true,
+  "duration_tolerance_minutes": 1.0,
+  "methodological_decision": "inclusao_das_estaduais_altera_materialmente"
+}

@@ -1,0 +1,888 @@
+{
+  "executed_at_utc": "2026-08-15T01:38:24.369746+00:00",
+  "bbox": [
+    -58.0,
+    -34.5,
+    -47.0,
+    -21.5
+  ],
+  "bbox_rationale": "Região Sul com margem aproximada de 1,5 grau ao norte/oeste e margem oceânica; fonte Brasil limita a malha ao território nacional.",
+  "source": {
+    "source": "Geofabrik OpenStreetMap Brazil extract",
+    "method": "GET",
+    "source_url": "https://download.geofabrik.de/south-america/brazil-260801.osm.pbf",
+    "parameters": {},
+    "snapshot_date": "2026-08-01",
+    "collected_at_utc": "2026-08-12T21:19:04Z",
+    "http_status": 200,
+    "final_url": "https://download.geofabrik.de/south-america/brazil-260801.osm.pbf",
+    "redirects": [],
+    "content_type": "application/octet-stream",
+    "transferred_size_bytes": 2066032748,
+    "persisted_size_bytes": 2066032748,
+    "md5_official_geofabrik": "265d58e0eb10236a28b64fe846c92925",
+    "sha256_local": "2b2ae9d8eb9a2d27501e4ab3a7097cab904439cbc7627319e5a4ce070dba27fd",
+    "path": "data/raw/osm/brazil-260801.osm.pbf",
+    "license": "Open Database License (ODbL)",
+    "validation": [
+      "HTTP status 200",
+      "final URL recorded",
+      "persisted byte count",
+      "official MD5",
+      "locally calculated SHA-256"
+    ]
+  },
+  "regional_extract": {
+    "path": "data/interim/routing/osrm-south/south-buffer-260801.osm.pbf",
+    "bytes": 544067976,
+    "sha256": "690a689196927486d3df97405192e6a29540107c4f8a1bb4ea957dbf51ee1340"
+  },
+  "osrm": {
+    "version": "5.25.0",
+    "image": "osrm/osrm-backend@sha256:bdfa60e64ae1376bff6ff5605991be50600132a27469a4a9e77c23afd3a6d555",
+    "algorithm": "MLD",
+    "max_table_size": 10000,
+    "commands": [
+      "osmium extract -b -58.0,-34.5,-47.0,-21.5 --strategy complete_ways brazil-260801.osm.pbf -o south-buffer-260801.osm.pbf",
+      "osrm-extract -p /opt/car.lua /data/south-buffer-260801.osm.pbf",
+      "osrm-partition /data/south-buffer-260801.osrm",
+      "osrm-customize /data/south-buffer-260801.osrm",
+      "osrm-routed --algorithm mld --max-table-size 10000 /data/south-buffer-260801.osrm"
+    ],
+    "metrics": {
+      "osmium": {
+        "elapsed_seconds": 129.27,
+        "max_rss_kib": 3769560
+      },
+      "extract": {
+        "elapsed_seconds": 582.61,
+        "max_rss_kib": 4907364
+      },
+      "partition": {
+        "elapsed_seconds": 231.19,
+        "max_rss_kib": 1725132
+      },
+      "customize": {
+        "elapsed_seconds": 98.17,
+        "max_rss_kib": 2561740
+      }
+    },
+    "graph_files": [
+      {
+        "name": "south-buffer-260801.osrm",
+        "bytes": 919915008,
+        "sha256": "9712a4229e718d14e7dedd65d1ad585bc485a5429ab883a1d6bcaf129fe46c24"
+      },
+      {
+        "name": "south-buffer-260801.osrm.cell_metrics",
+        "bytes": 893426688,
+        "sha256": "6cb0a219024f53355f5e6c96faaac41e71ca9a4c8b0abf369d5615a8907341a3"
+      },
+      {
+        "name": "south-buffer-260801.osrm.cells",
+        "bytes": 6269952,
+        "sha256": "2b917d09f0eb3b041de6629df118491fb40a9271ab0657ea9ddf94bca71c429e"
+      },
+      {
+        "name": "south-buffer-260801.osrm.cnbg",
+        "bytes": 59447296,
+        "sha256": "7f03223cd896b0aa1b1c98fa7aff7ffd548df4bc86a82ca55161f4914c50ad02"
+      },
+      {
+        "name": "south-buffer-260801.osrm.cnbg_to_ebg",
+        "bytes": 59447296,
+        "sha256": "53bbf8eaa0887898833187d64a76d44ed9150196cc22e64a1e0a1ae3cd30b45d"
+      },
+      {
+        "name": "south-buffer-260801.osrm.datasource_names",
+        "bytes": 69632,
+        "sha256": "7e17da23d9d25799bfddf1231759616d2c638b52e5e437ac19db80e3420e0190"
+      },
+      {
+        "name": "south-buffer-260801.osrm.ebg",
+        "bytes": 324546048,
+        "sha256": "b9627886d2e945e91e463dc9d2f062fd9ad7418ea49f5e828037e1997e1ee0fc"
+      },
+      {
+        "name": "south-buffer-260801.osrm.ebg_nodes",
+        "bytes": 83676160,
+        "sha256": "4140adce0036c2336d67aeb0c99f0d1838e317310a8f0775e01ed99849eea1e2"
+      },
+      {
+        "name": "south-buffer-260801.osrm.edges",
+        "bytes": 94668800,
+        "sha256": "2567a4dfc09b7ea564ea553db6b8e544da27bac69d02981bd65b592c229b5235"
+      },
+      {
+        "name": "south-buffer-260801.osrm.enw",
+        "bytes": 81188864,
+        "sha256": "3e3c0e8fb894ea16de43fd4398ed8d7a03e3544fb500ba0818a8a07c3356cd98"
+      },
+      {
+        "name": "south-buffer-260801.osrm.fileIndex",
+        "bytes": 383436620,
+        "sha256": "f54e0fd32807564aa7d2612ce4024b7131ed7fad931a9607783e20405edfdeb4"
+      },
+      {
+        "name": "south-buffer-260801.osrm.geometry",
+        "bytes": 404043264,
+        "sha256": "5e82cc718383f021bf0619fa2f5648eb6f5b823f9cb6d5164cc47299b43338f5"
+      },
+      {
+        "name": "south-buffer-260801.osrm.icd",
+        "bytes": 73096192,
+        "sha256": "4f83f947877a1185760d8814a577303c51cd3b07f79931b488e17c28105a54fb"
+      },
+      {
+        "name": "south-buffer-260801.osrm.maneuver_overrides",
+        "bytes": 5120,
+        "sha256": "ffc372e7418530d2a74dd0f9b6507a1b9d0cab05ac3700f863e181ae403f5e11"
+      },
+      {
+        "name": "south-buffer-260801.osrm.mldgr",
+        "bytes": 335081984,
+        "sha256": "fbf209a7b28fc1edc9e9a235930aca343a75c8cd7531ae8428595405f5158fe0"
+      },
+      {
+        "name": "south-buffer-260801.osrm.names",
+        "bytes": 7979520,
+        "sha256": "2f133d6fc6e1da5b330d296df1f464ea483834ed47ac5c87356dd6a6e25f9d82"
+      },
+      {
+        "name": "south-buffer-260801.osrm.nbg_nodes",
+        "bytes": 223339008,
+        "sha256": "fa11d56e0280f8684eae506b34c1eb426cb33610e379914d2d8eb196f3e58f88"
+      },
+      {
+        "name": "south-buffer-260801.osrm.partition",
+        "bytes": 54139392,
+        "sha256": "e37e58d18150867375afa1bf426507b66ca6071a4641bd7562560a743527a870"
+      },
+      {
+        "name": "south-buffer-260801.osrm.properties",
+        "bytes": 6144,
+        "sha256": "db59bd43e268b6c7cc443d25eef55a078f6035724def6a97dbf2b94a662056fa"
+      },
+      {
+        "name": "south-buffer-260801.osrm.ramIndex",
+        "bytes": 1533440,
+        "sha256": "d4e177d4caa85c049f81539bca0eb21fa25a1fb95944dbff5904b26522992144"
+      },
+      {
+        "name": "south-buffer-260801.osrm.restrictions",
+        "bytes": 4096,
+        "sha256": "c6171ffd7bf2314186b0a0570b793e63c31c5d0eef2fcf55e50a526e25e03f99"
+      },
+      {
+        "name": "south-buffer-260801.osrm.timestamp",
+        "bytes": 3584,
+        "sha256": "e7cc25e80a1a106143e30a8006e79709c75b905bac024539f2c168cfc55df390"
+      },
+      {
+        "name": "south-buffer-260801.osrm.tld",
+        "bytes": 5632,
+        "sha256": "0fa57ecdc143d3f8b30879a36a4b16d9e94c6cf59e49d5fb36b6e969eafa04e7"
+      },
+      {
+        "name": "south-buffer-260801.osrm.tls",
+        "bytes": 9216,
+        "sha256": "1f60d084c45716e5e1244304c68791c283474586fac45485a8121c100b77f19c"
+      },
+      {
+        "name": "south-buffer-260801.osrm.turn_duration_penalties",
+        "bytes": 27048448,
+        "sha256": "fb00dc92a28764e1b4ce90a134abf5f7a6f07308aa2efa34a1958f689a57f178"
+      },
+      {
+        "name": "south-buffer-260801.osrm.turn_penalties_index",
+        "bytes": 162272768,
+        "sha256": "ad50d4b864718974bd0947171b43e1af9010adc60a7035a0ce02117ec3fd0475"
+      },
+      {
+        "name": "south-buffer-260801.osrm.turn_weight_penalties",
+        "bytes": 27048448,
+        "sha256": "83f8ac01cd3092728e313517f95daefcdc5fc289d371dc81a5cfbd18c3882082"
+      }
+    ],
+    "aggregate_sha256": "f4bf32b31e79de4cdc60c496cd2cf4e5538eb65a6768c42930e90f6852ef94d7"
+  },
+  "border_audit": {
+    "winner_routes_checked": 48,
+    "all_inside_bbox": true,
+    "minimum_margin_degrees": 1.5471399999999988,
+    "routes": [
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4100202",
+        "scenario": "federal",
+        "segmento_id": "8c6e0417893e735bc3c5",
+        "route_bounds": [
+          -48.992007,
+          -24.658118,
+          -48.991993,
+          -24.658107
+        ],
+        "minimum_bbox_margin_degrees": 1.9919930000000008,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4100202",
+        "scenario": "federal_estadual",
+        "segmento_id": "8c6e0417893e735bc3c5",
+        "route_bounds": [
+          -48.992007,
+          -24.658118,
+          -48.991993,
+          -24.658107
+        ],
+        "minimum_bbox_margin_degrees": 1.9919930000000008,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4105508",
+        "scenario": "federal",
+        "segmento_id": "4b411b132aedad1297f5",
+        "route_bounds": [
+          -53.047072,
+          -23.794867,
+          -52.605761,
+          -23.653619
+        ],
+        "minimum_bbox_margin_degrees": 2.153618999999999,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4105508",
+        "scenario": "federal_estadual",
+        "segmento_id": "ba2d3951fc0c38663a14",
+        "route_bounds": [
+          -52.612745,
+          -23.654223,
+          -52.607185,
+          -23.644269
+        ],
+        "minimum_bbox_margin_degrees": 2.1442690000000013,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4106902",
+        "scenario": "federal",
+        "segmento_id": "41eb35865b5476869fd1",
+        "route_bounds": [
+          -49.268565,
+          -25.453097,
+          -49.243304,
+          -25.41339
+        ],
+        "minimum_bbox_margin_degrees": 2.243304000000002,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4106902",
+        "scenario": "federal_estadual",
+        "segmento_id": "a7e34537d439844302de",
+        "route_bounds": [
+          -49.273255,
+          -25.413721,
+          -49.267374,
+          -25.380069
+        ],
+        "minimum_bbox_margin_degrees": 2.2673739999999967,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4113700",
+        "scenario": "federal",
+        "segmento_id": "30ae91b3eb62a2307854",
+        "route_bounds": [
+          -51.156156,
+          -23.335258,
+          -51.150388,
+          -23.29279
+        ],
+        "minimum_bbox_margin_degrees": 1.79279,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4113700",
+        "scenario": "federal_estadual",
+        "segmento_id": "6cdd420a1753b213adeb",
+        "route_bounds": [
+          -51.172072,
+          -23.347228,
+          -51.149902,
+          -23.334972
+        ],
+        "minimum_bbox_margin_degrees": 1.8349720000000005,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4200051",
+        "scenario": "federal",
+        "segmento_id": "1612fa8dc1660d6d599d",
+        "route_bounds": [
+          -51.045699,
+          -27.611959,
+          -50.977422,
+          -27.489176
+        ],
+        "minimum_bbox_margin_degrees": 3.977421999999997,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4200051",
+        "scenario": "federal_estadual",
+        "segmento_id": "ec02c1800207392dc92a",
+        "route_bounds": [
+          -51.02335,
+          -27.611993,
+          -51.022405,
+          -27.611125
+        ],
+        "minimum_bbox_margin_degrees": 4.022404999999999,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4205407",
+        "scenario": "federal",
+        "segmento_id": "ee5412824191b97cfc6b",
+        "route_bounds": [
+          -48.572599,
+          -27.601973,
+          -48.54714,
+          -27.596407
+        ],
+        "minimum_bbox_margin_degrees": 1.5471399999999988,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4205407",
+        "scenario": "federal_estadual",
+        "segmento_id": "bbf1e2aed0be1f8e8b8c",
+        "route_bounds": [
+          -48.560105,
+          -27.601973,
+          -48.54714,
+          -27.596407
+        ],
+        "minimum_bbox_margin_degrees": 1.5471399999999988,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4208500",
+        "scenario": "federal",
+        "segmento_id": "5b1c6cd43c9dbf52ba0c",
+        "route_bounds": [
+          -49.660504,
+          -27.41657,
+          -49.600814,
+          -27.218247
+        ],
+        "minimum_bbox_margin_degrees": 2.6008139999999997,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4208500",
+        "scenario": "federal_estadual",
+        "segmento_id": "11449cf8698b157ef559",
+        "route_bounds": [
+          -49.603477,
+          -27.426563,
+          -49.597539,
+          -27.415124
+        ],
+        "minimum_bbox_margin_degrees": 2.5975389999999976,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4209102",
+        "scenario": "federal",
+        "segmento_id": "5b51b0fa85a6a280a0c9",
+        "route_bounds": [
+          -48.884161,
+          -26.301058,
+          -48.840859,
+          -26.292586
+        ],
+        "minimum_bbox_margin_degrees": 1.8408590000000018,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4209102",
+        "scenario": "federal_estadual",
+        "segmento_id": "5b51b0fa85a6a280a0c9",
+        "route_bounds": [
+          -48.884161,
+          -26.301058,
+          -48.840859,
+          -26.292586
+        ],
+        "minimum_bbox_margin_degrees": 1.8408590000000018,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4305108",
+        "scenario": "federal",
+        "segmento_id": "ebc092eaae270b2694f8",
+        "route_bounds": [
+          -51.176801,
+          -29.173377,
+          -51.158381,
+          -29.168427
+        ],
+        "minimum_bbox_margin_degrees": 4.1583809999999986,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4305108",
+        "scenario": "federal_estadual",
+        "segmento_id": "ebc092eaae270b2694f8",
+        "route_bounds": [
+          -51.176801,
+          -29.173377,
+          -51.158381,
+          -29.168427
+        ],
+        "minimum_bbox_margin_degrees": 4.1583809999999986,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4308656",
+        "scenario": "federal",
+        "segmento_id": "1b14a930b53915505069",
+        "route_bounds": [
+          -55.641556,
+          -28.536812,
+          -55.499947,
+          -28.182932
+        ],
+        "minimum_bbox_margin_degrees": 2.3584439999999987,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4308656",
+        "scenario": "federal_estadual",
+        "segmento_id": "e9c4ccd6aee7f00aa444",
+        "route_bounds": [
+          -55.641556,
+          -28.304487,
+          -55.268306,
+          -28.182932
+        ],
+        "minimum_bbox_margin_degrees": 2.3584439999999987,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4314902",
+        "scenario": "federal",
+        "segmento_id": "8eb5a07aecc180a51a8a",
+        "route_bounds": [
+          -51.229024,
+          -30.028277,
+          -51.206044,
+          -29.999043
+        ],
+        "minimum_bbox_margin_degrees": 4.206043999999999,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4314902",
+        "scenario": "federal_estadual",
+        "segmento_id": "8eb5a07aecc180a51a8a",
+        "route_bounds": [
+          -51.229024,
+          -30.028277,
+          -51.206044,
+          -29.999043
+        ],
+        "minimum_bbox_margin_degrees": 4.206043999999999,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4316808",
+        "scenario": "federal",
+        "segmento_id": "57b26bdcac9253e10733",
+        "route_bounds": [
+          -52.44433,
+          -29.716039,
+          -52.428379,
+          -29.713645
+        ],
+        "minimum_bbox_margin_degrees": 4.7839610000000015,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 5000,
+        "municipio_id": "4316808",
+        "scenario": "federal_estadual",
+        "segmento_id": "57b26bdcac9253e10733",
+        "route_bounds": [
+          -52.44433,
+          -29.716039,
+          -52.428379,
+          -29.713645
+        ],
+        "minimum_bbox_margin_degrees": 4.7839610000000015,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4100202",
+        "scenario": "federal",
+        "segmento_id": "8c6e0417893e735bc3c5",
+        "route_bounds": [
+          -48.992007,
+          -24.658118,
+          -48.991993,
+          -24.658107
+        ],
+        "minimum_bbox_margin_degrees": 1.9919930000000008,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4100202",
+        "scenario": "federal_estadual",
+        "segmento_id": "8c6e0417893e735bc3c5",
+        "route_bounds": [
+          -48.992007,
+          -24.658118,
+          -48.991993,
+          -24.658107
+        ],
+        "minimum_bbox_margin_degrees": 1.9919930000000008,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4105508",
+        "scenario": "federal",
+        "segmento_id": "4b411b132aedad1297f5",
+        "route_bounds": [
+          -53.047072,
+          -23.794867,
+          -52.605761,
+          -23.653619
+        ],
+        "minimum_bbox_margin_degrees": 2.153618999999999,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4105508",
+        "scenario": "federal_estadual",
+        "segmento_id": "ba2d3951fc0c38663a14",
+        "route_bounds": [
+          -52.612745,
+          -23.654223,
+          -52.607185,
+          -23.644269
+        ],
+        "minimum_bbox_margin_degrees": 2.1442690000000013,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4106902",
+        "scenario": "federal",
+        "segmento_id": "41eb35865b5476869fd1",
+        "route_bounds": [
+          -49.268565,
+          -25.453097,
+          -49.243304,
+          -25.41339
+        ],
+        "minimum_bbox_margin_degrees": 2.243304000000002,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4106902",
+        "scenario": "federal_estadual",
+        "segmento_id": "a7e34537d439844302de",
+        "route_bounds": [
+          -49.273255,
+          -25.413721,
+          -49.267374,
+          -25.380069
+        ],
+        "minimum_bbox_margin_degrees": 2.2673739999999967,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4113700",
+        "scenario": "federal",
+        "segmento_id": "30ae91b3eb62a2307854",
+        "route_bounds": [
+          -51.156156,
+          -23.335258,
+          -51.150388,
+          -23.29279
+        ],
+        "minimum_bbox_margin_degrees": 1.79279,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4113700",
+        "scenario": "federal_estadual",
+        "segmento_id": "6cdd420a1753b213adeb",
+        "route_bounds": [
+          -51.172072,
+          -23.347228,
+          -51.149902,
+          -23.334972
+        ],
+        "minimum_bbox_margin_degrees": 1.8349720000000005,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4200051",
+        "scenario": "federal",
+        "segmento_id": "1612fa8dc1660d6d599d",
+        "route_bounds": [
+          -51.045699,
+          -27.611959,
+          -50.977422,
+          -27.489176
+        ],
+        "minimum_bbox_margin_degrees": 3.977421999999997,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4200051",
+        "scenario": "federal_estadual",
+        "segmento_id": "ec02c1800207392dc92a",
+        "route_bounds": [
+          -51.02335,
+          -27.611993,
+          -51.022405,
+          -27.611125
+        ],
+        "minimum_bbox_margin_degrees": 4.022404999999999,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4205407",
+        "scenario": "federal",
+        "segmento_id": "ee5412824191b97cfc6b",
+        "route_bounds": [
+          -48.572599,
+          -27.601973,
+          -48.54714,
+          -27.596407
+        ],
+        "minimum_bbox_margin_degrees": 1.5471399999999988,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4205407",
+        "scenario": "federal_estadual",
+        "segmento_id": "bbf1e2aed0be1f8e8b8c",
+        "route_bounds": [
+          -48.560105,
+          -27.601973,
+          -48.54714,
+          -27.596407
+        ],
+        "minimum_bbox_margin_degrees": 1.5471399999999988,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4208500",
+        "scenario": "federal",
+        "segmento_id": "5b1c6cd43c9dbf52ba0c",
+        "route_bounds": [
+          -49.660504,
+          -27.41657,
+          -49.600814,
+          -27.218247
+        ],
+        "minimum_bbox_margin_degrees": 2.6008139999999997,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4208500",
+        "scenario": "federal_estadual",
+        "segmento_id": "11449cf8698b157ef559",
+        "route_bounds": [
+          -49.603477,
+          -27.426563,
+          -49.597539,
+          -27.415124
+        ],
+        "minimum_bbox_margin_degrees": 2.5975389999999976,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4209102",
+        "scenario": "federal",
+        "segmento_id": "5b51b0fa85a6a280a0c9",
+        "route_bounds": [
+          -48.884161,
+          -26.301058,
+          -48.840859,
+          -26.292586
+        ],
+        "minimum_bbox_margin_degrees": 1.8408590000000018,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4209102",
+        "scenario": "federal_estadual",
+        "segmento_id": "5b51b0fa85a6a280a0c9",
+        "route_bounds": [
+          -48.884161,
+          -26.301058,
+          -48.840859,
+          -26.292586
+        ],
+        "minimum_bbox_margin_degrees": 1.8408590000000018,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4305108",
+        "scenario": "federal",
+        "segmento_id": "ebc092eaae270b2694f8",
+        "route_bounds": [
+          -51.176801,
+          -29.173377,
+          -51.158381,
+          -29.168427
+        ],
+        "minimum_bbox_margin_degrees": 4.1583809999999986,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4305108",
+        "scenario": "federal_estadual",
+        "segmento_id": "ebc092eaae270b2694f8",
+        "route_bounds": [
+          -51.176801,
+          -29.173377,
+          -51.158381,
+          -29.168427
+        ],
+        "minimum_bbox_margin_degrees": 4.1583809999999986,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4308656",
+        "scenario": "federal",
+        "segmento_id": "1b14a930b53915505069",
+        "route_bounds": [
+          -55.641556,
+          -28.536812,
+          -55.499947,
+          -28.182932
+        ],
+        "minimum_bbox_margin_degrees": 2.3584439999999987,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4308656",
+        "scenario": "federal_estadual",
+        "segmento_id": "e9c4ccd6aee7f00aa444",
+        "route_bounds": [
+          -55.641556,
+          -28.304487,
+          -55.268306,
+          -28.182932
+        ],
+        "minimum_bbox_margin_degrees": 2.3584439999999987,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4314902",
+        "scenario": "federal",
+        "segmento_id": "8eb5a07aecc180a51a8a",
+        "route_bounds": [
+          -51.229024,
+          -30.028277,
+          -51.206044,
+          -29.999043
+        ],
+        "minimum_bbox_margin_degrees": 4.206043999999999,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4314902",
+        "scenario": "federal_estadual",
+        "segmento_id": "8eb5a07aecc180a51a8a",
+        "route_bounds": [
+          -51.229024,
+          -30.028277,
+          -51.206044,
+          -29.999043
+        ],
+        "minimum_bbox_margin_degrees": 4.206043999999999,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4316808",
+        "scenario": "federal",
+        "segmento_id": "57b26bdcac9253e10733",
+        "route_bounds": [
+          -52.44433,
+          -29.716039,
+          -52.428379,
+          -29.713645
+        ],
+        "minimum_bbox_margin_degrees": 4.7839610000000015,
+        "inside_bbox": true
+      },
+      {
+        "spacing_m": 1000,
+        "municipio_id": "4316808",
+        "scenario": "federal_estadual",
+        "segmento_id": "57b26bdcac9253e10733",
+        "route_bounds": [
+          -52.44433,
+          -29.716039,
+          -52.428379,
+          -29.713645
+        ],
+        "minimum_bbox_margin_degrees": 4.7839610000000015,
+        "inside_bbox": true
+      }
+    ]
+  }
+}

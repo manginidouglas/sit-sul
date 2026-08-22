@@ -1,0 +1,74 @@
+{
+  "data_hora_utc": "2026-08-15T14:45:00Z",
+  "data_corte_edicao": "2026-08-12",
+  "estado_fonte": "em_verificacao",
+  "decisao_periodo": "2024",
+  "justificativa_periodo": "RAIS 2025 agregada não comprova bulk VINC_PUB 2025; o layout operacional confirmado é RAIS 2024",
+  "de_para": {
+    "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais/rais-2024/rais-2024-1/de-para-microdados.xlsx/@@download/file",
+    "status_http": 200,
+    "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "tamanho": 23640,
+    "sha256": "4be7a7421ce44e40c4b18ea044c624e16775a5d0e3429dac18acb6afd7545117",
+    "validacao": "workbook OOXML funcional aberto com openpyxl em modo somente leitura",
+    "abas": [
+      "VINC_PUB",
+      "VINC_ID",
+      "ESTAB_PUB",
+      "ESTAB_ID"
+    ],
+    "campos_confirmados_vinc_pub": [
+      "cnae20classecódigo",
+      "indvínculoativo3112código",
+      "municípiotrabcódigo",
+      "municípiocódigo",
+      "naturezajurídicacódigo"
+    ],
+    "dimensoes_vinc_pub": {
+      "linhas": 63,
+      "colunas": 39
+    },
+    "linhas_criticas": {
+      "cnae20classecódigo": 10,
+      "indvínculoativo3112código": 13,
+      "municípiotrabcódigo": 26,
+      "municípiocódigo": 27,
+      "naturezajurídicacódigo": 29
+    },
+    "limite_evidencia": "linhas críticas contêm somente mapeamento De/Para; tipo, largura e domínio não são informados"
+  },
+  "microdados": {
+    "diretorio_https": "https://ftp.mtps.gov.br/pdet/microdados/RAIS/2024/",
+    "resultado_https": "HTTP 503: upstream connection timeout",
+    "diretorio_2025_https": "https://ftp.mtps.gov.br/pdet/microdados/RAIS/2025/",
+    "resultado_2025_https": "HTTP 503: upstream connection timeout",
+    "resultado_ftp_direto": "network unreachable neste ambiente",
+    "listagem_real_observada": false,
+    "padrao_nominal_confirmado": false,
+    "arquivo_real_lido": false,
+    "ufs_processadas": [],
+    "vinculos_lidos": 0,
+    "topologia_oficial_observada": null,
+    "topologias_compativeis_testadas": {
+      "estadual": {
+        "arquivos": 27,
+        "status": "fixture_offline"
+      },
+      "regional": {
+        "arquivos": 6,
+        "status": "fixture_offline"
+      },
+      "nacional": {
+        "arquivos": 1,
+        "status": "fixture_offline"
+      }
+    },
+    "criterio_cobertura": "união das partições cobre exatamente as 27 UFs, sem lacunas ou sobreposição"
+  },
+  "status_coleta_real": "blocked_source",
+  "relatorio_layout": "layout-campos-confirmados.json",
+  "classificacao_erros": {
+    "https_e_ftp_inacessiveis": "blocked_source",
+    "bytes_ou_schema_invalidos": "failed_validation"
+  }
+}

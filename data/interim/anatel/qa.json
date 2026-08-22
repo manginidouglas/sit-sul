@@ -1,0 +1,364 @@
+{
+  "gerado_em_utc": "2026-08-12T23:41:26.094277+00:00",
+  "universo": 1191,
+  "periodos_municipais_cobertura_disponiveis": [
+    "2021-11",
+    "2022-06",
+    "2022-09",
+    "2022-12",
+    "2023-03",
+    "2023-06",
+    "2024-03",
+    "2024-06",
+    "2024-09",
+    "2024-12",
+    "2025-03",
+    "2025-06",
+    "2025-09",
+    "2025-12",
+    "2026-03"
+  ],
+  "indicadores": {
+    "INF-DIG-02": {
+      "observado": 1191,
+      "zero_observado": 0,
+      "ausente": 0,
+      "cobertura_percentual": 100.0,
+      "minimo": 3.442340791738,
+      "p1": 23.5854960091217,
+      "p5": 48.0130198334125,
+      "mediana": 86.95652173913,
+      "p95": 98.2351027464635,
+      "p99": 99.1856186722919,
+      "maximo": 99.804630262772,
+      "fora_faixa": 0,
+      "periodo": "2026-06"
+    },
+    "INF-DIG-03": {
+      "observado": 1191,
+      "zero_observado": 0,
+      "ausente": 0,
+      "cobertura_percentual": 100.0,
+      "minimo": 0.028955330805,
+      "p1": 0.0611704468274,
+      "p5": 0.1587477386775,
+      "mediana": 0.593121354327,
+      "p95": 0.809202897349,
+      "p99": 0.8663884028758998,
+      "maximo": 0.92009745102,
+      "fora_faixa": 0,
+      "periodo": "2026-06"
+    },
+    "INF-DIG-04": {
+      "observado": 1191,
+      "zero_observado": 0,
+      "ausente": 0,
+      "cobertura_percentual": 100.0,
+      "minimo": 24.787378162676,
+      "p1": 40.281591892154296,
+      "p5": 56.077083309252004,
+      "mediana": 87.985730931391,
+      "p95": 99.613241919646,
+      "p99": 99.9971824365344,
+      "maximo": 100.0,
+      "fora_faixa": 0,
+      "periodo": "2026-03"
+    }
+  },
+  "comparacao_inf_dig_03": {
+    "municipios": 1191,
+    "correlacao_spearman_ranking": 0.9999975423367914,
+    "media_diferenca_absoluta": 8.111923984047019e-05,
+    "mediana_diferenca_absoluta": 0.0,
+    "p95_diferenca_absoluta": 0.0005772632189999999,
+    "p99_diferenca_absoluta": 0.0014006803816999974,
+    "cnpjs_em_grupos_informativos": 26,
+    "grupos_informativos": 17,
+    "maiores_diferencas": [
+      {
+        "municipio_id": "4113700",
+        "periodo_referencia": "2026-06",
+        "competitividade_cnpj": "0.783720316157",
+        "competitividade_hibrida": "0.779714091811",
+        "diferenca_absoluta": "0.004006224346",
+        "cnpjs": 90,
+        "unidades_hibridas": 85
+      },
+      {
+        "municipio_id": "4314902",
+        "periodo_referencia": "2026-06",
+        "competitividade_cnpj": "0.740894787115",
+        "competitividade_hibrida": "0.738495197925",
+        "diferenca_absoluta": "0.00239958919",
+        "cnpjs": 184,
+        "unidades_hibridas": 180
+      },
+      {
+        "municipio_id": "4316907",
+        "periodo_referencia": "2026-06",
+        "competitividade_cnpj": "0.767848661136",
+        "competitividade_hibrida": "0.76576876279",
+        "diferenca_absoluta": "0.002079898346",
+        "cnpjs": 148,
+        "unidades_hibridas": 145
+      },
+      {
+        "municipio_id": "4118204",
+        "periodo_referencia": "2026-06",
+        "competitividade_cnpj": "0.734039572773",
+        "competitividade_hibrida": "0.731981007325",
+        "diferenca_absoluta": "0.002058565448",
+        "cnpjs": 38,
+        "unidades_hibridas": 35
+      },
+      {
+        "municipio_id": "4205407",
+        "periodo_referencia": "2026-06",
+        "competitividade_cnpj": "0.768986623563",
+        "competitividade_hibrida": "0.767055069888",
+        "diferenca_absoluta": "0.001931553676",
+        "cnpjs": 93,
+        "unidades_hibridas": 90
+      },
+      {
+        "municipio_id": "4219705",
+        "periodo_referencia": "2026-06",
+        "competitividade_cnpj": "0.712189049622",
+        "competitividade_hibrida": "0.710452674897",
+        "diferenca_absoluta": "0.001736374725",
+        "cnpjs": 27,
+        "unidades_hibridas": 26
+      },
+      {
+        "municipio_id": "4103701",
+        "periodo_referencia": "2026-06",
+        "competitividade_cnpj": "0.775959443665",
+        "competitividade_hibrida": "0.774278411875",
+        "diferenca_absoluta": "0.001681031791",
+        "cnpjs": 45,
+        "unidades_hibridas": 41
+      },
+      {
+        "municipio_id": "4309308",
+        "periodo_referencia": "2026-06",
+        "competitividade_cnpj": "0.717538890464",
+        "competitividade_hibrida": "0.71590114391",
+        "diferenca_absoluta": "0.001637746554",
+        "cnpjs": 34,
+        "unidades_hibridas": 31
+      },
+      {
+        "municipio_id": "4202008",
+        "periodo_referencia": "2026-06",
+        "competitividade_cnpj": "0.750369427708",
+        "competitividade_hibrida": "0.74880298968",
+        "diferenca_absoluta": "0.001566438028",
+        "cnpjs": 54,
+        "unidades_hibridas": 50
+      },
+      {
+        "municipio_id": "4306106",
+        "periodo_referencia": "2026-06",
+        "competitividade_cnpj": "0.72663577129",
+        "competitividade_hibrida": "0.725136985228",
+        "diferenca_absoluta": "0.001498786062",
+        "cnpjs": 25,
+        "unidades_hibridas": 24
+      }
+    ]
+  },
+  "sanity_checks": [
+    {
+      "municipio_id": "4106902",
+      "municipio": "Curitiba",
+      "uf": "PR",
+      "resultados": [
+        {
+          "municipio_id": "4106902",
+          "indicador_id": "INF-DIG-02",
+          "valor_bruto": "79.984129586681",
+          "periodo_referencia": "2026-06",
+          "flag_qualidade": "observado",
+          "acessos_fibra": "639050",
+          "total_acessos_internet": "798971"
+        },
+        {
+          "municipio_id": "4106902",
+          "indicador_id": "INF-DIG-03",
+          "valor_bruto": "0.799400396129",
+          "periodo_referencia": "2026-06",
+          "flag_qualidade": "observado",
+          "total_acessos_internet": "798971",
+          "unidades_economicas_hibridas": 188
+        },
+        {
+          "municipio_id": "4106902",
+          "indicador_id": "INF-DIG-04",
+          "valor_bruto": "100",
+          "periodo_referencia": "2026-03",
+          "flag_qualidade": "observado"
+        }
+      ]
+    },
+    {
+      "municipio_id": "4205407",
+      "municipio": "Florianópolis",
+      "uf": "SC",
+      "resultados": [
+        {
+          "municipio_id": "4205407",
+          "indicador_id": "INF-DIG-02",
+          "valor_bruto": "73.670218022969",
+          "periodo_referencia": "2026-06",
+          "flag_qualidade": "observado",
+          "acessos_fibra": "223623",
+          "total_acessos_internet": "303546"
+        },
+        {
+          "municipio_id": "4205407",
+          "indicador_id": "INF-DIG-03",
+          "valor_bruto": "0.767055069888",
+          "periodo_referencia": "2026-06",
+          "flag_qualidade": "observado",
+          "total_acessos_internet": "303546",
+          "unidades_economicas_hibridas": 90
+        },
+        {
+          "municipio_id": "4205407",
+          "indicador_id": "INF-DIG-04",
+          "valor_bruto": "99.955388534486",
+          "periodo_referencia": "2026-03",
+          "flag_qualidade": "observado"
+        }
+      ]
+    },
+    {
+      "municipio_id": "4314902",
+      "municipio": "Porto Alegre",
+      "uf": "RS",
+      "resultados": [
+        {
+          "municipio_id": "4314902",
+          "indicador_id": "INF-DIG-02",
+          "valor_bruto": "68.82020191524",
+          "periodo_referencia": "2026-06",
+          "flag_qualidade": "observado",
+          "acessos_fibra": "423865",
+          "total_acessos_internet": "615902"
+        },
+        {
+          "municipio_id": "4314902",
+          "indicador_id": "INF-DIG-03",
+          "valor_bruto": "0.738495197925",
+          "periodo_referencia": "2026-06",
+          "flag_qualidade": "observado",
+          "total_acessos_internet": "615902",
+          "unidades_economicas_hibridas": 180
+        },
+        {
+          "municipio_id": "4314902",
+          "indicador_id": "INF-DIG-04",
+          "valor_bruto": "99.980695324663",
+          "periodo_referencia": "2026-03",
+          "flag_qualidade": "observado"
+        }
+      ]
+    },
+    {
+      "municipio_id": "4100103",
+      "municipio": "Abatiá",
+      "uf": "PR",
+      "resultados": [
+        {
+          "municipio_id": "4100103",
+          "indicador_id": "INF-DIG-02",
+          "valor_bruto": "92.281105990783",
+          "periodo_referencia": "2026-06",
+          "flag_qualidade": "observado",
+          "acessos_fibra": "801",
+          "total_acessos_internet": "868"
+        },
+        {
+          "municipio_id": "4100103",
+          "indicador_id": "INF-DIG-03",
+          "valor_bruto": "0.469897428274",
+          "periodo_referencia": "2026-06",
+          "flag_qualidade": "observado",
+          "total_acessos_internet": "868",
+          "unidades_economicas_hibridas": 16
+        },
+        {
+          "municipio_id": "4100103",
+          "indicador_id": "INF-DIG-04",
+          "valor_bruto": "90.278338627261",
+          "periodo_referencia": "2026-03",
+          "flag_qualidade": "observado"
+        }
+      ]
+    },
+    {
+      "municipio_id": "4200051",
+      "municipio": "Abdon Batista",
+      "uf": "SC",
+      "resultados": [
+        {
+          "municipio_id": "4200051",
+          "indicador_id": "INF-DIG-02",
+          "valor_bruto": "78.181818181818",
+          "periodo_referencia": "2026-06",
+          "flag_qualidade": "observado",
+          "acessos_fibra": "172",
+          "total_acessos_internet": "220"
+        },
+        {
+          "municipio_id": "4200051",
+          "indicador_id": "INF-DIG-03",
+          "valor_bruto": "0.662107438017",
+          "periodo_referencia": "2026-06",
+          "flag_qualidade": "observado",
+          "total_acessos_internet": "220",
+          "unidades_economicas_hibridas": 11
+        },
+        {
+          "municipio_id": "4200051",
+          "indicador_id": "INF-DIG-04",
+          "valor_bruto": "64.808687451886",
+          "periodo_referencia": "2026-03",
+          "flag_qualidade": "observado"
+        }
+      ]
+    },
+    {
+      "municipio_id": "4300034",
+      "municipio": "Aceguá",
+      "uf": "RS",
+      "resultados": [
+        {
+          "municipio_id": "4300034",
+          "indicador_id": "INF-DIG-02",
+          "valor_bruto": "30.234741784038",
+          "periodo_referencia": "2026-06",
+          "flag_qualidade": "observado",
+          "acessos_fibra": "322",
+          "total_acessos_internet": "1065"
+        },
+        {
+          "municipio_id": "4300034",
+          "indicador_id": "INF-DIG-03",
+          "valor_bruto": "0.521986378364",
+          "periodo_referencia": "2026-06",
+          "flag_qualidade": "observado",
+          "total_acessos_internet": "1065",
+          "unidades_economicas_hibridas": 13
+        },
+        {
+          "municipio_id": "4300034",
+          "indicador_id": "INF-DIG-04",
+          "valor_bruto": "60.902625899281",
+          "periodo_referencia": "2026-03",
+          "flag_qualidade": "observado"
+        }
+      ]
+    }
+  ]
+}
